@@ -4,8 +4,9 @@
 //#include<OpenglAlg.h>
 //#include<malloc.h>
 #include<glfw_callback.h>
-#include "glm/glm.hpp"
-#include "glm/gtc/matrix_transform.hpp"
+//#include "glm/glm.hpp"
+//#include "glm/gtc/matrix_transform.hpp"
+//#include "glm/gtc/type_ptr.hpp"
 //#include "Dense"
 //#include<GLFW/glfw3.h>
 #include<time.h>
@@ -19,21 +20,35 @@ glfwSetCursorPosCallback(window,cursor_position_callback);
 glfwSetKeyCallback(window,key_callback); 
 glfwSetFramebufferSizeCallback(window,framebuffer_size_callback);
 glfwGetFramebufferSize(window,&globalinfo.resolution[0],&globalinfo.resolution[1]);
-
+glfwSetScrollCallback(window,scroll_callback);
 }
 void init_uniform(GLuint program)
 {//vec3 iR=vec3(800,600,0);
 //glUniform1i(glGetUniformLocation(program,"iResolution"),iR);
     //glm::
     Eigen::MatrixXf p=Projection(M_PI/3.0f,(float)globalinfo.resolution[0]/(float)globalinfo.resolution[1],0.2f,100.0f);
-glUniformMatrix4fv(glGetUniformLocation(program,"Proj"),1,GL_TRUE,p.data());
-   glUniformMatrix4fv(glGetUniformLocation(program,"Matrix"),1,GL_TRUE,arc.get_data(&arc));
-    Eigen::VectorXf a(2);
+
+/*glm::mat4 projection = glm::perspective(glm::radians(60.0f), (float)globalinfo.resolution[0]/(float)globalinfo.resolution[1], 0.2f, 100.0f);
+for(int i=0;i<4;i++)
+{
+for(int j=0)
+}*/
+glUniformMatrix4fv(glGetUniformLocation(program,"Proj"),1,GL_FALSE,p.data());
+glUniformMatrix4fv(glGetUniformLocation(program,"Matrix"),1,GL_TRUE,arc.get_data(&arc));
+Eigen::VectorXf a(2);
     a.coeffRef(0)=(float)globalinfo.resolution[0];
     a.coeffRef(1)=(float)globalinfo.resolution[1];
     glUniform2fv(glGetUniformLocation(program,"iResolution"),1,(float*)a.data());
 //把像素着色器的纹理绑定纹理单元GL_TEXURE0
 	glUniform1i(glGetUniformLocation(program,"ourTexture"),0);
+}
+void set_uniform(GLuint program)
+{
+
+glUniform2f(glGetUniformLocation(program,"iResolution"),(float)globalinfo.resolution[0],(float)globalinfo.resolution[1]);
+
+    glUniform1f(glGetUniformLocation(program,"iTime"),globalinfo.run_time);
+    glUniformMatrix4fv(glGetUniformLocation(program,"Matrix"),1,GL_TRUE,arc.get_data(&arc));
 }
 GLuint init_VAOs(GLuint* VAOs)
 {
@@ -43,7 +58,7 @@ GLuint init_VAOs(GLuint* VAOs)
 
 	
 	};*/
-	GLfloat vertices[4][3]={{ -1.0f, -1.0f,-1.0f}, {  1.0f, -1.0f,-1.0f }, { -1.0f,  1.0f,-1.0f},{1.0f,1.0f,-1.0f}};
+	GLfloat vertices[4][3]={{ -0.7f, -0.7f,-1.0f}, {  0.7f, -0.7f,-1.0f }, { -0.7f,  0.7f,-1.0f},{0.7f,0.7f,-1.0f}};
         //float texcoords[]={1.0f,1.0f,1.0f,0.0f,0.0f,0.0f,0.0f,1.0f};
 	float texcoords[]={1.0f,1.0f,1.0f,0.0f,0.0f,1.0f,0.0f,0.0f};
 	unsigned int indices[]={
@@ -90,12 +105,12 @@ glGenTextures(2,textures);
 ImageInfo image;
 image.data=stbi_load("linyueru.jpg",&image.width,&image.height,&image.n,0);
 printf("%d",image.n);
-if(image.data)
+/*if(image.data)
 {
 printf("width %d height %d\r\n",image.width,image.height);
 }
-
-printf("hello%dhello",(int)image.data[image.width*image.height*image.n+1]);
+*/
+//printf("hello%dhello",(int)image.data[image.width*image.height*image.n+1]);
 _Texture_(image,textures[0]);
 stbi_image_free(image.data);
 //先把纹理绑定一个纹理单元GL_TEXTURE0
@@ -157,9 +172,9 @@ while(!glfwWindowShouldClose(window))
 {
 
 finish=clock();
-glUniform2f(glGetUniformLocation(program,"iResolution"),(float)globalinfo.resolution[0],(float)globalinfo.resolution[1]);
 
-    glUniform1f(glGetUniformLocation(program,"iTime"),(double)(finish-start)/CLOCKS_PER_SEC);
+globalinfo.run_time=(float)(finish-start)/CLOCKS_PER_SEC;
+set_uniform(program);
         //glUniform1f(glGetUniforLocation())
 display(VAOs[0],program);
 glfwSwapBuffers(window);

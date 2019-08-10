@@ -10,7 +10,7 @@ out vec2 TexCoord;
 void main()
 { //vPosition[3]=1.0f;
 //vPosition[2]=0.5f;
-    gl_Position =vec4(vPosition,1.0f)*Matrix*Proj;
+    gl_Position =Proj*Matrix*vec4(vPosition,1.0f);
     ourColor=aColor;
     TexCoord=aTexCoord;
 }
