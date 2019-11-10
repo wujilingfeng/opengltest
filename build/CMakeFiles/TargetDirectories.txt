@@ -1,0 +1,3 @@
+D:/code/libcell/build/CMakeFiles/edit_cache.dir
+D:/code/libcell/build/CMakeFiles/libcell.dir
+D:/code/libcell/build/CMakeFiles/rebuild_cache.dir
