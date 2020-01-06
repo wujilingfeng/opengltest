@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../../../temp_libs/libmesh_viewer_matrix4x4.a  CMakeFiles/mesh_viewer_matrix4x4.dir/Mesh_viewer_math.c.o CMakeFiles/mesh_viewer_matrix4x4.dir/Mesh_viewer_matrix4x4.c.o
+/usr/bin/ranlib ../../../temp_libs/libmesh_viewer_matrix4x4.a

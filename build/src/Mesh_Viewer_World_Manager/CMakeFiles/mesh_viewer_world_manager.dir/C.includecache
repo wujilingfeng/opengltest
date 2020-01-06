@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/Mesh_view/Interactor_GlobalInfo.h
+tool/tools_node.h
+-
+
+../include/tool/tools_node.h
+stdlib.h
+-
+
+/home/libo/Documents/c++/Mesh_viewer/src/Interactor_GlobalInfo.c
+Mesh_view/Interactor_GlobalInfo.h
+-
+

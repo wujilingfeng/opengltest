@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../../../temp_libs/libtools_node.a  CMakeFiles/tools_node.dir/tools_node.c.o
+/usr/bin/ranlib ../../../temp_libs/libtools_node.a

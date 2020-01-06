@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/tool/tools_node.h
+stdlib.h
+-
+
+/home/libo/Documents/c++/Mesh_viewer/src/tools_node/tools_node.c
+tool/tools_node.h
+-
+
