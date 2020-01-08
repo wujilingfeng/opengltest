@@ -57,22 +57,9 @@ include src/CMakeFiles/mesh_viewer.dir/progress.make
 # Include the compile flags for this target's objects.
 include src/CMakeFiles/mesh_viewer.dir/flags.make
 
-src/CMakeFiles/mesh_viewer.dir/Interactor_GlobalInfo.c.o: src/CMakeFiles/mesh_viewer.dir/flags.make
-src/CMakeFiles/mesh_viewer.dir/Interactor_GlobalInfo.c.o: ../src/Interactor_GlobalInfo.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/libo/Documents/c++/Mesh_viewer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object src/CMakeFiles/mesh_viewer.dir/Interactor_GlobalInfo.c.o"
-	cd /home/libo/Documents/c++/Mesh_viewer/build/src && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/mesh_viewer.dir/Interactor_GlobalInfo.c.o   -c /home/libo/Documents/c++/Mesh_viewer/src/Interactor_GlobalInfo.c
-
-src/CMakeFiles/mesh_viewer.dir/Interactor_GlobalInfo.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/mesh_viewer.dir/Interactor_GlobalInfo.c.i"
-	cd /home/libo/Documents/c++/Mesh_viewer/build/src && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/libo/Documents/c++/Mesh_viewer/src/Interactor_GlobalInfo.c > CMakeFiles/mesh_viewer.dir/Interactor_GlobalInfo.c.i
-
-src/CMakeFiles/mesh_viewer.dir/Interactor_GlobalInfo.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/mesh_viewer.dir/Interactor_GlobalInfo.c.s"
-	cd /home/libo/Documents/c++/Mesh_viewer/build/src && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/libo/Documents/c++/Mesh_viewer/src/Interactor_GlobalInfo.c -o CMakeFiles/mesh_viewer.dir/Interactor_GlobalInfo.c.s
-
 src/CMakeFiles/mesh_viewer.dir/OpenglAlg.c.o: src/CMakeFiles/mesh_viewer.dir/flags.make
 src/CMakeFiles/mesh_viewer.dir/OpenglAlg.c.o: ../src/OpenglAlg.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/libo/Documents/c++/Mesh_viewer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object src/CMakeFiles/mesh_viewer.dir/OpenglAlg.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/libo/Documents/c++/Mesh_viewer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object src/CMakeFiles/mesh_viewer.dir/OpenglAlg.c.o"
 	cd /home/libo/Documents/c++/Mesh_viewer/build/src && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/mesh_viewer.dir/OpenglAlg.c.o   -c /home/libo/Documents/c++/Mesh_viewer/src/OpenglAlg.c
 
 src/CMakeFiles/mesh_viewer.dir/OpenglAlg.c.i: cmake_force
@@ -85,7 +72,7 @@ src/CMakeFiles/mesh_viewer.dir/OpenglAlg.c.s: cmake_force
 
 src/CMakeFiles/mesh_viewer.dir/glfw_callback.cpp.o: src/CMakeFiles/mesh_viewer.dir/flags.make
 src/CMakeFiles/mesh_viewer.dir/glfw_callback.cpp.o: ../src/glfw_callback.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/libo/Documents/c++/Mesh_viewer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/CMakeFiles/mesh_viewer.dir/glfw_callback.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/libo/Documents/c++/Mesh_viewer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/CMakeFiles/mesh_viewer.dir/glfw_callback.cpp.o"
 	cd /home/libo/Documents/c++/Mesh_viewer/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mesh_viewer.dir/glfw_callback.cpp.o -c /home/libo/Documents/c++/Mesh_viewer/src/glfw_callback.cpp
 
 src/CMakeFiles/mesh_viewer.dir/glfw_callback.cpp.i: cmake_force
@@ -98,7 +85,7 @@ src/CMakeFiles/mesh_viewer.dir/glfw_callback.cpp.s: cmake_force
 
 src/CMakeFiles/mesh_viewer.dir/__/thirdpart/glad/src/glad.c.o: src/CMakeFiles/mesh_viewer.dir/flags.make
 src/CMakeFiles/mesh_viewer.dir/__/thirdpart/glad/src/glad.c.o: ../thirdpart/glad/src/glad.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/libo/Documents/c++/Mesh_viewer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object src/CMakeFiles/mesh_viewer.dir/__/thirdpart/glad/src/glad.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/libo/Documents/c++/Mesh_viewer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object src/CMakeFiles/mesh_viewer.dir/__/thirdpart/glad/src/glad.c.o"
 	cd /home/libo/Documents/c++/Mesh_viewer/build/src && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/mesh_viewer.dir/__/thirdpart/glad/src/glad.c.o   -c /home/libo/Documents/c++/Mesh_viewer/thirdpart/glad/src/glad.c
 
 src/CMakeFiles/mesh_viewer.dir/__/thirdpart/glad/src/glad.c.i: cmake_force
@@ -111,7 +98,6 @@ src/CMakeFiles/mesh_viewer.dir/__/thirdpart/glad/src/glad.c.s: cmake_force
 
 # Object files for target mesh_viewer
 mesh_viewer_OBJECTS = \
-"CMakeFiles/mesh_viewer.dir/Interactor_GlobalInfo.c.o" \
 "CMakeFiles/mesh_viewer.dir/OpenglAlg.c.o" \
 "CMakeFiles/mesh_viewer.dir/glfw_callback.cpp.o" \
 "CMakeFiles/mesh_viewer.dir/__/thirdpart/glad/src/glad.c.o"
@@ -119,13 +105,12 @@ mesh_viewer_OBJECTS = \
 # External object files for target mesh_viewer
 mesh_viewer_EXTERNAL_OBJECTS =
 
-../temp_libs/libmesh_viewer.a: src/CMakeFiles/mesh_viewer.dir/Interactor_GlobalInfo.c.o
 ../temp_libs/libmesh_viewer.a: src/CMakeFiles/mesh_viewer.dir/OpenglAlg.c.o
 ../temp_libs/libmesh_viewer.a: src/CMakeFiles/mesh_viewer.dir/glfw_callback.cpp.o
 ../temp_libs/libmesh_viewer.a: src/CMakeFiles/mesh_viewer.dir/__/thirdpart/glad/src/glad.c.o
 ../temp_libs/libmesh_viewer.a: src/CMakeFiles/mesh_viewer.dir/build.make
 ../temp_libs/libmesh_viewer.a: src/CMakeFiles/mesh_viewer.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/libo/Documents/c++/Mesh_viewer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX static library ../../temp_libs/libmesh_viewer.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/libo/Documents/c++/Mesh_viewer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX static library ../../temp_libs/libmesh_viewer.a"
 	cd /home/libo/Documents/c++/Mesh_viewer/build/src && $(CMAKE_COMMAND) -P CMakeFiles/mesh_viewer.dir/cmake_clean_target.cmake
 	cd /home/libo/Documents/c++/Mesh_viewer/build/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/mesh_viewer.dir/link.txt --verbose=$(VERBOSE)
 

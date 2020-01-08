@@ -132,13 +132,14 @@ void mesh_viewer_framebuffer_size_callback(GLFWwindow* window,int w,int h)
 void mesh_viewer_key_callback(GLFWwindow* window,int key,int scancode,int action,int mods)
 {
     Mesh_viewer_world* mw=(Mesh_viewer_world*)(glfwGetWindowUserPointer(window));
-    
+    //printf("%d\n",action);
     Interactor_GlobalInfo* g_info=mw->g_info;
-    
     
     g_info->key=key;
     g_info->key_action=action;
     g_info->key_mods=mods;
+
+    printf("key:%d key_action:%d\n",key,action);    
     char intera[]="Intera";
     Node* id=Mesh_viewer_world_find_species(mw,intera);
     

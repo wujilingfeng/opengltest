@@ -301,56 +301,6 @@ void Mesh_viewer_world_remove_something(struct Mesh_viewer_world* mw,Mesh_view_s
 
 
 }
-void Mesh_viewer_points_init(struct Mesh_viewer_points* mp)
-{
-    mp->Data=0;mp->color=0;
-    mp->Data_index=0;
-    mp->VAO=0;
-    mp->Buffers=0;
-    mp->prop=0;
-    mp->evolution=0;
-    mp->Data_index_rows=0;
-    mp->Data_rows=0;
-
-}
-void Mesh_viewer_edges_init(struct Mesh_viewer_edges* me)
-{
-    me->Data=0;me->color=0;
-    me->Data_index=0;
-    me->VAO=0;
-    me->Buffers=0;
-    me->prop=0;
-    me->evolution=0;
-    me->Data_index_rows=0;
-    me->Data_rows=0;
-
-}
-void Mesh_viewer_faces_init(struct Mesh_viewer_faces* mf)
-{
-    mf->Data=0;mf->color=0;
-    mf->Data_index=0;
-    mf->normal=0;
-    mf->VAO=0;mf->Buffers=0;
-    mf->marked_faces_index=0;
-    mf->prop=0;
-    mf->evolution=0;
-    mf->Data_index_rows=0;
-    mf->Data_index_cols=0;
-    mf->Data_rows=0;
-
-}
-void Mesh_viewer_camera_init(Mesh_viewer_camera*mc)
-{
-    mc->matrix=(Matrix4x4*)malloc(sizeof(Matrix4x4));
-    Matrix4x4_init_float(mc->matrix); 
-    mc->matrix_inverse=(Matrix4x4*)malloc(sizeof(Matrix4x4));
-    Matrix4x4_init_float(mc->matrix_inverse);
-    mc->prop=0;
-    mc->is_using=0;
-    mc->focal_distance=1;
-
-}
-
 /*void Mesh_viewer_add_face_data(Mesh_viewer_faces*mf,float* v,int v_cols,int v_rows,int *index,int i_cols,int i_rows,float *color )
 {   if(v!=0&&index!=0)
     {
@@ -387,12 +337,4 @@ void Mesh_viewer_camera_init(Mesh_viewer_camera*mc)
     
 }
 */
-//
-//
-//
-//
-//
-//
-//
-//
-//
+

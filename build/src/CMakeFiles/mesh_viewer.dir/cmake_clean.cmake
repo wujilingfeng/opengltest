@@ -1,5 +1,4 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/mesh_viewer.dir/Interactor_GlobalInfo.c.o"
   "CMakeFiles/mesh_viewer.dir/OpenglAlg.c.o"
   "CMakeFiles/mesh_viewer.dir/glfw_callback.cpp.o"
   "CMakeFiles/mesh_viewer.dir/__/thirdpart/glad/src/glad.c.o"

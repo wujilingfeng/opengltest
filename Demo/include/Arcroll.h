@@ -17,9 +17,6 @@ void Mesh_viewer_Arcroll_scroll_callback(Mesh_viewer_Intera*,double,double);
 
 
 
-
-
-
 #ifdef __cplusplus
 }
 #endif

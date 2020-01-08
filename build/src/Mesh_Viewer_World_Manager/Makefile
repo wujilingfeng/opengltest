@@ -171,6 +171,60 @@ mesh_viewer_world_manager/fast:
 	cd /home/libo/Documents/c++/Mesh_viewer/build && $(MAKE) -f src/Mesh_Viewer_World_Manager/CMakeFiles/mesh_viewer_world_manager.dir/build.make src/Mesh_Viewer_World_Manager/CMakeFiles/mesh_viewer_world_manager.dir/build
 .PHONY : mesh_viewer_world_manager/fast
 
+Interactor_GlobalInfo.o: Interactor_GlobalInfo.c.o
+
+.PHONY : Interactor_GlobalInfo.o
+
+# target to build an object file
+Interactor_GlobalInfo.c.o:
+	cd /home/libo/Documents/c++/Mesh_viewer/build && $(MAKE) -f src/Mesh_Viewer_World_Manager/CMakeFiles/mesh_viewer_world_manager.dir/build.make src/Mesh_Viewer_World_Manager/CMakeFiles/mesh_viewer_world_manager.dir/Interactor_GlobalInfo.c.o
+.PHONY : Interactor_GlobalInfo.c.o
+
+Interactor_GlobalInfo.i: Interactor_GlobalInfo.c.i
+
+.PHONY : Interactor_GlobalInfo.i
+
+# target to preprocess a source file
+Interactor_GlobalInfo.c.i:
+	cd /home/libo/Documents/c++/Mesh_viewer/build && $(MAKE) -f src/Mesh_Viewer_World_Manager/CMakeFiles/mesh_viewer_world_manager.dir/build.make src/Mesh_Viewer_World_Manager/CMakeFiles/mesh_viewer_world_manager.dir/Interactor_GlobalInfo.c.i
+.PHONY : Interactor_GlobalInfo.c.i
+
+Interactor_GlobalInfo.s: Interactor_GlobalInfo.c.s
+
+.PHONY : Interactor_GlobalInfo.s
+
+# target to generate assembly for a file
+Interactor_GlobalInfo.c.s:
+	cd /home/libo/Documents/c++/Mesh_viewer/build && $(MAKE) -f src/Mesh_Viewer_World_Manager/CMakeFiles/mesh_viewer_world_manager.dir/build.make src/Mesh_Viewer_World_Manager/CMakeFiles/mesh_viewer_world_manager.dir/Interactor_GlobalInfo.c.s
+.PHONY : Interactor_GlobalInfo.c.s
+
+Mesh_viewer_base_species.o: Mesh_viewer_base_species.c.o
+
+.PHONY : Mesh_viewer_base_species.o
+
+# target to build an object file
+Mesh_viewer_base_species.c.o:
+	cd /home/libo/Documents/c++/Mesh_viewer/build && $(MAKE) -f src/Mesh_Viewer_World_Manager/CMakeFiles/mesh_viewer_world_manager.dir/build.make src/Mesh_Viewer_World_Manager/CMakeFiles/mesh_viewer_world_manager.dir/Mesh_viewer_base_species.c.o
+.PHONY : Mesh_viewer_base_species.c.o
+
+Mesh_viewer_base_species.i: Mesh_viewer_base_species.c.i
+
+.PHONY : Mesh_viewer_base_species.i
+
+# target to preprocess a source file
+Mesh_viewer_base_species.c.i:
+	cd /home/libo/Documents/c++/Mesh_viewer/build && $(MAKE) -f src/Mesh_Viewer_World_Manager/CMakeFiles/mesh_viewer_world_manager.dir/build.make src/Mesh_Viewer_World_Manager/CMakeFiles/mesh_viewer_world_manager.dir/Mesh_viewer_base_species.c.i
+.PHONY : Mesh_viewer_base_species.c.i
+
+Mesh_viewer_base_species.s: Mesh_viewer_base_species.c.s
+
+.PHONY : Mesh_viewer_base_species.s
+
+# target to generate assembly for a file
+Mesh_viewer_base_species.c.s:
+	cd /home/libo/Documents/c++/Mesh_viewer/build && $(MAKE) -f src/Mesh_Viewer_World_Manager/CMakeFiles/mesh_viewer_world_manager.dir/build.make src/Mesh_Viewer_World_Manager/CMakeFiles/mesh_viewer_world_manager.dir/Mesh_viewer_base_species.c.s
+.PHONY : Mesh_viewer_base_species.c.s
+
 Mesh_viewer_manager.o: Mesh_viewer_manager.cpp.o
 
 .PHONY : Mesh_viewer_manager.o
@@ -198,33 +252,6 @@ Mesh_viewer_manager.cpp.s:
 	cd /home/libo/Documents/c++/Mesh_viewer/build && $(MAKE) -f src/Mesh_Viewer_World_Manager/CMakeFiles/mesh_viewer_world_manager.dir/build.make src/Mesh_Viewer_World_Manager/CMakeFiles/mesh_viewer_world_manager.dir/Mesh_viewer_manager.cpp.s
 .PHONY : Mesh_viewer_manager.cpp.s
 
-__/Interactor_GlobalInfo.o: __/Interactor_GlobalInfo.c.o
-
-.PHONY : __/Interactor_GlobalInfo.o
-
-# target to build an object file
-__/Interactor_GlobalInfo.c.o:
-	cd /home/libo/Documents/c++/Mesh_viewer/build && $(MAKE) -f src/Mesh_Viewer_World_Manager/CMakeFiles/mesh_viewer_world_manager.dir/build.make src/Mesh_Viewer_World_Manager/CMakeFiles/mesh_viewer_world_manager.dir/__/Interactor_GlobalInfo.c.o
-.PHONY : __/Interactor_GlobalInfo.c.o
-
-__/Interactor_GlobalInfo.i: __/Interactor_GlobalInfo.c.i
-
-.PHONY : __/Interactor_GlobalInfo.i
-
-# target to preprocess a source file
-__/Interactor_GlobalInfo.c.i:
-	cd /home/libo/Documents/c++/Mesh_viewer/build && $(MAKE) -f src/Mesh_Viewer_World_Manager/CMakeFiles/mesh_viewer_world_manager.dir/build.make src/Mesh_Viewer_World_Manager/CMakeFiles/mesh_viewer_world_manager.dir/__/Interactor_GlobalInfo.c.i
-.PHONY : __/Interactor_GlobalInfo.c.i
-
-__/Interactor_GlobalInfo.s: __/Interactor_GlobalInfo.c.s
-
-.PHONY : __/Interactor_GlobalInfo.s
-
-# target to generate assembly for a file
-__/Interactor_GlobalInfo.c.s:
-	cd /home/libo/Documents/c++/Mesh_viewer/build && $(MAKE) -f src/Mesh_Viewer_World_Manager/CMakeFiles/mesh_viewer_world_manager.dir/build.make src/Mesh_Viewer_World_Manager/CMakeFiles/mesh_viewer_world_manager.dir/__/Interactor_GlobalInfo.c.s
-.PHONY : __/Interactor_GlobalInfo.c.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -238,12 +265,15 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... list_install_components"
 	@echo "... install"
+	@echo "... Interactor_GlobalInfo.o"
+	@echo "... Interactor_GlobalInfo.i"
+	@echo "... Interactor_GlobalInfo.s"
+	@echo "... Mesh_viewer_base_species.o"
+	@echo "... Mesh_viewer_base_species.i"
+	@echo "... Mesh_viewer_base_species.s"
 	@echo "... Mesh_viewer_manager.o"
 	@echo "... Mesh_viewer_manager.i"
 	@echo "... Mesh_viewer_manager.s"
-	@echo "... __/Interactor_GlobalInfo.o"
-	@echo "... __/Interactor_GlobalInfo.i"
-	@echo "... __/Interactor_GlobalInfo.s"
 .PHONY : help
 
 

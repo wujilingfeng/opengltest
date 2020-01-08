@@ -5,8 +5,8 @@
 #include<map>
 #include<string.h>
 #include<time.h>
-#include<Math/Mesh_viewer_matrix4x4.h>
-#include<Mesh_view/Interactor_GlobalInfo.h>
+#include "Mesh_viewer_base_species.h"
+#include "Interactor_GlobalInfo.h"
 #ifdef  __cplusplus
 extern "C" {
 #endif
@@ -45,55 +45,9 @@ typedef struct Mesh_viewer_world{
 	//Mesh_view_something*(*create_something)(struct 		Mesh_viewer_world*,char*)=Mesh_viewer_world_create_something;
 }Mesh_viewer_world;
 void Mesh_viewer_world_printself(Mesh_viewer_world*);
-void Mesh_viewer_points_init(struct Mesh_viewer_points*);
-typedef struct Mesh_viewer_points
-{
-	float *Data,*color;
-	unsigned int* Data_index;
-	unsigned int VAO,*Buffers;
-    	int Data_index_rows;
-	int Data_rows;
-	void *prop;
-	void* evolution;
-}Mesh_viewer_points;
-void Mesh_viewer_edges_init(struct Mesh_viewer_edges*);
-typedef struct Mesh_viewer_edges
-{
-	float *Data,*color;
-	unsigned int* Data_index;
-	unsigned int VAO,*Buffers;
-    	int Data_index_rows;
-	int Data_rows;
-	void *prop;
-	void* evolution;
 
-}Mesh_viewer_edges;
-void Mesh_viewer_faces_init(struct Mesh_viewer_faces*);
-typedef struct Mesh_viewer_faces
-{
-	float *Data,*color,*normal;
-	unsigned int* Data_index;
-	unsigned int* marked_faces_index;
-	unsigned int VAO,*Buffers;
-    	int Data_index_rows;
-	int Data_index_cols;
-	int Data_rows;
-	void* prop;
-	void* evolution;
-
-}Mesh_viewer_faces;
 //void Mesh_viewer_add_face_data(Mesh_viewer_faces*,double *v,int v_cols,int v_rows,int *index,int i_cols,int i_rows,double *color);
 
-typedef struct Mesh_viewer_camera
-{
-	Matrix4x4* matrix;
-	Matrix4x4* matrix_inverse;
-	int is_using;
-	float focal_distance;
-	void* prop;
-
-}Mesh_viewer_camera;
-void Mesh_viewer_camera_init(Mesh_viewer_camera*);
 
 #ifdef __cplusplus
 }

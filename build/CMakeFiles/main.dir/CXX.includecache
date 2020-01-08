@@ -13,6 +13,8 @@ math.h
 -
 stdlib.h
 -
+string.h
+-
 
 ../include/Math/Mesh_viewer_matrix4x4.h
 Math/Mesh_viewer_math.h
@@ -22,6 +24,14 @@ stdio.h
 stdlib.h
 -
 
+../include/Mesh_Viewer_World_Manager/Interactor_GlobalInfo.h
+tool/tools_node.h
+-
+
+../include/Mesh_Viewer_World_Manager/Mesh_viewer_base_species.h
+Math/Mesh_viewer_matrix4x4.h
+-
+
 ../include/Mesh_Viewer_World_Manager/Mesh_viewer_manager.h
 map
 -
@@ -29,14 +39,10 @@ string.h
 -
 time.h
 -
-Math/Mesh_viewer_matrix4x4.h
--
-Mesh_view/Interactor_GlobalInfo.h
--
-
-../include/Mesh_view/Interactor_GlobalInfo.h
-tool/tools_node.h
--
+Mesh_viewer_base_species.h
+../include/Mesh_Viewer_World_Manager/Mesh_viewer_base_species.h
+Interactor_GlobalInfo.h
+../include/Mesh_Viewer_World_Manager/Interactor_GlobalInfo.h
 
 ../include/Mesh_view/Mesh_viewer.h
 glfw_callback.h
@@ -51,8 +57,6 @@ stdlib.h
 -
 glad/glad.h
 -
-Interactor_GlobalInfo.h
-../include/Mesh_view/Interactor_GlobalInfo.h
 
 ../include/Mesh_view/glfw_callback.h
 OpenglAlg.h
@@ -109,10 +113,6 @@ stdint.h
 ../thirdpart/glad/include/glad/glad.h
 KHR/khrplatform.h
 -
-
-/home/libo/Documents/c++/Mesh_viewer/Demo/Arcroll.cpp
-include/Arcroll.h
-/home/libo/Documents/c++/Mesh_viewer/Demo/include/Arcroll.h
 
 /home/libo/Documents/c++/Mesh_viewer/Demo/include/Arcroll.h
 Mesh_Viewer_World_Manager/Mesh_viewer_manager.h

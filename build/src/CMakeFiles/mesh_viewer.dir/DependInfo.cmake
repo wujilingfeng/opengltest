@@ -5,7 +5,6 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/libo/Documents/c++/Mesh_viewer/src/Interactor_GlobalInfo.c" "/home/libo/Documents/c++/Mesh_viewer/build/src/CMakeFiles/mesh_viewer.dir/Interactor_GlobalInfo.c.o"
   "/home/libo/Documents/c++/Mesh_viewer/src/OpenglAlg.c" "/home/libo/Documents/c++/Mesh_viewer/build/src/CMakeFiles/mesh_viewer.dir/OpenglAlg.c.o"
   "/home/libo/Documents/c++/Mesh_viewer/thirdpart/glad/src/glad.c" "/home/libo/Documents/c++/Mesh_viewer/build/src/CMakeFiles/mesh_viewer.dir/__/thirdpart/glad/src/glad.c.o"
   )

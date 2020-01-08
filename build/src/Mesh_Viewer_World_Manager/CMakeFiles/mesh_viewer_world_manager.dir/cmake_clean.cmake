@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/mesh_viewer_world_manager.dir/Interactor_GlobalInfo.c.o"
+  "CMakeFiles/mesh_viewer_world_manager.dir/Mesh_viewer_base_species.c.o"
   "CMakeFiles/mesh_viewer_world_manager.dir/Mesh_viewer_manager.cpp.o"
-  "CMakeFiles/mesh_viewer_world_manager.dir/__/Interactor_GlobalInfo.c.o"
   "../../../temp_libs/libmesh_viewer_world_manager.pdb"
   "../../../temp_libs/libmesh_viewer_world_manager.a"
 )

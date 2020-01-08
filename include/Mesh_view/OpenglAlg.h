@@ -4,7 +4,6 @@
 #include<stdlib.h>
 
 #include<glad/glad.h>
-#include "Interactor_GlobalInfo.h"
 #define _Program_  OpenglAlg_Program
 #define _ReadFile_ OpenglAlg_ReadFile
 #define _Shader_ OpenglAlg_Shader

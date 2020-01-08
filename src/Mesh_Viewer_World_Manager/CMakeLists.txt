@@ -1,5 +1,5 @@
 aux_source_directory(. MYSRC)
-set(MYSRC ${MYSRC} ../Interactor_GlobalInfo.c)
+#set(MYSRC ${MYSRC} ../Interactor_GlobalInfo.c)
 message("${MYSRC}")
 set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/temp_libs)
 set(myfindlib MESH_VIEWER_WORLD_MANAGER)

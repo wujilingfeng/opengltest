@@ -1,2 +1,2 @@
-/usr/bin/ar qc ../../temp_libs/libmesh_viewer.a  CMakeFiles/mesh_viewer.dir/Interactor_GlobalInfo.c.o CMakeFiles/mesh_viewer.dir/OpenglAlg.c.o CMakeFiles/mesh_viewer.dir/glfw_callback.cpp.o CMakeFiles/mesh_viewer.dir/__/thirdpart/glad/src/glad.c.o
+/usr/bin/ar qc ../../temp_libs/libmesh_viewer.a  CMakeFiles/mesh_viewer.dir/OpenglAlg.c.o CMakeFiles/mesh_viewer.dir/glfw_callback.cpp.o CMakeFiles/mesh_viewer.dir/__/thirdpart/glad/src/glad.c.o
 /usr/bin/ranlib ../../temp_libs/libmesh_viewer.a

@@ -171,33 +171,6 @@ mesh_viewer/fast:
 	cd /home/libo/Documents/c++/Mesh_viewer/build && $(MAKE) -f src/CMakeFiles/mesh_viewer.dir/build.make src/CMakeFiles/mesh_viewer.dir/build
 .PHONY : mesh_viewer/fast
 
-Interactor_GlobalInfo.o: Interactor_GlobalInfo.c.o
-
-.PHONY : Interactor_GlobalInfo.o
-
-# target to build an object file
-Interactor_GlobalInfo.c.o:
-	cd /home/libo/Documents/c++/Mesh_viewer/build && $(MAKE) -f src/CMakeFiles/mesh_viewer.dir/build.make src/CMakeFiles/mesh_viewer.dir/Interactor_GlobalInfo.c.o
-.PHONY : Interactor_GlobalInfo.c.o
-
-Interactor_GlobalInfo.i: Interactor_GlobalInfo.c.i
-
-.PHONY : Interactor_GlobalInfo.i
-
-# target to preprocess a source file
-Interactor_GlobalInfo.c.i:
-	cd /home/libo/Documents/c++/Mesh_viewer/build && $(MAKE) -f src/CMakeFiles/mesh_viewer.dir/build.make src/CMakeFiles/mesh_viewer.dir/Interactor_GlobalInfo.c.i
-.PHONY : Interactor_GlobalInfo.c.i
-
-Interactor_GlobalInfo.s: Interactor_GlobalInfo.c.s
-
-.PHONY : Interactor_GlobalInfo.s
-
-# target to generate assembly for a file
-Interactor_GlobalInfo.c.s:
-	cd /home/libo/Documents/c++/Mesh_viewer/build && $(MAKE) -f src/CMakeFiles/mesh_viewer.dir/build.make src/CMakeFiles/mesh_viewer.dir/Interactor_GlobalInfo.c.s
-.PHONY : Interactor_GlobalInfo.c.s
-
 OpenglAlg.o: OpenglAlg.c.o
 
 .PHONY : OpenglAlg.o
@@ -292,9 +265,6 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... list_install_components"
 	@echo "... install"
-	@echo "... Interactor_GlobalInfo.o"
-	@echo "... Interactor_GlobalInfo.i"
-	@echo "... Interactor_GlobalInfo.s"
 	@echo "... OpenglAlg.o"
 	@echo "... OpenglAlg.i"
 	@echo "... OpenglAlg.s"

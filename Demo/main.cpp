@@ -6,7 +6,18 @@ void test_intera(Mesh_viewer_world*);
 //void framebuffer_size_callback(GLFWwindow *window, int width, int height);//回调函数原型声明
 
 void test_mesh_viewer();
-int main() {
+int main(int argc,char*argv[]) {
+    //int temp_array[3]={2,3,4};
+    compute_combination(3,7);
+    /*float* li=(float*)malloc(sizeof(float)*10);
+    memset(li,-1,sizeof(float)*10);
+    for(int i=0;i<10;i++)
+    {
+    
+    
+        printf("%lf ",li[i]);
+    }*/
+    //compute_combination(3,5);
     //初始化GLFW
     test_manager();
     //Mesh_viewer_world mesh_viewer_world;
@@ -52,6 +63,7 @@ void test_intera(Mesh_viewer_world* mw)
     Mesh_viewer_Arcroll_init(ma);
     mi->representation=(void*)ma;
     mi->cursor_position_callback=Mesh_viewer_Arcroll_cursor_position_callback;
+    mi->scroll_callback=Mesh_viewer_Arcroll_scroll_callback;
     free_node_value(id);
     free_node(id);
     free_node(n);
@@ -67,6 +79,12 @@ void test_manager()
     free_node(node_reverse(n));
     float *v=(float*)malloc(sizeof(float)*8*3);
     unsigned int *f=(unsigned int*)malloc(sizeof(unsigned int)*4*12);
+    float *color=(float*)malloc(sizeof(float)*3*12);
+    memset(color,0,sizeof(float)*3*12);
+    float *texcoords=(float*)malloc(sizeof(float)*12*7);
+    memset(texcoords,0,sizeof(float)*12*7);
+    
+
     v[0*3+0]=-0.500000;v[0*3+1]=-0.500000;v[0*3+2]=0.500000; 
     v[1*3+0]=0.500000; v[1*3+1]=-0.500000; v[1*3+2]=0.500000; 
     v[2*3+0]=-0.500000;v[2*3+1]= 0.500000;v[2*3+2] =0.500000; 
@@ -87,12 +105,30 @@ void test_manager()
     f[9*4+0]=3; f[9*4+1]=3;f[9*4+2]=7;f[9*4+3]=1;
     f[10*4+0]=3; f[10*4+1]=4;f[10*4+2]=2;f[10*4+3]=0;
     f[11*4+0]=3;f[11*4+1]=4;f[11*4+2]=0;f[11*4+3]=6;
+    color[0]=1;color[1]=0;color[2]=0;
+    for(int i=0;i<12;i++)
+    {
+        texcoords[i*7]=3;
+    
+    }
+   /* texcoords[0]=3;
+    texcoords[1]=1.0;texcoords[2]=0.0;
+    texcoords[3]=0.0;texcoords[4]=0.0;
+    texcoords[5]=0.0;texcoords[6]=1.0;*/
+    texcoords[7]=3;
+    texcoords[8]=1.0;texcoords[9]=0.0;
+    texcoords[10]=0.0,texcoords[11]=1.0;
+    texcoords[12]=1.0;texcoords[13]=1.0;
     Mesh_viewer_faces* mf=(Mesh_viewer_faces*)(ms->evolution);
     mf->Data=v;
     mf->Data_index=f;
     mf->Data_rows=8;
     mf->Data_index_rows=12;
-    //mf->Data_index_cols=3;
+    mf->color=color;
+    Mesh_viewer_texture* mt=mf->texture;
+    mt->image_file=(char*)malloc(sizeof(char)*20);
+    strcpy(mt->image_file,"linyueru.jpg");
+    mt->each_face_texture_coord=texcoords;
     char camera[]="Camera";
     n=Mesh_viewer_world_create_something(&mw,camera);
     ms=(Mesh_viewer_something*)(n->value);
@@ -101,7 +137,7 @@ void test_manager()
     free_node(n);
     test_intera(&mw);
     Mesh_viewer_world_printself(&mw);
-    printf("GLFW_REPEAT:%d,GLFW_MOD_CONTROL:%d\n",GLFW_REPEAT,GLFW_MOD_CONTROL); 
+    printf("GLFW_REPEAT:%d,GLFW_MOD_CONTROL:%d,GLFW_MOD_SHIFT:%d  GLFW_MOD_ALT:%d GLFW_MOD_SUPER:%d\n",GLFW_REPEAT,GLFW_MOD_CONTROL,GLFW_MOD_SHIFT,GLFW_MOD_ALT,GLFW_MOD_SUPER); 
     show(&mw);
 
 }
