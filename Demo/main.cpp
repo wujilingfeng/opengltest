@@ -7,8 +7,8 @@ void test_intera(Mesh_viewer_world*);
 
 void test_mesh_viewer();
 int main(int argc,char*argv[]) {
-    //int temp_array[3]={2,3,4};
-    compute_combination(3,7);
+   
+    //int temp_array[3]={2,3,4};  
     /*float* li=(float*)malloc(sizeof(float)*10);
     memset(li,-1,sizeof(float)*10);
     for(int i=0;i<10;i++)

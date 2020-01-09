@@ -127,7 +127,7 @@ void _Texture_ (ImageInfo *image,GLuint texture)
 	//glTexSubImage2D(GL_TEXTURE_2D,0,0,0,image.width,image.height,GL_RGB,GL_UNSIGNED_BYTE,image.data);
        //glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB16F, width, height, 0, GL_RGB, GL_FLOAT, NULL);
 
-        glTexImage2D(GL_TEXTURE_2D,0,GL_RGB,image->width,image->height,0,GL_RGB,GL_UNSIGNED_BYTE,image->data);
+        glTexImage2D(GL_TEXTURE_2D,0,GL_RGB,image->width,image->height,0,GL_RGB,GL_UNSIGNED_BYTE,(unsigned char*)(image->data));
 	
         glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_S,GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_T,GL_REPEAT);
@@ -137,7 +137,8 @@ void _Texture_ (ImageInfo *image,GLuint texture)
 	glBindTexture(GL_TEXTURE_2D,0);
 
 }
-void _Texture_Array(ImageInfo* image,GLenum dataType,GLenum data_component,GLint GPU_internalFormat,GLuint texture)
+//glTexImage2D(GL_TEXTURE_2D, 0, GL_R32F, _dimension, _dimension, 0,GL_RED, GL_FLOAT, _perlin_noise);
+/*void _Texture_Array(ImageInfo* image,GLenum dataType,GLenum data_component,GLint GPU_internalFormat,GLuint texture)
 {
     glBindTexture(GL_TEXTURE_2D,texture);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
@@ -148,4 +149,8 @@ void _Texture_Array(ImageInfo* image,GLenum dataType,GLenum data_component,GLint
     data_component,dataType, image->data);
     glBindTexture(GL_TEXTURE_2D, 0);
 
-}
+}*/
+
+
+
+

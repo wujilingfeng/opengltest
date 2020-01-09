@@ -17,6 +17,16 @@ void show(Mesh_viewer_world*);
 void prepare_mesh_viewer_world_data(Mesh_viewer_world*);
 void add_texture_to_shader(int,char*);
 void draw_elements(Mesh_viewer_world*);
+void test_add_array_to_shader(Mesh_viewer_world*);
+void test_add_array_to_shader(Mesh_viewer_world* mw)
+{
+
+
+
+
+
+
+}
 void draw_elements(Mesh_viewer_world* mw)
 {
     char names[]="faces";
@@ -57,7 +67,7 @@ void add_texture_to_shader(int gl_tex_num,char*image_file)
     GLuint* textures=(GLuint*)malloc(sizeof(GLuint)*2);
     glGenTextures(2,textures);
     ImageInfo image;
-    image.data=stbi_load(image_file,&image.width,&image.height,&image.n,0);
+    image.data=(void*)stbi_load(image_file,&image.width,&image.height,&image.n,0);
 /*    for(int i=0;i<18;i++)
     {
         printf("%u  ",image.data[i]);
@@ -228,7 +238,7 @@ void init_uniform(GLuint program,Mesh_viewer_world* mw)
     g_info->resolution[0]=800;
     g_info->resolution[1]=600;
     //printf("pro:%lf\n",(float)())
-    Matrix4x4* p=Projection(M_PI/3.0f,(float)(g_info->resolution[0])/(float)(g_info->resolution[1]),0.1f,200.0f); 
+    Matrix4x4* p=Projection(M_PI/3.0f,(float)(g_info->resolution[0])/(float)(g_info->resolution[1]),0.5f,200.0f); 
     glUniformMatrix4fv(glGetUniformLocation(program,"Proj"),1,GL_TRUE,(float*)(p->data));
     Mesh_viewer_camera* mc=0;
     char camera[]="Camera";

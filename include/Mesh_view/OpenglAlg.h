@@ -23,8 +23,9 @@ GLuint shader;
 }ShaderInfo;
 typedef struct ImageInfo{
 
-unsigned char *data;
+void *data;
 int width,height,n;
+void* prop;
 
 }ImageInfo;
 
@@ -37,7 +38,9 @@ void _Shader_(ShaderInfo* shaders);
 GLuint _Program_ (ShaderInfo* shaderinfos);
 
 void _Texture_ (ImageInfo* image,GLuint texture);
-void _Texture_Array(ImageInfo*, GLenum dataType, GLenum data_component, GLint GPU_internalFormat,GLuint texture);
+#define _Texture_Array_func_declare(typevalue) void _Texture_Array_##typevalue(ImageInfo*,GLuint texture);
+//void _Texture_Array(ImageInfo*,GLuint texture);
+
 #ifdef __cplusplus
 }
 #endif
