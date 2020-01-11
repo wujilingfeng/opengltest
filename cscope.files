@@ -122,6 +122,7 @@
 ./include/tool/tools_formats.h
 ./include/tool/tools_view.h
 ./include/stb_image.h
+./include/Mesh_view/Mesh_viewer_render.h
 ./include/Mesh_view/glfw_callback.h
 ./include/Mesh_view/Mesh_viewer.h
 ./include/Mesh_view/OpenglAlg.h

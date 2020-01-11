@@ -36,6 +36,7 @@ typedef struct Mesh_viewer_camera
 {
 	Matrix4x4* matrix;
 	Matrix4x4* matrix_inverse;
+	Matrix4x4* Proj;
 	int is_using;
 	float focal_distance;
 	void* prop;

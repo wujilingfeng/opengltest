@@ -649,7 +649,7 @@ GLFWAPI int glfwGetKey(GLFWwindow* handle, int key)
 
 GLFWAPI int glfwGetMouseButton(GLFWwindow* handle, int button)
 {
-    GLFWwindow* window = (_GLFWwindow*) handle;
+    _GLFWwindow* window = (_GLFWwindow*) handle;
     assert(window != NULL);
 
     _GLFW_REQUIRE_INIT_OR_RETURN(GLFW_RELEASE);

@@ -80,17 +80,17 @@ GL/glu.h
 vulkan/vulkan.h
 -
 
-/home/libo/Downloads/glfw-3.3/deps/getopt.c
+/home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/deps/getopt.c
 getopt.h
-/home/libo/Downloads/glfw-3.3/deps/getopt.h
+/home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/deps/getopt.h
 stddef.h
 -
 string.h
 -
 
-/home/libo/Downloads/glfw-3.3/deps/getopt.h
+/home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/deps/getopt.h
 
-/home/libo/Downloads/glfw-3.3/deps/glad_gl.c
+/home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/deps/glad_gl.c
 stdio.h
 -
 stdlib.h
@@ -100,9 +100,9 @@ string.h
 glad/gl.h
 -
 
-/home/libo/Downloads/glfw-3.3/deps/tinycthread.c
+/home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/deps/tinycthread.c
 tinycthread.h
-/home/libo/Downloads/glfw-3.3/deps/tinycthread.h
+/home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/deps/tinycthread.h
 stdlib.h
 -
 signal.h
@@ -120,7 +120,7 @@ process.h
 sys/timeb.h
 -
 
-/home/libo/Downloads/glfw-3.3/deps/tinycthread.h
+/home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/deps/tinycthread.h
 time.h
 -
 sys/time.h
@@ -130,7 +130,7 @@ pthread.h
 windows.h
 -
 
-/home/libo/Downloads/glfw-3.3/examples/particles.c
+/home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/examples/particles.c
 stdlib.h
 -
 stdio.h

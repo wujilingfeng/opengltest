@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/libo/Downloads/glfw-3.3
+CMAKE_SOURCE_DIR = /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/libo/Downloads/glfw-3.3/build
+CMAKE_BINARY_DIR = /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build
 
 # Utility rule file for uninstall.
 
@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/libo/Downloads/glfw-3.3/build
 include CMakeFiles/uninstall.dir/progress.make
 
 CMakeFiles/uninstall:
-	/usr/bin/cmake -P /home/libo/Downloads/glfw-3.3/build/cmake_uninstall.cmake
+	/usr/bin/cmake -P /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build/cmake_uninstall.cmake
 
 uninstall: CMakeFiles/uninstall
 uninstall: CMakeFiles/uninstall.dir/build.make
@@ -71,6 +71,6 @@ CMakeFiles/uninstall.dir/clean:
 .PHONY : CMakeFiles/uninstall.dir/clean
 
 CMakeFiles/uninstall.dir/depend:
-	cd /home/libo/Downloads/glfw-3.3/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/libo/Downloads/glfw-3.3 /home/libo/Downloads/glfw-3.3 /home/libo/Downloads/glfw-3.3/build /home/libo/Downloads/glfw-3.3/build /home/libo/Downloads/glfw-3.3/build/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3 /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3 /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/uninstall.dir/depend
 

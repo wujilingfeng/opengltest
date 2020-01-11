@@ -50,6 +50,10 @@ glfw_callback.h
 stb_image.h
 -
 
+../include/Mesh_view/Mesh_viewer_render.h
+Mesh_viewer.h
+../include/Mesh_view/Mesh_viewer.h
+
 ../include/Mesh_view/OpenglAlg.h
 stdio.h
 -
@@ -121,7 +125,7 @@ Mesh_Viewer_World_Manager/Mesh_viewer_manager.h
 /home/libo/Documents/c++/Mesh_viewer/Demo/main.cpp
 stdio.h
 -
-Mesh_view/Mesh_viewer.h
+Mesh_view/Mesh_viewer_render.h
 -
 include/Arcroll.h
 /home/libo/Documents/c++/Mesh_viewer/Demo/include/Arcroll.h

@@ -68,7 +68,7 @@ GL/glu.h
 vulkan/vulkan.h
 -
 
-/home/libo/Downloads/glfw-3.3/deps/glad_gl.c
+/home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/deps/glad_gl.c
 stdio.h
 -
 stdlib.h
@@ -78,7 +78,7 @@ string.h
 glad/gl.h
 -
 
-/home/libo/Downloads/glfw-3.3/examples/wave.c
+/home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/examples/wave.c
 stdio.h
 -
 stdlib.h

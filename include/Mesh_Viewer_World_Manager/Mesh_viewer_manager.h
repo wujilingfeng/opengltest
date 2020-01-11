@@ -42,7 +42,8 @@ typedef struct Mesh_viewer_world{
 //use for give a single name
 	std::map<int,int>something_id;
 	Interactor_GlobalInfo *g_info;
-	//Mesh_view_something*(*create_something)(struct 		Mesh_viewer_world*,char*)=Mesh_viewer_world_create_something;
+	void *prop;
+	void* *prop1;
 }Mesh_viewer_world;
 void Mesh_viewer_world_printself(Mesh_viewer_world*);
 

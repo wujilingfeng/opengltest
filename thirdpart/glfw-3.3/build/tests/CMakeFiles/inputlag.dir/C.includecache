@@ -84,17 +84,17 @@ GL/glu.h
 vulkan/vulkan.h
 -
 
-/home/libo/Downloads/glfw-3.3/deps/getopt.c
+/home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/deps/getopt.c
 getopt.h
-/home/libo/Downloads/glfw-3.3/deps/getopt.h
+/home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/deps/getopt.h
 stddef.h
 -
 string.h
 -
 
-/home/libo/Downloads/glfw-3.3/deps/getopt.h
+/home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/deps/getopt.h
 
-/home/libo/Downloads/glfw-3.3/deps/glad_gl.c
+/home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/deps/glad_gl.c
 stdio.h
 -
 stdlib.h
@@ -104,7 +104,7 @@ string.h
 glad/gl.h
 -
 
-/home/libo/Downloads/glfw-3.3/tests/inputlag.c
+/home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/tests/inputlag.c
 glad/gl.h
 -
 GLFW/glfw3.h
@@ -120,5 +120,5 @@ stdlib.h
 string.h
 -
 getopt.h
-/home/libo/Downloads/glfw-3.3/tests/getopt.h
+/home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/tests/getopt.h
 

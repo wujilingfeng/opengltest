@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/libo/Downloads/glfw-3.3
+CMAKE_SOURCE_DIR = /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/libo/Downloads/glfw-3.3/build
+CMAKE_BINARY_DIR = /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build
 
 # Include any dependencies generated for this target.
 include tests/CMakeFiles/empty.dir/depend.make
@@ -59,42 +59,42 @@ include tests/CMakeFiles/empty.dir/flags.make
 
 tests/CMakeFiles/empty.dir/empty.c.o: tests/CMakeFiles/empty.dir/flags.make
 tests/CMakeFiles/empty.dir/empty.c.o: ../tests/empty.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/libo/Downloads/glfw-3.3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object tests/CMakeFiles/empty.dir/empty.c.o"
-	cd /home/libo/Downloads/glfw-3.3/build/tests && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/empty.dir/empty.c.o   -c /home/libo/Downloads/glfw-3.3/tests/empty.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object tests/CMakeFiles/empty.dir/empty.c.o"
+	cd /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build/tests && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/empty.dir/empty.c.o   -c /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/tests/empty.c
 
 tests/CMakeFiles/empty.dir/empty.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/empty.dir/empty.c.i"
-	cd /home/libo/Downloads/glfw-3.3/build/tests && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/libo/Downloads/glfw-3.3/tests/empty.c > CMakeFiles/empty.dir/empty.c.i
+	cd /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build/tests && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/tests/empty.c > CMakeFiles/empty.dir/empty.c.i
 
 tests/CMakeFiles/empty.dir/empty.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/empty.dir/empty.c.s"
-	cd /home/libo/Downloads/glfw-3.3/build/tests && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/libo/Downloads/glfw-3.3/tests/empty.c -o CMakeFiles/empty.dir/empty.c.s
+	cd /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build/tests && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/tests/empty.c -o CMakeFiles/empty.dir/empty.c.s
 
 tests/CMakeFiles/empty.dir/__/deps/tinycthread.c.o: tests/CMakeFiles/empty.dir/flags.make
 tests/CMakeFiles/empty.dir/__/deps/tinycthread.c.o: ../deps/tinycthread.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/libo/Downloads/glfw-3.3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object tests/CMakeFiles/empty.dir/__/deps/tinycthread.c.o"
-	cd /home/libo/Downloads/glfw-3.3/build/tests && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/empty.dir/__/deps/tinycthread.c.o   -c /home/libo/Downloads/glfw-3.3/deps/tinycthread.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object tests/CMakeFiles/empty.dir/__/deps/tinycthread.c.o"
+	cd /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build/tests && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/empty.dir/__/deps/tinycthread.c.o   -c /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/deps/tinycthread.c
 
 tests/CMakeFiles/empty.dir/__/deps/tinycthread.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/empty.dir/__/deps/tinycthread.c.i"
-	cd /home/libo/Downloads/glfw-3.3/build/tests && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/libo/Downloads/glfw-3.3/deps/tinycthread.c > CMakeFiles/empty.dir/__/deps/tinycthread.c.i
+	cd /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build/tests && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/deps/tinycthread.c > CMakeFiles/empty.dir/__/deps/tinycthread.c.i
 
 tests/CMakeFiles/empty.dir/__/deps/tinycthread.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/empty.dir/__/deps/tinycthread.c.s"
-	cd /home/libo/Downloads/glfw-3.3/build/tests && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/libo/Downloads/glfw-3.3/deps/tinycthread.c -o CMakeFiles/empty.dir/__/deps/tinycthread.c.s
+	cd /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build/tests && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/deps/tinycthread.c -o CMakeFiles/empty.dir/__/deps/tinycthread.c.s
 
 tests/CMakeFiles/empty.dir/__/deps/glad_gl.c.o: tests/CMakeFiles/empty.dir/flags.make
 tests/CMakeFiles/empty.dir/__/deps/glad_gl.c.o: ../deps/glad_gl.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/libo/Downloads/glfw-3.3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object tests/CMakeFiles/empty.dir/__/deps/glad_gl.c.o"
-	cd /home/libo/Downloads/glfw-3.3/build/tests && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/empty.dir/__/deps/glad_gl.c.o   -c /home/libo/Downloads/glfw-3.3/deps/glad_gl.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object tests/CMakeFiles/empty.dir/__/deps/glad_gl.c.o"
+	cd /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build/tests && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/empty.dir/__/deps/glad_gl.c.o   -c /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/deps/glad_gl.c
 
 tests/CMakeFiles/empty.dir/__/deps/glad_gl.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/empty.dir/__/deps/glad_gl.c.i"
-	cd /home/libo/Downloads/glfw-3.3/build/tests && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/libo/Downloads/glfw-3.3/deps/glad_gl.c > CMakeFiles/empty.dir/__/deps/glad_gl.c.i
+	cd /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build/tests && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/deps/glad_gl.c > CMakeFiles/empty.dir/__/deps/glad_gl.c.i
 
 tests/CMakeFiles/empty.dir/__/deps/glad_gl.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/empty.dir/__/deps/glad_gl.c.s"
-	cd /home/libo/Downloads/glfw-3.3/build/tests && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/libo/Downloads/glfw-3.3/deps/glad_gl.c -o CMakeFiles/empty.dir/__/deps/glad_gl.c.s
+	cd /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build/tests && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/deps/glad_gl.c -o CMakeFiles/empty.dir/__/deps/glad_gl.c.s
 
 # Object files for target empty
 empty_OBJECTS = \
@@ -114,8 +114,8 @@ tests/empty: /usr/lib/x86_64-linux-gnu/libm.so
 tests/empty: /usr/lib/x86_64-linux-gnu/librt.so
 tests/empty: /usr/lib/x86_64-linux-gnu/libX11.so
 tests/empty: tests/CMakeFiles/empty.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/libo/Downloads/glfw-3.3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable empty"
-	cd /home/libo/Downloads/glfw-3.3/build/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/empty.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable empty"
+	cd /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/empty.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 tests/CMakeFiles/empty.dir/build: tests/empty
@@ -123,10 +123,10 @@ tests/CMakeFiles/empty.dir/build: tests/empty
 .PHONY : tests/CMakeFiles/empty.dir/build
 
 tests/CMakeFiles/empty.dir/clean:
-	cd /home/libo/Downloads/glfw-3.3/build/tests && $(CMAKE_COMMAND) -P CMakeFiles/empty.dir/cmake_clean.cmake
+	cd /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build/tests && $(CMAKE_COMMAND) -P CMakeFiles/empty.dir/cmake_clean.cmake
 .PHONY : tests/CMakeFiles/empty.dir/clean
 
 tests/CMakeFiles/empty.dir/depend:
-	cd /home/libo/Downloads/glfw-3.3/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/libo/Downloads/glfw-3.3 /home/libo/Downloads/glfw-3.3/tests /home/libo/Downloads/glfw-3.3/build /home/libo/Downloads/glfw-3.3/build/tests /home/libo/Downloads/glfw-3.3/build/tests/CMakeFiles/empty.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3 /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/tests /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build/tests /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build/tests/CMakeFiles/empty.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : tests/CMakeFiles/empty.dir/depend
 

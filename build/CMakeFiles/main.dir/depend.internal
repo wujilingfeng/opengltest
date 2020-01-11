@@ -17,6 +17,7 @@ CMakeFiles/main.dir/Demo/main.cpp.o
  ../include/Mesh_Viewer_World_Manager/Mesh_viewer_base_species.h
  ../include/Mesh_Viewer_World_Manager/Mesh_viewer_manager.h
  ../include/Mesh_view/Mesh_viewer.h
+ ../include/Mesh_view/Mesh_viewer_render.h
  ../include/Mesh_view/OpenglAlg.h
  ../include/Mesh_view/glfw_callback.h
  ../include/stb_image.h

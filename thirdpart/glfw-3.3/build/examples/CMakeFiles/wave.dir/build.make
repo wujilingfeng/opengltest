@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/libo/Downloads/glfw-3.3
+CMAKE_SOURCE_DIR = /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/libo/Downloads/glfw-3.3/build
+CMAKE_BINARY_DIR = /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build
 
 # Include any dependencies generated for this target.
 include examples/CMakeFiles/wave.dir/depend.make
@@ -59,29 +59,29 @@ include examples/CMakeFiles/wave.dir/flags.make
 
 examples/CMakeFiles/wave.dir/wave.c.o: examples/CMakeFiles/wave.dir/flags.make
 examples/CMakeFiles/wave.dir/wave.c.o: ../examples/wave.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/libo/Downloads/glfw-3.3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object examples/CMakeFiles/wave.dir/wave.c.o"
-	cd /home/libo/Downloads/glfw-3.3/build/examples && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/wave.dir/wave.c.o   -c /home/libo/Downloads/glfw-3.3/examples/wave.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object examples/CMakeFiles/wave.dir/wave.c.o"
+	cd /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build/examples && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/wave.dir/wave.c.o   -c /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/examples/wave.c
 
 examples/CMakeFiles/wave.dir/wave.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/wave.dir/wave.c.i"
-	cd /home/libo/Downloads/glfw-3.3/build/examples && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/libo/Downloads/glfw-3.3/examples/wave.c > CMakeFiles/wave.dir/wave.c.i
+	cd /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build/examples && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/examples/wave.c > CMakeFiles/wave.dir/wave.c.i
 
 examples/CMakeFiles/wave.dir/wave.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/wave.dir/wave.c.s"
-	cd /home/libo/Downloads/glfw-3.3/build/examples && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/libo/Downloads/glfw-3.3/examples/wave.c -o CMakeFiles/wave.dir/wave.c.s
+	cd /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build/examples && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/examples/wave.c -o CMakeFiles/wave.dir/wave.c.s
 
 examples/CMakeFiles/wave.dir/__/deps/glad_gl.c.o: examples/CMakeFiles/wave.dir/flags.make
 examples/CMakeFiles/wave.dir/__/deps/glad_gl.c.o: ../deps/glad_gl.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/libo/Downloads/glfw-3.3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object examples/CMakeFiles/wave.dir/__/deps/glad_gl.c.o"
-	cd /home/libo/Downloads/glfw-3.3/build/examples && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/wave.dir/__/deps/glad_gl.c.o   -c /home/libo/Downloads/glfw-3.3/deps/glad_gl.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object examples/CMakeFiles/wave.dir/__/deps/glad_gl.c.o"
+	cd /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build/examples && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/wave.dir/__/deps/glad_gl.c.o   -c /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/deps/glad_gl.c
 
 examples/CMakeFiles/wave.dir/__/deps/glad_gl.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/wave.dir/__/deps/glad_gl.c.i"
-	cd /home/libo/Downloads/glfw-3.3/build/examples && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/libo/Downloads/glfw-3.3/deps/glad_gl.c > CMakeFiles/wave.dir/__/deps/glad_gl.c.i
+	cd /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build/examples && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/deps/glad_gl.c > CMakeFiles/wave.dir/__/deps/glad_gl.c.i
 
 examples/CMakeFiles/wave.dir/__/deps/glad_gl.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/wave.dir/__/deps/glad_gl.c.s"
-	cd /home/libo/Downloads/glfw-3.3/build/examples && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/libo/Downloads/glfw-3.3/deps/glad_gl.c -o CMakeFiles/wave.dir/__/deps/glad_gl.c.s
+	cd /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build/examples && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/deps/glad_gl.c -o CMakeFiles/wave.dir/__/deps/glad_gl.c.s
 
 # Object files for target wave
 wave_OBJECTS = \
@@ -100,8 +100,8 @@ examples/wave: /usr/lib/x86_64-linux-gnu/librt.so
 examples/wave: /usr/lib/x86_64-linux-gnu/libm.so
 examples/wave: /usr/lib/x86_64-linux-gnu/libX11.so
 examples/wave: examples/CMakeFiles/wave.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/libo/Downloads/glfw-3.3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable wave"
-	cd /home/libo/Downloads/glfw-3.3/build/examples && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/wave.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable wave"
+	cd /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build/examples && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/wave.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 examples/CMakeFiles/wave.dir/build: examples/wave
@@ -109,10 +109,10 @@ examples/CMakeFiles/wave.dir/build: examples/wave
 .PHONY : examples/CMakeFiles/wave.dir/build
 
 examples/CMakeFiles/wave.dir/clean:
-	cd /home/libo/Downloads/glfw-3.3/build/examples && $(CMAKE_COMMAND) -P CMakeFiles/wave.dir/cmake_clean.cmake
+	cd /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build/examples && $(CMAKE_COMMAND) -P CMakeFiles/wave.dir/cmake_clean.cmake
 .PHONY : examples/CMakeFiles/wave.dir/clean
 
 examples/CMakeFiles/wave.dir/depend:
-	cd /home/libo/Downloads/glfw-3.3/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/libo/Downloads/glfw-3.3 /home/libo/Downloads/glfw-3.3/examples /home/libo/Downloads/glfw-3.3/build /home/libo/Downloads/glfw-3.3/build/examples /home/libo/Downloads/glfw-3.3/build/examples/CMakeFiles/wave.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3 /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/examples /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build/examples /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build/examples/CMakeFiles/wave.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : examples/CMakeFiles/wave.dir/depend
 

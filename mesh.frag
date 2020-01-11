@@ -10,7 +10,7 @@ void set_fColor()
 {
 	float a=length(texcoord);
 	a=sign(a);
-	fColor=texture(ourTexture,texcoord)*a+(1-a)*vec4(outColor,1.0);	
+	fColor=(texture(ourTexture,texcoord)*a+(1-a)*vec4(outColor,1.0));	
 }
 void main()
 {

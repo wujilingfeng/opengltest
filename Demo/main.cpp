@@ -1,5 +1,5 @@
 #include<stdio.h>
-#include<Mesh_view/Mesh_viewer.h>
+#include<Mesh_view/Mesh_viewer_render.h>
 #include "include/Arcroll.h"
 void test_manager();
 void test_intera(Mesh_viewer_world*);
@@ -134,11 +134,17 @@ void test_manager()
     ms=(Mesh_viewer_something*)(n->value);
     Mesh_viewer_camera* mc=(Mesh_viewer_camera*)(ms->evolution);
     mc->is_using=1;
+    Matrix4x4* p=Projection(M_PI/3.0f,(float)(mw.g_info->resolution[0])/(float)(mw.g_info->resolution[1]),0.5f,200.0f); 
+    Matrix4x4_copy_data_float(mc->Proj,p);
+    Matrix4x4_free(p);
+
+    
     free_node(n);
     test_intera(&mw);
     Mesh_viewer_world_printself(&mw);
     printf("GLFW_REPEAT:%d,GLFW_MOD_CONTROL:%d,GLFW_MOD_SHIFT:%d  GLFW_MOD_ALT:%d GLFW_MOD_SUPER:%d\n",GLFW_REPEAT,GLFW_MOD_CONTROL,GLFW_MOD_SHIFT,GLFW_MOD_ALT,GLFW_MOD_SUPER); 
-    show(&mw);
+//    show(&mw);
+   render(&mw);
 
 }
 

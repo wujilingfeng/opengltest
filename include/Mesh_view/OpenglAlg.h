@@ -38,8 +38,11 @@ void _Shader_(ShaderInfo* shaders);
 GLuint _Program_ (ShaderInfo* shaderinfos);
 
 void _Texture_ (ImageInfo* image,GLuint texture);
-#define _Texture_Array_func_declare(typevalue) void _Texture_Array_##typevalue(ImageInfo*,GLuint texture);
-//void _Texture_Array(ImageInfo*,GLuint texture);
+
+void _Texture_Array_GL_FLOAT(ImageInfo*,GLuint texture);
+void _Texture_Array_GL_R32UI(ImageInfo*,GLuint texture);
+
+
 
 #ifdef __cplusplus
 }

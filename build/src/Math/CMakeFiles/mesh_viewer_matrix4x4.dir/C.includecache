@@ -16,7 +16,15 @@ stdlib.h
 string.h
 -
 
-/home/libo/Documents/c++/Mesh_viewer/src/Math/Mesh_viewer_math.c
+../include/Math/Mesh_viewer_matrix4x4.h
 Math/Mesh_viewer_math.h
+-
+stdio.h
+-
+stdlib.h
+-
+
+/home/libo/Documents/c++/Mesh_viewer/src/Math/Mesh_viewer_matrix4x4.c
+Math/Mesh_viewer_matrix4x4.h
 -
 

@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/libo/Downloads/glfw-3.3
+CMAKE_SOURCE_DIR = /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/libo/Downloads/glfw-3.3/build
+CMAKE_BINARY_DIR = /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build
 
 # Include any dependencies generated for this target.
 include tests/CMakeFiles/opacity.dir/depend.make
@@ -59,29 +59,29 @@ include tests/CMakeFiles/opacity.dir/flags.make
 
 tests/CMakeFiles/opacity.dir/opacity.c.o: tests/CMakeFiles/opacity.dir/flags.make
 tests/CMakeFiles/opacity.dir/opacity.c.o: ../tests/opacity.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/libo/Downloads/glfw-3.3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object tests/CMakeFiles/opacity.dir/opacity.c.o"
-	cd /home/libo/Downloads/glfw-3.3/build/tests && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/opacity.dir/opacity.c.o   -c /home/libo/Downloads/glfw-3.3/tests/opacity.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object tests/CMakeFiles/opacity.dir/opacity.c.o"
+	cd /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build/tests && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/opacity.dir/opacity.c.o   -c /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/tests/opacity.c
 
 tests/CMakeFiles/opacity.dir/opacity.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/opacity.dir/opacity.c.i"
-	cd /home/libo/Downloads/glfw-3.3/build/tests && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/libo/Downloads/glfw-3.3/tests/opacity.c > CMakeFiles/opacity.dir/opacity.c.i
+	cd /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build/tests && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/tests/opacity.c > CMakeFiles/opacity.dir/opacity.c.i
 
 tests/CMakeFiles/opacity.dir/opacity.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/opacity.dir/opacity.c.s"
-	cd /home/libo/Downloads/glfw-3.3/build/tests && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/libo/Downloads/glfw-3.3/tests/opacity.c -o CMakeFiles/opacity.dir/opacity.c.s
+	cd /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build/tests && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/tests/opacity.c -o CMakeFiles/opacity.dir/opacity.c.s
 
 tests/CMakeFiles/opacity.dir/__/deps/glad_gl.c.o: tests/CMakeFiles/opacity.dir/flags.make
 tests/CMakeFiles/opacity.dir/__/deps/glad_gl.c.o: ../deps/glad_gl.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/libo/Downloads/glfw-3.3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object tests/CMakeFiles/opacity.dir/__/deps/glad_gl.c.o"
-	cd /home/libo/Downloads/glfw-3.3/build/tests && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/opacity.dir/__/deps/glad_gl.c.o   -c /home/libo/Downloads/glfw-3.3/deps/glad_gl.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object tests/CMakeFiles/opacity.dir/__/deps/glad_gl.c.o"
+	cd /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build/tests && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/opacity.dir/__/deps/glad_gl.c.o   -c /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/deps/glad_gl.c
 
 tests/CMakeFiles/opacity.dir/__/deps/glad_gl.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/opacity.dir/__/deps/glad_gl.c.i"
-	cd /home/libo/Downloads/glfw-3.3/build/tests && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/libo/Downloads/glfw-3.3/deps/glad_gl.c > CMakeFiles/opacity.dir/__/deps/glad_gl.c.i
+	cd /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build/tests && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/deps/glad_gl.c > CMakeFiles/opacity.dir/__/deps/glad_gl.c.i
 
 tests/CMakeFiles/opacity.dir/__/deps/glad_gl.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/opacity.dir/__/deps/glad_gl.c.s"
-	cd /home/libo/Downloads/glfw-3.3/build/tests && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/libo/Downloads/glfw-3.3/deps/glad_gl.c -o CMakeFiles/opacity.dir/__/deps/glad_gl.c.s
+	cd /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build/tests && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/deps/glad_gl.c -o CMakeFiles/opacity.dir/__/deps/glad_gl.c.s
 
 # Object files for target opacity
 opacity_OBJECTS = \
@@ -100,8 +100,8 @@ tests/opacity: /usr/lib/x86_64-linux-gnu/librt.so
 tests/opacity: /usr/lib/x86_64-linux-gnu/libm.so
 tests/opacity: /usr/lib/x86_64-linux-gnu/libX11.so
 tests/opacity: tests/CMakeFiles/opacity.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/libo/Downloads/glfw-3.3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable opacity"
-	cd /home/libo/Downloads/glfw-3.3/build/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/opacity.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable opacity"
+	cd /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/opacity.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 tests/CMakeFiles/opacity.dir/build: tests/opacity
@@ -109,10 +109,10 @@ tests/CMakeFiles/opacity.dir/build: tests/opacity
 .PHONY : tests/CMakeFiles/opacity.dir/build
 
 tests/CMakeFiles/opacity.dir/clean:
-	cd /home/libo/Downloads/glfw-3.3/build/tests && $(CMAKE_COMMAND) -P CMakeFiles/opacity.dir/cmake_clean.cmake
+	cd /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build/tests && $(CMAKE_COMMAND) -P CMakeFiles/opacity.dir/cmake_clean.cmake
 .PHONY : tests/CMakeFiles/opacity.dir/clean
 
 tests/CMakeFiles/opacity.dir/depend:
-	cd /home/libo/Downloads/glfw-3.3/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/libo/Downloads/glfw-3.3 /home/libo/Downloads/glfw-3.3/tests /home/libo/Downloads/glfw-3.3/build /home/libo/Downloads/glfw-3.3/build/tests /home/libo/Downloads/glfw-3.3/build/tests/CMakeFiles/opacity.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3 /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/tests /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build/tests /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build/tests/CMakeFiles/opacity.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : tests/CMakeFiles/opacity.dir/depend
 

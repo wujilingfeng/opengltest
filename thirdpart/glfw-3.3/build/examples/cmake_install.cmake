@@ -1,4 +1,4 @@
-# Install script for directory: /home/libo/Downloads/glfw-3.3/examples
+# Install script for directory: /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/examples
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

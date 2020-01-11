@@ -4,9 +4,9 @@
 tests/CMakeFiles/vulkan.dir/__/deps/glad_vulkan.c.o
  ../deps/glad/vk_platform.h
  ../deps/glad/vulkan.h
- /home/libo/Downloads/glfw-3.3/deps/glad_vulkan.c
+ /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/deps/glad_vulkan.c
 tests/CMakeFiles/vulkan.dir/vulkan.c.o
  ../deps/glad/vk_platform.h
  ../deps/glad/vulkan.h
  ../include/GLFW/glfw3.h
- /home/libo/Downloads/glfw-3.3/tests/vulkan.c
+ /home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/tests/vulkan.c

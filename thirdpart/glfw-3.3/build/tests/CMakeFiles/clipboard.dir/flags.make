@@ -6,5 +6,5 @@ C_FLAGS =
 
 C_DEFINES = 
 
-C_INCLUDES = -I/home/libo/Downloads/glfw-3.3/deps -I/home/libo/Downloads/glfw-3.3/include 
+C_INCLUDES = -I/home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/deps -I/home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/include 
 

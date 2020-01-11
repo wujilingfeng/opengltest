@@ -6,7 +6,7 @@ C_FLAGS = -fPIC   -Wall
 
 C_DEFINES = -D_GLFW_USE_CONFIG_H
 
-C_INCLUDES = -I/home/libo/Downloads/glfw-3.3/include -I/home/libo/Downloads/glfw-3.3/src -I/home/libo/Downloads/glfw-3.3/build/src 
+C_INCLUDES = -I/home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/include -I/home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/src -I/home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build/src 
 
 # Custom flags: src/CMakeFiles/glfw.dir/context.c.o_FLAGS = -Wdeclaration-after-statement
 

@@ -1,9 +1,9 @@
 
-if (NOT EXISTS "/home/libo/Downloads/glfw-3.3/build/install_manifest.txt")
-  message(FATAL_ERROR "Cannot find install manifest: \"/home/libo/Downloads/glfw-3.3/build/install_manifest.txt\"")
+if (NOT EXISTS "/home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build/install_manifest.txt")
+  message(FATAL_ERROR "Cannot find install manifest: \"/home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build/install_manifest.txt\"")
 endif()
 
-file(READ "/home/libo/Downloads/glfw-3.3/build/install_manifest.txt" files)
+file(READ "/home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build/install_manifest.txt" files)
 string(REGEX REPLACE "\n" ";" files "${files}")
 
 foreach (file ${files})

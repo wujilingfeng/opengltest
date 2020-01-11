@@ -15,16 +15,138 @@ void set_uniform(GLuint,Mesh_viewer_world*);
 void display_setting();
 void show(Mesh_viewer_world*);
 void prepare_mesh_viewer_world_data(Mesh_viewer_world*);
-void add_texture_to_shader(int,char*);
+void add_texture_to_shader(int*,char*);
 void draw_elements(Mesh_viewer_world*);
 void test_add_array_to_shader(Mesh_viewer_world*);
+void prepare_rendering_data(Mesh_viewer_world*);
+void prepare_rendering_data(Mesh_viewer_world*mw)
+{
+    test_add_array_to_shader(mw);
+
+}
 void test_add_array_to_shader(Mesh_viewer_world* mw)
 {
+    char names[]="faces";
+    GLfloat* vertices=0,*index=0;
+    int len_rows=0,len_index_rows=0,len_index=0;
+    Node* names_id=Mesh_viewer_world_find_species(mw,names);
+    std::map<int,std::map<int,Mesh_viewer_something*>*>::iterator iter=mw->species2somethings.find(*((int*)(names_id->value)));
+    if(iter!=mw->species2somethings.end())
+    {
+        for(auto iter1=(iter->second)->begin();iter1!=(iter->second)->end();iter1++)
+        {
+            Mesh_viewer_something *ms=iter1->second;
+            Mesh_viewer_faces *mf=(Mesh_viewer_faces*)(ms->evolution);
+            len_rows+=mf->Data_rows;
+            len_index_rows+=mf->Data_index_rows;
+            int temp_i=0,j=0;
+            for(int i=0;i<mf->Data_index_rows;i++)
+            {
+                j=mf->Data_index[temp_i];
+                temp_i+=(j+1);
+                
+            }
+            len_index+=temp_i;
+        }
+    
+    }
+    if(len_index==0)
+    {
+        free_node_value(names_id);
+        free_node(names_id);
+        return;
+    }
+    ImageInfo image,image1;
+    image.height=(len_rows/1000+1);
+    image.width=1000;
+    image1.height=(len_index/1000+1);
+    image1.width=1000;
+    vertices=(GLfloat*)malloc(sizeof(GLfloat)*image.width*image.height*3);
+    memset(vertices,0,sizeof(GLfloat)*image.width*image.height);
+    index=(GLfloat*)malloc(sizeof(GLfloat)*image1.width*image1.height);
+    memset(index,0,sizeof(GLfloat)*image1.width*image1.height);
+    int temp_i=0,temp_j=0,temp_k=0;
+    if(iter!=mw->species2somethings.end())
+    {
+        for(auto iter1=(iter->second)->begin();iter1!=(iter->second)->end();iter1++)
+        {
+            Mesh_viewer_something *ms=iter1->second;
+            Mesh_viewer_faces *mf=(Mesh_viewer_faces*)(ms->evolution);
+            temp_i=0;
+            for(int i=0;i<mf->Data_index_rows;i++)
+            {
+                int k=mf->Data_index[temp_i];
+                index[temp_k]=mf->Data_index[temp_i];
+                temp_k++;
+                for(int j=0;j<k;j++)
+                {
 
+                    index[temp_k]=mf->Data_index[temp_i+1+j]+temp_j;
+                    temp_k++;
+                
+                }
+                temp_i+=(k+1);
+                
+            }
+            for(int i=0;i<mf->Data_rows;i++)
+            {
+                for(int j=0;j<3;j++)
+                {
+                    
+                    vertices[temp_j*3+j]=mf->Data[i*3+j];
+                }
+                temp_j++;
+            }
+           
+            
+        } 
+    }
+    image.data=(void*)vertices;
+    image1.data=(void*)index;
+   // memset(vertices,0,sizeof(GLfloat)*image.width*image.height);
+   // memset(index,0,sizeof(GLuint)*image1.width*image1.height);
+    for(int i=0;i<len_rows;i++)
+    {
+        for(int j=0;j<3;j++)
+        {
+           // vertices[i*3+j]=i*3+j;
+            printf("%lf ",vertices[i*3+j]);
+        }
+        printf("\n");
+    }
+    temp_i=0;
+    for(int i=0;i<len_index_rows;i++)
+    {
+        
+       int k=index[temp_i]; 
+        for(int j=0;j<k;j++)
+        {
+            printf("%lf  ",index[temp_i+1+j]);
+        
+        }
 
-
-
-
+        temp_i+=(k+1);
+        printf("\n");
+    }
+    GLuint* textures=(GLuint*)malloc(sizeof(GLuint)*2);
+    glGenTextures(2,textures);
+    _Texture_Array_GL_FLOAT(&image,textures[0]);
+    _Texture_Array_GL_R32UI(&image1,textures[1]);
+    int *value=(int*)malloc(sizeof(int));
+    *value=textures[0];
+    mw->prop=(void*)node_overlying((Node*)mw->prop,(void*)value);
+    value=(int*)malloc(sizeof(int));
+    *value=textures[1]; 
+    mw->prop=(void*)node_overlying((Node*)mw->prop,(void*)value);
+    free(vertices);
+    free(index);
+    /*glActiveTexture(GL_TEXTURE1);
+    glBindTexture(GL_TEXTURE_2D,textures[0]);
+    glActiveTexture(GL_TEXTURE2);
+    glBindTexture(GL_TEXTURE_2D,textures[1]);
+    */
+    free_node_value(names_id);
+    free_node(names_id);
 
 }
 void draw_elements(Mesh_viewer_world* mw)
@@ -41,7 +163,7 @@ void draw_elements(Mesh_viewer_world* mw)
         
             Mesh_viewer_something *ms=iter1->second;
             Mesh_viewer_faces *mf=(Mesh_viewer_faces*)(ms->evolution);
-            if(ms->disappear==1||mf->Data_index_rows==0)
+            if(ms->disappear==1||mf->Data_index_rows==0||mf->VAO==0||mf->Buffers==0)
             {continue;}
             int v_size=0,temp_i=0;
             for(int i=0;i<mf->Data_index_rows;i++)
@@ -62,10 +184,11 @@ void draw_elements(Mesh_viewer_world* mw)
 
 
 }
-void add_texture_to_shader(int gl_tex_num,char*image_file)
+void add_texture_to_shader(int *gl_tex_num,char*image_file)
 {
-    GLuint* textures=(GLuint*)malloc(sizeof(GLuint)*2);
-    glGenTextures(2,textures);
+    GLuint* textures=(GLuint*)malloc(sizeof(GLuint)*1);
+    glGenTextures(1,textures);
+   
     ImageInfo image;
     image.data=(void*)stbi_load(image_file,&image.width,&image.height,&image.n,0);
 /*    for(int i=0;i<18;i++)
@@ -80,9 +203,10 @@ void add_texture_to_shader(int gl_tex_num,char*image_file)
 
     _Texture_(&image,textures[0]);
     stbi_image_free(image.data);
+    *gl_tex_num=textures[0];
 //先把纹理绑定一个纹理单元GL_TEXTURE0(纹理位置)
-    glActiveTexture(gl_tex_num);
-    glBindTexture(GL_TEXTURE_2D,textures[0]);
+    //glActiveTexture(gl_tex_num);
+    //glBindTexture(GL_TEXTURE_2D,textures[0]);
 }
 
 void prepare_mesh_viewer_world_data(Mesh_viewer_world*mw)
@@ -108,6 +232,10 @@ void prepare_mesh_viewer_world_data(Mesh_viewer_world*mw)
                 v_size+=(j-2)*3;
                 temp_i+=(j+1); 
             }
+            if(v_size==0)
+            {
+                continue;
+            }
             GLfloat *vertices=(GLfloat*)malloc(sizeof(GLfloat)*v_size*3);
             GLfloat* colors=(GLfloat*)malloc(sizeof(GLfloat)*v_size*3);
             GLfloat* texcoords=(GLfloat*)malloc(sizeof(GLfloat)*v_size*2);
@@ -132,9 +260,7 @@ void prepare_mesh_viewer_world_data(Mesh_viewer_world*mw)
 
                     vertices[v_size*3+0]=mf->Data[k*3+0];vertices[v_size*3+1]=mf->Data[k*3+1];vertices[v_size*3+2]=mf->Data[k*3+2];
 
-                    v_size++;
-                    
-                
+                    v_size++; 
                 }
                 temp_i+=(j+1);            
             }
@@ -162,8 +288,10 @@ void prepare_mesh_viewer_world_data(Mesh_viewer_world*mw)
             if(mf->texture->image_file!=0&&mf->texture->each_face_texture_coord!=0)
             {
                 //printf("%s\n",mf->texture->image_file);
+                int * value_t=(int*)malloc(sizeof(int));
 
-                add_texture_to_shader(GL_TEXTURE0,mf->texture->image_file); 
+                add_texture_to_shader(value_t,mf->texture->image_file); 
+                mw->prop=(void*)node_overlying((Node*)mw->prop,(void*)value_t);
                 Mesh_viewer_texture* texture=mf->texture;
                 temp_i=0;v_size=0;
                 for(int i=0;i<mf->Data_index_rows;i++)
@@ -181,7 +309,6 @@ void prepare_mesh_viewer_world_data(Mesh_viewer_world*mw)
                         texcoords[v_size*2+0]=texture->each_face_texture_coord[temp_i+1+2*(l+2)+0];
                         texcoords[v_size*2+1]=texture->each_face_texture_coord[temp_i+1+2*(l+2)+1];
                         v_size++;
-
                     }
                     temp_i+=(j*2+1);                   
                 } 
@@ -189,7 +316,6 @@ void prepare_mesh_viewer_world_data(Mesh_viewer_world*mw)
             }
             glDeleteBuffers(1,mf->Buffers);
             glDeleteVertexArrays(1,&(mf->VAO));
-
             glGenVertexArrays(1,&(mf->VAO));
             glBindVertexArray(mf->VAO);
             glCreateBuffers(3,mf->Buffers);
@@ -212,10 +338,7 @@ void prepare_mesh_viewer_world_data(Mesh_viewer_world*mw)
             glEnableVertexAttribArray(2);
 
             glBindVertexArray(0);
-
-            
-        
-            
+ 
             free(vertices);
             free(colors);
         
@@ -223,11 +346,34 @@ void prepare_mesh_viewer_world_data(Mesh_viewer_world*mw)
     
     
     }
+    test_add_array_to_shader(mw);
+    Node* n_iter=(Node*)mw->prop;
+   /* glActiveTexture(GL_TEXTURE2);
+    glBindTexture(GL_TEXTURE_2D,*((int*)(n_iter->value)));
+    n_iter=(Node*)(n_iter->Next);
+    glActiveTexture(GL_TEXTURE1);
+    glBindTexture(GL_TEXTURE_2D,*((int*)(n_iter->value)));
+    n_iter=(Node*)(n_iter->Next);
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D,*((int*)(n_iter->value)));
+*/
+
+    n_iter=node_reverse(n_iter);
+    int num_i=0;
+    while(n_iter!=0)
+    {
+        glActiveTexture(GL_TEXTURE0+num_i);
+        glBindTexture(GL_TEXTURE_2D,*((int*)(n_iter->value)));
+        n_iter=(Node*)(n_iter->Prev);
+        num_i++;
+    
+    }
+    free_node_value((Node*)(mw->prop));
+    free_node((Node*)(mw->prop));
+    mw->prop=0;
     free_node_value(names_id);
     free_node(names_id);
    //printf("faces:%d\n",*((int*)(names_id->value)));
-
-
 
 }
 void init_uniform(GLuint program,Mesh_viewer_world* mw)
@@ -235,12 +381,9 @@ void init_uniform(GLuint program,Mesh_viewer_world* mw)
     //x,y正负1范围,
     //z/w也是
     Interactor_GlobalInfo* g_info=mw->g_info;
-    g_info->resolution[0]=800;
-    g_info->resolution[1]=600;
+    
     //printf("pro:%lf\n",(float)())
-    Matrix4x4* p=Projection(M_PI/3.0f,(float)(g_info->resolution[0])/(float)(g_info->resolution[1]),0.5f,200.0f); 
-    glUniformMatrix4fv(glGetUniformLocation(program,"Proj"),1,GL_TRUE,(float*)(p->data));
-    Mesh_viewer_camera* mc=0;
+           Mesh_viewer_camera* mc=0;
     char camera[]="Camera";
     Node*id=Mesh_viewer_world_find_species(mw,camera);
     
@@ -264,24 +407,31 @@ void init_uniform(GLuint program,Mesh_viewer_world* mw)
         float* data=(float*)(mc->matrix_inverse->data);    
         glUniformMatrix4fv(glGetUniformLocation(program,"Camera_Matrix"),1,GL_TRUE,data);
 
+        glUniformMatrix4fv(glGetUniformLocation(program,"Proj"),1,GL_TRUE,(float*)(mc->Proj->data));
+         data=(float*)(mc->Proj->data);
+        printf("prj:%lf\n",-1/(1/data[2*4+3]+data[2*4+2]/data[2*4+3]));
     }
     free_node_value(id);
     free_node(id);
-     float a[2];
-    a[0]=(float)(g_info->resolution[0]);
-    a[1]=(float)(g_info->resolution[1]);
+     GLfloat a[2];
+    a[0]=(GLfloat)(g_info->resolution[0]);
+    a[1]=(GLfloat)(g_info->resolution[1]);
+    //printf("resolution:%lf %lf\n",a[0],a[1]);
     glUniform2fv(glGetUniformLocation(program,"iResolution"),1,a);
 //把像素着色器的纹理绑定纹理单元GL_TEXURE0（也就是纹理位置）
     glUniform1i(glGetUniformLocation(program,"ourTexture"),0);
-	Matrix4x4_free(p);
+    glUniform1i(glGetUniformLocation(program,"Faces_Vertices"),1);
+    glUniform1i(glGetUniformLocation(program,"Faces_Index"),2);
+
+
 }
 void set_uniform(GLuint program,Mesh_viewer_world* mw)
 {  
 
     Interactor_GlobalInfo* g_info=mw->g_info;
-
+    glUniform2f(glGetUniformLocation(program,"iMouse"),(float)g_info->mouse_coord[0],(float)g_info->mouse_coord[1]);
     glUniform2f(glGetUniformLocation(program,"iResolution"),(float)g_info->resolution[0],(float)g_info->resolution[1]);
-
+    glUniform1f(glGetUniformLocation(program,"iTime"),g_info->run_time);
     Mesh_viewer_camera* mc=0;
     char camera[]="Camera";
     Node*id=Mesh_viewer_world_find_species(mw,camera);
@@ -333,7 +483,6 @@ void display_setting()
    
 	glClear(GL_DEPTH_BUFFER_BIT);
 
-
 }
 void show(Mesh_viewer_world* mw)
 {
@@ -370,6 +519,7 @@ void show(Mesh_viewer_world* mw)
     mw->g_info->window=(void*)window; 
     mesh_viewer_set_callback(window);
 
+    //prepare_rendering_data(mw);
     prepare_mesh_viewer_world_data(mw);
    
   	char mesh_vert[]="mesh.vert";
@@ -400,11 +550,8 @@ void show(Mesh_viewer_world* mw)
       
         
         finish=clock();
-        set_uniform(program,mw);
-    
-
         mw->g_info->run_time=(float)30.0*(finish-start)/CLOCKS_PER_SEC;
-        //set_uniform(program);
+        set_uniform(program,mw);
        // glUniform1f(glGetUniforLocation())
         display_setting();
         draw_elements(mw);

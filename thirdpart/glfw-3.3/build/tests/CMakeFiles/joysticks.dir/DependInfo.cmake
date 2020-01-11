@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/libo/Downloads/glfw-3.3/deps/glad_gl.c" "/home/libo/Downloads/glfw-3.3/build/tests/CMakeFiles/joysticks.dir/__/deps/glad_gl.c.o"
-  "/home/libo/Downloads/glfw-3.3/tests/joysticks.c" "/home/libo/Downloads/glfw-3.3/build/tests/CMakeFiles/joysticks.dir/joysticks.c.o"
+  "/home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/deps/glad_gl.c" "/home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build/tests/CMakeFiles/joysticks.dir/__/deps/glad_gl.c.o"
+  "/home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/tests/joysticks.c" "/home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build/tests/CMakeFiles/joysticks.dir/joysticks.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
@@ -17,7 +17,7 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/libo/Downloads/glfw-3.3/build/src/CMakeFiles/glfw.dir/DependInfo.cmake"
+  "/home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/build/src/CMakeFiles/glfw.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

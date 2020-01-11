@@ -6,6 +6,8 @@ void GlobalInfo_init(Interactor_GlobalInfo *ginf)
 	ginf->window=0;
 	ginf->mouse_coord=(float*)malloc(sizeof(float)*2);
 	ginf->resolution=(int*)malloc(sizeof(int)*2); 
+	ginf->resolution[0]=800;
+	ginf->resolution[1]=600;
 	ginf->readpixelcolor=(unsigned char*)malloc(sizeof(unsigned char)*36);
 	for(int i=0;i<36;i++)
 	{

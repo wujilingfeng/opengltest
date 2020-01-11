@@ -70,7 +70,7 @@ GL/glu.h
 vulkan/vulkan.h
 -
 
-/home/libo/Downloads/glfw-3.3/deps/glad_gl.c
+/home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/deps/glad_gl.c
 stdio.h
 -
 stdlib.h
@@ -80,7 +80,7 @@ string.h
 glad/gl.h
 -
 
-/home/libo/Downloads/glfw-3.3/examples/sharing.c
+/home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/examples/sharing.c
 glad/gl.h
 -
 GLFW/glfw3.h
@@ -90,7 +90,7 @@ stdio.h
 stdlib.h
 -
 getopt.h
-/home/libo/Downloads/glfw-3.3/examples/getopt.h
+/home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/examples/getopt.h
 linmath.h
-/home/libo/Downloads/glfw-3.3/examples/linmath.h
+/home/libo/Documents/c++/Mesh_viewer/thirdpart/glfw-3.3/examples/linmath.h
 

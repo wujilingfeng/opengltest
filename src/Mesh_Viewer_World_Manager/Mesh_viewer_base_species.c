@@ -34,6 +34,8 @@ void Mesh_viewer_camera_init(Mesh_viewer_camera*mc)
     Matrix4x4_init_float(mc->matrix); 
     mc->matrix_inverse=(Matrix4x4*)malloc(sizeof(Matrix4x4));
     Matrix4x4_init_float(mc->matrix_inverse);
+	mc->Proj=(Matrix4x4*)malloc(sizeof(Matrix4x4));
+	Matrix4x4_init_float(mc->Proj);
     mc->prop=0;
     mc->is_using=0;
     mc->focal_distance=1;

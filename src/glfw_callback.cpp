@@ -28,11 +28,21 @@ void update_intera_information(GLFWwindow*window,Interactor_GlobalInfo*g_info)
 }
 void mesh_viewer_cursor_position_callback(GLFWwindow* window,double x,double y)
 {
+    //获取的mousecoord是左上角为原点
     Mesh_viewer_world* mw=(Mesh_viewer_world*)(glfwGetWindowUserPointer(window));
     Interactor_GlobalInfo* g_info=mw->g_info;
     g_info->mouse_coord[0]=(float)x;
     g_info->mouse_coord[1]=(float)y;
+    glReadPixels(g_info->mouse_coord[0],g_info->resolution[1]-g_info->mouse_coord[1],3,3,GL_RGBA,GL_UNSIGNED_BYTE,g_info->readpixelcolor);
+    for(int i=0;i<1;i++)
+    {
+        for(int j=0;j<4;j++)
+        {
 
+            printf("%d ",g_info->readpixelcolor[i*4+j]);
+        }
+        printf("\n");
+    }
     char intera[]="Intera";
     Node* id=Mesh_viewer_world_find_species(mw,intera);
     

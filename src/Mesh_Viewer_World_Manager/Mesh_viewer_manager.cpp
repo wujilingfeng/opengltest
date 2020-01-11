@@ -85,7 +85,8 @@ void Mesh_viewer_world_init(Mesh_viewer_world*m)
 	Node* node=Mesh_viewer_world_registe(m,str);
     m->g_info=(Interactor_GlobalInfo*)malloc(sizeof(Interactor_GlobalInfo));
     GlobalInfo_init(m->g_info);
-    
+    m->prop=0;
+    m->prop1=0;
     node=node_reverse(node);
     free_node_value(node);
     free_node(node);

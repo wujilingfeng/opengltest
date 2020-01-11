@@ -12,8 +12,8 @@ GLchar* _ReadFile_ (char* filename)
 #endif
   if(!infile)
   {
-  printf("can't open this file\r\n");
-  return NULL;
+  	printf("can't open this file\r\n");
+  	return NULL;
   }
     fseek(infile,0,SEEK_END);//定位到离文末0字节处
     int len=ftell(infile);//当前处离文首多少字节
@@ -34,26 +34,28 @@ void _Shader_(ShaderInfo* shaders)
 ShaderInfo* entry=shaders;	
 while(entry->type!=GL_NONE)
 {
-	GLuint shader=glCreateShader(entry->type);
-    if(entry->filename==NULL)
-    {
+	
+    	if(entry->filename==NULL)
+    	{
 
-        printf("finename is NULL\n");
-    }
+        	printf("finename is NULL\n");
+		continue;
+    	}
+	GLuint shader=glCreateShader(entry->type);
 	const GLchar* source= _ReadFile_(entry->filename);
 	if(source==NULL)
 	{
-	printf("this file is blank\r\n");
+		printf("this file is blank\r\n");
 	
 	return;
 	}
-glShaderSource(shader,1,&source,NULL);
-free((GLchar *)source);
-glCompileShader(shader);
-GLint compiled;
-glGetShaderiv(shader,GL_COMPILE_STATUS,&compiled);
-if(!compiled)
-{
+	glShaderSource(shader,1,&source,NULL);
+	free((GLchar *)source);
+	glCompileShader(shader);
+	GLint compiled;
+	glGetShaderiv(shader,GL_COMPILE_STATUS,&compiled);
+	if(!compiled)
+	{
 #ifdef _DEBUG
 	GLsizei len;
 	glGetShaderiv(shader,GL_INFO_LOG_LENGTH,&len);
@@ -62,7 +64,7 @@ if(!compiled)
 	printf("shader compiled error,%s\r\n",log);
 	free(log);
 #endif
-    printf("failed to compiled\n");
+    	printf("failed to compiled\n");
 	return;
 
 }
@@ -137,19 +139,41 @@ void _Texture_ (ImageInfo *image,GLuint texture)
 	glBindTexture(GL_TEXTURE_2D,0);
 
 }
-//glTexImage2D(GL_TEXTURE_2D, 0, GL_R32F, _dimension, _dimension, 0,GL_RED, GL_FLOAT, _perlin_noise);
-/*void _Texture_Array(ImageInfo* image,GLenum dataType,GLenum data_component,GLint GPU_internalFormat,GLuint texture)
+void _Texture_Array_GL_FLOAT1(ImageInfo* image,GLuint texture)
 {
     glBindTexture(GL_TEXTURE_2D,texture);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexImage2D(GL_TEXTURE_2D, 0, GPU_internalFormat, image->width, image->height, 0,
-    data_component,dataType, image->data);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_R32F, image->width, image->height, 0,GL_RED,GL_FLOAT, (GLfloat*)(image->data));
     glBindTexture(GL_TEXTURE_2D, 0);
 
-}*/
+}
+void _Texture_Array_GL_FLOAT(ImageInfo* image,GLuint texture)
+{
+    glBindTexture(GL_TEXTURE_2D,texture);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB32F, image->width, image->height, 0,GL_RGB,GL_FLOAT, (GLfloat*)(image->data));
+    glBindTexture(GL_TEXTURE_2D, 0);
+
+}
+void _Texture_Array_GL_R32UI(ImageInfo* image,GLuint texture)
+{
+	
+glBindTexture(GL_TEXTURE_2D,texture);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_R32F, image->width, image->height, 0,GL_RED,GL_FLOAT, (GLfloat*)(image->data));
+    glBindTexture(GL_TEXTURE_2D, 0);
+
+
+}
 
 
 
