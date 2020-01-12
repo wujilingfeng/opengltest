@@ -6,27 +6,3 @@
 
 #IncludeRegexTransform: 
 
-../include/Mesh_view/OpenglAlg.h
-stdio.h
--
-stdlib.h
--
-glad/glad.h
--
-
-../thirdpart/glad/include/KHR/khrplatform.h
-stdint.h
--
-inttypes.h
--
-stdint.h
--
-
-../thirdpart/glad/include/glad/glad.h
-KHR/khrplatform.h
--
-
-/home/libo/Documents/c++/Mesh_viewer/src/OpenglAlg.c
-Mesh_view/OpenglAlg.h
--
-

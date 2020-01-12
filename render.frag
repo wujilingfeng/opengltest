@@ -49,7 +49,7 @@ void set_fColor()
 	
 	//fColor=vec4(texture(Faces_Vertices,vec2(1.0/1000.0,0.0)).xyz/255.0,1.0);
 }
-void get_sanjiao_coord(vec3 a,vec3 b,vec3 c,out vec3 coord)
+vec3 get_sanjiao_coord(vec3 a,vec3 b,vec3 c,vec3 dir)
 {
 
 }
@@ -69,9 +69,9 @@ void shoot(vec3 origin,vec3 dir)
 	{
 		for(int i=0;i<num-2;i++)
 		{
-            from_Faces_Index_get_value(temp_i+1);
-            from_Faces_Index_get_value(temp_i+1+i+1);
-            from_Faces_Index_get_value(temp_i+1+i+2);
+           vec3 a=from_Faces_Vertices_get_value(from_Faces_Index_get_value(temp_i+1));
+            vec3 b=from_Faces_Vertices_get_value(from_Faces_Index_get_value(temp_i+1+i+1));
+            vec3 c=from_Faces_Vertices_get_value(from_Faces_Index_get_value(temp_i+1+i+2));
 		
 			//texture(Faces_Index,vec2())
 		}		

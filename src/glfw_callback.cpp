@@ -39,9 +39,9 @@ void mesh_viewer_cursor_position_callback(GLFWwindow* window,double x,double y)
         for(int j=0;j<4;j++)
         {
 
-            printf("%d ",g_info->readpixelcolor[i*4+j]);
+//            printf("%d ",g_info->readpixelcolor[i*4+j]);
         }
-        printf("\n");
+ //       printf("\n");
     }
     char intera[]="Intera";
     Node* id=Mesh_viewer_world_find_species(mw,intera);
