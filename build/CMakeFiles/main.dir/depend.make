@@ -15,8 +15,7 @@ CMakeFiles/main.dir/Demo/main.cpp.o: ../include/Math/Mesh_viewer_matrix4x4.h
 CMakeFiles/main.dir/Demo/main.cpp.o: ../include/Mesh_Viewer_World_Manager/Interactor_GlobalInfo.h
 CMakeFiles/main.dir/Demo/main.cpp.o: ../include/Mesh_Viewer_World_Manager/Mesh_viewer_base_species.h
 CMakeFiles/main.dir/Demo/main.cpp.o: ../include/Mesh_Viewer_World_Manager/Mesh_viewer_manager.h
-CMakeFiles/main.dir/Demo/main.cpp.o: ../include/Mesh_view/Mesh_viewer.h
-CMakeFiles/main.dir/Demo/main.cpp.o: ../include/Mesh_view/Mesh_viewer_render.h
+CMakeFiles/main.dir/Demo/main.cpp.o: ../include/Mesh_view/Mesh_viewer_interpreter.h
 CMakeFiles/main.dir/Demo/main.cpp.o: ../include/Mesh_view/OpenglAlg.h
 CMakeFiles/main.dir/Demo/main.cpp.o: ../include/Mesh_view/glfw_callback.h
 CMakeFiles/main.dir/Demo/main.cpp.o: ../include/stb_image.h

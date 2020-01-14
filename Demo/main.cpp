@@ -1,20 +1,20 @@
 #include<stdio.h>
-#include<Mesh_view/Mesh_viewer_render.h>
+#include<Mesh_view/Mesh_viewer_interpreter.h>
 #include "include/Arcroll.h"
 void test_manager();
 void test_intera(Mesh_viewer_world*);
 //void framebuffer_size_callback(GLFWwindow *window, int width, int height);//回调函数原型声明
 
 void test_mesh_viewer();
-int main(int argc,char*argv[]) {
-   
+void test_matrix();
+int main(int argc,char*argv[]) 
+{
+    test_matrix(); 
     //int temp_array[3]={2,3,4};  
     /*float* li=(float*)malloc(sizeof(float)*10);
     memset(li,-1,sizeof(float)*10);
     for(int i=0;i<10;i++)
-    {
-    
-    
+    {    
         printf("%lf ",li[i]);
     }*/
     //compute_combination(3,5);
@@ -27,7 +27,21 @@ int main(int argc,char*argv[]) {
     //show(&mesh_viewer_world);
    return 0;
 }
+void test_matrix()
+{
+    Matrix4x4 m;
+    Matrix4x4_init_float(&m);
+    float *data=(float*)(m.data);
+    data[0*4+0]=1;data[0*4+1]=0;data[0*4+2]=3;data[0*4+3]=0;
+    data[1*4+0]=1;data[1*4+1]=-5;data[1*4+2]=6;data[1*4+3]=0;
+    data[2*4+0]=11;data[2*4+1]=0;data[2*4+2]=9;data[2*4+3]=0;
+    data[3*4+0]=0;data[3*4+1]=0;data[3*4+2]=0;data[3*4+3]=1;
+    printf("det:%lf\n",*((float*)(m.det(&m))));
+    Matrix4x4* p1;
+    p1=m.inverse(&m);
+    p1->print_self(p1);
 
+}
 //输入控制，检查用户是否按下了返回键(Esc)
 /*void framebuffer_size_callback(GLFWwindow *window, int width, int height) {
     // 注意：对于视网膜(Retina)显示屏，width和height都会明显比原输入值更高一点。
@@ -134,7 +148,8 @@ void test_manager()
     ms=(Mesh_viewer_something*)(n->value);
     Mesh_viewer_camera* mc=(Mesh_viewer_camera*)(ms->evolution);
     mc->is_using=1;
-    Matrix4x4* p=Projection(M_PI/3.0f,(float)(mw.g_info->resolution[0])/(float)(mw.g_info->resolution[1]),0.5f,200.0f); 
+    Matrix4x4* p=Projection(M_PI/3.0f,(float)(mw.g_info->resolution[0])/(float)(mw.g_info->resolution[1]),0.5f,200.0f);
+   // p->print_self(p);
     Matrix4x4_copy_data_float(mc->Proj,p);
     Matrix4x4_free(p);
 
@@ -143,8 +158,12 @@ void test_manager()
     test_intera(&mw);
     Mesh_viewer_world_printself(&mw);
     printf("GLFW_REPEAT:%d,GLFW_MOD_CONTROL:%d,GLFW_MOD_SHIFT:%d  GLFW_MOD_ALT:%d GLFW_MOD_SUPER:%d\n",GLFW_REPEAT,GLFW_MOD_CONTROL,GLFW_MOD_SHIFT,GLFW_MOD_ALT,GLFW_MOD_SUPER); 
-//    show(&mw);
-   render(&mw);
+    Mesh_viewer_opengl_Interpreter moi;
+    Mesh_viewer_opengl_Interpreter_init(&moi);
+    moi.world=&mw;
+    //routine_show(&moi);
+    //   show(&mw);
+   render(&moi);
 
 }
 
