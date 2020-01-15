@@ -161,8 +161,7 @@ void test_manager()
     Mesh_viewer_opengl_Interpreter moi;
     Mesh_viewer_opengl_Interpreter_init(&moi);
     moi.world=&mw;
-    //routine_show(&moi);
-    //   show(&mw);
+   // routine_show(&moi);
    render(&moi);
 
 }

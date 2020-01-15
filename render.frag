@@ -77,8 +77,8 @@ vec3 from_Faces_Vertices_get_value(float temp_i)
 void set_fColor(float te)
 {
 
-	vec2 uv=gl_FragCoord.xy/iResolution.xy;
-	uv=2.0*(uv-0.5);
+	//vec2 uv=gl_FragCoord.xy/iResolution.xy;
+	//uv=2.0*(uv-0.5);
     //float near=-1.0/(1.0/Proj[3][2]+Proj[2][2]/Proj[3][2]);
 	//float halfh=near/Proj[1][1],halfw=near/Proj[0][0];
 //	s_info.face_id=s_info.face_id+1.5;
@@ -97,7 +97,7 @@ void set_fColor(float te)
 	//fColor=vec4(from_Faces_Vertices_get_value(5),1.0);
 	//    fColor=vec4(s_info.face_id,from_Faces_Index_get_value(48)/255.0,te/255.0,1.0);	
 	//}
-	fColor=vec4(te/255.0,s_info.face_id,s_info.face_id,1.0);
+	fColor=vec4(te/255.0,s_info.face_id+1,s_info.face_id+1,1.0);
 	
 }
 float chuli_coord(vec3 coord)
@@ -164,7 +164,7 @@ void shoot(vec3 origin,vec3 dir)
 		temp_num++;
 	}
 	
-	set_fColor(temp_num);
+	set_fColor(step(0.2,0.3));
 }
 void init()
 {
