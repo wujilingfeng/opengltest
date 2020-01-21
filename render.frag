@@ -2,10 +2,13 @@
 out vec4 fColor;
 
 uniform vec2 iResolution;
-uniform sampler2D ourTexture;
 uniform sampler2D Faces_Vertices;
 uniform sampler2D Faces_Index;
 uniform sampler2D Face_colors;
+
+
+uniform sampler2D ourTexture;
+
 uniform float Faces_len;
 uniform float Faces_Vertices_rows;
 uniform float iTime;

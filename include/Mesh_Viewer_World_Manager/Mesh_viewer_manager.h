@@ -12,20 +12,8 @@ extern "C" {
 #endif
 //strcmp 比较字符串跟整数比较类似
 
-void Mesh_viewer_something_init(struct Mesh_view_something*);
-typedef struct Mesh_view_something{
-	char* name;
-	int name_id;
-	int id;
-	unsigned int create_date;
-	int disappear;
-	void* prop;
-	void* mesh;
-	//（历史记录）分身
-	Node* history_avatar;
-	//继承信息
-	void* evolution;
-}Mesh_viewer_something;
+
+
 Node* Mesh_viewer_world_create_something(struct Mesh_viewer_world*,char *);
 void Mesh_viewer_world_remove_something(struct Mesh_viewer_world*,Mesh_viewer_something*);
 
@@ -42,6 +30,11 @@ typedef struct Mesh_viewer_world{
 //use for give a single name
 	std::map<int,int>something_id;
 	Interactor_GlobalInfo *g_info;
+	Node* (*create_something)(struct Mesh_viewer_world*,char*);
+	void (*remove_something)(struct Mesh_viewer_world*,Mesh_viewer_something*);
+	void (*print_self)(struct Mesh_viewer_world*);
+	Node* (*find_species)(struct Mesh_viewer_world*,char*);
+	Node*(*registe)(struct Mesh_viewer_world*,char*);
 	void *prop;
 	void* *prop1;
 }Mesh_viewer_world;

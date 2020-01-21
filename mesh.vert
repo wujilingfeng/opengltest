@@ -9,10 +9,20 @@ out vec2 texcoord;
 uniform mat4 Proj;
 //camera_matrix_inverse
 uniform mat4 Camera_Matrix;
+//gl_Pointsize
+void set_color()
+{
+	vec3 temp_nor=normalize(nor);
+	temp_nor=(Camera_Matrix*vec4(temp_nor,0.0)).xyz;
+	vec3 dir=normalize(vec3(0,0,1));
+	outColor=max(-dot(temp_nor,dir),0)*aColor;
+
+}
 void main()
 { 
 	texcoord=aTexCoord;
-	outColor=aColor;
+	set_color();	
+//outColor=aColor;
 	gl_Position =Proj*Camera_Matrix*vec4(vPosition,1);
 	
 }

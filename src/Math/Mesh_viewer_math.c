@@ -70,31 +70,31 @@ static int increase_a_step_for_combination(int m,int n,int* temp_array)
 	for(int i=0;i<m;i++)
 	{
 		temp_i=mu_array[i]+1;
-        if(temp_i<n)
-        {
-            if((i+1)<m)
-            {
-                if(temp_i>=mu_array[i+1])
-                {
-                    continue;
-                }
-            }
+        	if(temp_i<n)
+        	{
+            		if((i+1)<m)
+            		{
+                		if(temp_i>=mu_array[i+1])
+                		{
+                    			continue;
+                		}
+            		}
             
-            int* temp_mu=&(mu_array[m]);
-            memmove(temp_mu, mu_array,sizeof(int)*m);
-            temp_mu[i]=temp_i;
-            mu_array=temp_mu;
-            for(int j=0;j<i;j++)
-            {
-                mu_array[j]=j;
-            }
-            return 1;
+            		int* temp_mu=&(mu_array[m]);
+            		memmove(temp_mu, mu_array,sizeof(int)*m);
+            		temp_mu[i]=temp_i;
+            		mu_array=temp_mu;
+            		for(int j=0;j<i;j++)
+            		{
+                		mu_array[j]=j;
+            		}
+            		return 1;
 
-        }
-        else
-        {
-            return 0;
-        }
+        	}
+        	else
+        	{
+            		return 0;
+        	}
 	}
     return 0;
     
@@ -134,7 +134,7 @@ double *out_product(double *a,double *b)
     
     re[0]=a[1]*b[2]-a[2]*b[1];
     re[1]=-a[0]*b[2]+a[2]*b[0];
-    re[3]=a[0]*b[1]-a[1]*b[0];
+    re[2]=a[0]*b[1]-a[1]*b[0];
 	return re;
 }
 #undef factorial

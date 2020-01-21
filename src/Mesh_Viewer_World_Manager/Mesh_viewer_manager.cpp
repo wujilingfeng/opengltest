@@ -55,7 +55,7 @@ Node* Mesh_viewer_world_registe(Mesh_viewer_world*m,char*c)
 			int species_id=m->species_id++;
 			m->something_id[species_id]=0;
 			m->species_name_registe[species_id]=temp_c;
-            std::map<int,Mesh_viewer_something*> *s_map=new std::map<int,Mesh_view_something*>;
+            std::map<int,Mesh_viewer_something*> *s_map=new std::map<int,Mesh_viewer_something*>;
 			m->species2somethings[species_id]=s_map;
 			int *temp_id=(int*)malloc(sizeof(int));
 			*temp_id=species_id;
@@ -90,6 +90,12 @@ void Mesh_viewer_world_init(Mesh_viewer_world*m)
     node=node_reverse(node);
     free_node_value(node);
     free_node(node);
+    m->create_something=Mesh_viewer_world_create_something;
+    m->remove_something=Mesh_viewer_world_remove_something;
+    m->print_self=Mesh_viewer_world_printself;
+    m->find_species=Mesh_viewer_world_find_species;
+    m->registe=Mesh_viewer_world_registe;
+
 }
 void Mesh_viewer_world_printself(Mesh_viewer_world*mw)
 {
@@ -105,28 +111,6 @@ void Mesh_viewer_world_printself(Mesh_viewer_world*mw)
    }
 
 
-}
-void Mesh_viewer_something_init(Mesh_viewer_something*ms)
-{
-	//gldeletevertexarray
-	//gldeletebuffer
-	time_t timep;
-    struct tm *p;
-    time(&timep);
-    p = localtime(&timep); //取得当地时间
-  //  printf ("%d%d%d ", (1900+p->tm_year), (1+p->tm_mon), p->tm_mday);
- //   printf("%d:%d:%d\n", p->tm_hour, p->tm_min, p->tm_sec);
-    ms->create_date=p->tm_sec+p->tm_min*100+p->tm_hour*10000+p->tm_mday*1000000+(1+p->tm_mon)*100000000;
-   // printf("create_date:%d\n",ms->create_date);
-	ms->name=0;
-	ms->name_id=-1;
-	ms->id=-1;
-	//ms->create_date=-1;
-	ms->disappear=0;
-	ms->prop=0;
-	ms->mesh=0;
-	ms->history_avatar=0;
-	ms->evolution=0;
 }
 //返回寻找的id -1是没找到
 Node* Mesh_viewer_world_find_species(Mesh_viewer_world*mw,char* c)
@@ -205,7 +189,7 @@ Node* Mesh_viewer_world_create_something(struct Mesh_viewer_world*mw,char *c)
 			temp_c[k]=c[i+k];
 
 		}
-		Mesh_viewer_something* ms=(Mesh_view_something*)malloc(sizeof(Mesh_view_something));
+		Mesh_viewer_something* ms=(Mesh_viewer_something*)malloc(sizeof(Mesh_viewer_something));
 		Mesh_viewer_something_init(ms);
 		ms->name=temp_c;
 		ms->name_id=*((int*)iter_n->value);
@@ -282,13 +266,19 @@ Node* Mesh_viewer_from_something_evolute(Node*lis)
             value=(void*)temp_e;
         
         }
+        else if(strcmp(ms->name,"Texture")==0)
+        {
+            Mesh_viewer_texture*temp_e=(Mesh_viewer_texture*)malloc(sizeof(Mesh_viewer_texture));
+            Mesh_viewer_texture_init(temp_e);
+            value=(void*)temp_e;
+        }
 		ms->evolution=value;
 		re=node_overlying(re,value);
 		iter=(Node*)iter->Prev;
 	}
 	return node_reverse(re);
 }
-void Mesh_viewer_world_remove_something(struct Mesh_viewer_world* mw,Mesh_view_something* ms)
+void Mesh_viewer_world_remove_something(struct Mesh_viewer_world* mw,Mesh_viewer_something* ms)
 {
     std::map<int,std::map<int,Mesh_viewer_something*>*>::iterator iter=mw->species2somethings.find(ms->name_id);
     if(iter!=mw->species2somethings.end())

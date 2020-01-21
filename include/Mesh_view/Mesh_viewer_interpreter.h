@@ -12,38 +12,39 @@ extern "C"
 typedef struct Mesh_viewer_opengl_Interpreter
 {
 
-GLuint VAO;
-GLuint* Buffers;
-GLuint faces_len;
-GLuint faces_vertices_len;
-Node* node;
-ShaderInfo *shaders;
-GLuint program;
+    GLuint VAO;
+    GLuint* Buffers;
+    GLuint faces_len;
+    GLuint faces_vertices_len;
+    ShaderInfo *shaders;
+    GLuint program;
 
-Mesh_viewer_world* world;
-void *prop;
+    Mesh_viewer_world* world;
+    void (*routine_show)(struct Mesh_viewer_opengl_Interpreter*);
+    void (*render)(struct Mesh_viewer_opengl_Interpreter*);
+    void *prop;
 }Mesh_viewer_opengl_Interpreter;
 void Mesh_viewer_opengl_Interpreter_init(Mesh_viewer_opengl_Interpreter*);
 
 void init_uniform(Mesh_viewer_opengl_Interpreter*);
-void test_add_array_to_shader(Mesh_viewer_opengl_Interpreter*);
+GLuint* test_add_array_to_shader(Mesh_viewer_opengl_Interpreter*);
 void draw_elements(Mesh_viewer_opengl_Interpreter*);
 
-void add_texture_to_shader(int*,char*);
+ImageInfo* add_texture_to_shader(unsigned int*,char*);
 void prepare_mesh_viewer_world_data(Mesh_viewer_opengl_Interpreter*);
 
 void set_uniform(Mesh_viewer_opengl_Interpreter*);
 
 void display_setting();
 
-void routine_show(Mesh_viewer_opengl_Interpreter*);
+void Mesh_viewer_opengl_Interpreter_routine_show(Mesh_viewer_opengl_Interpreter*);
 
 void render_draw_elements(Mesh_viewer_opengl_Interpreter*);
 void prepare_render_data(Mesh_viewer_opengl_Interpreter*);
-void render(Mesh_viewer_opengl_Interpreter*);
-void render(Mesh_viewer_opengl_Interpreter* moi)
+void Mesh_viewer_opengl_Interpreter_render(Mesh_viewer_opengl_Interpreter*);
+
+void Mesh_viewer_opengl_Interpreter_render(Mesh_viewer_opengl_Interpreter* moi)
 {
-    printf("begin show\n");  
    Mesh_viewer_world* mw=moi->world; 
    glfwInit();
    GLFWwindow* window=glfwCreateWindow(800,600,"learnopengl",NULL,NULL);
@@ -144,19 +145,21 @@ void prepare_render_data(Mesh_viewer_opengl_Interpreter*moi)
     glBindBuffer(GL_ARRAY_BUFFER,0);
     glBindVertexArray(0);
 
-    test_add_array_to_shader(moi);
+    GLuint*texs=test_add_array_to_shader(moi);
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D,texs[0]);
+    glActiveTexture(GL_TEXTURE1);
+    glBindTexture(GL_TEXTURE_2D,texs[1]);
+
 	//printf("test:%d %d\n",rs->faces_len,rs->faces_vertices_len);
-    Node* n_iter=moi->node;
-   n_iter=node_reverse(n_iter);
-    int num_i=0;
-    while(n_iter!=0)
+    /*while(n_iter!=0)
     {
         glActiveTexture(GL_TEXTURE1+num_i);
         glBindTexture(GL_TEXTURE_2D,*((int*)(n_iter->value)));
         n_iter=(Node*)(n_iter->Prev);
         num_i++;
     
-    }
+    }*/
     free(vertices);
 }
 void render_draw_elements(Mesh_viewer_opengl_Interpreter* moi)
@@ -166,7 +169,7 @@ void render_draw_elements(Mesh_viewer_opengl_Interpreter* moi)
 
 
 }
-void routine_show(Mesh_viewer_opengl_Interpreter* moi)
+void Mesh_viewer_opengl_Interpreter_routine_show(Mesh_viewer_opengl_Interpreter* moi)
 {
    Mesh_viewer_world* mw=moi->world; 
    glfwInit();
@@ -315,9 +318,123 @@ void prepare_mesh_viewer_world_data(Mesh_viewer_opengl_Interpreter*moi)
 {
 
 	Mesh_viewer_world* mw=moi->world;
-    char names[]="faces";
-    Node* names_id=Mesh_viewer_world_find_species(mw,names);
+    char texture[]="Texture";
+    Node* names_id=mw->find_species(mw,texture);
     std::map<int,std::map<int,Mesh_viewer_something*>*>::iterator iter=mw->species2somethings.find(*((int*)(names_id->value)));
+    if(iter!=mw->species2somethings.end())
+    {
+        for(auto iter1=(iter->second)->begin();iter1!=(iter->second)->end();iter1++)
+        {
+            Mesh_viewer_something*ms=iter1->second;
+            Mesh_viewer_texture* mt=(Mesh_viewer_texture*)(ms->evolution);
+            if(ms->disappear==1||mt->image_file==0)
+            {continue;}
+            glDeleteTextures(1,&(mt->tex));
+            add_texture_to_shader(&(mt->tex),mt->image_file);
+        }
+    
+    }
+    free_node_value(names_id);
+    free_node(names_id);
+
+    char edges[]="edges";
+     names_id=mw->find_species(mw,edges);
+     iter=mw->species2somethings.find(*((int*)(names_id->value)));
+     if(iter!=mw->species2somethings.end())
+     {
+     
+        for(auto iter1=(iter->second)->begin();iter1!=(iter->second)->end();iter1++)
+        {
+           Mesh_viewer_something*ms=iter1->second;
+           Mesh_viewer_edges *me=(Mesh_viewer_edges*)(ms->evolution);
+            if(ms->disappear==1||me->Data==0||me->Data_index==0)
+            {continue;}
+            me->Buffers=(GLuint*)malloc(sizeof(GLuint));
+            int v_size=me->Data_index_rows*2;
+            
+            GLfloat* vertices=(GLfloat*)malloc(sizeof(GLfloat)*v_size*3);
+            memset(vertices,0,sizeof(GLfloat)*v_size*3);
+            GLfloat* colors=(GLfloat*)malloc(sizeof(GLfloat)*v_size*3);
+            memset(colors,0,sizeof(GLfloat)*v_size*3);
+            for(unsigned int i=0;i<me->Data_index_rows;i++)
+            {
+                int k=i*2+0;
+                for(int j=0;j<3;j++)
+                {
+                    vertices[(i*2+0)*3+j]=me->Data[(me->Data_index[k])*3+j];
+                    
+
+                }
+                k=i*2+1;
+                for(int j=0;j<3;j++)
+                {
+                    vertices[(i*2+1)*3+j]=me->Data[(me->Data_index[k])*3+j];
+                
+                }
+            }
+            //color
+            if(me->color!=0)
+            {
+                free(me->color);me->color=0;
+            }
+            if(me->color_rows==me->Data_index_rows)
+            {
+                for(unsigned int i=0;i<me->Data_index_rows;i++)
+                {
+                    for(int j=0;j<3;j++)
+                    {
+                        colors[(i*2+0)*3+j]=me->color[i*3+j];
+                        colors[(i*2+1)*3+j]=me->color[i*3+j];
+                    }   
+                }
+
+            }
+            else if(me->color_rows==me->Data_rows)
+            {
+                for(unsigned int i=0;i<me->Data_index_rows;i++)
+                {
+                    int k=i*2+0;
+                    for(int j=0;j<3;j++)
+                    {
+                        colors[k*3+j]=me->color[me->Data_index[k]*3+j];
+                    }
+                    k=i*2+1;
+                    for(int j=0;j<3;j++)
+                    {
+                        colors[k*3+j]=me->color[me->Data_index[k]*3+j];
+                    }
+                
+                }
+            }
+            glDeleteBuffers(1,me->Buffers);
+            glDeleteVertexArrays(1,&(me->VAO));
+            glGenVertexArrays(1,&(me->VAO));
+            glBindVertexArray(me->VAO);
+            glCreateBuffers(2,me->Buffers);
+            glBindBuffer(GL_ARRAY_BUFFER,me->Buffers[0]);
+            glBufferData(GL_ARRAY_BUFFER,sizeof(GLfloat)*v_size*3,vertices,GL_STATIC_DRAW);
+
+            glBindBuffer(GL_ARRAY_BUFFER,me->Buffers[1]);
+            glBufferData(GL_ARRAY_BUFFER,sizeof(GLfloat)*v_size*3,colors,GL_STATIC_DRAW);
+            glBindBuffer(GL_ARRAY_BUFFER,me->Buffers[0]);
+            glVertexAttribPointer( 0, 3, GL_FLOAT,GL_FALSE, 0, 0 );
+            glEnableVertexAttribArray( 0 );
+            glBindBuffer(GL_ARRAY_BUFFER,me->Buffers[1]);
+            glVertexAttribPointer( 1, 3, GL_FLOAT,GL_FALSE, 0, 0 ); 
+            glEnableVertexAttribArray( 1 );
+            glBindVertexArray(0);
+            free(colors);
+            free(vertices);
+        
+        }
+     
+     }
+
+    free_node_value(names_id);
+    free_node(names_id);
+    char names[]="faces";
+     names_id=Mesh_viewer_world_find_species(mw,names);
+    iter=mw->species2somethings.find(*((int*)(names_id->value)));
     if(iter!=mw->species2somethings.end())
     {
         for(auto iter1=(iter->second)->begin();iter1!=(iter->second)->end();iter1++)
@@ -325,11 +442,16 @@ void prepare_mesh_viewer_world_data(Mesh_viewer_opengl_Interpreter*moi)
             Mesh_viewer_something *ms=iter1->second;
             Mesh_viewer_faces *mf=(Mesh_viewer_faces*)(ms->evolution);
             mf->Buffers=(GLuint*)malloc(sizeof(GLuint));
+            if(mf->normal_rows>0&&mf->normal==0)
+            {
+                mf->compute_normal(mf);
+            }
+
             if(ms->disappear==1||mf->Data_index_rows==0)
             {continue;}
             //vertex array
             int v_size=0,temp_i=0;
-            for(int i=0;i<mf->Data_index_rows;i++)
+            for(unsigned int i=0;i<mf->Data_index_rows;i++)
             {
 
                 int j=mf->Data_index[temp_i];
@@ -342,11 +464,13 @@ void prepare_mesh_viewer_world_data(Mesh_viewer_opengl_Interpreter*moi)
             }
             GLfloat *vertices=(GLfloat*)malloc(sizeof(GLfloat)*v_size*3);
             GLfloat* colors=(GLfloat*)malloc(sizeof(GLfloat)*v_size*3);
+            GLfloat* normal=(GLfloat*)malloc(sizeof(GLfloat)*v_size*3);
             GLfloat* texcoords=(GLfloat*)malloc(sizeof(GLfloat)*v_size*2);
             memset(texcoords,0,sizeof(GLfloat)*v_size*2);
             memset(colors,0,sizeof(GLfloat)*v_size*3);
+            memset(normal,0,sizeof(GLfloat)*v_size*3);
             temp_i=0;v_size=0;
-            for(int i=0;i<mf->Data_index_rows;i++)
+            for(unsigned int i=0;i<mf->Data_index_rows;i++)
             {
                 int j=mf->Data_index[temp_i];
                 for(int l=0;l<(j-2);l++)
@@ -373,65 +497,163 @@ void prepare_mesh_viewer_world_data(Mesh_viewer_opengl_Interpreter*moi)
             if(mf->color!=0)
             {
                 temp_i=0;v_size=0;
-                for(int i=0;i<mf->Data_index_rows;i++)
+                if(mf->color_rows==mf->Data_index_rows)
                 {
-                    int j=mf->Data_index[temp_i];
-                    for(int l=0;l<(j-2)*3;l++)
+                    for(unsigned int i=0;i<mf->Data_index_rows;i++)
                     {
-                    
-                        for(int k=0;k<3;k++)
+                        int j=mf->Data_index[temp_i];
+                        for(int l=0;l<(j-2)*3;l++)
                         {
                     
-                            colors[v_size*3+k]=mf->color[i*3+k];
+                            for(int k=0;k<3;k++)
+                            {
+                    
+                                colors[v_size*3+k]=mf->color[i*3+k];
+                            }
+                            v_size++;
                         }
-                        v_size++;
-                    }
-                    temp_i+=(j+1);                   
-                } 
+                        temp_i+=(j+1);                   
+                    } 
+   
+                }
+                else if(mf->color_rows==mf->Data_rows)
+                {
+                    for(unsigned int i=0;i<mf->Data_index_rows;i++)
+                    {
+                        int j=mf->Data_index[temp_i];
+                        for(int l=0;l<(j-2);l++)
+                        {
+                    
+                            int temp_in=mf->Data_index[temp_i+1];
+                            for(int k=0;k<3;k++)
+                            {
+                                colors[v_size*3+k]=mf->color[temp_in*3+k];
+                            }
+                            v_size++;
+                            temp_in=mf->Data_index[temp_i+1+l+1];
+                            for(int k=0;k<3;k++)
+                            {
+                                colors[v_size*3+k]=mf->color[temp_in*3+k];
+                            }
+
+                            v_size++;
+                            temp_in=mf->Data_index[temp_i+1+l+2];
+                            for(int k=0;k<3;k++)
+                            {
+                                colors[v_size*3+k]=mf->color[temp_in*3+k];
+                            }
+
+                            v_size++;
+                        }
+                        temp_i+=(j+1);                   
+                    } 
+ 
+                }
             }
 
             //texture
-            if(mf->texture->image_file!=0&&mf->texture->each_face_texture_coord!=0)
+            if(mf->texture!=0)
             {
-                //printf("%s\n",mf->texture->image_file);
-                int * value_t=(int*)malloc(sizeof(int));
 
-                add_texture_to_shader(value_t,mf->texture->image_file); 
-                moi->node=node_overlying(moi->node,(void*)value_t);
-                Mesh_viewer_texture* texture=mf->texture;
-                temp_i=0;v_size=0;
-                for(int i=0;i<mf->Data_index_rows;i++)
+                //add_texture_to_shader(value_t,mf->texture->image_file); 
+                //moi->node=node_overlying(moi->node,(void*)value_t);
+                Mesh_viewer_texture* mt=(Mesh_viewer_texture*)(mf->texture->evolution);
+                if(mt->each_face_texture_coord!=0)
                 {
-                    int j=texture->each_face_texture_coord[temp_i];
-                    for(int l=0;l<(j-2);l++)
-                    {
-                        texcoords[v_size*2+0]=texture->each_face_texture_coord[temp_i+1+0];
-                        texcoords[v_size*2+1]=texture->each_face_texture_coord[temp_i+1+1];
-                        
-                        v_size++;
-                        texcoords[v_size*2+0]=texture->each_face_texture_coord[temp_i+1+2*(l+1)+0];
-                        texcoords[v_size*2+1]=texture->each_face_texture_coord[temp_i+1+2*(l+1)+1];
-                        v_size++;
-                        texcoords[v_size*2+0]=texture->each_face_texture_coord[temp_i+1+2*(l+2)+0];
-                        texcoords[v_size*2+1]=texture->each_face_texture_coord[temp_i+1+2*(l+2)+1];
-                        v_size++;
-                    }
-                    temp_i+=(j*2+1);                   
-                } 
+                    temp_i=0;v_size=0;
 
+                    for(unsigned int i=0;i<mf->Data_index_rows;i++)
+                    {
+                        int j=mt->each_face_texture_coord[temp_i];
+                        for(int l=0;l<(j-2);l++)
+                        {
+                            texcoords[v_size*2+0]=mt->each_face_texture_coord[temp_i+1+0];
+                            texcoords[v_size*2+1]=mt->each_face_texture_coord[temp_i+1+1];
+                        
+                            v_size++;
+                            texcoords[v_size*2+0]=mt->each_face_texture_coord[temp_i+1+2*(l+1)+0];
+                            texcoords[v_size*2+1]=mt->each_face_texture_coord[temp_i+1+2*(l+1)+1];
+                            v_size++;
+                            texcoords[v_size*2+0]=mt->each_face_texture_coord[temp_i+1+2*(l+2)+0];
+                            texcoords[v_size*2+1]=mt->each_face_texture_coord[temp_i+1+2*(l+2)+1];
+                            v_size++;
+                        } 
+                        temp_i+=(j*2+1);                   
+                    }
+                }
+
+            }
+            //normal
+            if(mf->normal!=0)
+            {
+                temp_i=0;v_size=0;
+                if(mf->normal_rows==mf->Data_index_rows)
+                {
+                    for(unsigned int i=0;i<mf->Data_index_rows;i++)
+                    {
+                        int j=mf->Data_index[temp_i];
+                        for(int l=0;l<(j-2)*3;l++)
+                        {
+                    
+                            for(int k=0;k<3;k++)
+                            {
+                    
+                                normal[v_size*3+k]=mf->normal[i*3+k];
+                            }
+                            v_size++;
+                        }
+                        temp_i+=(j+1);                   
+                    } 
+   
+                }
+                else if(mf->normal_rows==mf->Data_rows)
+                {
+                    for(unsigned int i=0;i<mf->Data_index_rows;i++)
+                    {
+                        int j=mf->Data_index[temp_i];
+                        for(int l=0;l<(j-2);l++)
+                        {
+                    
+                            int temp_in=mf->Data_index[temp_i+1];
+                            for(int k=0;k<3;k++)
+                            {
+                                normal[v_size*3+k]=mf->normal[temp_in*3+k];
+                            }
+                            v_size++;
+                            temp_in=mf->Data_index[temp_i+1+l+1];
+                            for(int k=0;k<3;k++)
+                            {
+                                normal[v_size*3+k]=mf->normal[temp_in*3+k];
+                            }
+
+                            v_size++;
+                            temp_in=mf->Data_index[temp_i+1+l+2];
+                            for(int k=0;k<3;k++)
+                            {
+                                normal[v_size*3+k]=mf->normal[temp_in*3+k];
+                            }
+
+                            v_size++;
+                        }
+                        temp_i+=(j+1);                   
+                    } 
+ 
+                } 
             }
 
             glDeleteBuffers(1,mf->Buffers);
             glDeleteVertexArrays(1,&(mf->VAO));
             glGenVertexArrays(1,&(mf->VAO));
             glBindVertexArray(mf->VAO);
-            glCreateBuffers(3,mf->Buffers);
+            glCreateBuffers(4,mf->Buffers);
             glBindBuffer(GL_ARRAY_BUFFER,mf->Buffers[0]);
             glBufferData(GL_ARRAY_BUFFER,sizeof(GLfloat)*v_size*3,vertices,GL_STATIC_DRAW);
             glBindBuffer(GL_ARRAY_BUFFER,mf->Buffers[1]);
             glBufferData(GL_ARRAY_BUFFER,sizeof(GLfloat)*v_size*3,colors,GL_STATIC_DRAW);
             glBindBuffer(GL_ARRAY_BUFFER,mf->Buffers[2]);
             glBufferData(GL_ARRAY_BUFFER,sizeof(GLfloat)*v_size*2,texcoords,GL_STATIC_DRAW);
+            glBindBuffer(GL_ARRAY_BUFFER,mf->Buffers[3]);
+            glBufferData(GL_ARRAY_BUFFER,sizeof(GLfloat)*v_size*3,normal,GL_STATIC_DRAW);
             glBindBuffer(GL_ARRAY_BUFFER,mf->Buffers[0]);
             glVertexAttribPointer( 0, 3, GL_FLOAT,GL_FALSE, 0, 0 );
             
@@ -443,43 +665,54 @@ void prepare_mesh_viewer_world_data(Mesh_viewer_opengl_Interpreter*moi)
             glBindBuffer(GL_ARRAY_BUFFER,mf->Buffers[2]);
             glVertexAttribPointer(2,2,GL_FLOAT,GL_FALSE,0,0);
             glEnableVertexAttribArray(2);
+            glBindBuffer(GL_ARRAY_BUFFER,mf->Buffers[3]);
+            glVertexAttribPointer(3,3,GL_FLOAT,GL_FALSE,0,0);
+             glEnableVertexAttribArray(3);
 
             glBindVertexArray(0);
  
             free(vertices);
             free(colors);
+            free(normal);
+            free(texcoords);
         
         }
     
     
     }
-    test_add_array_to_shader(moi);
-
-	Node* n_iter=moi->node;
-    n_iter=node_reverse(n_iter);
-    int num_i=0;
-    while(n_iter!=0)
-    {
-        glActiveTexture(GL_TEXTURE0+num_i);
-        glBindTexture(GL_TEXTURE_2D,*((int*)(n_iter->value)));
-        n_iter=(Node*)(n_iter->Prev);
-        num_i++;
-    
-    }
-    free_node_value(moi->node);
-    free_node(moi->node);
-    moi->node=0;
     free_node_value(names_id);
     free_node(names_id);
-   //printf("faces:%d\n",*((int*)(names_id->value)));
+
+    GLuint* texs= test_add_array_to_shader(moi);
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D,texs[0]);
+    glActiveTexture(GL_TEXTURE1);
+    glBindTexture(GL_TEXTURE_2D,texs[1]);
+    names_id=mw->find_species(mw,texture);
+    iter=mw->species2somethings.find(*((int*)(names_id->value)));
+    if(iter!=mw->species2somethings.end())
+    {
+        for(auto iter1=(iter->second)->begin();iter1!=(iter->second)->end();iter1++)
+        {
+            Mesh_viewer_something*ms=iter1->second;
+            Mesh_viewer_texture* mt=(Mesh_viewer_texture*)(ms->evolution);
+            if(ms->disappear==1||mt->image_file==0)
+            {continue;}
+            glActiveTexture(GL_TEXTURE2+ms->id);
+            glBindTexture(GL_TEXTURE_2D,mt->tex);
+        }
+    
+    }
+    free_node_value(names_id);
+    free_node(names_id);
+
+
 
 }
-
-
-void add_texture_to_shader(int *gl_tex_num,char*image_file)
+ImageInfo* add_texture_to_shader(unsigned int*tex,char*image_file)
 {
-    GLuint* textures=(GLuint*)malloc(sizeof(GLuint)*1);
-    glGenTextures(1,textures);
+    
+    glGenTextures(1,tex);
    
     ImageInfo image;
     image.data=(void*)stbi_load(image_file,&image.width,&image.height,&image.n,0);
@@ -491,11 +724,9 @@ void add_texture_to_shader(int *gl_tex_num,char*image_file)
     {
         printf("cant add texture\n");
     }
-    
-
-    _Texture_(&image,textures[0]);
+    _Texture_(&image,tex[0]);
     stbi_image_free(image.data);
-    *gl_tex_num=textures[0];
+    return 0;
 //先把纹理绑定一个纹理单元GL_TEXTURE0(纹理位置)
     //glActiveTexture(gl_tex_num);
     //glBindTexture(GL_TEXTURE_2D,textures[0]);
@@ -504,10 +735,34 @@ void add_texture_to_shader(int *gl_tex_num,char*image_file)
 void draw_elements(Mesh_viewer_opengl_Interpreter* moi)
 {
     Mesh_viewer_world* mw=moi->world;
-    char names[]="faces";
-    Node* names_id=Mesh_viewer_world_find_species(mw,names);
-
+    char edges[]="edges";
+    Node* names_id=mw->find_species(mw,edges);
     std::map<int,std::map<int,Mesh_viewer_something*>*>::iterator iter=mw->species2somethings.find(*((int*)(names_id->value)));
+    if(iter!=mw->species2somethings.end())
+    {
+
+       for(auto iter1=(iter->second)->begin();iter1!=(iter->second)->end();iter1++)
+       {
+             
+            Mesh_viewer_something *ms=iter1->second;
+            Mesh_viewer_edges *me=(Mesh_viewer_edges*)(ms->evolution);
+            if(ms->disappear==1||me->Data==0||me->Data_index==0)
+            {continue;}
+            int v_size=me->Data_index_rows*2;
+            glBindVertexArray(me->VAO);
+            
+            glDrawArrays(GL_TRIANGLES,0,v_size); 
+
+       
+       }
+    }
+    free_node_value(names_id);
+    free_node(names_id);
+
+    char names[]="faces";
+    names_id=Mesh_viewer_world_find_species(mw,names);
+
+    iter=mw->species2somethings.find(*((int*)(names_id->value)));
 
     if(iter!=mw->species2somethings.end())
     {
@@ -519,7 +774,7 @@ void draw_elements(Mesh_viewer_opengl_Interpreter* moi)
             if(ms->disappear==1||mf->Data_index_rows==0||mf->VAO==0||mf->Buffers==0)
             {continue;}
             int v_size=0,temp_i=0;
-            for(int i=0;i<mf->Data_index_rows;i++)
+            for(unsigned int i=0;i<mf->Data_index_rows;i++)
             {
 
                 int j=mf->Data_index[temp_i];
@@ -539,7 +794,7 @@ void draw_elements(Mesh_viewer_opengl_Interpreter* moi)
 }
 
 
-void test_add_array_to_shader(Mesh_viewer_opengl_Interpreter* moi)
+GLuint* test_add_array_to_shader(Mesh_viewer_opengl_Interpreter* moi)
 {
     Mesh_viewer_world* mw=moi->world;
     char names[]="faces";
@@ -556,7 +811,7 @@ void test_add_array_to_shader(Mesh_viewer_opengl_Interpreter* moi)
             len_rows+=mf->Data_rows;
             len_index_rows+=mf->Data_index_rows;
             int temp_i=0,j=0;
-            for(int i=0;i<mf->Data_index_rows;i++)
+            for(unsigned int i=0;i<mf->Data_index_rows;i++)
             {
                 j=mf->Data_index[temp_i];
                 temp_i+=(j+1);
@@ -570,7 +825,7 @@ void test_add_array_to_shader(Mesh_viewer_opengl_Interpreter* moi)
     {
         free_node_value(names_id);
         free_node(names_id);
-        return;
+        return 0;
     }
     ImageInfo image,image1;
     image.height=(len_rows/1000+1);
@@ -589,7 +844,7 @@ void test_add_array_to_shader(Mesh_viewer_opengl_Interpreter* moi)
             Mesh_viewer_something *ms=iter1->second;
             Mesh_viewer_faces *mf=(Mesh_viewer_faces*)(ms->evolution);
             temp_i=0;
-            for(int i=0;i<mf->Data_index_rows;i++)
+            for(unsigned int i=0;i<mf->Data_index_rows;i++)
             {
                 int k=mf->Data_index[temp_i];
                 index[temp_k]=mf->Data_index[temp_i];
@@ -604,7 +859,7 @@ void test_add_array_to_shader(Mesh_viewer_opengl_Interpreter* moi)
                 temp_i+=(k+1);
                 
             }
-            for(int i=0;i<mf->Data_rows;i++)
+            for(unsigned int i=0;i<mf->Data_rows;i++)
             {
                 for(int j=0;j<3;j++)
                 {
@@ -619,30 +874,7 @@ void test_add_array_to_shader(Mesh_viewer_opengl_Interpreter* moi)
     }
     image.data=(void*)vertices;
     image1.data=(void*)index;
-    for(int i=0;i<len_rows;i++)
-    {
-        for(int j=0;j<3;j++)
-        {
-           // vertices[i*3+j]=i*3+j;
-            printf("%lf ",vertices[i*3+j]);
-        }
-        printf("\n");
-    }
-    temp_i=0;
-    for(int i=0;i<len_index_rows;i++)
-    {
-        
-       int k=index[temp_i]; 
-        for(int j=0;j<k;j++)
-        {
-            printf("%lf  ",index[temp_i+1+j]);
-        
-        }
-
-        temp_i+=(k+1);
-        printf("\n");
-    }
-	
+    	
 	
 	moi->faces_len=len_index;
 	moi->faces_vertices_len=len_rows;
@@ -650,12 +882,6 @@ void test_add_array_to_shader(Mesh_viewer_opengl_Interpreter* moi)
     glGenTextures(2,textures);
     _Texture_Array_GL_FLOAT(&image,textures[0]);
     _Texture_Array_GL_R32UI(&image1,textures[1]);
-    int *value=(int*)malloc(sizeof(int));
-    *value=textures[0];
-    moi->node=node_overlying(moi->node,(void*)value);
-    value=(int*)malloc(sizeof(int));
-    *value=textures[1]; 
-    moi->node=node_overlying(moi->node,(void*)value);
     free(vertices);
     free(index);
     /*glActiveTexture(GL_TEXTURE1);
@@ -665,7 +891,7 @@ void test_add_array_to_shader(Mesh_viewer_opengl_Interpreter* moi)
     */
     free_node_value(names_id);
     free_node(names_id);
-
+    return textures;
 }
 
 void init_uniform(Mesh_viewer_opengl_Interpreter* moi)
@@ -679,8 +905,7 @@ void init_uniform(Mesh_viewer_opengl_Interpreter* moi)
     //printf("pro:%lf\n",(float)())
     Mesh_viewer_camera* mc=0;
     char camera[]="Camera";
-    Node*id=Mesh_viewer_world_find_species(mw,camera);
-    
+    Node*id=Mesh_viewer_world_find_species(mw,camera); 
     std::map<int,std::map<int,Mesh_viewer_something*>*>::iterator iter=mw->species2somethings.find(*((int*)(id->value)));
     for(auto iter1=iter->second->begin();iter1!=iter->second->end();iter1++)
     {
@@ -713,17 +938,17 @@ void init_uniform(Mesh_viewer_opengl_Interpreter* moi)
     //printf("resolution:%lf %lf\n",a[0],a[1]);
     glUniform2fv(glGetUniformLocation(program,"iResolution"),1,a);
 //把像素着色器的纹理绑定纹理单元GL_TEXURE0（也就是纹理位置）
-    glUniform1i(glGetUniformLocation(program,"ourTexture"),0);
-    glUniform1i(glGetUniformLocation(program,"Faces_Vertices"),1);
-    glUniform1i(glGetUniformLocation(program,"Faces_Index"),2);
+    glUniform1i(glGetUniformLocation(program,"Faces_Vertices"),0);
+    glUniform1i(glGetUniformLocation(program,"Faces_Index"),1);
+
+    glUniform1i(glGetUniformLocation(program,"ourTexture"),2);
 	
-	if(mw->prop!=0)
-	{
-        //printf("")
+	
+        printf("heere%d\n",moi->faces_vertices_len);
         glUniform1f(glGetUniformLocation(program,"Faces_len"),(float)(moi->faces_len));
         glUniform1f(glGetUniformLocation(program,"Faces_Vertices_rows"),(float)(moi->faces_vertices_len));
         //glUniform1f(glGetUniformLocation(program,""))
-    }
+    
 }
 
 void Mesh_viewer_opengl_Interpreter_init(Mesh_viewer_opengl_Interpreter*moi)
@@ -754,10 +979,11 @@ void Mesh_viewer_opengl_Interpreter_init(Mesh_viewer_opengl_Interpreter*moi)
     moi->Buffers=0;
     moi->faces_len=0;
     moi->faces_vertices_len=0;
-    moi->node=0;
 
     moi->world=0;
     moi->prop=0;
+	moi->routine_show=Mesh_viewer_opengl_Interpreter_routine_show;
+	moi->render=Mesh_viewer_opengl_Interpreter_render;
 
 
 }
