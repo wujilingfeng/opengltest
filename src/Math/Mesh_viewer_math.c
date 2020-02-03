@@ -61,7 +61,7 @@ int * map_reverse_order_to_pailie(int* r,int n)
     }
     return re;
 }
-//compute the statioin pick m elements from n elements
+//compute the station pick m elements from n elements
 static int increase_a_step_for_combination(int m,int n,int* temp_array)
 {
     

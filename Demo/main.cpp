@@ -13,7 +13,7 @@ int main(int argc,char*argv[])
     test_matrix(); 
         //初始化GLFW
     test_manager();
-       return 0;
+    return 0;
 }
 void test_matrix()
 {
@@ -60,6 +60,7 @@ void test_intera(Mesh_viewer_world* mw)
     mi->representation=(void*)ma;
     mi->cursor_position_callback=Mesh_viewer_Arcroll_cursor_position_callback;
     mi->scroll_callback=Mesh_viewer_Arcroll_scroll_callback;
+    mi->mouse_button_callback=Mesh_viewer_Arcroll_mouse_button_callback;
     free_node_value(id);
     free_node(id);
     free_node(n);

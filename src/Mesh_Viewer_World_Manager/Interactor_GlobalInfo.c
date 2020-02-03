@@ -4,6 +4,7 @@ void GlobalInfo_init(Interactor_GlobalInfo *ginf)
 {
 	ginf->prop=0;
 	ginf->window=0;
+	ginf->pick_something=0;
 	ginf->mouse_coord=(float*)malloc(sizeof(float)*2);
 	ginf->resolution=(int*)malloc(sizeof(int)*2); 
 	ginf->resolution[0]=800;
@@ -13,8 +14,8 @@ void GlobalInfo_init(Interactor_GlobalInfo *ginf)
 	{
 		ginf->readpixelcolor[i]=0;
 	}
-
-
+	ginf->key_action=0;
+	ginf->mouse_action=0;
 }
 void Mesh_viewer_Intera_init(Mesh_viewer_Intera* m_v_i)
 {
@@ -32,8 +33,6 @@ void Mesh_viewer_Intera_init(Mesh_viewer_Intera* m_v_i)
 }
 int Mesh_viewer_Intera_default_compute_state(Mesh_viewer_Intera* mi)
 {
-
-
 	mi->state=-1;
 	return mi->state;
 }

@@ -54,6 +54,37 @@ void mesh_viewer_cursor_position_callback(GLFWwindow* window,double x,double y)
     return;
 
 }
+static void Mesh_viewer_decode_pickupinfo(Mesh_viewer_world* mw,Interactor_GlobalInfo* g_info)
+{
+    if(g_info->key==MESH_VIEWER_KEY_CONTROL&&g_info->key_action==1)
+    {
+        char faces[]="faces";
+        int id=g_info->readpixelcolor[0]*255*255+g_info->readpixelcolor[1]*255+g_info->readpixelcolor[2];
+        Node* names_id=mw->find_species(mw,faces);
+        std::map<int,std::map<int,Mesh_viewer_something*>*>::iterator iter=mw->species2somethings.find(*((int*)(names_id->value)));
+        int sum=0;
+        for(auto iter1=iter->second->begin();iter1!=iter->second->end();iter1++)
+        {
+            sum+=((Mesh_viewer_faces*)(iter1->second->evolution))->Data_index_rows;
+            if(id<sum)
+            {
+                g_info->pick_something=(void*)(iter1->second);
+                break;
+            }
+        
+        
+        }
+        free(names_id->value);
+        free_node(names_id);
+
+    }
+    else
+    {
+        g_info->pick_something=0;
+    
+    }
+    }
+
 void mesh_viewer_mouse_button_callback(GLFWwindow* window,int button,int action,int mods)
 {
     
@@ -72,9 +103,12 @@ void mesh_viewer_mouse_button_callback(GLFWwindow* window,int button,int action,
             //printf("\n");
         }
     }
+    
     g_info->button=button;
     g_info->mouse_action=action;
 	g_info->mouse_mods=mods;
+
+    Mesh_viewer_decode_pickupinfo(mw,g_info);  
     char intera[]="Intera";
     Node* id=Mesh_viewer_world_find_species(mw,intera);
     
@@ -97,7 +131,6 @@ void mesh_viewer_mouse_button_callback(GLFWwindow* window,int button,int action,
     }
     free_node_value(id);
     free_node(id);
-        
     return;
 }
 void mesh_viewer_framebuffer_size_callback(GLFWwindow* window,int w,int h)

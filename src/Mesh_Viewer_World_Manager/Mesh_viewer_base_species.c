@@ -148,7 +148,8 @@ void Mesh_viewer_faces_init(Mesh_viewer_faces* mf)
 	mf->compute_normal=Mesh_viewer_faces_compute_normal;
     mf->random_color=Mesh_viewer_faces_random_color;
 	mf->texture=0;
-	
+	mf->mat=(Matrix4x4*)malloc(sizeof(Matrix4x4));
+	Matrix4x4_init_float(mf->mat);
    // mf->texture=(Mesh_viewer_texture*)malloc(sizeof(Mesh_viewer_texture));
    // Mesh_viewer_texture_init(mf->texture);
 
@@ -177,7 +178,9 @@ void Mesh_viewer_points_init(struct Mesh_viewer_points* mp)
     mp->evolution=0;
     mp->Data_index_rows=0;
     mp->Data_rows=0;
-
+	mp->mat=(Matrix4x4*)malloc(sizeof(Matrix4x4));
+Matrix4x4_init_float(mp->mat);
+	
 }
 void Mesh_viewer_edges_init(struct Mesh_viewer_edges* me)
 {
@@ -190,6 +193,8 @@ void Mesh_viewer_edges_init(struct Mesh_viewer_edges* me)
     me->Data_index_rows=0;
     me->Data_rows=0;
 	me->color_rows=0;
+	me->mat=(Matrix4x4*)malloc(sizeof(Matrix4x4));
+Matrix4x4_init_float(me->mat);
 
 }
 

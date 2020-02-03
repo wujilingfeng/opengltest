@@ -28,7 +28,8 @@ typedef struct Interactor_GlobalInfo{
 	int key_mods;
 	int mouse_mods;
 	unsigned char *readpixelcolor;
-	void* window;	
+	void* window;
+	void* pick_something;
 	void *prop;
 	
 	

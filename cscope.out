@@ -1,4 +1,4 @@
-cscope 15 $HOME/Documents/c++/Mesh_viewer -q 0000007058 0001026688
+cscope 15 $HOME/Documents/c++/Mesh_viewer -q 0000007062 0001028348
 	@Demo/Arcroll.cpp
 
 1 
@@ -491,6 +491,44 @@ y
 	}
 }
 
+83 
+	$Mesh_v›w”_ArüÞl_mou£_bu‰Ú_ÿÎback
+(
+Mesh_v›w”_IÁ”a
+* 
+mi
+)
+
+85 
+IÁ”aùÜ_Glob®Info
+* 
+g_šfo
+=
+mi
+->g_info;
+
+86 if(
+g_šfo
+->
+key
+==
+MESH_VIEWER_KEY_CONTROL
+&&g_šfo->
+key_aùiÚ
+==1)
+
+88 
+id
+=
+g_šfo
+->
+»adpix–cÞÜ
+[0]*255*255+g_info->readpixelcolor[1]*255+g_info->readpixelcolor[2];
+
+95 
+	}
+}
+
 	@Demo/include/Arcroll.h
 
 1 #iâdeà
@@ -878,13 +916,15 @@ Mesh_v›w”_ArüÞl_süÞl_ÿÎback
 ;
 
 63 
-	`ä“_node_v®ue
-(
-id
-);
+mi
+->
+mou£_bu‰Ú_ÿÎback
+=
+Mesh_v›w”_ArüÞl_mou£_bu‰Ú_ÿÎback
+;
 
 64 
-	`ä“_node
+	`ä“_node_v®ue
 (
 id
 );
@@ -892,34 +932,40 @@ id
 65 
 	`ä“_node
 (
-n
+id
 );
 
 66 
+	`ä“_node
+(
+n
+);
+
+67 
 	}
 }
 
-67 
+68 
 	$‹¡_mªag”
 ()
 
-69 
+70 
 Mesh_v›w”_wÜld
  
 mw
 ;
 
-70 
+71 
 	`Mesh_v›w”_wÜld_š™
 (&
 mw
 );
 
-71 
+72 
 ch
 []="faces";
 
-72 
+73 
 Node
 * 
 n
@@ -931,7 +977,7 @@ mw
 ch
 );
 
-74 
+75 
 Mesh_v›w”_som‘hšg
 * 
 ms
@@ -941,7 +987,7 @@ n
 v®ue
 );
 
-76 
+77 
 Mesh_v›w”_çûs
 * 
 mf
@@ -951,7 +997,7 @@ ms
 evÞutiÚ
 );
 
-77 
+78 
 	`ä“_node
 (
 	`node_»v”£
@@ -959,7 +1005,7 @@ evÞutiÚ
 n
 ));
 
-78 
+79 
 mf
 ->
 cÞÜ_rows
@@ -967,143 +1013,143 @@ cÞÜ_rows
 nÜm®_rows
 =12;
 
-79 *
+80 *
 v
 =(*)
 	`m®loc
 (()*8*3);
 
-80 *
+81 *
 f
 =(*)
 	`m®loc
 (()*4*12);
 
-81 *
+82 *
 ‹xcoÜds
 =(*)
 	`m®loc
 (()*12*7);
 
-82 
+83 
 	`mem£t
 (
 ‹xcoÜds
 ,0,()*12*7);
 
-83 
+84 
 mf
 ->
 	`¿ndom_cÞÜ
 (mf);
 
-85 
+86 
 v
 [0*3+0]=-0.500000;v[0*3+1]=-0.500000;v[0*3+2]=0.500000;
 
-86 
+87 
 v
 [1*3+0]=0.500000; v[1*3+1]=-0.500000; v[1*3+2]=0.500000;
 
-87 
+88 
 v
 [2*3+0]=-0.500000;v[2*3+1]= 0.500000;v[2*3+2] =0.500000;
 
-88 
+89 
 v
 [3*3+0]=0.500000;v[3*3+1]=0.500000;v[3*3+2] =0.500000;
 
-89 
+90 
 v
 [4*3+0]=-0.500000;v[4*3+1]= 0.500000;v[4*3+2]= -0.500000;
 
-90 
+91 
 v
 [5*3+0]=0.500000;v[5*3+1]= 0.500000;v[5*3+2]= -0.500000;
 
-91 
+92 
 v
 [6*3+0]=-0.500000;v[6*3+1]= -0.500000;v[6*3+2]= -0.500000;
 
-92 
+93 
 v
 [7*3+0]=0.500000;v[7*3+1]= -0.500000;v[7*3+2]= -0.500000;
 
-93 
+94 
 f
 [0*4+0]=3; f[0*4+1]=3;f[0*4+2]=2;f[0*4+3]=1;
 
-94 
+95 
 f
 [1*4+0]=3; f[1*4+1]=1;f[1*4+2]=2;f[1*4+3]=0;
 
-95 
+96 
 f
 [2*4+0]=3; f[2*4+1]=5;f[2*4+2]=4;f[2*4+3]=3;
 
-96 
+97 
 f
 [3*4+0]=3; f[3*4+1]=3;f[3*4+2]=4;f[3*4+3]=2;
 
-97 
+98 
 f
 [4*4+0]=3; f[4*4+1]=7;f[4*4+2]=6;f[4*4+3]=5;
 
-98 
+99 
 f
 [5*4+0]=3; f[5*4+1]=5;f[5*4+2]=6;f[5*4+3]=4;
 
-99 
+100 
 f
 [6*4+0]=3; f[6*4+1]=1;f[6*4+2]=0;f[6*4+3]=7;
 
-100 
+101 
 f
 [7*4+0]=3; f[7*4+1]=7;f[7*4+2]=0;f[7*4+3]=6;
 
-101 
+102 
 f
 [8*4+0]=3; f[8*4+1]=5;f[8*4+2]=3;f[8*4+3]=7;
 
-102 
+103 
 f
 [9*4+0]=3; f[9*4+1]=7;f[9*4+2]=3;f[9*4+3]=1;
 
-103 
+104 
 f
 [10*4+0]=3; f[10*4+1]=2;f[10*4+2]=4;f[10*4+3]=0;
 
-104 
+105 
 f
 [11*4+0]=3;f[11*4+1]=0;f[11*4+2]=4;f[11*4+3]=6;
 
-106 
+107 
 i
 =0;i<12;i++)
 
-108 
+109 
 ‹xcoÜds
 [
 i
 *7]=3;
 
-115 
+116 
 ‹xcoÜds
 [7]=3;
 
-116 
+117 
 ‹xcoÜds
 [8]=1.0;texcoords[9]=0.0;
 
-117 
+118 
 ‹xcoÜds
 [10]=0.0,texcoords[11]=1.0;
 
-118 
+119 
 ‹xcoÜds
 [12]=1.0;texcoords[13]=1.0;
 
-119 
+120 
 mf
 ->
 D©a
@@ -1111,7 +1157,7 @@ D©a
 v
 ;
 
-120 
+121 
 mf
 ->
 D©a_šdex
@@ -1119,23 +1165,23 @@ D©a_šdex
 f
 ;
 
-121 
+122 
 mf
 ->
 D©a_rows
 =8;
 
-122 
+123 
 mf
 ->
 D©a_šdex_rows
 =12;
 
-123 
+124 
 ‹xtu»
 []="Texture";
 
-124 
+125 
 n
 =
 mw
@@ -1145,7 +1191,7 @@ mw
 ‹xtu»
 );
 
-125 
+126 
 ms
 =(
 Mesh_v›w”_som‘hšg
@@ -1155,13 +1201,13 @@ n
 v®ue
 );
 
-126 
+127 
 	`ä“_node
 (
 n
 );
 
-127 
+128 
 Mesh_v›w”_‹xtu»
 *
 mt
@@ -1171,7 +1217,7 @@ ms
 evÞutiÚ
 );
 
-128 
+129 
 mf
 ->
 ‹xtu»
@@ -1179,7 +1225,7 @@ mf
 ms
 ;
 
-129 
+130 
 mt
 ->
 image_fže
@@ -1187,7 +1233,7 @@ image_fže
 	`m®loc
 (()*20);
 
-130 
+131 
 	`¡rýy
 (
 mt
@@ -1195,7 +1241,7 @@ mt
 image_fže
 ,"linyueru.jpg");
 
-131 
+132 
 mt
 ->
 —ch_çû_‹xtu»_coÜd
@@ -1203,11 +1249,11 @@ mt
 ‹xcoÜds
 ;
 
-132 
+133 
 ÿm”a
 []="Camera";
 
-133 
+134 
 n
 =
 	`Mesh_v›w”_wÜld_ü—‹_som‘hšg
@@ -1217,7 +1263,7 @@ mw
 ÿm”a
 );
 
-134 
+135 
 ms
 =(
 Mesh_v›w”_som‘hšg
@@ -1227,7 +1273,7 @@ n
 v®ue
 );
 
-135 
+136 
 Mesh_v›w”_ÿm”a
 * 
 mc
@@ -1237,13 +1283,13 @@ ms
 evÞutiÚ
 );
 
-136 
+137 
 mc
 ->
 is_usšg
 =1;
 
-137 
+138 
 M©rix4x4
 * 
 p
@@ -1259,7 +1305,7 @@ g_šfo
 »sÞutiÚ
 [0])/()(mw.g_info->resolution[1]),0.5f,200.0f);
 
-138 
+139 
 	`M©rix4x4_cÝy_d©a_æßt
 (
 mc
@@ -1269,31 +1315,31 @@ Proj
 p
 );
 
-139 
+140 
 	`M©rix4x4_ä“
 (
 p
 );
 
-142 
+141 
 	`ä“_node
 (
 n
 );
 
-143 
+142 
 	`‹¡_š‹¿
 (&
 mw
 );
 
-144 
+143 
 	`Mesh_v›w”_wÜld_´št£lf
 (&
 mw
 );
 
-145 
+144 
 	`´štf
 ("GLFW_REPEAT:%d,GLFW_MOD_CONTROL:%d,GLFW_MOD_SHIFT:%d GLFW_MOD_ALT:%d GLFW_MOD_SUPER:%d\n",
 GLFW_REPEAT
@@ -1307,19 +1353,19 @@ GLFW_MOD_ALT
 GLFW_MOD_SUPER
 );
 
-146 
+145 
 Mesh_v›w”_Ý’gl_IÁ”´‘”
  
 moi
 ;
 
-147 
+146 
 	`Mesh_v›w”_Ý’gl_IÁ”´‘”_š™
 (&
 moi
 );
 
-148 
+147 
 moi
 .
 wÜld
@@ -1327,13 +1373,13 @@ wÜld
 mw
 ;
 
-149 
+148 
 moi
 .
 	`routše_show
 (&moi);
 
-152 
+151 
 	}
 }
 
@@ -8101,15 +8147,19 @@ mou£_mods
 wšdow
 ;
 
-32 *
+32 * 
+pick_som‘hšg
+;
+
+33 *
 ´Ý
 ;
 
-35 }
+36 }
 	tIÁ”aùÜ_Glob®Info
 ;
 
-36 
+37 
 Glob®Info_š™
 (
 IÁ”aùÜ_Glob®Info
@@ -8117,87 +8167,87 @@ IÁ”aùÜ_Glob®Info
 gšf
 );
 
-37 
+38 
 	sMesh_v›w”_IÁ”a
 
 
-39 
+40 
 ¡©e
 ;
 
-40 
+41 
 IÁ”aùÜ_Glob®Info
 * 
 g_šfo
 ;
 
-41 (*
+42 (*
 compu‹_¡©e
 )(
 Mesh_v›w”_IÁ”a
 * );
 
-42 (*
+43 (*
 cursÜ_pos™iÚ_ÿÎback
 )(
 Mesh_v›w”_IÁ”a
 *);
 
-43 (*
+44 (*
 mou£_bu‰Ú_ÿÎback
 )(
 Mesh_v›w”_IÁ”a
 *);
 
-44 (*
+45 (*
 äamebufãr_size_ÿÎback
 )(
 Mesh_v›w”_IÁ”a
 *);
 
-45 (*
+46 (*
 key_ÿÎback
 )(
 Mesh_v›w”_IÁ”a
 *);
 
-46 (*
+47 (*
 süÞl_ÿÎback
 )(
 Mesh_v›w”_IÁ”a
 *,,);
 
-47 (*
+48 (*
 ªim©iÚ
 )(
 Mesh_v›w”_IÁ”a
 *);
 
-48 *
+49 *
 ´Ý
 ;
 
-49 *
+50 *
 »´e£Á©iÚ
 ;
 
-50 }
+51 }
 	tMesh_v›w”_IÁ”a
 ;
 
-51 
+52 
 Mesh_v›w”_IÁ”a_deçuÉ_compu‹_¡©e
 (
 Mesh_v›w”_IÁ”a
 *);
 
-52 
+53 
 Mesh_v›w”_IÁ”a_š™
 (
 Mesh_v›w”_IÁ”a
 *);
 
-54 #ifdeà
+55 #ifdeà
 __ýlu¥lus
 
 
@@ -8382,144 +8432,156 @@ Mesh_v›w”_çûs
 *);
 
 48 
+M©rix4x4
+ *
+m©
+;
+
+49 
 Mesh_v›w”_som‘hšg
 * 
 ‹xtu»
 ;
 
-49 }
+50 }
 	tMesh_v›w”_çûs
 ;
 
-50 
+51 
 Mesh_v›w”_çûs_compu‹_nÜm®
 (
 Mesh_v›w”_çûs
 *);
 
-51 
+52 
 Mesh_v›w”_çûs_¿ndom_cÞÜ
 (
 Mesh_v›w”_çûs
 *);
 
-52 
+53 
 Mesh_v›w”_çûs_š™
 (
 Mesh_v›w”_çûs
 *);
 
-53 
+54 
 	sMesh_v›w”_ÿm”a
 
 
-55 
+56 
 M©rix4x4
 * 
 m©rix
 ;
 
-56 
+57 
 M©rix4x4
 * 
 m©rix_šv”£
 ;
 
-57 
+58 
 M©rix4x4
 * 
 Proj
 ;
 
-58 
+59 
 is_usšg
 ;
 
-59 
+60 
 foÿl_di¡ªû
 ;
 
-60 * 
+61 * 
 ´Ý
 ;
 
-62 }
+63 }
 	tMesh_v›w”_ÿm”a
 ;
 
-63 
+64 
 Mesh_v›w”_ÿm”a_š™
 (
 Mesh_v›w”_ÿm”a
 *);
 
-65 
+66 
 	sMesh_v›w”_pošts
 
 
-67 *
+68 *
 D©a
 ,*
 cÞÜ
 ;
 
-68 * 
+69 * 
 D©a_šdex
 ;
 
-69 
+70 
 VAO
 ,*
 Bufãrs
 ;
 
-70 
+71 
 D©a_šdex_rows
 ;
 
-71 
+72 
 D©a_rows
 ;
 
-72 *
+73 *
 ´Ý
 ;
 
-73 * 
+74 * 
 evÞutiÚ
 ;
 
-74 }
+75 
+M©rix4x4
+* 
+m©
+;
+
+76 }
 	tMesh_v›w”_pošts
 ;
 
-75 
+77 
 Mesh_v›w”_pošts_š™
 (
 Mesh_v›w”_pošts
 *);
 
-77 
+79 
 	sMesh_v›w”_edges
 
 
-79 *
+81 *
 D©a
 ,*
 cÞÜ
 ;
 
-80 * 
+82 * 
 D©a_šdex
 ;
 
-81 
+83 
 VAO
 ,*
 Bufãrs
 ;
 
-82 
+84 
 D©a_šdex_rows
 ,
 D©a_rows
@@ -8527,25 +8589,31 @@ D©a_rows
 cÞÜ_rows
 ;
 
-83 *
+85 *
 ´Ý
 ;
 
-84 * 
+86 * 
 evÞutiÚ
 ;
 
-86 }
+87 
+M©rix4x4
+* 
+m©
+;
+
+88 }
 	tMesh_v›w”_edges
 ;
 
-87 
+89 
 Mesh_v›w”_edges_š™
 (
 Mesh_v›w”_edges
 *);
 
-89 #ifdeà
+91 #ifdeà
 __ýlu¥lus
 
 
@@ -49718,12 +49786,18 @@ wšdow
 7 
 gšf
 ->
+pick_som‘hšg
+=0;
+
+8 
+gšf
+->
 mou£_coÜd
 =(*)
 	`m®loc
 (()*2);
 
-8 
+9 
 gšf
 ->
 »sÞutiÚ
@@ -49731,19 +49805,19 @@ gšf
 	`m®loc
 (()*2);
 
-9 
+10 
 gšf
 ->
 »sÞutiÚ
 [0]=800;
 
-10 
+11 
 gšf
 ->
 »sÞutiÚ
 [1]=600;
 
-11 
+12 
 gšf
 ->
 »adpix–cÞÜ
@@ -49751,11 +49825,11 @@ gšf
 	`m®loc
 (()*36);
 
-12 
+13 
 i
 =0;i<36;i++)
 
-14 
+15 
 gšf
 ->
 »adpix–cÞÜ
@@ -49763,11 +49837,23 @@ gšf
 i
 ]=0;
 
+17 
+gšf
+->
+key_aùiÚ
+=0;
+
 18 
+gšf
+->
+mou£_aùiÚ
+=0;
+
+19 
 	}
 }
 
-19 
+20 
 	$Mesh_v›w”_IÁ”a_š™
 (
 Mesh_v›w”_IÁ”a
@@ -49775,31 +49861,31 @@ Mesh_v›w”_IÁ”a
 m_v_i
 )
 
-21 
+22 
 m_v_i
 ->
 ¡©e
 =-1;
 
-22 
+23 
 m_v_i
 ->
 ´Ý
 =0;
 
-23 
+24 
 m_v_i
 ->
 »´e£Á©iÚ
 =0;
 
-24 
+25 
 m_v_i
 ->
 g_šfo
 =0;
 
-25 
+26 
 m_v_i
 ->
 compu‹_¡©e
@@ -49807,47 +49893,47 @@ compu‹_¡©e
 Mesh_v›w”_IÁ”a_deçuÉ_compu‹_¡©e
 ;
 
-26 
+27 
 m_v_i
 ->
 cursÜ_pos™iÚ_ÿÎback
 =0;
 
-27 
+28 
 m_v_i
 ->
 mou£_bu‰Ú_ÿÎback
 =0;
 
-28 
+29 
 m_v_i
 ->
 äamebufãr_size_ÿÎback
 =0;
 
-29 
+30 
 m_v_i
 ->
 key_ÿÎback
 =0;
 
-30 
+31 
 m_v_i
 ->
 süÞl_ÿÎback
 =0;
 
-31 
+32 
 m_v_i
 ->
 ªim©iÚ
 =0;
 
-32 
+33 
 	}
 }
 
-33 
+34 
 	$Mesh_v›w”_IÁ”a_deçuÉ_compu‹_¡©e
 (
 Mesh_v›w”_IÁ”a
@@ -49855,19 +49941,19 @@ Mesh_v›w”_IÁ”a
 mi
 )
 
-37 
+36 
 mi
 ->
 ¡©e
 =-1;
 
-38  
+37  
 mi
 ->
 ¡©e
 ;
 
-39 
+38 
 	}
 }
 
@@ -50583,11 +50669,29 @@ mf
 ‹xtu»
 =0;
 
-155 
+151 
+mf
+->
+m©
+=(
+M©rix4x4
+*)
+	`m®loc
+((Matrix4x4));
+
+152 
+	`M©rix4x4_š™_æßt
+(
+mf
+->
+m©
+);
+
+156 
 	}
 }
 
-157 
+158 
 	$Mesh_v›w”_ÿm”a_š™
 (
 Mesh_v›w”_ÿm”a
@@ -50595,7 +50699,7 @@ Mesh_v›w”_ÿm”a
 mc
 )
 
-159 
+160 
 mc
 ->
 m©rix
@@ -50604,26 +50708,26 @@ M©rix4x4
 *)
 	`m®loc
 ((Matrix4x4));
-
-160 
-	`M©rix4x4_š™_æßt
-(
-mc
-->
-m©rix
-);
 
 161 
+	`M©rix4x4_š™_æßt
+(
 mc
 ->
-m©rix_šv”£
-=(
-M©rix4x4
-*)
-	`m®loc
-((Matrix4x4));
+m©rix
+);
 
 162 
+mc
+->
+m©rix_šv”£
+=(
+M©rix4x4
+*)
+	`m®loc
+((Matrix4x4));
+
+163 
 	`M©rix4x4_š™_æßt
 (
 mc
@@ -50631,7 +50735,7 @@ mc
 m©rix_šv”£
 );
 
-163 
+164 
 mc
 ->
 Proj
@@ -50641,7 +50745,7 @@ M©rix4x4
 	`m®loc
 ((Matrix4x4));
 
-164 
+165 
 	`M©rix4x4_š™_æßt
 (
 mc
@@ -50649,29 +50753,29 @@ mc
 Proj
 );
 
-165 
+166 
 mc
 ->
 ´Ý
 =0;
 
-166 
+167 
 mc
 ->
 is_usšg
 =0;
 
-167 
+168 
 mc
 ->
 foÿl_di¡ªû
 =1;
 
-169 
+170 
 	}
 }
 
-170 
+171 
 	$Mesh_v›w”_pošts_š™
 (
 Mesh_v›w”_pošts
@@ -50679,7 +50783,7 @@ Mesh_v›w”_pošts
 mp
 )
 
-172 
+173 
 mp
 ->
 D©a
@@ -50687,53 +50791,71 @@ D©a
 cÞÜ
 =0;
 
-173 
+174 
 mp
 ->
 D©a_šdex
 =0;
 
-174 
+175 
 mp
 ->
 VAO
 =0;
 
-175 
+176 
 mp
 ->
 Bufãrs
 =0;
 
-176 
+177 
 mp
 ->
 ´Ý
 =0;
 
-177 
+178 
 mp
 ->
 evÞutiÚ
 =0;
 
-178 
+179 
 mp
 ->
 D©a_šdex_rows
 =0;
 
-179 
+180 
 mp
 ->
 D©a_rows
 =0;
 
 181 
+mp
+->
+m©
+=(
+M©rix4x4
+*)
+	`m®loc
+((Matrix4x4));
+
+182 
+	`M©rix4x4_š™_æßt
+(
+mp
+->
+m©
+);
+
+184 
 	}
 }
 
-182 
+185 
 	$Mesh_v›w”_edges_š™
 (
 Mesh_v›w”_edges
@@ -50741,7 +50863,7 @@ Mesh_v›w”_edges
 me
 )
 
-184 
+187 
 me
 ->
 D©a
@@ -50749,55 +50871,73 @@ D©a
 cÞÜ
 =0;
 
-185 
+188 
 me
 ->
 D©a_šdex
 =0;
 
-186 
+189 
 me
 ->
 VAO
 =0;
 
-187 
+190 
 me
 ->
 Bufãrs
 =0;
 
-188 
+191 
 me
 ->
 ´Ý
 =0;
 
-189 
+192 
 me
 ->
 evÞutiÚ
 =0;
 
-190 
+193 
 me
 ->
 D©a_šdex_rows
 =0;
 
-191 
+194 
 me
 ->
 D©a_rows
 =0;
 
-192 
+195 
 me
 ->
 cÞÜ_rows
 =0;
 
-194 
+196 
+me
+->
+m©
+=(
+M©rix4x4
+*)
+	`m®loc
+((Matrix4x4));
+
+197 
+	`M©rix4x4_š™_æßt
+(
+me
+->
+m©
+);
+
+199 
 	}
 }
 
@@ -53065,107 +53205,53 @@ id
 	}
 }
 
-57 
-	$mesh_v›w”_mou£_bu‰Ú_ÿÎback
+57 
+	$Mesh_v›w”_decode_pickupšfo
 (
-GLFWwšdow
-* 
-wšdow
-,
-bu‰Ú
-,
-aùiÚ
-,
-mods
-)
-
-60 
 Mesh_v›w”_wÜld
 * 
 mw
-=(Mesh_v›w”_wÜld*)(
-	`glfwG‘WšdowU£rPoš‹r
-(
-wšdow
-));
-
-61 
+,
 IÁ”aùÜ_Glob®Info
 * 
 g_šfo
-=
-mw
-->g_info;
-
-62 
-	`glR—dPix–s
-(
-g_šfo
-->
-mou£_coÜd
-[0],g_šfo->
-»sÞutiÚ
-[1]-g_šfo->mou£_coÜd[1],3,3,
-GL_RGBA
-,
-GL_UNSIGNED_BYTE
-,g_šfo->
-»adpix–cÞÜ
-);
-
-64 if(
-aùiÚ
-==
-MESH_VIEWER_PRESS
 )
 
-66 
-i
-=0;i<9;i++)
-
-68 
-j
-=0;j<4;j++)
-
-75 
+59 if(
 g_šfo
 ->
-bu‰Ú
-=button;
+key
+==
+MESH_VIEWER_KEY_CONTROL
+&&g_šfo->
+key_aùiÚ
+==1)
 
-76 
-g_šfo
-->
-mou£_aùiÚ
-=
-aùiÚ
-;
+61 
+çûs
+[]="faces";
 
-77 
-g_šfo
-->
-mou£_mods
-=
-mods
-;
-
-78 
-š‹¿
-[]="Intera";
-
-79 
-Node
-* 
+62 
 id
 =
-	`Mesh_v›w”_wÜld_fšd_¥ec›s
-(
+g_šfo
+->
+»adpix–cÞÜ
+[0]*255*255+g_info->readpixelcolor[1]*255+g_info->readpixelcolor[2];
+
+63 
+Node
+* 
+Çmes_id
+=
 mw
-,
-š‹¿
+->
+	`fšd_¥ec›s
+(mw,
+çûs
 );
 
-81 
+64 
 ¡d
 ::
 m­
@@ -53182,88 +53268,96 @@ mw
 .
 	`fšd
 (*((*)(
-id
+Çmes_id
 ->
 v®ue
 )));
 
-82 autØ
+65 
+sum
+=0;
+
+66 autØ
 ™”1
 =
 ™”
 ->
 £cÚd
 ->
-	`rbegš
+	`begš
 ();™”1!=™”->£cÚd->
-	`»nd
+	`’d
 ();iter1++)
 
-84 
-Mesh_v›w”_IÁ”a
-* 
-mi
-=(Mesh_v›w”_IÁ”a*)(
+68 
+sum
++=((
+Mesh_v›w”_çûs
+*)(
 ™”1
 ->
 £cÚd
 ->
 evÞutiÚ
-);
+))->
+D©a_šdex_rows
+;
 
-85 
-mi
-->
-	`compu‹_¡©e
-(mi);
-
-86 if(
-mi
-->
-mou£_bu‰Ú_ÿÎback
-!=0)
-
-89 
-mi
-->
-	`mou£_bu‰Ú_ÿÎback
-(mi);
-
-91 if(
-mi
-->
-¡©e
->=0)
-
-98 
-	`ä“_node_v®ue
-(
+69 if(
 id
+<
+sum
+)
+
+71 
+g_šfo
+->
+pick_som‘hšg
+=(*)(
+™”1
+->
+£cÚd
 );
 
-99 
+77 
+	`ä“
+(
+Çmes_id
+->
+v®ue
+);
+
+78 
 	`ä“_node
 (
-id
+Çmes_id
 );
 
-102 
+83 
+g_šfo
+->
+pick_som‘hšg
+=0;
+
+86 
 	}
 }
 
-103 
-	$mesh_v›w”_äamebufãr_size_ÿÎback
+88 
+	$mesh_v›w”_mou£_bu‰Ú_ÿÎback
 (
 GLFWwšdow
 * 
 wšdow
 ,
-w
+bu‰Ú
 ,
-h
+aùiÚ
+,
+mods
 )
 
-106 
+91 
 Mesh_v›w”_wÜld
 * 
 mw
@@ -53273,7 +53367,7 @@ mw
 wšdow
 ));
 
-107 
+92 
 IÁ”aùÜ_Glob®Info
 * 
 g_šfo
@@ -53281,28 +53375,64 @@ g_šfo
 mw
 ->g_info;
 
+93 
+	`glR—dPix–s
+(
+g_šfo
+->
+mou£_coÜd
+[0],g_šfo->
+»sÞutiÚ
+[1]-g_šfo->mou£_coÜd[1],3,3,
+GL_RGBA
+,
+GL_UNSIGNED_BYTE
+,g_šfo->
+»adpix–cÞÜ
+);
+
+95 if(
+aùiÚ
+==
+MESH_VIEWER_PRESS
+)
+
+97 
+i
+=0;i<9;i++)
+
+99 
+j
+=0;j<4;j++)
+
+107 
+g_šfo
+->
+bu‰Ú
+=button;
+
+108 
+g_šfo
+->
+mou£_aùiÚ
+=
+aùiÚ
+;
+
 109 
 g_šfo
 ->
-»sÞutiÚ
-[0]=
-w
-;
-
-110 
-g_šfo
-->
-»sÞutiÚ
-[1]=
-h
+mou£_mods
+=
+mods
 ;
 
 111 
-	`glV›wpÜt
-(0.0,0.0,
-w
+	`Mesh_v›w”_decode_pickupšfo
+(
+mw
 ,
-h
+g_šfo
 );
 
 112 
@@ -53376,13 +53506,13 @@ mi
 120 if(
 mi
 ->
-äamebufãr_size_ÿÎback
+mou£_bu‰Ú_ÿÎback
 !=0)
 
 123 
 mi
 ->
-	`äamebufãr_size_ÿÎback
+	`mou£_bu‰Ú_ÿÎback
 (mi);
 
 125 if(
@@ -53403,11 +53533,167 @@ id
 id
 );
 
-137 
+135 
 	}
 }
 
-138 
+136 
+	$mesh_v›w”_äamebufãr_size_ÿÎback
+(
+GLFWwšdow
+* 
+wšdow
+,
+w
+,
+h
+)
+
+139 
+Mesh_v›w”_wÜld
+* 
+mw
+=(Mesh_v›w”_wÜld*)(
+	`glfwG‘WšdowU£rPoš‹r
+(
+wšdow
+));
+
+140 
+IÁ”aùÜ_Glob®Info
+* 
+g_šfo
+=
+mw
+->g_info;
+
+142 
+g_šfo
+->
+»sÞutiÚ
+[0]=
+w
+;
+
+143 
+g_šfo
+->
+»sÞutiÚ
+[1]=
+h
+;
+
+144 
+	`glV›wpÜt
+(0.0,0.0,
+w
+,
+h
+);
+
+145 
+š‹¿
+[]="Intera";
+
+146 
+Node
+* 
+id
+=
+	`Mesh_v›w”_wÜld_fšd_¥ec›s
+(
+mw
+,
+š‹¿
+);
+
+148 
+¡d
+::
+m­
+<,¡d::m­<,
+Mesh_v›w”_som‘hšg
+*>*>::
+™”©Ü
+ 
+™”
+=
+mw
+->
+¥ec›s2som‘hšgs
+.
+	`fšd
+(*((*)(
+id
+->
+v®ue
+)));
+
+149 autØ
+™”1
+=
+™”
+->
+£cÚd
+->
+	`rbegš
+();™”1!=™”->£cÚd->
+	`»nd
+();iter1++)
+
+151 
+Mesh_v›w”_IÁ”a
+* 
+mi
+=(Mesh_v›w”_IÁ”a*)(
+™”1
+->
+£cÚd
+->
+evÞutiÚ
+);
+
+152 
+mi
+->
+	`compu‹_¡©e
+(mi);
+
+153 if(
+mi
+->
+äamebufãr_size_ÿÎback
+!=0)
+
+156 
+mi
+->
+	`äamebufãr_size_ÿÎback
+(mi);
+
+158 if(
+mi
+->
+¡©e
+>=0)
+
+165 
+	`ä“_node_v®ue
+(
+id
+);
+
+166 
+	`ä“_node
+(
+id
+);
+
+170 
+	}
+}
+
+171 
 	$mesh_v›w”_key_ÿÎback
 (
 GLFWwšdow
@@ -53423,7 +53709,7 @@ aùiÚ
 mods
 )
 
-140 
+173 
 Mesh_v›w”_wÜld
 * 
 mw
@@ -53433,7 +53719,7 @@ mw
 wšdow
 ));
 
-142 
+175 
 IÁ”aùÜ_Glob®Info
 * 
 g_šfo
@@ -53441,13 +53727,13 @@ g_šfo
 mw
 ->g_info;
 
-144 
+177 
 g_šfo
 ->
 key
 =key;
 
-145 
+178 
 g_šfo
 ->
 key_aùiÚ
@@ -53455,7 +53741,7 @@ key_aùiÚ
 aùiÚ
 ;
 
-146 
+179 
 g_šfo
 ->
 key_mods
@@ -53463,11 +53749,11 @@ key_mods
 mods
 ;
 
-149 
+182 
 š‹¿
 []="Intera";
 
-150 
+183 
 Node
 * 
 id
@@ -53479,7 +53765,7 @@ mw
 š‹¿
 );
 
-152 
+185 
 ¡d
 ::
 m­
@@ -53501,7 +53787,7 @@ id
 v®ue
 )));
 
-153 autØ
+186 autØ
 ™”1
 =
 ™”
@@ -53513,7 +53799,7 @@ v®ue
 	`»nd
 ();iter1++)
 
-155 
+188 
 Mesh_v›w”_IÁ”a
 * 
 mi
@@ -53525,47 +53811,47 @@ mi
 evÞutiÚ
 );
 
-156 
+189 
 mi
 ->
 	`compu‹_¡©e
 (mi);
 
-157 if(
+190 if(
 mi
 ->
 key_ÿÎback
 !=0)
 
-160 
+193 
 mi
 ->
 	`key_ÿÎback
 (mi);
 
-162 if(
+195 if(
 mi
 ->
 ¡©e
 >=0)
 
-169 
+202 
 	`ä“_node_v®ue
 (
 id
 );
 
-170 
+203 
 	`ä“_node
 (
 id
 );
 
-175 
+208 
 	}
 }
 
-176 
+209 
 	$mesh_v›w”_süÞl_ÿÎback
 (
 GLFWwšdow
@@ -53577,7 +53863,7 @@ x
 y
 )
 
-178 
+211 
 Mesh_v›w”_wÜld
 * 
 mw
@@ -53587,11 +53873,11 @@ mw
 wšdow
 ));
 
-181 
+214 
 š‹¿
 []="Intera";
 
-182 
+215 
 Node
 * 
 id
@@ -53603,7 +53889,7 @@ mw
 š‹¿
 );
 
-184 
+217 
 ¡d
 ::
 m­
@@ -53625,7 +53911,7 @@ id
 v®ue
 )));
 
-185 autØ
+218 autØ
 ™”1
 =
 ™”
@@ -53637,7 +53923,7 @@ v®ue
 	`»nd
 ();iter1++)
 
-187 
+220 
 Mesh_v›w”_IÁ”a
 * 
 mi
@@ -53649,19 +53935,19 @@ mi
 evÞutiÚ
 );
 
-188 
+221 
 mi
 ->
 	`compu‹_¡©e
 (mi);
 
-189 if(
+222 if(
 mi
 ->
 süÞl_ÿÎback
 !=0)
 
-192 
+225 
 mi
 ->
 	`süÞl_ÿÎback
@@ -53671,29 +53957,29 @@ x
 y
 );
 
-194 if(
+227 if(
 mi
 ->
 ¡©e
 >=0)
 
-199 
+232 
 	`ä“_node_v®ue
 (
 id
 );
 
-200 
+233 
 	`ä“_node
 (
 id
 );
 
-202 
+235 
 	}
 }
 
-203 
+236 
 	$mesh_v›w”_£t_ÿÎback
 (
 GLFWwšdow
@@ -53701,7 +53987,7 @@ GLFWwšdow
 wšdow
 )
 
-205 
+238 
 	`glfwS‘Mou£Bu‰ÚC®lback
 (
 wšdow
@@ -53709,7 +53995,7 @@ wšdow
 mesh_v›w”_mou£_bu‰Ú_ÿÎback
 );
 
-206 
+239 
 	`glfwS‘CursÜPosC®lback
 (
 wšdow
@@ -53717,7 +54003,7 @@ wšdow
 mesh_v›w”_cursÜ_pos™iÚ_ÿÎback
 );
 
-207 
+240 
 	`glfwS‘KeyC®lback
 (
 wšdow
@@ -53725,7 +54011,7 @@ wšdow
 mesh_v›w”_key_ÿÎback
 );
 
-208 
+241 
 	`glfwS‘F¿mebufãrSizeC®lback
 (
 wšdow
@@ -53733,7 +54019,7 @@ wšdow
 mesh_v›w”_äamebufãr_size_ÿÎback
 );
 
-209 
+242 
 	`glfwS‘SüÞlC®lback
 (
 wšdow
@@ -53741,7 +54027,7 @@ wšdow
 mesh_v›w”_süÞl_ÿÎback
 );
 
-210 
+243 
 	}
 }
 

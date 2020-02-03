@@ -80,3 +80,16 @@ void Mesh_viewer_Arcroll_scroll_callback(Mesh_viewer_Intera*mi,double x,double y
 
     }
 }
+void Mesh_viewer_Arcroll_mouse_button_callback(Mesh_viewer_Intera* mi)
+{
+    Interactor_GlobalInfo* g_info=mi->g_info;
+    if(g_info->key==MESH_VIEWER_KEY_CONTROL&&g_info->key_action==1)
+    {
+        int id=g_info->readpixelcolor[0]*255*255+g_info->readpixelcolor[1]*255+g_info->readpixelcolor[2];
+        //char faces[]="faces";
+        //Node* names_id=Mesh_viewer_world_find_species()
+
+    
+    }
+    
+}

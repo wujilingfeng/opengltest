@@ -45,6 +45,7 @@ typedef struct Mesh_viewer_faces
 	void* evolution;
 	void(*compute_normal)(struct Mesh_viewer_faces*);
 	void (*random_color)(struct Mesh_viewer_faces*);
+	Matrix4x4 *mat;
 	Mesh_viewer_something* texture;
 }Mesh_viewer_faces;
 void Mesh_viewer_faces_compute_normal(Mesh_viewer_faces*);
@@ -71,6 +72,7 @@ typedef struct Mesh_viewer_points
 	int Data_rows;
 	void *prop;
 	void* evolution;
+	Matrix4x4* mat;
 }Mesh_viewer_points;
 void Mesh_viewer_points_init(struct Mesh_viewer_points*);
 
@@ -82,7 +84,7 @@ typedef struct Mesh_viewer_edges
     	unsigned int Data_index_rows,Data_rows,color_rows;
 	void *prop;
 	void* evolution;
-
+	Matrix4x4* mat;
 }Mesh_viewer_edges;
 void Mesh_viewer_edges_init(struct Mesh_viewer_edges*);
 

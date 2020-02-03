@@ -1,5 +1,3 @@
-还有拾取尚未实现
-
 #### dependencies 
 
 glfw,glad
