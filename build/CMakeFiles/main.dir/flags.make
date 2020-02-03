@@ -6,5 +6,5 @@ CXX_FLAGS = -std=c++11   -Wall -g -lstdc++
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/libo/Documents/c++/Mesh_viewer/include -I/home/libo/Documents/c++/Mesh_viewer/thirdpart/glad/include -I/thirdpart/glad/inlcude 
+CXX_INCLUDES = -I/home/libo/Documents/c++/Mesh_viewer/include -I/home/libo/Documents/c++/Mesh_viewer/thirdpart/glad/include 
 

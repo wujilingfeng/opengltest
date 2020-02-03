@@ -7,6 +7,9 @@ void test_mesh_viewer();
 void test_matrix();
 int main(int argc,char*argv[]) 
 {
+    char* str1=(char*)malloc(sizeof(char)*100);
+       printf("%s \n", strcat(strcat(str1,MESH_VIEWER_PATH),"/mesh.frag")
+);
     test_matrix(); 
         //初始化GLFW
     test_manager();
@@ -25,7 +28,6 @@ void test_matrix()
     p1=m.inverse(&m);
     p1->print_self(p1);
     Matrix4x4_free(p1);
-
 }
 void test_intera(Mesh_viewer_world* mw)
 {
@@ -134,9 +136,7 @@ void test_manager()
     mc->is_using=1;
     Matrix4x4* p=Projection(M_PI/3.0f,(float)(mw.g_info->resolution[0])/(float)(mw.g_info->resolution[1]),0.5f,200.0f);
     Matrix4x4_copy_data_float(mc->Proj,p);
-    Matrix4x4_free(p);
-
-    
+    Matrix4x4_free(p); 
     free_node(n);
     test_intera(&mw);
     Mesh_viewer_world_printself(&mw);

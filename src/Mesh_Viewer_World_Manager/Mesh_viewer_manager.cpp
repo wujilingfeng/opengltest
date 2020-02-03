@@ -70,10 +70,8 @@ Node* Mesh_viewer_world_registe(Mesh_viewer_world*m,char*c)
 		i=j+1;
 		j=j+1;
 	}
-	printf("\n");
     //Mesh_viewer_world_printself(m);
 
-	printf("\n");
 	return node_reverse(re);
 }
 void Mesh_viewer_world_init(Mesh_viewer_world*m)

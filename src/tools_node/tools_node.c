@@ -1,13 +1,21 @@
 #include<tool/tools_node.h>
+#include<stdio.h>
 int node_size(Node* node)
 {
+	Node*node1=(Node*)(node->Prev);
 	int i=0;
     while(node!=NULL)
     {
         node=(Node*)node->Next;
         i++;
     }
-    return i;
+	int j=0;
+	while(node1!=0)
+	{
+		node1=(Node*)(node1->Prev);
+		j++;
+	}
+    return i+j;
 }
 //标准不free value
 //向下free

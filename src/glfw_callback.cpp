@@ -1,8 +1,7 @@
 #include <Mesh_view/glfw_callback.h>
 
 void update_intera_information(GLFWwindow*window,Interactor_GlobalInfo*g_info)
-{
-	
+{	
 	double x,y;
         glfwGetCursorPos(window,&x,&y);
         g_info->mouse_coord[0]=x;
@@ -29,8 +28,7 @@ void mesh_viewer_cursor_position_callback(GLFWwindow* window,double x,double y)
     Interactor_GlobalInfo* g_info=mw->g_info;
     g_info->mouse_coord[0]=(float)x;
     g_info->mouse_coord[1]=(float)y;
-    glReadPixels(g_info->mouse_coord[0],g_info->resolution[1]-g_info->mouse_coord[1],3,3,GL_RGBA,GL_UNSIGNED_BYTE,g_info->readpixelcolor);
-        char intera[]="Intera";
+          char intera[]="Intera";
     Node* id=Mesh_viewer_world_find_species(mw,intera);
     
     std::map<int,std::map<int,Mesh_viewer_something*>*>::iterator iter=mw->species2somethings.find(*((int*)(id->value)));
@@ -61,16 +59,19 @@ void mesh_viewer_mouse_button_callback(GLFWwindow* window,int button,int action,
     
     Mesh_viewer_world* mw=(Mesh_viewer_world*)(glfwGetWindowUserPointer(window));
     Interactor_GlobalInfo* g_info=mw->g_info;
-    for(int i=0;i<1;i++)
+    glReadPixels(g_info->mouse_coord[0],g_info->resolution[1]-g_info->mouse_coord[1],3,3,GL_RGBA,GL_UNSIGNED_BYTE,g_info->readpixelcolor);
+
+    if(action==MESH_VIEWER_PRESS)
     {
-        for(int j=0;j<4;j++)
+        for(int i=0;i<9;i++)
         {
-
-            printf("%d ",g_info->readpixelcolor[i*4+j]);
+            for(int j=0;j<4;j++)
+            {
+                //printf("%d ",g_info->readpixelcolor[i*4+j]);
+            }
+            //printf("\n");
         }
-        printf("\n");
     }
-
     g_info->button=button;
     g_info->mouse_action=action;
 	g_info->mouse_mods=mods;
@@ -96,9 +97,7 @@ void mesh_viewer_mouse_button_callback(GLFWwindow* window,int button,int action,
     }
     free_node_value(id);
     free_node(id);
-    
-
-    
+        
     return;
 }
 void mesh_viewer_framebuffer_size_callback(GLFWwindow* window,int w,int h)
@@ -146,7 +145,7 @@ void mesh_viewer_key_callback(GLFWwindow* window,int key,int scancode,int action
     g_info->key_action=action;
     g_info->key_mods=mods;
 
-    printf("key:%d key_action:%d\n",key,action);    
+    //printf("key:%d key_action:%d\n",key,action);    
     char intera[]="Intera";
     Node* id=Mesh_viewer_world_find_species(mw,intera);
     
@@ -177,6 +176,7 @@ void mesh_viewer_key_callback(GLFWwindow* window,int key,int scancode,int action
 void mesh_viewer_scroll_callback(GLFWwindow* window,double x,double y)
 {
    Mesh_viewer_world* mw=(Mesh_viewer_world*)(glfwGetWindowUserPointer(window));
+    //Interactor_GlobalInfo* g_info=mw->g_info;
 
     char intera[]="Intera";
     Node* id=Mesh_viewer_world_find_species(mw,intera);
@@ -194,15 +194,10 @@ void mesh_viewer_scroll_callback(GLFWwindow* window,double x,double y)
         if(mi->state>=0)
         {
             break;
-        }
-    
-    
+        } 
     }
     free_node_value(id);
     free_node(id);
-    
-
-
     return;
 }
 void mesh_viewer_set_callback(GLFWwindow* window)

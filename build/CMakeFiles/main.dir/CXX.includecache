@@ -49,6 +49,8 @@ Interactor_GlobalInfo.h
 ../include/Mesh_view/Mesh_viewer_interpreter.h
 glfw_callback.h
 ../include/Mesh_view/glfw_callback.h
+config.h
+../include/Mesh_view/config.h
 stb_image.h
 -
 
@@ -67,6 +69,8 @@ Mesh_Viewer_World_Manager/Mesh_viewer_manager.h
 -
 GLFW/glfw3.h
 -
+
+../include/config.h
 
 ../include/stb_image.h
 stb_image.h

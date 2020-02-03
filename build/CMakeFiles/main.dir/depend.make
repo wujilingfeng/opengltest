@@ -18,6 +18,7 @@ CMakeFiles/main.dir/Demo/main.cpp.o: ../include/Mesh_Viewer_World_Manager/Mesh_v
 CMakeFiles/main.dir/Demo/main.cpp.o: ../include/Mesh_view/Mesh_viewer_interpreter.h
 CMakeFiles/main.dir/Demo/main.cpp.o: ../include/Mesh_view/OpenglAlg.h
 CMakeFiles/main.dir/Demo/main.cpp.o: ../include/Mesh_view/glfw_callback.h
+CMakeFiles/main.dir/Demo/main.cpp.o: ../include/config.h
 CMakeFiles/main.dir/Demo/main.cpp.o: ../include/stb_image.h
 CMakeFiles/main.dir/Demo/main.cpp.o: ../include/tool/tools_node.h
 CMakeFiles/main.dir/Demo/main.cpp.o: ../thirdpart/glad/include/KHR/khrplatform.h

@@ -5,10 +5,7 @@ uniform vec2 iResolution;
 uniform sampler2D Faces_Vertices;
 uniform sampler2D Faces_Index;
 uniform sampler2D Face_colors;
-
-
 uniform sampler2D ourTexture;
-
 uniform float Faces_len;
 uniform float Faces_Vertices_rows;
 uniform float iTime;
@@ -182,7 +179,7 @@ void main()
 	init();
 	vec3 dir;
 	get_origin_radial(dir);
-   	shoot(vec3(0,0,0),dir);  
+   	shoot(vec3(0,0,0),dir);
 }
 //float near=-1.0/(1.0/Proj[3][2]+Proj[2][2]/Proj[3][2]);
 //float far=1.0/(1.0/Proj[3][2]-Proj[2][2]/Proj[3][2]);

@@ -10,7 +10,7 @@ void Mesh_viewer_Arcroll_cursor_position_callback(Mesh_viewer_Intera* mi)
     Mesh_viewer_Arcroll* ma=(Mesh_viewer_Arcroll*)(mi->representation);
 
     Mesh_viewer_camera* mc=(Mesh_viewer_camera*)(mi->prop);
-    if(g_info->button==MESH_VIEWER_MOUSE_BUTTON_LEFT&&g_info->mouse_action==MESH_VIEWER_PRESS)
+    if(g_info->button==MESH_VIEWER_MOUSE_BUTTON_LEFT&&g_info->mouse_action==MESH_VIEWER_PRESS&&g_info->key_action==0)
     {
         float tempx=g_info->mouse_coord[0]-ma->old_mouse_coord[0];
         float tempy=g_info->mouse_coord[1]-ma->old_mouse_coord[1];
@@ -40,6 +40,18 @@ void Mesh_viewer_Arcroll_cursor_position_callback(Mesh_viewer_Intera* mi)
         Matrix4x4_free(MV);
         Matrix4x4_free(MV_inverse);
     }
+    else if(g_info->button==MESH_VIEWER_MOUSE_BUTTON_RIGHT&&g_info->mouse_action==MESH_VIEWER_PRESS)
+    {
+        float tempx=g_info->mouse_coord[0]-ma->old_mouse_coord[0];
+        float tempy=g_info->mouse_coord[1]-ma->old_mouse_coord[1];
+        tempx=-tempx*0.005;tempy=tempy*0.005;
+        float*data=(float*)mc->matrix_inverse->data;
+        data[0*4+3]+=tempx;
+        data[1*4+3]+=tempy;
+        Matrix4x4_free(mc->matrix);
+        mc->matrix=mc->matrix_inverse->inverse(mc->matrix_inverse);
+    }
+
     ma->old_mouse_coord[0]=g_info->mouse_coord[0];
     ma->old_mouse_coord[1]=g_info->mouse_coord[1];
 
@@ -57,9 +69,12 @@ void Mesh_viewer_Arcroll_scroll_callback(Mesh_viewer_Intera*mi,double x,double y
          mc->focal_distance+=(float)y*0.05;
 
     }
-    else
+    else if(g_info->key==MESH_VIEWER_KEY_ALT&&g_info->key_action==1)
     {
-        
+    
+    }
+    else if(g_info->key_action==0)
+    {  
         float *data=(float*)(mc->matrix_inverse->data);
         data[2*4+3]+=(float)y*0.05;
 

@@ -19,6 +19,7 @@ CMakeFiles/main.dir/Demo/main.cpp.o
  ../include/Mesh_view/Mesh_viewer_interpreter.h
  ../include/Mesh_view/OpenglAlg.h
  ../include/Mesh_view/glfw_callback.h
+ ../include/config.h
  ../include/stb_image.h
  ../include/tool/tools_node.h
  ../thirdpart/glad/include/KHR/khrplatform.h
