@@ -180,6 +180,7 @@ void Mesh_viewer_points_init(struct Mesh_viewer_points* mp)
     mp->Data_rows=0;
 	mp->mat=(Matrix4x4*)malloc(sizeof(Matrix4x4));
 Matrix4x4_init_float(mp->mat);
+	mp->pointsize=3.0;
 	
 }
 void Mesh_viewer_edges_init(struct Mesh_viewer_edges* me)
@@ -195,7 +196,7 @@ void Mesh_viewer_edges_init(struct Mesh_viewer_edges* me)
 	me->color_rows=0;
 	me->mat=(Matrix4x4*)malloc(sizeof(Matrix4x4));
 Matrix4x4_init_float(me->mat);
-
+	me->edgesize=3.0;
 }
 
 

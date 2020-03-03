@@ -2,6 +2,8 @@
 #include<stdio.h>
 int node_size(Node* node)
 {
+	if(node==NULL)
+	{return 0;}
 	Node*node1=(Node*)(node->Prev);
 	int i=0;
     while(node!=NULL)

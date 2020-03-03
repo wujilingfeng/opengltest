@@ -1,1 +1,1 @@
-#define MESH_VIEWER_PATH "/home/libo/Documents/c++/Mesh_viewer"
+#define MESH_VIEWER_PATH "/home/libo/Documents/c++/Viewer"

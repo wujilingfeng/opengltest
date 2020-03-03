@@ -78,7 +78,7 @@ stdint.h
 KHR/khrplatform.h
 -
 
-/home/libo/Documents/c++/Mesh_viewer/src/glfw_callback.cpp
+/home/libo/Documents/c++/Viewer/src/glfw_callback.cpp
 Mesh_view/glfw_callback.h
 -
 

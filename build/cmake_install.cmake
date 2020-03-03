@@ -1,4 +1,4 @@
-# Install script for directory: /home/libo/Documents/c++/Mesh_viewer
+# Install script for directory: /home/libo/Documents/c++/Viewer
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,10 +39,10 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/libo/Documents/c++/Mesh_viewer/build/src/cmake_install.cmake")
-  include("/home/libo/Documents/c++/Mesh_viewer/build/src/Mesh_Viewer_World_Manager/cmake_install.cmake")
-  include("/home/libo/Documents/c++/Mesh_viewer/build/src/tools_node/cmake_install.cmake")
-  include("/home/libo/Documents/c++/Mesh_viewer/build/src/Math/cmake_install.cmake")
+  include("/home/libo/Documents/c++/Viewer/build/src/cmake_install.cmake")
+  include("/home/libo/Documents/c++/Viewer/build/src/Mesh_Viewer_World_Manager/cmake_install.cmake")
+  include("/home/libo/Documents/c++/Viewer/build/src/tools_node/cmake_install.cmake")
+  include("/home/libo/Documents/c++/Viewer/build/src/Math/cmake_install.cmake")
 
 endif()
 
@@ -54,5 +54,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/libo/Documents/c++/Mesh_viewer/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/libo/Documents/c++/Viewer/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

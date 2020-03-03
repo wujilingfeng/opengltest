@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/libo/Documents/c++/Mesh_viewer
+CMAKE_SOURCE_DIR = /home/libo/Documents/c++/Viewer
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/libo/Documents/c++/Mesh_viewer/build
+CMAKE_BINARY_DIR = /home/libo/Documents/c++/Viewer/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -126,14 +126,14 @@ install/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/libo/Documents/c++/Mesh_viewer/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/libo/Documents/c++/Mesh_viewer/build/CMakeFiles /home/libo/Documents/c++/Mesh_viewer/build/src/CMakeFiles/progress.marks
-	cd /home/libo/Documents/c++/Mesh_viewer/build && $(MAKE) -f CMakeFiles/Makefile2 src/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/libo/Documents/c++/Mesh_viewer/build/CMakeFiles 0
+	cd /home/libo/Documents/c++/Viewer/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/libo/Documents/c++/Viewer/build/CMakeFiles /home/libo/Documents/c++/Viewer/build/src/CMakeFiles/progress.marks
+	cd /home/libo/Documents/c++/Viewer/build && $(MAKE) -f CMakeFiles/Makefile2 src/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/libo/Documents/c++/Viewer/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/libo/Documents/c++/Mesh_viewer/build && $(MAKE) -f CMakeFiles/Makefile2 src/clean
+	cd /home/libo/Documents/c++/Viewer/build && $(MAKE) -f CMakeFiles/Makefile2 src/clean
 .PHONY : clean
 
 # The main clean target
@@ -143,22 +143,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/libo/Documents/c++/Mesh_viewer/build && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
+	cd /home/libo/Documents/c++/Viewer/build && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/libo/Documents/c++/Mesh_viewer/build && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
+	cd /home/libo/Documents/c++/Viewer/build && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/libo/Documents/c++/Mesh_viewer/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/libo/Documents/c++/Viewer/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/CMakeFiles/mesh_viewer.dir/rule:
-	cd /home/libo/Documents/c++/Mesh_viewer/build && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/mesh_viewer.dir/rule
+	cd /home/libo/Documents/c++/Viewer/build && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/mesh_viewer.dir/rule
 .PHONY : src/CMakeFiles/mesh_viewer.dir/rule
 
 # Convenience name for target.
@@ -168,7 +168,7 @@ mesh_viewer: src/CMakeFiles/mesh_viewer.dir/rule
 
 # fast build rule for target.
 mesh_viewer/fast:
-	cd /home/libo/Documents/c++/Mesh_viewer/build && $(MAKE) -f src/CMakeFiles/mesh_viewer.dir/build.make src/CMakeFiles/mesh_viewer.dir/build
+	cd /home/libo/Documents/c++/Viewer/build && $(MAKE) -f src/CMakeFiles/mesh_viewer.dir/build.make src/CMakeFiles/mesh_viewer.dir/build
 .PHONY : mesh_viewer/fast
 
 OpenglAlg.o: OpenglAlg.c.o
@@ -177,7 +177,7 @@ OpenglAlg.o: OpenglAlg.c.o
 
 # target to build an object file
 OpenglAlg.c.o:
-	cd /home/libo/Documents/c++/Mesh_viewer/build && $(MAKE) -f src/CMakeFiles/mesh_viewer.dir/build.make src/CMakeFiles/mesh_viewer.dir/OpenglAlg.c.o
+	cd /home/libo/Documents/c++/Viewer/build && $(MAKE) -f src/CMakeFiles/mesh_viewer.dir/build.make src/CMakeFiles/mesh_viewer.dir/OpenglAlg.c.o
 .PHONY : OpenglAlg.c.o
 
 OpenglAlg.i: OpenglAlg.c.i
@@ -186,7 +186,7 @@ OpenglAlg.i: OpenglAlg.c.i
 
 # target to preprocess a source file
 OpenglAlg.c.i:
-	cd /home/libo/Documents/c++/Mesh_viewer/build && $(MAKE) -f src/CMakeFiles/mesh_viewer.dir/build.make src/CMakeFiles/mesh_viewer.dir/OpenglAlg.c.i
+	cd /home/libo/Documents/c++/Viewer/build && $(MAKE) -f src/CMakeFiles/mesh_viewer.dir/build.make src/CMakeFiles/mesh_viewer.dir/OpenglAlg.c.i
 .PHONY : OpenglAlg.c.i
 
 OpenglAlg.s: OpenglAlg.c.s
@@ -195,7 +195,7 @@ OpenglAlg.s: OpenglAlg.c.s
 
 # target to generate assembly for a file
 OpenglAlg.c.s:
-	cd /home/libo/Documents/c++/Mesh_viewer/build && $(MAKE) -f src/CMakeFiles/mesh_viewer.dir/build.make src/CMakeFiles/mesh_viewer.dir/OpenglAlg.c.s
+	cd /home/libo/Documents/c++/Viewer/build && $(MAKE) -f src/CMakeFiles/mesh_viewer.dir/build.make src/CMakeFiles/mesh_viewer.dir/OpenglAlg.c.s
 .PHONY : OpenglAlg.c.s
 
 __/thirdpart/glad/src/glad.o: __/thirdpart/glad/src/glad.c.o
@@ -204,7 +204,7 @@ __/thirdpart/glad/src/glad.o: __/thirdpart/glad/src/glad.c.o
 
 # target to build an object file
 __/thirdpart/glad/src/glad.c.o:
-	cd /home/libo/Documents/c++/Mesh_viewer/build && $(MAKE) -f src/CMakeFiles/mesh_viewer.dir/build.make src/CMakeFiles/mesh_viewer.dir/__/thirdpart/glad/src/glad.c.o
+	cd /home/libo/Documents/c++/Viewer/build && $(MAKE) -f src/CMakeFiles/mesh_viewer.dir/build.make src/CMakeFiles/mesh_viewer.dir/__/thirdpart/glad/src/glad.c.o
 .PHONY : __/thirdpart/glad/src/glad.c.o
 
 __/thirdpart/glad/src/glad.i: __/thirdpart/glad/src/glad.c.i
@@ -213,7 +213,7 @@ __/thirdpart/glad/src/glad.i: __/thirdpart/glad/src/glad.c.i
 
 # target to preprocess a source file
 __/thirdpart/glad/src/glad.c.i:
-	cd /home/libo/Documents/c++/Mesh_viewer/build && $(MAKE) -f src/CMakeFiles/mesh_viewer.dir/build.make src/CMakeFiles/mesh_viewer.dir/__/thirdpart/glad/src/glad.c.i
+	cd /home/libo/Documents/c++/Viewer/build && $(MAKE) -f src/CMakeFiles/mesh_viewer.dir/build.make src/CMakeFiles/mesh_viewer.dir/__/thirdpart/glad/src/glad.c.i
 .PHONY : __/thirdpart/glad/src/glad.c.i
 
 __/thirdpart/glad/src/glad.s: __/thirdpart/glad/src/glad.c.s
@@ -222,7 +222,7 @@ __/thirdpart/glad/src/glad.s: __/thirdpart/glad/src/glad.c.s
 
 # target to generate assembly for a file
 __/thirdpart/glad/src/glad.c.s:
-	cd /home/libo/Documents/c++/Mesh_viewer/build && $(MAKE) -f src/CMakeFiles/mesh_viewer.dir/build.make src/CMakeFiles/mesh_viewer.dir/__/thirdpart/glad/src/glad.c.s
+	cd /home/libo/Documents/c++/Viewer/build && $(MAKE) -f src/CMakeFiles/mesh_viewer.dir/build.make src/CMakeFiles/mesh_viewer.dir/__/thirdpart/glad/src/glad.c.s
 .PHONY : __/thirdpart/glad/src/glad.c.s
 
 glfw_callback.o: glfw_callback.cpp.o
@@ -231,7 +231,7 @@ glfw_callback.o: glfw_callback.cpp.o
 
 # target to build an object file
 glfw_callback.cpp.o:
-	cd /home/libo/Documents/c++/Mesh_viewer/build && $(MAKE) -f src/CMakeFiles/mesh_viewer.dir/build.make src/CMakeFiles/mesh_viewer.dir/glfw_callback.cpp.o
+	cd /home/libo/Documents/c++/Viewer/build && $(MAKE) -f src/CMakeFiles/mesh_viewer.dir/build.make src/CMakeFiles/mesh_viewer.dir/glfw_callback.cpp.o
 .PHONY : glfw_callback.cpp.o
 
 glfw_callback.i: glfw_callback.cpp.i
@@ -240,7 +240,7 @@ glfw_callback.i: glfw_callback.cpp.i
 
 # target to preprocess a source file
 glfw_callback.cpp.i:
-	cd /home/libo/Documents/c++/Mesh_viewer/build && $(MAKE) -f src/CMakeFiles/mesh_viewer.dir/build.make src/CMakeFiles/mesh_viewer.dir/glfw_callback.cpp.i
+	cd /home/libo/Documents/c++/Viewer/build && $(MAKE) -f src/CMakeFiles/mesh_viewer.dir/build.make src/CMakeFiles/mesh_viewer.dir/glfw_callback.cpp.i
 .PHONY : glfw_callback.cpp.i
 
 glfw_callback.s: glfw_callback.cpp.s
@@ -249,7 +249,7 @@ glfw_callback.s: glfw_callback.cpp.s
 
 # target to generate assembly for a file
 glfw_callback.cpp.s:
-	cd /home/libo/Documents/c++/Mesh_viewer/build && $(MAKE) -f src/CMakeFiles/mesh_viewer.dir/build.make src/CMakeFiles/mesh_viewer.dir/glfw_callback.cpp.s
+	cd /home/libo/Documents/c++/Viewer/build && $(MAKE) -f src/CMakeFiles/mesh_viewer.dir/build.make src/CMakeFiles/mesh_viewer.dir/glfw_callback.cpp.s
 .PHONY : glfw_callback.cpp.s
 
 # Help Target
@@ -285,6 +285,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/libo/Documents/c++/Mesh_viewer/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/libo/Documents/c++/Viewer/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

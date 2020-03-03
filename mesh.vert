@@ -8,8 +8,10 @@ out vec3 outColor;
 out vec2 texcoord;
 out float e_id;
 uniform mat4 Proj;
+
 //camera_matrix_inverse
 uniform mat4 Camera_Matrix;
+uniform mat4 Object_Matrix;
 //gl_Pointsize
 void set_color()
 {
@@ -23,10 +25,12 @@ void set_color()
 }
 void main()
 { 
+	gl_PointSize=10.0f;
 	texcoord=aTexCoord;
 	set_color();	
 //outColor=aColor;
-	gl_Position =Proj*Camera_Matrix*vec4(vPosition,1);
+	gl_Position =Proj*Camera_Matrix*Object_Matrix*vec4(vPosition,1);
 	e_id=element_id;
+	
 	
 }

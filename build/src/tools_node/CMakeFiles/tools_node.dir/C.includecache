@@ -10,7 +10,7 @@
 stdlib.h
 -
 
-/home/libo/Documents/c++/Mesh_viewer/src/tools_node/tools_node.c
+/home/libo/Documents/c++/Viewer/src/tools_node/tools_node.c
 tool/tools_node.h
 -
 stdio.h

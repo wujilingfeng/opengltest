@@ -2,14 +2,14 @@
 void Mesh_viewer_Arcroll_init(Mesh_viewer_Arcroll*ma)
 {
     ma->old_mouse_coord=(float*)malloc(sizeof(float)*2);
-
+    ma->mc=0;
 }
 void Mesh_viewer_Arcroll_cursor_position_callback(Mesh_viewer_Intera* mi)
 {
     Interactor_GlobalInfo* g_info=mi->g_info;
     Mesh_viewer_Arcroll* ma=(Mesh_viewer_Arcroll*)(mi->representation);
 
-    Mesh_viewer_camera* mc=(Mesh_viewer_camera*)(mi->prop);
+    Mesh_viewer_camera* mc=(Mesh_viewer_camera*)(ma->mc);
     if(g_info->button==MESH_VIEWER_MOUSE_BUTTON_LEFT&&g_info->mouse_action==MESH_VIEWER_PRESS&&g_info->key_action==0)
     {
         float tempx=g_info->mouse_coord[0]-ma->old_mouse_coord[0];
@@ -60,8 +60,9 @@ void Mesh_viewer_Arcroll_cursor_position_callback(Mesh_viewer_Intera* mi)
 void Mesh_viewer_Arcroll_scroll_callback(Mesh_viewer_Intera*mi,double x,double y)
 {
     Interactor_GlobalInfo* g_info=mi->g_info;
+    Mesh_viewer_Arcroll* ma=(Mesh_viewer_Arcroll*)(mi->representation);
 
-    Mesh_viewer_camera* mc=(Mesh_viewer_camera*)(mi->prop);
+    Mesh_viewer_camera* mc=(Mesh_viewer_camera*)(ma->mc);
 
     //printf("scroll key_mods:%d ,key_action:%d\n",g_info->key_mods,g_info->key_action);
     if((g_info->key==MESH_VIEWER_KEY_CONTROL&&g_info->key_action==1))
@@ -74,9 +75,28 @@ void Mesh_viewer_Arcroll_scroll_callback(Mesh_viewer_Intera*mi,double x,double y
     
     }
     else if(g_info->key_action==0)
-    {  
-        float *data=(float*)(mc->matrix_inverse->data);
-        data[2*4+3]+=(float)y*0.05;
+    { 
+        if(g_info->pick_something!=0)
+        {
+            Mesh_viewer_something* ms=(Mesh_viewer_something*)(g_info->pick_something);
+            if(strcmp("faces",ms->name)==0)
+            {
+                Mesh_viewer_faces* mf=(Mesh_viewer_faces*)(ms->evolution);
+                float * data=(float*)(mf->mat->data);
+                data[0*4+0]*=(1-(float)y*0.05);
+                data[1*4+1]*=(1-(float)y*0.05);
+                data[2*4+2]*=(1-(float)y*0.05);
+            }
+            else
+            {
+
+            }
+        }
+        else
+        {
+            float *data=(float*)(mc->matrix_inverse->data);
+            data[2*4+3]+=(float)y*0.05;
+        }
 
     }
 }

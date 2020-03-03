@@ -208,13 +208,13 @@ Node* Mesh_viewer_world_create_something(struct Mesh_viewer_world*mw,char *c)
     id_list=node_reverse(id_list);
 	free_node(id_list);
     re=node_reverse(re);
-	Node* temp_node=Mesh_viewer_from_something_evolute(re);
+	Node* temp_node=Mesh_viewer_from_something_evolute(re,mw);
 	free_node(node_reverse(temp_node));
 	return re;
 
 }
 //
-Node* Mesh_viewer_from_something_evolute(Node*lis)
+Node* Mesh_viewer_from_something_evolute(Node*lis,struct Mesh_viewer_world* mw)
 {
 	Node* re=0;
 	if(lis==0)
@@ -253,7 +253,10 @@ Node* Mesh_viewer_from_something_evolute(Node*lis)
         else if(strcmp(ms->name,"Intera")==0)
         {  Mesh_viewer_Intera* temp_e=(Mesh_viewer_Intera*)malloc(sizeof(Mesh_viewer_Intera)); 
             Mesh_viewer_Intera_init(temp_e);
-
+            if(mw!=0)
+            {
+                temp_e->g_info=mw->g_info;
+            }
             value=(void*)temp_e;
 
         }

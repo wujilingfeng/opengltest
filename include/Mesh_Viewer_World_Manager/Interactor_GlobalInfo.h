@@ -13,6 +13,11 @@
 #define MESH_VIEWER_MOD_SUPER 8
 #define MESH_VIEWER_KEY_CONTROL 341
 #define MESH_VIEWER_KEY_ALT 342
+#define MESH_VIEWER_KEY_0 48
+#define MESH_VIEWER_KEY_9 57
+#define MESH_VIEWER_KEY_A 65
+#define MESH_VIEWER_KEY_B 66
+#define MESH_VIEWER_KEY_Z 90
 
 #ifdef __cplusplus
 extern "C" {

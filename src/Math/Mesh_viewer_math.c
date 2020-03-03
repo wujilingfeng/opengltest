@@ -119,12 +119,12 @@ int * compute_combination(int m,int n)
     {
         re[i]=i;
     }
-    int flag=1;
-    int sum=0;
+    //int flag=1;
+  //  int sum=0;
     for(int i=0;i<len-1;i++)
     {
     
-        flag=increase_a_step_for_combination(m,n,&(re[i*m]));
+        increase_a_step_for_combination(m,n,&(re[i*m]));
     }
 	return re;
 }

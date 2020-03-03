@@ -3,8 +3,8 @@
 
 src/Math/CMakeFiles/mesh_viewer_matrix4x4.dir/Mesh_viewer_math.c.o
  ../include/Math/Mesh_viewer_math.h
- /home/libo/Documents/c++/Mesh_viewer/src/Math/Mesh_viewer_math.c
+ /home/libo/Documents/c++/Viewer/src/Math/Mesh_viewer_math.c
 src/Math/CMakeFiles/mesh_viewer_matrix4x4.dir/Mesh_viewer_matrix4x4.c.o
  ../include/Math/Mesh_viewer_math.h
  ../include/Math/Mesh_viewer_matrix4x4.h
- /home/libo/Documents/c++/Mesh_viewer/src/Math/Mesh_viewer_matrix4x4.c
+ /home/libo/Documents/c++/Viewer/src/Math/Mesh_viewer_matrix4x4.c

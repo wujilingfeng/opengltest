@@ -58,6 +58,7 @@ static void Mesh_viewer_decode_pickupinfo(Mesh_viewer_world* mw,Interactor_Globa
 {
     if(g_info->key==MESH_VIEWER_KEY_CONTROL&&g_info->key_action==1)
     {
+        g_info->pick_something=0;
         char faces[]="faces";
         int id=g_info->readpixelcolor[0]*255*255+g_info->readpixelcolor[1]*255+g_info->readpixelcolor[2];
         Node* names_id=mw->find_species(mw,faces);
@@ -78,12 +79,8 @@ static void Mesh_viewer_decode_pickupinfo(Mesh_viewer_world* mw,Interactor_Globa
         free_node(names_id);
 
     }
-    else
-    {
-        g_info->pick_something=0;
     
-    }
-    }
+}
 
 void mesh_viewer_mouse_button_callback(GLFWwindow* window,int button,int action,int mods)
 {
@@ -176,6 +173,7 @@ void mesh_viewer_key_callback(GLFWwindow* window,int key,int scancode,int action
     
     g_info->key=key;
     g_info->key_action=action;
+//    printf("key action:%d\n",action);
     g_info->key_mods=mods;
 
     //printf("key:%d key_action:%d\n",key,action);    

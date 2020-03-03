@@ -21,7 +21,6 @@ void Mesh_viewer_world_remove_something(struct Mesh_viewer_world*,Mesh_viewer_so
 Node* Mesh_viewer_world_registe(struct Mesh_viewer_world*,char*);
 void Mesh_viewer_world_init(struct Mesh_viewer_world*);
 Node* Mesh_viewer_world_find_species(struct Mesh_viewer_world*,char*);
-Node* Mesh_viewer_from_something_evolute(Node*);
 
 typedef struct Mesh_viewer_world{
 	int species_id;
@@ -38,6 +37,8 @@ typedef struct Mesh_viewer_world{
 	void *prop;
 	void* *prop1;
 }Mesh_viewer_world;
+Node* Mesh_viewer_from_something_evolute(Node*,struct Mesh_viewer_world*);
+
 void Mesh_viewer_world_printself(Mesh_viewer_world*);
 
 //void Mesh_viewer_add_face_data(Mesh_viewer_faces*,double *v,int v_cols,int v_rows,int *index,int i_cols,int i_rows,double *color);

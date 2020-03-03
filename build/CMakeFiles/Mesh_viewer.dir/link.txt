@@ -1,1 +1,0 @@
-/usr/bin/c++  -std=c++11  -rdynamic CMakeFiles/Mesh_viewer.dir/src/main.cpp.o CMakeFiles/Mesh_viewer.dir/src/Math/Mesh_viewer_math.c.o CMakeFiles/Mesh_viewer.dir/src/Math/Mesh_viewer_matrix4x4.c.o  -o ../bin/Mesh_viewer  -L/home/libo/Documents/c++/Mesh_viewer/lib 

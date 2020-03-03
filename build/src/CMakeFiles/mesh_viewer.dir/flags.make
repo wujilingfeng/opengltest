@@ -3,15 +3,15 @@
 
 # compile C with /usr/bin/cc
 # compile CXX with /usr/bin/c++
-C_FLAGS = -std=c11   -Wall -g -lstdc++
+C_FLAGS = -std=c11   -Wall -g -lstdc++ -no-pie
 
 C_DEFINES = 
 
-C_INCLUDES = -I/home/libo/Documents/c++/Mesh_viewer/include -I/home/libo/Documents/c++/Mesh_viewer/thirdpart/glad/include 
+C_INCLUDES = -I/home/libo/Documents/c++/Viewer/include -I/home/libo/Documents/c++/Viewer/thirdpart/glad/include 
 
-CXX_FLAGS = -std=c++11   -Wall -g -lstdc++
+CXX_FLAGS = -std=c++11   -Wall -g -lstdc++ -no-pie
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/libo/Documents/c++/Mesh_viewer/include -I/home/libo/Documents/c++/Mesh_viewer/thirdpart/glad/include 
+CXX_INCLUDES = -I/home/libo/Documents/c++/Viewer/include -I/home/libo/Documents/c++/Viewer/thirdpart/glad/include 
 

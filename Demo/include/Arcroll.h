@@ -8,6 +8,7 @@ extern "C" {
 typedef struct Mesh_viewer_Arcroll
 {
     float* old_mouse_coord;
+	Mesh_viewer_camera*mc;
 }Mesh_viewer_Arcroll;
 void Mesh_viewer_Arcroll_init(Mesh_viewer_Arcroll*);
 void Mesh_viewer_Arcroll_cursor_position_callback(Mesh_viewer_Intera*);

@@ -5,8 +5,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/libo/Documents/c++/Mesh_viewer/src/OpenglAlg.c" "/home/libo/Documents/c++/Mesh_viewer/build/src/CMakeFiles/mesh_viewer.dir/OpenglAlg.c.o"
-  "/home/libo/Documents/c++/Mesh_viewer/thirdpart/glad/src/glad.c" "/home/libo/Documents/c++/Mesh_viewer/build/src/CMakeFiles/mesh_viewer.dir/__/thirdpart/glad/src/glad.c.o"
+  "/home/libo/Documents/c++/Viewer/src/OpenglAlg.c" "/home/libo/Documents/c++/Viewer/build/src/CMakeFiles/mesh_viewer.dir/OpenglAlg.c.o"
+  "/home/libo/Documents/c++/Viewer/thirdpart/glad/src/glad.c" "/home/libo/Documents/c++/Viewer/build/src/CMakeFiles/mesh_viewer.dir/__/thirdpart/glad/src/glad.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
@@ -16,7 +16,7 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
   "../thirdpart/glad/include"
   )
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/libo/Documents/c++/Mesh_viewer/src/glfw_callback.cpp" "/home/libo/Documents/c++/Mesh_viewer/build/src/CMakeFiles/mesh_viewer.dir/glfw_callback.cpp.o"
+  "/home/libo/Documents/c++/Viewer/src/glfw_callback.cpp" "/home/libo/Documents/c++/Viewer/build/src/CMakeFiles/mesh_viewer.dir/glfw_callback.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

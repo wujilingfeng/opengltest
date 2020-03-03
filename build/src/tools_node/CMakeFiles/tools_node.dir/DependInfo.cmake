@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/libo/Documents/c++/Mesh_viewer/src/tools_node/tools_node.c" "/home/libo/Documents/c++/Mesh_viewer/build/src/tools_node/CMakeFiles/tools_node.dir/tools_node.c.o"
+  "/home/libo/Documents/c++/Viewer/src/tools_node/tools_node.c" "/home/libo/Documents/c++/Viewer/build/src/tools_node/CMakeFiles/tools_node.dir/tools_node.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

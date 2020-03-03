@@ -21,6 +21,7 @@ typedef struct Mesh_viewer_opengl_Interpreter
     GLuint program;
     GLuint* tex;
     Mesh_viewer_world* world;
+	void (*update_data)(struct Mesh_viewer_opengl_Interpreter*);
     void (*routine_show)(struct Mesh_viewer_opengl_Interpreter*);
     void (*render)(struct Mesh_viewer_opengl_Interpreter*);
     void *prop;
@@ -72,9 +73,7 @@ void Mesh_viewer_opengl_Interpreter_render(Mesh_viewer_opengl_Interpreter* moi)
     
     glfwSetWindowUserPointer(window,(void*)mw);
     mw->g_info->window=(void*)window; 
-    mesh_viewer_set_callback(window);
-
-  
+    mesh_viewer_set_callback(window);  
     prepare_render_data(moi);
 
     char*mesh_vert=(char*)malloc(sizeof(char)*100); 
@@ -261,7 +260,7 @@ void display_setting()
    // glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 //glClear(GL_COLOR_BUFFER_BIT);
 //上面两个语句等同以下两个语句
-	static const float black[]={0.2f,0.3f,0.3f,1.0f};
+	static const float black[]={0.5f,0.6f,0.6f,1.0f};
     glClearBufferfv(GL_COLOR,0,black);
    
 	glClear(GL_DEPTH_BUFFER_BIT);
@@ -274,6 +273,7 @@ void set_uniform(Mesh_viewer_opengl_Interpreter*moi)
     GLuint program=moi->program;
     Interactor_GlobalInfo* g_info=mw->g_info;
     glUniform2f(glGetUniformLocation(program,"iMouse"),(float)g_info->mouse_coord[0],(float)g_info->mouse_coord[1]);
+    //printf("iMouse:%lf %lf\n",(float)g_info->mouse_coord[0],(float)g_info->mouse_coord[1]);
     glUniform2f(glGetUniformLocation(program,"iResolution"),(float)g_info->resolution[0],(float)g_info->resolution[1]);
     glUniform1f(glGetUniformLocation(program,"iTime"),g_info->run_time);
     if(g_info->key==MESH_VIEWER_KEY_CONTROL&&g_info->key_action==1)
@@ -346,6 +346,55 @@ void prepare_mesh_viewer_world_data(Mesh_viewer_opengl_Interpreter*moi)
             add_texture_to_shader(&(mt->tex),mt->image_file);
         }
     
+    }
+    free_node_value(names_id);
+    free_node(names_id);
+    char points[]="points";
+    names_id=mw->find_species(mw,points);
+    iter=mw->species2somethings.find(*((int*)(names_id->value)));
+    if(iter!=mw->species2somethings.end())
+    {
+        for(auto iter1=(iter->second)->begin();iter1!=(iter->second)->end();iter1++)
+        {
+            Mesh_viewer_something*ms=iter1->second;
+            Mesh_viewer_points *mp=(Mesh_viewer_points*)(ms->evolution);
+            if(ms->disappear==1||mp->Data==0)
+            {
+                continue;
+            }
+            if(mp->Buffers==0)
+            {
+                mp->Buffers=(GLuint*)malloc(sizeof(GLuint));
+            }
+            int v_size=mp->Data_rows;
+            GLfloat* vertices=(GLfloat*)malloc(sizeof(GLfloat)*v_size*3);
+            
+            memset(vertices,0,sizeof(GLfloat)*v_size*3);
+            for(int i=0;i<v_size;i++)
+            {
+                for(int j=0;j<3;j++)
+                {
+                    vertices[i*3+j]=(float)(mp->Data[i*3+j]);
+
+                    //printf("vertice:%lf \n",vertices[i*3+j]);
+                }
+            }
+      //      glDeleteBuffers(1,mp->Buffers);
+        //    glDeleteVertexArrays(1,&(mp->VAO));
+            glGenVertexArrays(1,&(mp->VAO));
+
+            glBindVertexArray(mp->VAO);
+            glCreateBuffers(2,mp->Buffers);
+            glBindBuffer(GL_ARRAY_BUFFER,mp->Buffers[0]);
+            glBufferData(GL_ARRAY_BUFFER,sizeof(GLfloat)*v_size*3,vertices,GL_STATIC_DRAW);
+            glBindBuffer(GL_ARRAY_BUFFER,mp->Buffers[0]);
+            glVertexAttribPointer( 0, 3, GL_FLOAT,GL_FALSE, 0, 0 );
+            glEnableVertexAttribArray( 0 );
+            
+            glBindVertexArray(0);
+
+            free(vertices); 
+        }
     }
     free_node_value(names_id);
     free_node(names_id);
@@ -423,7 +472,7 @@ void prepare_mesh_viewer_world_data(Mesh_viewer_opengl_Interpreter*moi)
                 
                 }
             }
-            glDeleteBuffers(1,me->Buffers);
+            glDeleteBuffers(3,me->Buffers);
             glDeleteVertexArrays(1,&(me->VAO));
             glGenVertexArrays(1,&(me->VAO));
             glBindVertexArray(me->VAO);
@@ -781,24 +830,53 @@ ImageInfo* add_texture_to_shader(unsigned int*tex,char*image_file)
 void draw_elements(Mesh_viewer_opengl_Interpreter* moi)
 {
     Mesh_viewer_world* mw=moi->world;
-    char edges[]="edges";
-    Node* names_id=mw->find_species(mw,edges);
+    char points[]="points";
+    Node* names_id=mw->find_species(mw,points);
     std::map<int,std::map<int,Mesh_viewer_something*>*>::iterator iter=mw->species2somethings.find(*((int*)(names_id->value)));
+    if(iter!=mw->species2somethings.end())
+    {
+        for(auto iter1=(iter->second)->begin();iter1!=(iter->second)->end();iter1++)
+        {
+            Mesh_viewer_something *ms=iter1->second;
+            Mesh_viewer_points *mp=(Mesh_viewer_points*)(ms->evolution);
+            if(ms->disappear==1||mp->Data==0)
+            {continue;}
+
+            glPointSize(mp->pointsize);
+            int v_size=mp->Data_rows;
+            float *data=(float*)(mp->mat->data);
+            glUniformMatrix4fv(glGetUniformLocation(moi->program,"Object_Matrix"),1,GL_TRUE,data);
+            //glUniform1f(glGetUniformLocation(moi->program,"is_draw_vertices"),1.0);
+            glBindVertexArray(mp->VAO);
+
+            //printf("vao:%u",mp->VAO);
+            glDrawArrays(GL_POINTS,0,v_size); 
+
+        }
+    
+    }
+    //glUniform1f(glGetUniformLocation(moi->program,"is_draw_vertices"),0.0);
+
+    char edges[]="edges";
+    names_id=mw->find_species(mw,edges);
+    iter=mw->species2somethings.find(*((int*)(names_id->value)));
     if(iter!=mw->species2somethings.end())
     {
 
        for(auto iter1=(iter->second)->begin();iter1!=(iter->second)->end();iter1++)
        {
-             
             Mesh_viewer_something *ms=iter1->second;
             Mesh_viewer_edges *me=(Mesh_viewer_edges*)(ms->evolution);
             if(ms->disappear==1||me->Data==0||me->Data_index==0)
             {continue;}
+
+            glLineWidth(me->edgesize); 
             int v_size=me->Data_index_rows*2;
+            float *data=(float*)(me->mat->data);
+            glUniformMatrix4fv(glGetUniformLocation(moi->program,"Object_Matrix"),1,GL_TRUE,data);
 
             glBindVertexArray(me->VAO); 
             glDrawArrays(GL_LINES,0,v_size); 
-
        
        }
     }
@@ -827,6 +905,9 @@ void draw_elements(Mesh_viewer_opengl_Interpreter* moi)
                 v_size+=(j-2)*3;
                 temp_i+=(j+1);
             }
+            float *data=(float*)(mf->mat->data);
+            glUniformMatrix4fv(glGetUniformLocation(moi->program,"Object_Matrix"),1,GL_TRUE,data);
+
             glBindVertexArray(mf->VAO);
             
             glDrawArrays(GL_TRIANGLES,0,v_size); 
@@ -835,8 +916,6 @@ void draw_elements(Mesh_viewer_opengl_Interpreter* moi)
     }
     free_node_value(names_id);
     free_node(names_id);
-
-
 }
 
 
@@ -992,6 +1071,7 @@ void init_uniform(Mesh_viewer_opengl_Interpreter* moi)
 	
     glUniform1f(glGetUniformLocation(program,"Faces_len"),(float)(moi->faces_len));
     glUniform1f(glGetUniformLocation(program,"Faces_Vertices_rows"),(float)(moi->faces_vertices_len));
+    //glUniform1f(glGetUniformLocation(program,"is_draw_vertices"),0.0);
     glUniform1f(glGetUniformLocation(program,"p_intera.is_pick"),0);
 
         //glUniform1f(glGetUniformLocation(program,""))
@@ -1030,8 +1110,10 @@ void Mesh_viewer_opengl_Interpreter_init(Mesh_viewer_opengl_Interpreter*moi)
     moi->tex=0;
     moi->world=0;
     moi->prop=0;
+	moi->update_data=prepare_mesh_viewer_world_data;
 	moi->routine_show=Mesh_viewer_opengl_Interpreter_routine_show;
 	moi->render=Mesh_viewer_opengl_Interpreter_render;
+	
 
 
 }

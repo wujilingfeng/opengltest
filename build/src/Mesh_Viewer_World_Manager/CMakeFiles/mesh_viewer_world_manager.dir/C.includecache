@@ -34,7 +34,7 @@ tool/tools_node.h
 stdlib.h
 -
 
-/home/libo/Documents/c++/Mesh_viewer/src/Mesh_Viewer_World_Manager/Mesh_viewer_base_species.c
+/home/libo/Documents/c++/Viewer/src/Mesh_Viewer_World_Manager/Mesh_viewer_base_species.c
 Mesh_Viewer_World_Manager/Mesh_viewer_base_species.h
 -
 time.h

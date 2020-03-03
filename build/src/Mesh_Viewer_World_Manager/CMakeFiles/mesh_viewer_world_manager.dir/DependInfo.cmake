@@ -5,8 +5,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/libo/Documents/c++/Mesh_viewer/src/Mesh_Viewer_World_Manager/Interactor_GlobalInfo.c" "/home/libo/Documents/c++/Mesh_viewer/build/src/Mesh_Viewer_World_Manager/CMakeFiles/mesh_viewer_world_manager.dir/Interactor_GlobalInfo.c.o"
-  "/home/libo/Documents/c++/Mesh_viewer/src/Mesh_Viewer_World_Manager/Mesh_viewer_base_species.c" "/home/libo/Documents/c++/Mesh_viewer/build/src/Mesh_Viewer_World_Manager/CMakeFiles/mesh_viewer_world_manager.dir/Mesh_viewer_base_species.c.o"
+  "/home/libo/Documents/c++/Viewer/src/Mesh_Viewer_World_Manager/Interactor_GlobalInfo.c" "/home/libo/Documents/c++/Viewer/build/src/Mesh_Viewer_World_Manager/CMakeFiles/mesh_viewer_world_manager.dir/Interactor_GlobalInfo.c.o"
+  "/home/libo/Documents/c++/Viewer/src/Mesh_Viewer_World_Manager/Mesh_viewer_base_species.c" "/home/libo/Documents/c++/Viewer/build/src/Mesh_Viewer_World_Manager/CMakeFiles/mesh_viewer_world_manager.dir/Mesh_viewer_base_species.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
@@ -15,7 +15,7 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
   "../include"
   )
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/libo/Documents/c++/Mesh_viewer/src/Mesh_Viewer_World_Manager/Mesh_viewer_manager.cpp" "/home/libo/Documents/c++/Mesh_viewer/build/src/Mesh_Viewer_World_Manager/CMakeFiles/mesh_viewer_world_manager.dir/Mesh_viewer_manager.cpp.o"
+  "/home/libo/Documents/c++/Viewer/src/Mesh_Viewer_World_Manager/Mesh_viewer_manager.cpp" "/home/libo/Documents/c++/Viewer/build/src/Mesh_Viewer_World_Manager/CMakeFiles/mesh_viewer_world_manager.dir/Mesh_viewer_manager.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

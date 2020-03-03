@@ -73,6 +73,7 @@ typedef struct Mesh_viewer_points
 	void *prop;
 	void* evolution;
 	Matrix4x4* mat;
+	float pointsize;
 }Mesh_viewer_points;
 void Mesh_viewer_points_init(struct Mesh_viewer_points*);
 
@@ -84,6 +85,7 @@ typedef struct Mesh_viewer_edges
     	unsigned int Data_index_rows,Data_rows,color_rows;
 	void *prop;
 	void* evolution;
+	float edgesize;
 	Matrix4x4* mat;
 }Mesh_viewer_edges;
 void Mesh_viewer_edges_init(struct Mesh_viewer_edges*);

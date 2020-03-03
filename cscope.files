@@ -16,7 +16,7 @@
 ./Demo/include/Arcroll.h
 ./Demo/Arcroll.cpp
 ./include/tool/tools_node.h
-./include/tool/tools_view.h
+./include/tool/Viewer_tools_view.h
 ./include/stb_image.h
 ./include/Mesh_view/Mesh_viewer_interpreter.h
 ./include/Mesh_view/glfw_callback.h

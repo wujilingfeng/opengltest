@@ -35,8 +35,11 @@ void test_intera(Mesh_viewer_world* mw)
     Node* n=Mesh_viewer_world_create_something(mw,Intera);
     Mesh_viewer_something *ms=(Mesh_viewer_something*)(n->value);
     Mesh_viewer_Intera* mi=(Mesh_viewer_Intera*)(ms->evolution);
-    mi->g_info=mw->g_info;
+    //mi->g_info=mw->g_info;
     Mesh_viewer_camera* mc=0;
+
+    free_node(n);
+
     char camera[]="Camera";
     Node*id=Mesh_viewer_world_find_species(mw,camera);
     
@@ -54,26 +57,24 @@ void test_intera(Mesh_viewer_world* mw)
             mc=0;
         }
     }
-    mi->prop=(void*)mc;
+    
     Mesh_viewer_Arcroll* ma=(Mesh_viewer_Arcroll*)malloc(sizeof(Mesh_viewer_Arcroll));
     Mesh_viewer_Arcroll_init(ma);
     mi->representation=(void*)ma;
+    ma->mc=mc;
     mi->cursor_position_callback=Mesh_viewer_Arcroll_cursor_position_callback;
     mi->scroll_callback=Mesh_viewer_Arcroll_scroll_callback;
     mi->mouse_button_callback=Mesh_viewer_Arcroll_mouse_button_callback;
     free_node_value(id);
     free_node(id);
-    free_node(n);
 }
 void test_manager()
 {
     Mesh_viewer_world mw;
     Mesh_viewer_world_init(&mw);
     char  ch[]="faces";
-    Node* n=Mesh_viewer_world_create_something(&mw,ch);
-    
+    Node* n=Mesh_viewer_world_create_something(&mw,ch);    
     Mesh_viewer_something* ms=(Mesh_viewer_something*)(n->value);
-
     Mesh_viewer_faces* mf=(Mesh_viewer_faces*)(ms->evolution);
     free_node(node_reverse(n));
     mf->color_rows=12;mf->normal_rows=12;
@@ -103,7 +104,6 @@ void test_manager()
     f[9*4+0]=3; f[9*4+1]=7;f[9*4+2]=3;f[9*4+3]=1;
     f[10*4+0]=3; f[10*4+1]=2;f[10*4+2]=4;f[10*4+3]=0;
     f[11*4+0]=3;f[11*4+1]=0;f[11*4+2]=4;f[11*4+3]=6;
-    
     for(int i=0;i<12;i++)
     {
         texcoords[i*7]=3;
@@ -121,6 +121,16 @@ void test_manager()
     mf->Data_index=f;
     mf->Data_rows=8;
     mf->Data_index_rows=12;
+    //ms->disappear=1;
+    char points[]="points";
+    n=mw.create_something(&mw,points);
+    ms=(Mesh_viewer_something*)(n->value);
+    free_node(n);
+    auto mp=(Mesh_viewer_points*)(ms->evolution);
+    mp->Data_rows=2;
+    mp->Data=(float*)malloc(sizeof(float)*3*2);
+    mp->Data[0]=0.5;mp->Data[1]=0.6;mp->Data[2]=0.2;
+    mp->Data[3]=0.1;mp->Data[4]=1.1;mp->Data[5]=0.1;
     char texture[]="Texture";
     n=mw.create_something(&mw,texture);
     ms=(Mesh_viewer_something*)(n->value);

@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 2.8)
 FILE(WRITE ./include/config.h "#define MESH_VIEWER_PATH \"${PROJECT_SOURCE_DIR}\"")
 add_compile_options(-Wall -g -lstdc++)
+add_compile_options(-no-pie)
 set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} -std=c++11)
 set(CMAKE_C_FLAGS ${CMAKE_C_FLAGS} -std=c11)
 find_package(TOOLS_NODE)
