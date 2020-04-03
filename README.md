@@ -20,3 +20,10 @@ make install
 
 推荐使用libcell库，支持n维流形(当然包含任意多边形)，代码紧凑，功能统一，简洁，高效。
 
+#### 遗留工作
+
+把Mesh_viewer换成Viewer
+
+结构名称统一。
+
+多个shader的支持。

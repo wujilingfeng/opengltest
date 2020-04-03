@@ -5,6 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+
 typedef struct Mesh_viewer_something{
 	char* name;
 	int name_id;
@@ -19,6 +20,7 @@ typedef struct Mesh_viewer_something{
 	void* evolution;
 }Mesh_viewer_something;
 void Mesh_viewer_something_init( Mesh_viewer_something*);
+//应该修改为一个texture可以对应多个曲面
 typedef struct Mesh_viewer_texture
 {
 	char* image_file;
@@ -39,15 +41,19 @@ typedef struct Mesh_viewer_faces
 	unsigned int color_rows;
 	unsigned int* marked_faces_index;
 	unsigned int VAO,*Buffers;
+//面的数量
     	unsigned int Data_index_rows;
 	unsigned int Data_rows;
 	void* prop;
 	void* evolution;
 	void(*compute_normal)(struct Mesh_viewer_faces*);
 	void (*random_color)(struct Mesh_viewer_faces*);
+	void (*set_color)(struct Mesh_viewer_faces*,float*);
+	int is_reversal_normal;
 	Matrix4x4 *mat;
 	Mesh_viewer_something* texture;
 }Mesh_viewer_faces;
+void Viewer_faces_set_color(Mesh_viewer_faces*,float*);
 void Mesh_viewer_faces_compute_normal(Mesh_viewer_faces*);
 void Mesh_viewer_faces_random_color(Mesh_viewer_faces*);
 void Mesh_viewer_faces_init(Mesh_viewer_faces*);
@@ -66,9 +72,9 @@ void Mesh_viewer_camera_init(Mesh_viewer_camera*);
 typedef struct Mesh_viewer_points
 {
 	float *Data,*color;
-	unsigned int* Data_index;
+	
 	unsigned int VAO,*Buffers;
-    	int Data_index_rows;
+    	
 	int Data_rows;
 	void *prop;
 	void* evolution;
@@ -86,9 +92,11 @@ typedef struct Mesh_viewer_edges
 	void *prop;
 	void* evolution;
 	float edgesize;
+	void (*set_color)(struct Mesh_viewer_edges*,float*);
 	Matrix4x4* mat;
 }Mesh_viewer_edges;
 void Mesh_viewer_edges_init(struct Mesh_viewer_edges*);
+void Viewer_edges_set_color(Mesh_viewer_edges*,float*v);
 
 #ifdef __cplusplus
 }

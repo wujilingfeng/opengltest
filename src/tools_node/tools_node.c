@@ -2,8 +2,10 @@
 #include<stdio.h>
 int node_size(Node* node)
 {
-	if(node==NULL)
-	{return 0;}
+    if(node==NULL)
+    {
+        return 0;
+    }
 	Node*node1=(Node*)(node->Prev);
 	int i=0;
     while(node!=NULL)
@@ -23,7 +25,7 @@ int node_size(Node* node)
 //向下free
 void free_node(Node *node)
 {	
-	if(node==0)
+	if(node==NULL)
 	{return;}
 
     Node* node1=node->Next,*node2=node->Prev,*iter;
@@ -33,7 +35,7 @@ void free_node(Node *node)
         free(node1);
         node1=iter;
     }
-	while(node2!=0)
+	while(node2!=NULL)
 	{
 		iter=node2->Prev;
 		free(node2);
@@ -71,7 +73,7 @@ Node* node_find(Node* node,void* value)
     {
         if(node->value==value)
         {break;}
-        node=(Node*)node->Next;
+        node=(Node*)(node->Next);
     }
     return node;
 }
@@ -190,13 +192,20 @@ void node_eliminate(Node* node)
 //给一个node的开始节点，删除某个value的节点,并返回开始节点
 Node* node_delete_value(Node* node,void* value)
 {
+
     Node* node1=node_find(node,value);
+
     Node* re=node;
+	if(node1==NULL)
+	{	
+		return re;
+	}
     if(node1->Prev==NULL)
     {
         re=(Node*)node1->Next;
-    
     }
+
     node_eliminate(node1);
+
     return re;
 }

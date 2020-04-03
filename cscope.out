@@ -1,4 +1,4 @@
-cscope 15 $HOME/Documents/c++/Viewer -q 0000007044 0001029525
+cscope 15 $HOME/Documents/c++/Viewer -q 0000007050 0001031013
 	@Demo/Arcroll.cpp
 
 1 
@@ -8439,67 +8439,67 @@ MESH_VIEWER_BASE_SPECIES
 __ýlu¥lus
 
 
-8 
+9 
 	sMesh_v›w”_som‘hšg
 {
 
-9 * 
+10 * 
 Çme
 ;
 
-10 
+11 
 Çme_id
 ;
 
-11 
+12 
 id
 ;
 
-12 
+13 
 ü—‹_d©e
 ;
 
-13 
+14 
 di§µ—r
 ;
 
-14 * 
+15 * 
 ´Ý
 ;
 
-15 * 
+16 * 
 mesh
 ;
 
-17 
+18 
 Node
 * 
 hi¡Üy_av©¬
 ;
 
-19 * 
+20 * 
 evÞutiÚ
 ;
 
-20 }
+21 }
 	tMesh_v›w”_som‘hšg
 ;
 
-21 
+22 
 Mesh_v›w”_som‘hšg_š™
 Ð
 Mesh_v›w”_som‘hšg
 *);
 
-22 
+24 
 	sMesh_v›w”_‹xtu»
 
 
-24 * 
+26 * 
 image_fže
 ;
 
-25 
+27 
 width
 ,
 height
@@ -8507,37 +8507,37 @@ height
 n
 ;
 
-26 * 
+28 * 
 d©a
 ;
 
-27 * 
+29 * 
 —ch_çû_‹xtu»_coÜd
 ;
 
-28 
+30 
 ‹x
 ;
 
-29 * 
+31 * 
 ´Ý
 ;
 
-30 }
+32 }
 	tMesh_v›w”_‹xtu»
 ;
 
-32 
+34 
 Mesh_v›w”_‹xtu»_š™
 (
 Mesh_v›w”_‹xtu»
 *);
 
-34 
+36 
 	sMesh_v›w”_çûs
 
 
-36 *
+38 *
 D©a
 ,*
 cÞÜ
@@ -8545,211 +8545,219 @@ cÞÜ
 nÜm®
 ;
 
-37 * 
+39 * 
 D©a_šdex
 ;
 
-38 
+40 
 nÜm®_rows
 ;
 
-39 
+41 
 cÞÜ_rows
 ;
 
-40 * 
+42 * 
 m¬ked_çûs_šdex
 ;
 
-41 
+43 
 VAO
 ,*
 Bufãrs
 ;
 
-42 
+45 
 D©a_šdex_rows
 ;
 
-43 
+46 
 D©a_rows
 ;
 
-44 * 
+47 * 
 ´Ý
 ;
 
-45 * 
+48 * 
 evÞutiÚ
 ;
 
-46 (*
+49 (*
 compu‹_nÜm®
 )(
 Mesh_v›w”_çûs
 *);
 
-47 (*
+50 (*
 ¿ndom_cÞÜ
 )(
 Mesh_v›w”_çûs
 *);
 
-48 
+51 (*
+£t_cÞÜ
+)(
+Mesh_v›w”_çûs
+*,*);
+
+52 
+is_»v”§l_nÜm®
+;
+
+53 
 M©rix4x4
  *
 m©
 ;
 
-49 
+54 
 Mesh_v›w”_som‘hšg
 * 
 ‹xtu»
 ;
 
-50 }
+55 }
 	tMesh_v›w”_çûs
 ;
 
-51 
+56 
+V›w”_çûs_£t_cÞÜ
+(
+Mesh_v›w”_çûs
+*,*);
+
+57 
 Mesh_v›w”_çûs_compu‹_nÜm®
 (
 Mesh_v›w”_çûs
 *);
 
-52 
+58 
 Mesh_v›w”_çûs_¿ndom_cÞÜ
 (
 Mesh_v›w”_çûs
 *);
 
-53 
+59 
 Mesh_v›w”_çûs_š™
 (
 Mesh_v›w”_çûs
 *);
 
-54 
+60 
 	sMesh_v›w”_ÿm”a
 
 
-56 
+62 
 M©rix4x4
 * 
 m©rix
 ;
 
-57 
+63 
 M©rix4x4
 * 
 m©rix_šv”£
 ;
 
-58 
+64 
 M©rix4x4
 * 
 Proj
 ;
 
-59 
+65 
 is_usšg
 ;
 
-60 
+66 
 foÿl_di¡ªû
 ;
 
-61 * 
+67 * 
 ´Ý
 ;
 
-63 }
+69 }
 	tMesh_v›w”_ÿm”a
 ;
 
-64 
+70 
 Mesh_v›w”_ÿm”a_š™
 (
 Mesh_v›w”_ÿm”a
 *);
 
-66 
+72 
 	sMesh_v›w”_pošts
 
 
-68 *
+74 *
 D©a
 ,*
 cÞÜ
 ;
 
-69 * 
-D©a_šdex
-;
-
-70 
+76 
 VAO
 ,*
 Bufãrs
 ;
 
-71 
-D©a_šdex_rows
-;
-
-72 
+78 
 D©a_rows
 ;
 
-73 *
+79 *
 ´Ý
 ;
 
-74 * 
+80 * 
 evÞutiÚ
 ;
 
-75 
+81 
 M©rix4x4
 * 
 m©
 ;
 
-76 
+82 
 poštsize
 ;
 
-77 }
+83 }
 	tMesh_v›w”_pošts
 ;
 
-78 
+84 
 Mesh_v›w”_pošts_š™
 (
 Mesh_v›w”_pošts
 *);
 
-80 
+86 
 	sMesh_v›w”_edges
 
 
-82 *
+88 *
 D©a
 ,*
 cÞÜ
 ;
 
-83 * 
+89 * 
 D©a_šdex
 ;
 
-84 
+90 
 VAO
 ,*
 Bufãrs
 ;
 
-85 
+91 
 D©a_šdex_rows
 ,
 D©a_rows
@@ -8757,35 +8765,49 @@ D©a_rows
 cÞÜ_rows
 ;
 
-86 *
+92 *
 ´Ý
 ;
 
-87 * 
+93 * 
 evÞutiÚ
 ;
 
-88 
+94 
 edgesize
 ;
 
-89 
+95 (*
+£t_cÞÜ
+)(
+Mesh_v›w”_edges
+*,*);
+
+96 
 M©rix4x4
 * 
 m©
 ;
 
-90 }
+97 }
 	tMesh_v›w”_edges
 ;
 
-91 
+98 
 Mesh_v›w”_edges_š™
 (
 Mesh_v›w”_edges
 *);
 
-93 #ifdeà
+99 
+V›w”_edges_£t_cÞÜ
+(
+Mesh_v›w”_edges
+*,*
+v
+);
+
+101 #ifdeà
 __ýlu¥lus
 
 
@@ -9917,7 +9939,7 @@ GL_DEPTH_TEST
 
 263 cÚ¡ 
 bÏck
-[]={0.5f,0.6f,0.6f,1.0f};
+[]={0.2f,0.5f,1.0f,1.0f};
 
 264 
 glCË¬Bufãrfv
@@ -10436,6 +10458,22 @@ mp
 ->
 D©a
 [i*3+j]);
+
+382 
+glD–‘eBufãrs
+(1,
+mp
+->
+Bufãrs
+);
+
+383 
+glD–‘eV”‹xA¼ays
+(1,&(
+mp
+->
+VAO
+));
 
 384 
 glG’V”‹xA¼ays
@@ -11131,7 +11169,7 @@ fšd
 v®ue
 )));
 
-511 if(
+512 if(
 ™”
 !=
 mw
@@ -11141,7 +11179,7 @@ mw
 ’d
 ())
 
-513 autØ
+514 autØ
 ™”1
 =(
 ™”
@@ -11153,7 +11191,7 @@ begš
 ’d
 ();iter1++)
 
-515 
+516 
 Mesh_v›w”_som‘hšg
  *
 ms
@@ -11163,7 +11201,7 @@ ms
 £cÚd
 ;
 
-516 
+517 
 Mesh_v›w”_çûs
  *
 mf
@@ -11173,13 +11211,29 @@ ms
 evÞutiÚ
 );
 
-517 if(
+519 if(
+ms
+->
+di§µ—r
+==1||
+mf
+->
+D©a_šdex_rows
+==0||mf->
+D©a
+==
+NULL
+||mf->
+D©a_rows
+==0)
+
+522 if(
 mf
 ->
 Bufãrs
 ==0)
 
-519 
+524 
 mf
 ->
 Bufãrs
@@ -11189,7 +11243,7 @@ GLušt
 m®loc
 ((GLuint));
 
-521 if(
+526 if(
 mf
 ->
 nÜm®_rows
@@ -11197,29 +11251,19 @@ nÜm®_rows
 nÜm®
 ==0)
 
-523 
+528 
 mf
 ->
 compu‹_nÜm®
 (mf);
 
-526 if(
-ms
-->
-di§µ—r
-==1||
-mf
-->
-D©a_šdex_rows
-==0)
-
-529 
+532 
 v_size
 =0,
 ‹mp_i
 =0;
 
-530 
+533 
 i
 =0;i<
 mf
@@ -11227,7 +11271,7 @@ mf
 D©a_šdex_rows
 ;i++)
 
-533 
+536 
 j
 =
 mf
@@ -11237,23 +11281,23 @@ D©a_šdex
 ‹mp_i
 ];
 
-534 
+537 
 v_size
 +=(
 j
 -2)*3;
 
-535 
+538 
 ‹mp_i
 +=(
 j
 +1);
 
-537 if(
+540 if(
 v_size
 ==0)
 
-541 
+544 
 GLæßt
  *
 v”tiûs
@@ -11263,7 +11307,7 @@ m®loc
 v_size
 *3);
 
-542 
+545 
 GLæßt
 * 
 cÞÜs
@@ -11273,7 +11317,7 @@ m®loc
 v_size
 *3);
 
-543 
+546 
 GLæßt
 * 
 nÜm®
@@ -11283,7 +11327,7 @@ m®loc
 v_size
 *3);
 
-544 
+547 
 GLæßt
 * 
 ‹xcoÜds
@@ -11293,7 +11337,7 @@ m®loc
 v_size
 *2);
 
-545 
+548 
 GLæßt
 * 
 e_id
@@ -11302,40 +11346,40 @@ m®loc
 ((GLæßt)*
 v_size
 );
-
-546 
-mem£t
-(
-‹xcoÜds
-,0,(
-GLæßt
-)*
-v_size
-*2);
-
-547 
-mem£t
-(
-cÞÜs
-,0,(
-GLæßt
-)*
-v_size
-*3);
-
-548 
-mem£t
-(
-nÜm®
-,0,(
-GLæßt
-)*
-v_size
-*3);
 
 549 
 mem£t
 (
+‹xcoÜds
+,0,(
+GLæßt
+)*
+v_size
+*2);
+
+550 
+mem£t
+(
+cÞÜs
+,0,(
+GLæßt
+)*
+v_size
+*3);
+
+551 
+mem£t
+(
+nÜm®
+,0,(
+GLæßt
+)*
+v_size
+*3);
+
+552 
+mem£t
+(
 e_id
 ,0,(
 GLæßt
@@ -11343,13 +11387,13 @@ GLæßt
 v_size
 );
 
-550 
+553 
 ‹mp_i
 =0;
 v_size
 =0;
 
-551 
+554 
 i
 =0;i<
 mf
@@ -11357,7 +11401,7 @@ mf
 D©a_šdex_rows
 ;i++)
 
-553 
+556 
 j
 =
 mf
@@ -11367,17 +11411,17 @@ D©a_šdex
 ‹mp_i
 ];
 
-554 
+557 
 l
 =0;l<(
 j
 -2);l++)
 
-556 
+559 
 k
 ;
 
-557 
+560 
 k
 =
 mf
@@ -11387,7 +11431,7 @@ D©a_šdex
 ‹mp_i
 +1];
 
-558 
+561 
 e_id
 [
 v_size
@@ -11395,7 +11439,7 @@ v_size
 –em’ts_id
 ;
 
-559 
+562 
 v”tiûs
 [
 v_size
@@ -11407,11 +11451,11 @@ D©a
 k
 *3+0];vertices[v_size*3+1]=mf->Data[k*3+1];vertices[v_size*3+2]=mf->Data[k*3+2];
 
-560 
+563 
 v_size
 ++;
 
-561 
+564 
 k
 =
 mf
@@ -11423,7 +11467,7 @@ D©a_šdex
 l
 +1];
 
-562 
+565 
 e_id
 [
 v_size
@@ -11431,7 +11475,7 @@ v_size
 –em’ts_id
 ;
 
-564 
+567 
 v”tiûs
 [
 v_size
@@ -11443,11 +11487,11 @@ D©a
 k
 *3+0];vertices[v_size*3+1]=mf->Data[k*3+1];vertices[v_size*3+2]=mf->Data[k*3+2];
 
-566 
+569 
 v_size
 ++;
 
-567 
+570 
 k
 =
 mf
@@ -11459,7 +11503,7 @@ D©a_šdex
 l
 +2];
 
-568 
+571 
 e_id
 [
 v_size
@@ -11467,7 +11511,7 @@ v_size
 –em’ts_id
 ;
 
-570 
+573 
 v”tiûs
 [
 v_size
@@ -11479,33 +11523,33 @@ D©a
 k
 *3+0];vertices[v_size*3+1]=mf->Data[k*3+1];vertices[v_size*3+2]=mf->Data[k*3+2];
 
-572 
+575 
 v_size
 ++;
 
-575 
+578 
 ‹mp_i
 +=(
 j
 +1);
 
-576 
+579 
 –em’ts_id
 ++;
 
-580 if(
+583 if(
 mf
 ->
 cÞÜ
 !=0)
 
-582 
+585 
 ‹mp_i
 =0;
 v_size
 =0;
 
-583 if(
+586 if(
 mf
 ->
 cÞÜ_rows
@@ -11513,7 +11557,7 @@ cÞÜ_rows
 D©a_šdex_rows
 )
 
-585 
+588 
 i
 =0;i<
 mf
@@ -11521,7 +11565,7 @@ mf
 D©a_šdex_rows
 ;i++)
 
-587 
+590 
 j
 =
 mf
@@ -11531,17 +11575,17 @@ D©a_šdex
 ‹mp_i
 ];
 
-588 
+591 
 l
 =0;l<(
 j
 -2)*3;l++)
 
-591 
+594 
 k
 =0;k<3;k++)
 
-594 
+597 
 cÞÜs
 [
 v_size
@@ -11555,17 +11599,17 @@ cÞÜ
 i
 *3+k];
 
-596 
+599 
 v_size
 ++;
 
-598 
+601 
 ‹mp_i
 +=(
 j
 +1);
 
-602 if(
+605 if(
 mf
 ->
 cÞÜ_rows
@@ -11573,7 +11617,7 @@ cÞÜ_rows
 D©a_rows
 )
 
-604 
+607 
 i
 =0;i<
 mf
@@ -11581,7 +11625,7 @@ mf
 D©a_šdex_rows
 ;i++)
 
-606 
+609 
 j
 =
 mf
@@ -11591,13 +11635,13 @@ D©a_šdex
 ‹mp_i
 ];
 
-607 
+610 
 l
 =0;l<(
 j
 -2);l++)
 
-610 
+613 
 ‹mp_š
 =
 mf
@@ -11607,11 +11651,11 @@ D©a_šdex
 ‹mp_i
 +1];
 
-611 
+614 
 k
 =0;k<3;k++)
 
-613 
+616 
 cÞÜs
 [
 v_size
@@ -11625,11 +11669,11 @@ cÞÜ
 ‹mp_š
 *3+k];
 
-615 
+618 
 v_size
 ++;
 
-616 
+619 
 ‹mp_š
 =
 mf
@@ -11641,11 +11685,11 @@ D©a_šdex
 l
 +1];
 
-617 
+620 
 k
 =0;k<3;k++)
 
-619 
+622 
 cÞÜs
 [
 v_size
@@ -11659,11 +11703,11 @@ cÞÜ
 ‹mp_š
 *3+k];
 
-622 
+625 
 v_size
 ++;
 
-623 
+626 
 ‹mp_š
 =
 mf
@@ -11675,11 +11719,11 @@ D©a_šdex
 l
 +2];
 
-624 
+627 
 k
 =0;k<3;k++)
 
-626 
+629 
 cÞÜs
 [
 v_size
@@ -11693,23 +11737,23 @@ cÞÜ
 ‹mp_š
 *3+k];
 
-629 
+632 
 v_size
 ++;
 
-631 
+634 
 ‹mp_i
 +=(
 j
 +1);
 
-638 if(
+641 if(
 mf
 ->
 ‹xtu»
 !=0)
 
-643 
+646 
 Mesh_v›w”_‹xtu»
 * 
 mt
@@ -11721,19 +11765,19 @@ mf
 evÞutiÚ
 );
 
-644 if(
+647 if(
 mt
 ->
 —ch_çû_‹xtu»_coÜd
 !=0)
 
-646 
+649 
 ‹mp_i
 =0;
 v_size
 =0;
 
-648 
+651 
 i
 =0;i<
 mf
@@ -11741,7 +11785,7 @@ mf
 D©a_šdex_rows
 ;i++)
 
-650 
+653 
 j
 =
 mt
@@ -11751,13 +11795,13 @@ mt
 ‹mp_i
 ];
 
-651 
+654 
 l
 =0;l<(
 j
 -2);l++)
 
-653 
+656 
 ‹xcoÜds
 [
 v_size
@@ -11769,7 +11813,7 @@ mt
 ‹mp_i
 +1+0];
 
-654 
+657 
 ‹xcoÜds
 [
 v_size
@@ -11780,38 +11824,6 @@ mt
 [
 ‹mp_i
 +1+1];
-
-656 
-v_size
-++;
-
-657 
-‹xcoÜds
-[
-v_size
-*2+0]=
-mt
-->
-—ch_çû_‹xtu»_coÜd
-[
-‹mp_i
-+1+2*(
-l
-+1)+0];
-
-658 
-‹xcoÜds
-[
-v_size
-*2+1]=
-mt
-->
-—ch_çû_‹xtu»_coÜd
-[
-‹mp_i
-+1+2*(
-l
-+1)+1];
 
 659 
 v_size
@@ -11829,7 +11841,7 @@ mt
 ‹mp_i
 +1+2*(
 l
-+2)+0];
++1)+0];
 
 661 
 ‹xcoÜds
@@ -11843,31 +11855,63 @@ mt
 ‹mp_i
 +1+2*(
 l
-+2)+1];
++1)+1];
 
 662 
 v_size
 ++;
 
+663 
+‹xcoÜds
+[
+v_size
+*2+0]=
+mt
+->
+—ch_çû_‹xtu»_coÜd
+[
+‹mp_i
++1+2*(
+l
++2)+0];
+
 664 
+‹xcoÜds
+[
+v_size
+*2+1]=
+mt
+->
+—ch_çû_‹xtu»_coÜd
+[
+‹mp_i
++1+2*(
+l
++2)+1];
+
+665 
+v_size
+++;
+
+667 
 ‹mp_i
 +=(
 j
 *2+1);
 
-670 if(
+673 if(
 mf
 ->
 nÜm®
 !=0)
 
-672 
+675 
 ‹mp_i
 =0;
 v_size
 =0;
 
-673 if(
+676 if(
 mf
 ->
 nÜm®_rows
@@ -11875,7 +11919,7 @@ nÜm®_rows
 D©a_šdex_rows
 )
 
-675 
+678 
 i
 =0;i<
 mf
@@ -11883,7 +11927,7 @@ mf
 D©a_šdex_rows
 ;i++)
 
-677 
+680 
 j
 =
 mf
@@ -11893,17 +11937,35 @@ D©a_šdex
 ‹mp_i
 ];
 
-678 
+681 
 l
 =0;l<(
 j
 -2)*3;l++)
 
-681 
+684 
 k
 =0;k<3;k++)
 
-684 
+686 if(
+mf
+->
+is_»v”§l_nÜm®
+==1)
+
+687 {
+nÜm®
+[
+v_size
+*3+
+k
+]=-
+mf
+->nÜm®[
+i
+*3+k];
+
+690 {
 nÜm®
 [
 v_size
@@ -11913,19 +11975,19 @@ k
 mf
 ->nÜm®[
 i
-*3+k];
+*3+k];}
 
-686 
+693 
 v_size
 ++;
 
-688 
+695 
 ‹mp_i
 +=(
 j
 +1);
 
-692 if(
+699 if(
 mf
 ->
 nÜm®_rows
@@ -11933,7 +11995,7 @@ nÜm®_rows
 D©a_rows
 )
 
-694 
+701 
 i
 =0;i<
 mf
@@ -11941,7 +12003,7 @@ mf
 D©a_šdex_rows
 ;i++)
 
-696 
+703 
 j
 =
 mf
@@ -11951,13 +12013,13 @@ D©a_šdex
 ‹mp_i
 ];
 
-697 
+704 
 l
 =0;l<(
 j
 -2);l++)
 
-700 
+707 
 ‹mp_š
 =
 mf
@@ -11967,11 +12029,29 @@ D©a_šdex
 ‹mp_i
 +1];
 
-701 
+708 
 k
 =0;k<3;k++)
 
-703 
+710 if(
+mf
+->
+is_»v”§l_nÜm®
+==1)
+
+711 { 
+nÜm®
+[
+v_size
+*3+
+k
+]=-
+mf
+->nÜm®[
+‹mp_š
+*3+k];}
+
+712 { 
 nÜm®
 [
 v_size
@@ -11981,13 +12061,13 @@ k
 mf
 ->nÜm®[
 ‹mp_š
-*3+k];
+*3+k];}
 
-705 
+715 
 v_size
 ++;
 
-706 
+716 
 ‹mp_š
 =
 mf
@@ -11999,11 +12079,25 @@ D©a_šdex
 l
 +1];
 
-707 
+717 
 k
 =0;k<3;k++)
 
-709 
+719 if(
+mf
+->
+is_»v”§l_nÜm®
+==1){
+nÜm®
+[
+v_size
+*3+
+k
+]=-mf->nÜm®[
+‹mp_š
+*3+k];}
+
+720 {
 nÜm®
 [
 v_size
@@ -12013,13 +12107,13 @@ k
 mf
 ->nÜm®[
 ‹mp_š
-*3+k];
+*3+k];}
 
-712 
+724 
 v_size
 ++;
 
-713 
+725 
 ‹mp_š
 =
 mf
@@ -12031,11 +12125,25 @@ D©a_šdex
 l
 +2];
 
-714 
+726 
 k
 =0;k<3;k++)
 
-716 
+728 if(
+mf
+->
+is_»v”§l_nÜm®
+==1){
+nÜm®
+[
+v_size
+*3+
+k
+]=-mf->nÜm®[
+‹mp_š
+*3+k];}
+
+729 {
 nÜm®
 [
 v_size
@@ -12045,19 +12153,19 @@ k
 mf
 ->nÜm®[
 ‹mp_š
-*3+k];
+*3+k];}
 
-719 
+733 
 v_size
 ++;
 
-721 
+735 
 ‹mp_i
 +=(
 j
 +1);
 
-727 
+741 
 glD–‘eBufãrs
 (1,
 mf
@@ -12065,7 +12173,7 @@ mf
 Bufãrs
 );
 
-728 
+742 
 glD–‘eV”‹xA¼ays
 (1,&(
 mf
@@ -12073,7 +12181,7 @@ mf
 VAO
 ));
 
-729 
+743 
 glG’V”‹xA¼ays
 (1,&(
 mf
@@ -12081,7 +12189,7 @@ mf
 VAO
 ));
 
-730 
+744 
 glBšdV”‹xA¼ay
 (
 mf
@@ -12089,7 +12197,7 @@ mf
 VAO
 );
 
-731 
+745 
 glC»©eBufãrs
 (5,
 mf
@@ -12097,7 +12205,7 @@ mf
 Bufãrs
 );
 
-732 
+746 
 glBšdBufãr
 (
 GL_ARRAY_BUFFER
@@ -12107,7 +12215,7 @@ mf
 Bufãrs
 [0]);
 
-733 
+747 
 glBufãrD©a
 (
 GL_ARRAY_BUFFER
@@ -12121,7 +12229,7 @@ v”tiûs
 GL_STATIC_DRAW
 );
 
-734 
+748 
 glBšdBufãr
 (
 GL_ARRAY_BUFFER
@@ -12131,7 +12239,7 @@ mf
 Bufãrs
 [1]);
 
-735 
+749 
 glBufãrD©a
 (
 GL_ARRAY_BUFFER
@@ -12145,7 +12253,7 @@ cÞÜs
 GL_STATIC_DRAW
 );
 
-736 
+750 
 glBšdBufãr
 (
 GL_ARRAY_BUFFER
@@ -12155,7 +12263,7 @@ mf
 Bufãrs
 [2]);
 
-737 
+751 
 glBufãrD©a
 (
 GL_ARRAY_BUFFER
@@ -12169,7 +12277,7 @@ v_size
 GL_STATIC_DRAW
 );
 
-738 
+752 
 glBšdBufãr
 (
 GL_ARRAY_BUFFER
@@ -12179,7 +12287,7 @@ mf
 Bufãrs
 [3]);
 
-739 
+753 
 glBufãrD©a
 (
 GL_ARRAY_BUFFER
@@ -12193,7 +12301,7 @@ nÜm®
 GL_STATIC_DRAW
 );
 
-740 
+754 
 glBšdBufãr
 (
 GL_ARRAY_BUFFER
@@ -12203,7 +12311,7 @@ mf
 Bufãrs
 [4]);
 
-741 
+755 
 glBufãrD©a
 (
 GL_ARRAY_BUFFER
@@ -12217,7 +12325,7 @@ e_id
 GL_STATIC_DRAW
 );
 
-743 
+757 
 glBšdBufãr
 (
 GL_ARRAY_BUFFER
@@ -12227,7 +12335,7 @@ mf
 Bufãrs
 [0]);
 
-744 
+758 
 glV”‹xA‰ribPoš‹r
 Ð0, 3, 
 GL_FLOAT
@@ -12235,11 +12343,11 @@ GL_FLOAT
 GL_FALSE
 , 0, 0 );
 
-746 
+760 
 glEÇbËV”‹xA‰ribA¼ay
 ( 0 );
 
-747 
+761 
 glBšdBufãr
 (
 GL_ARRAY_BUFFER
@@ -12249,7 +12357,7 @@ mf
 Bufãrs
 [1]);
 
-748 
+762 
 glV”‹xA‰ribPoš‹r
 (1,3,
 GL_FLOAT
@@ -12257,11 +12365,11 @@ GL_FLOAT
 GL_FALSE
 ,0,0);
 
-749 
+763 
 glEÇbËV”‹xA‰ribA¼ay
 (1);
 
-751 
+765 
 glBšdBufãr
 (
 GL_ARRAY_BUFFER
@@ -12271,7 +12379,7 @@ mf
 Bufãrs
 [2]);
 
-752 
+766 
 glV”‹xA‰ribPoš‹r
 (2,2,
 GL_FLOAT
@@ -12279,11 +12387,11 @@ GL_FLOAT
 GL_FALSE
 ,0,0);
 
-753 
+767 
 glEÇbËV”‹xA‰ribA¼ay
 (2);
 
-754 
+768 
 glBšdBufãr
 (
 GL_ARRAY_BUFFER
@@ -12293,7 +12401,7 @@ mf
 Bufãrs
 [3]);
 
-755 
+769 
 glV”‹xA‰ribPoš‹r
 (3,3,
 GL_FLOAT
@@ -12301,11 +12409,11 @@ GL_FLOAT
 GL_FALSE
 ,0,0);
 
-756 
+770 
 glEÇbËV”‹xA‰ribA¼ay
 (3);
 
-757 
+771 
 glBšdBufãr
 (
 GL_ARRAY_BUFFER
@@ -12315,7 +12423,7 @@ mf
 Bufãrs
 [4]);
 
-758 
+772 
 glV”‹xA‰ribPoš‹r
 (4,1,
 GL_FLOAT
@@ -12323,63 +12431,63 @@ GL_FLOAT
 GL_FALSE
 ,0,0);
 
-759 
+773 
 glEÇbËV”‹xA‰ribA¼ay
 (4);
 
-761 
+775 
 glBšdV”‹xA¼ay
 (0);
 
-763 
+777 
 ä“
 (
 v”tiûs
 );
 
-764 
+778 
 ä“
 (
 cÞÜs
 );
 
-765 
+779 
 ä“
 (
 nÜm®
 );
 
-766 
+780 
 ä“
 (
 ‹xcoÜds
 );
 
-767 
+781 
 ä“
 (
 e_id
 );
 
-773 
+787 
 ä“_node_v®ue
 (
 Çmes_id
 );
 
-774 
+788 
 ä“_node
 (
 Çmes_id
 );
 
-775 if(
+789 if(
 moi
 ->
 ‹x
 !=0)
 
-777 
+791 
 glD–‘eTextu»s
 (2,
 moi
@@ -12387,7 +12495,7 @@ moi
 ‹x
 );
 
-778 
+792 
 ä“
 (
 moi
@@ -12395,13 +12503,13 @@ moi
 ‹x
 );
 
-779 
+793 
 moi
 ->
 ‹x
 =0;
 
-781 
+795 
 moi
 ->
 ‹x
@@ -12409,13 +12517,19 @@ moi
 ‹¡_add_¬¿y_to_shad”
 (moi);
 
-782 
+796 if(
+moi
+->
+‹x
+!=0)
+
+799 
 glAùiveTextu»
 (
 GL_TEXTURE0
 );
 
-783 
+800 
 glBšdTextu»
 (
 GL_TEXTURE_2D
@@ -12425,13 +12539,13 @@ moi
 ‹x
 [0]);
 
-784 
+801 
 glAùiveTextu»
 (
 GL_TEXTURE1
 );
 
-785 
+802 
 glBšdTextu»
 (
 GL_TEXTURE_2D
@@ -12441,7 +12555,7 @@ moi
 ‹x
 [1]);
 
-786 
+805 
 Çmes_id
 =
 mw
@@ -12451,7 +12565,7 @@ fšd_¥ec›s
 ‹xtu»
 );
 
-787 
+806 
 ™”
 =
 mw
@@ -12465,7 +12579,7 @@ fšd
 v®ue
 )));
 
-788 if(
+807 if(
 ™”
 !=
 mw
@@ -12475,7 +12589,7 @@ mw
 ’d
 ())
 
-790 autØ
+809 autØ
 ™”1
 =(
 ™”
@@ -12487,7 +12601,7 @@ begš
 ’d
 ();iter1++)
 
-792 
+811 
 Mesh_v›w”_som‘hšg
 *
 ms
@@ -12497,7 +12611,7 @@ ms
 £cÚd
 ;
 
-793 
+812 
 Mesh_v›w”_‹xtu»
 * 
 mt
@@ -12507,7 +12621,7 @@ ms
 evÞutiÚ
 );
 
-794 if(
+813 if(
 ms
 ->
 di§µ—r
@@ -12517,7 +12631,7 @@ mt
 image_fže
 ==0)
 
-796 
+815 
 glAùiveTextu»
 (
 GL_TEXTURE3
@@ -12527,7 +12641,7 @@ ms
 id
 );
 
-797 
+816 
 glBšdTextu»
 (
 GL_TEXTURE_2D
@@ -12537,19 +12651,19 @@ mt
 ‹x
 );
 
-801 
+821 
 ä“_node_v®ue
 (
 Çmes_id
 );
 
-802 
+822 
 ä“_node
 (
 Çmes_id
 );
 
-807 
+825 
 ImageInfo
 * 
 add_‹xtu»_to_shad”
@@ -12559,19 +12673,19 @@ add_‹xtu»_to_shad”
 image_fže
 )
 
-810 
+828 
 glG’Textu»s
 (1,
 ‹x
 );
 
-812 
+830 
 ImageInfo
  
 image
 ;
 
-813 
+831 
 image
 .
 d©a
@@ -12587,17 +12701,17 @@ height
 n
 ,0);
 
-818 if(!
+836 if(!
 image
 .
 d©a
 )
 
-820 
+838 
 ´štf
 ("cant‡ddexture\n");
 
-822 
+840 
 _Textu»_
 (&
 image
@@ -12605,7 +12719,7 @@ image
 ‹x
 [0]);
 
-823 
+841 
 ¡bi_image_ä“
 (
 image
@@ -12613,7 +12727,7 @@ image
 d©a
 );
 
-830 
+848 
 d¿w_–em’ts
 (
 Mesh_v›w”_Ý’gl_IÁ”´‘”
@@ -12621,7 +12735,7 @@ Mesh_v›w”_Ý’gl_IÁ”´‘”
 moi
 )
 
-832 
+850 
 Mesh_v›w”_wÜld
 * 
 mw
@@ -12631,11 +12745,11 @@ moi
 wÜld
 ;
 
-833 
+851 
 pošts
 []="points";
 
-834 
+852 
 Node
 * 
 Çmes_id
@@ -12647,7 +12761,7 @@ fšd_¥ec›s
 pošts
 );
 
-835 
+853 
 ¡d
 ::
 m­
@@ -12669,7 +12783,7 @@ fšd
 v®ue
 )));
 
-836 if(
+854 if(
 ™”
 !=
 mw
@@ -12679,7 +12793,7 @@ mw
 ’d
 ())
 
-838 autØ
+856 autØ
 ™”1
 =(
 ™”
@@ -12691,7 +12805,7 @@ begš
 ’d
 ();iter1++)
 
-840 
+858 
 Mesh_v›w”_som‘hšg
  *
 ms
@@ -12701,7 +12815,7 @@ ms
 £cÚd
 ;
 
-841 
+859 
 Mesh_v›w”_pošts
  *
 mp
@@ -12711,7 +12825,7 @@ ms
 evÞutiÚ
 );
 
-842 if(
+860 if(
 ms
 ->
 di§µ—r
@@ -12721,7 +12835,7 @@ mp
 D©a
 ==0)
 
-845 
+863 
 glPoštSize
 (
 mp
@@ -12729,7 +12843,7 @@ mp
 poštsize
 );
 
-846 
+864 
 v_size
 =
 mp
@@ -12737,7 +12851,7 @@ mp
 D©a_rows
 ;
 
-847 *
+865 *
 d©a
 =(*)(
 mp
@@ -12745,7 +12859,7 @@ mp
 m©
 ->data);
 
-848 
+866 
 glUnifÜmM©rix4fv
 (
 glG‘UnifÜmLoÿtiÚ
@@ -12759,7 +12873,7 @@ GL_TRUE
 d©a
 );
 
-850 
+868 
 glBšdV”‹xA¼ay
 (
 mp
@@ -12767,7 +12881,7 @@ mp
 VAO
 );
 
-853 
+871 
 glD¿wA¼ays
 (
 GL_POINTS
@@ -12775,11 +12889,11 @@ GL_POINTS
 v_size
 );
 
-860 
+878 
 edges
 []="edges";
 
-861 
+879 
 Çmes_id
 =
 mw
@@ -12789,7 +12903,7 @@ fšd_¥ec›s
 edges
 );
 
-862 
+880 
 ™”
 =
 mw
@@ -12803,7 +12917,7 @@ fšd
 v®ue
 )));
 
-863 if(
+881 if(
 ™”
 !=
 mw
@@ -12813,7 +12927,7 @@ mw
 ’d
 ())
 
-866 autØ
+884 autØ
 ™”1
 =(
 ™”
@@ -12825,7 +12939,7 @@ begš
 ’d
 ();iter1++)
 
-868 
+886 
 Mesh_v›w”_som‘hšg
  *
 ms
@@ -12835,7 +12949,7 @@ ms
 £cÚd
 ;
 
-869 
+887 
 Mesh_v›w”_edges
  *
 me
@@ -12845,7 +12959,7 @@ ms
 evÞutiÚ
 );
 
-870 if(
+888 if(
 ms
 ->
 di§µ—r
@@ -12857,7 +12971,7 @@ D©a
 D©a_šdex
 ==0)
 
-873 
+891 
 glLšeWidth
 (
 me
@@ -12865,7 +12979,7 @@ me
 edgesize
 );
 
-874 
+892 
 v_size
 =
 me
@@ -12873,7 +12987,7 @@ me
 D©a_šdex_rows
 *2;
 
-875 *
+893 *
 d©a
 =(*)(
 me
@@ -12881,7 +12995,7 @@ me
 m©
 ->data);
 
-876 
+894 
 glUnifÜmM©rix4fv
 (
 glG‘UnifÜmLoÿtiÚ
@@ -12895,7 +13009,7 @@ GL_TRUE
 d©a
 );
 
-878 
+896 
 glBšdV”‹xA¼ay
 (
 me
@@ -12903,7 +13017,7 @@ me
 VAO
 );
 
-879 
+897 
 glD¿wA¼ays
 (
 GL_LINES
@@ -12911,23 +13025,23 @@ GL_LINES
 v_size
 );
 
-883 
+901 
 ä“_node_v®ue
 (
 Çmes_id
 );
 
-884 
+902 
 ä“_node
 (
 Çmes_id
 );
 
-886 
+904 
 Çmes
 []="faces";
 
-887 
+905 
 Çmes_id
 =
 Mesh_v›w”_wÜld_fšd_¥ec›s
@@ -12937,7 +13051,7 @@ mw
 Çmes
 );
 
-889 
+906 
 ™”
 =
 mw
@@ -12951,7 +13065,7 @@ fšd
 v®ue
 )));
 
-891 if(
+908 if(
 ™”
 !=
 mw
@@ -12961,7 +13075,7 @@ mw
 ’d
 ())
 
-893 autØ
+910 autØ
 ™”1
 =(
 ™”
@@ -12973,7 +13087,7 @@ begš
 ’d
 ();iter1++)
 
-896 
+913 
 Mesh_v›w”_som‘hšg
  *
 ms
@@ -12983,7 +13097,7 @@ ms
 £cÚd
 ;
 
-897 
+914 
 Mesh_v›w”_çûs
  *
 mf
@@ -12993,7 +13107,7 @@ ms
 evÞutiÚ
 );
 
-898 if(
+915 if(
 ms
 ->
 di§µ—r
@@ -13005,15 +13119,19 @@ D©a_šdex_rows
 VAO
 ==0||mf->
 Bufãrs
-==0)
+==0||mf->
+D©a
+==
+NULL
+)
 
-900 
+917 
 v_size
 =0,
 ‹mp_i
 =0;
 
-901 
+918 
 i
 =0;i<
 mf
@@ -13021,7 +13139,7 @@ mf
 D©a_šdex_rows
 ;i++)
 
-904 
+921 
 j
 =
 mf
@@ -13031,19 +13149,19 @@ D©a_šdex
 ‹mp_i
 ];
 
-905 
+922 
 v_size
 +=(
 j
 -2)*3;
 
-906 
+923 
 ‹mp_i
 +=(
 j
 +1);
 
-908 *
+925 *
 d©a
 =(*)(
 mf
@@ -13051,7 +13169,7 @@ mf
 m©
 ->data);
 
-909 
+926 
 glUnifÜmM©rix4fv
 (
 glG‘UnifÜmLoÿtiÚ
@@ -13065,7 +13183,7 @@ GL_TRUE
 d©a
 );
 
-911 
+928 
 glBšdV”‹xA¼ay
 (
 mf
@@ -13073,7 +13191,7 @@ mf
 VAO
 );
 
-913 
+930 
 glD¿wA¼ays
 (
 GL_TRIANGLES
@@ -13081,19 +13199,19 @@ GL_TRIANGLES
 v_size
 );
 
-917 
+934 
 ä“_node_v®ue
 (
 Çmes_id
 );
 
-918 
+935 
 ä“_node
 (
 Çmes_id
 );
 
-922 
+939 
 GLušt
 * 
 ‹¡_add_¬¿y_to_shad”
@@ -13103,7 +13221,7 @@ Mesh_v›w”_Ý’gl_IÁ”´‘”
 moi
 )
 
-924 
+941 
 Mesh_v›w”_wÜld
 * 
 mw
@@ -13113,11 +13231,11 @@ moi
 wÜld
 ;
 
-925 
+942 
 Çmes
 []="faces";
 
-926 
+943 
 GLæßt
 * 
 v”tiûs
@@ -13125,7 +13243,7 @@ v”tiûs
 šdex
 =0;
 
-927 
+944 
 Ën_rows
 =0,
 Ën_šdex_rows
@@ -13133,7 +13251,7 @@ v”tiûs
 Ën_šdex
 =0;
 
-928 
+945 
 Node
 * 
 Çmes_id
@@ -13145,7 +13263,7 @@ mw
 Çmes
 );
 
-929 
+946 
 ¡d
 ::
 m­
@@ -13167,7 +13285,7 @@ fšd
 v®ue
 )));
 
-930 if(
+947 if(
 ™”
 !=
 mw
@@ -13177,7 +13295,7 @@ mw
 ’d
 ())
 
-932 autØ
+949 autØ
 ™”1
 =(
 ™”
@@ -13189,7 +13307,7 @@ begš
 ’d
 ();iter1++)
 
-934 
+951 
 Mesh_v›w”_som‘hšg
  *
 ms
@@ -13199,7 +13317,7 @@ ms
 £cÚd
 ;
 
-935 
+952 
 Mesh_v›w”_çûs
  *
 mf
@@ -13209,7 +13327,7 @@ ms
 evÞutiÚ
 );
 
-936 
+953 
 Ën_rows
 +=
 mf
@@ -13217,7 +13335,7 @@ mf
 D©a_rows
 ;
 
-937 
+954 
 Ën_šdex_rows
 +=
 mf
@@ -13225,13 +13343,13 @@ mf
 D©a_šdex_rows
 ;
 
-938 
+955 
 ‹mp_i
 =0,
 j
 =0;
 
-939 
+956 
 i
 =0;i<
 mf
@@ -13239,7 +13357,7 @@ mf
 D©a_šdex_rows
 ;i++)
 
-941 
+958 
 j
 =
 mf
@@ -13249,35 +13367,35 @@ D©a_šdex
 ‹mp_i
 ];
 
-942 
+959 
 ‹mp_i
 +=(
 j
 +1);
 
-945 
+962 
 Ën_šdex
 +=
 ‹mp_i
 ;
 
-949 if(
+966 if(
 Ën_šdex
 ==0)
 
-951 
+968 
 ä“_node_v®ue
 (
 Çmes_id
 );
 
-952 
+969 
 ä“_node
 (
 Çmes_id
 );
 
-955 
+972 
 ImageInfo
  
 image
@@ -13285,7 +13403,7 @@ image
 image1
 ;
 
-956 
+973 
 image
 .
 height
@@ -13293,13 +13411,13 @@ height
 Ën_rows
 /1000+1);
 
-957 
+974 
 image
 .
 width
 =1000;
 
-958 
+975 
 image1
 .
 height
@@ -13307,13 +13425,13 @@ height
 Ën_šdex
 /1000+1);
 
-959 
+976 
 image1
 .
 width
 =1000;
 
-960 
+977 
 v”tiûs
 =(
 GLæßt
@@ -13327,7 +13445,7 @@ width
 height
 *3);
 
-961 
+978 
 mem£t
 (
 v”tiûs
@@ -13341,7 +13459,7 @@ width
 height
 );
 
-962 
+979 
 šdex
 =(
 GLæßt
@@ -13355,7 +13473,7 @@ width
 height
 );
 
-963 
+980 
 mem£t
 (
 šdex
@@ -13369,7 +13487,7 @@ width
 height
 );
 
-964 
+981 
 ‹mp_i
 =0,
 ‹mp_j
@@ -13377,7 +13495,7 @@ height
 ‹mp_k
 =0;
 
-965 if(
+982 if(
 ™”
 !=
 mw
@@ -13387,7 +13505,7 @@ mw
 ’d
 ())
 
-967 autØ
+984 autØ
 ™”1
 =(
 ™”
@@ -13399,7 +13517,7 @@ begš
 ’d
 ();iter1++)
 
-969 
+986 
 Mesh_v›w”_som‘hšg
  *
 ms
@@ -13409,7 +13527,7 @@ ms
 £cÚd
 ;
 
-970 
+987 
 Mesh_v›w”_çûs
  *
 mf
@@ -13419,11 +13537,11 @@ ms
 evÞutiÚ
 );
 
-971 
+988 
 ‹mp_i
 =0;
 
-972 
+989 
 i
 =0;i<
 mf
@@ -13431,7 +13549,7 @@ mf
 D©a_šdex_rows
 ;i++)
 
-974 
+991 
 k
 =
 mf
@@ -13441,7 +13559,7 @@ D©a_šdex
 ‹mp_i
 ];
 
-975 
+992 
 šdex
 [
 ‹mp_k
@@ -13453,17 +13571,17 @@ D©a_šdex
 ‹mp_i
 ];
 
-976 
+993 
 ‹mp_k
 ++;
 
-977 
+994 
 j
 =0;j<
 k
 ;j++)
 
-980 
+997 
 šdex
 [
 ‹mp_k
@@ -13479,17 +13597,17 @@ j
 ‹mp_j
 ;
 
-981 
+998 
 ‹mp_k
 ++;
 
-984 
+1001 
 ‹mp_i
 +=(
 k
 +1);
 
-987 
+1004 
 i
 =0;i<
 mf
@@ -13497,11 +13615,11 @@ mf
 D©a_rows
 ;i++)
 
-989 
+1006 
 j
 =0;j<3;j++)
 
-992 
+1009 
 v”tiûs
 [
 ‹mp_j
@@ -13515,11 +13633,11 @@ D©a
 i
 *3+j];
 
-994 
+1011 
 ‹mp_j
 ++;
 
-1000 
+1017 
 image
 .
 d©a
@@ -13527,7 +13645,7 @@ d©a
 v”tiûs
 ;
 
-1001 
+1018 
 image1
 .
 d©a
@@ -13535,7 +13653,7 @@ d©a
 šdex
 ;
 
-1004 
+1021 
 moi
 ->
 çûs_Ën
@@ -13543,7 +13661,7 @@ moi
 Ën_šdex
 ;
 
-1005 
+1022 
 moi
 ->
 çûs_v”tiûs_Ën
@@ -13551,7 +13669,7 @@ moi
 Ën_rows
 ;
 
-1006 
+1023 
 GLušt
 * 
 ‹xtu»s
@@ -13559,13 +13677,13 @@ GLušt
 m®loc
 ((GLuint)*2);
 
-1007 
+1024 
 glG’Textu»s
 (2,
 ‹xtu»s
 );
 
-1008 
+1025 
 _Textu»_A¼ay_GL_FLOAT
 (&
 image
@@ -13573,7 +13691,7 @@ image
 ‹xtu»s
 [0]);
 
-1009 
+1026 
 _Textu»_A¼ay_GL_R32UI
 (&
 image1
@@ -13581,35 +13699,35 @@ image1
 ‹xtu»s
 [1]);
 
-1010 
+1027 
 ä“
 (
 v”tiûs
 );
 
-1011 
+1028 
 ä“
 (
 šdex
 );
 
-1017 
+1034 
 ä“_node_v®ue
 (
 Çmes_id
 );
 
-1018 
+1035 
 ä“_node
 (
 Çmes_id
 );
 
-1019  
+1036  
 ‹xtu»s
 ;
 
-1022 
+1039 
 š™_unifÜm
 (
 Mesh_v›w”_Ý’gl_IÁ”´‘”
@@ -13617,7 +13735,7 @@ Mesh_v›w”_Ý’gl_IÁ”´‘”
 moi
 )
 
-1026 
+1043 
 Mesh_v›w”_wÜld
 * 
 mw
@@ -13627,7 +13745,7 @@ moi
 wÜld
 ;
 
-1027 
+1044 
 GLušt
  
 ´og¿m
@@ -13635,7 +13753,7 @@ GLušt
 moi
 ->program;
 
-1028 
+1045 
 IÁ”aùÜ_Glob®Info
 * 
 g_šfo
@@ -13643,17 +13761,17 @@ g_šfo
 mw
 ->g_info;
 
-1031 
+1048 
 Mesh_v›w”_ÿm”a
 * 
 mc
 =0;
 
-1032 
+1049 
 ÿm”a
 []="Camera";
 
-1033 
+1050 
 Node
 *
 id
@@ -13665,7 +13783,7 @@ mw
 ÿm”a
 );
 
-1034 
+1051 
 ¡d
 ::
 m­
@@ -13687,7 +13805,7 @@ id
 v®ue
 )));
 
-1035 autØ
+1052 autØ
 ™”1
 =
 ™”
@@ -13699,7 +13817,7 @@ begš
 ’d
 ();iter1++)
 
-1037 
+1054 
 mc
 =(
 Mesh_v›w”_ÿm”a
@@ -13711,7 +13829,7 @@ Mesh_v›w”_ÿm”a
 evÞutiÚ
 );
 
-1038 if(
+1055 if(
 ™”1
 ->
 £cÚd
@@ -13723,15 +13841,15 @@ mc
 is_usšg
 ==1)
 
-1045 
+1062 
 mc
 =0;
 
-1049 if(
+1066 if(
 mc
 !=0)
 
-1051 * 
+1068 * 
 d©a
 =(*)(
 mc
@@ -13739,7 +13857,7 @@ mc
 m©rix_šv”£
 ->data);
 
-1052 
+1069 
 glUnifÜmM©rix4fv
 (
 glG‘UnifÜmLoÿtiÚ
@@ -13751,7 +13869,7 @@ GL_TRUE
 d©a
 );
 
-1054 
+1071 
 glUnifÜmM©rix4fv
 (
 glG‘UnifÜmLoÿtiÚ
@@ -13767,7 +13885,7 @@ Proj
 d©a
 ));
 
-1055 
+1072 
 d©a
 =(*)(
 mc
@@ -13775,25 +13893,25 @@ mc
 Proj
 ->data);
 
-1058 
+1075 
 ä“_node_v®ue
 (
 id
 );
 
-1059 
+1076 
 ä“_node
 (
 id
 );
 
-1060 
+1077 
 GLæßt
  
 a
 [2];
 
-1061 
+1078 
 a
 [0]=(
 GLæßt
@@ -13803,7 +13921,7 @@ g_šfo
 »sÞutiÚ
 [0]);
 
-1062 
+1079 
 a
 [1]=(
 GLæßt
@@ -13813,7 +13931,7 @@ g_šfo
 »sÞutiÚ
 [1]);
 
-1064 
+1081 
 glUnifÜm2fv
 (
 glG‘UnifÜmLoÿtiÚ
@@ -13823,7 +13941,7 @@ glG‘UnifÜmLoÿtiÚ
 a
 );
 
-1066 
+1083 
 glUnifÜm1i
 (
 glG‘UnifÜmLoÿtiÚ
@@ -13831,7 +13949,7 @@ glG‘UnifÜmLoÿtiÚ
 ´og¿m
 ,"Faces_Vertices"),0);
 
-1067 
+1084 
 glUnifÜm1i
 (
 glG‘UnifÜmLoÿtiÚ
@@ -13839,7 +13957,7 @@ glG‘UnifÜmLoÿtiÚ
 ´og¿m
 ,"Faces_Index"),1);
 
-1069 
+1086 
 glUnifÜm1i
 (
 glG‘UnifÜmLoÿtiÚ
@@ -13847,7 +13965,7 @@ glG‘UnifÜmLoÿtiÚ
 ´og¿m
 ,"ourTexture"),3);
 
-1072 
+1089 
 glUnifÜm1f
 (
 glG‘UnifÜmLoÿtiÚ
@@ -13859,7 +13977,7 @@ moi
 çûs_Ën
 ));
 
-1073 
+1090 
 glUnifÜm1f
 (
 glG‘UnifÜmLoÿtiÚ
@@ -13871,7 +13989,7 @@ moi
 çûs_v”tiûs_Ën
 ));
 
-1075 
+1092 
 glUnifÜm1f
 (
 glG‘UnifÜmLoÿtiÚ
@@ -13879,7 +13997,7 @@ glG‘UnifÜmLoÿtiÚ
 ´og¿m
 ,"p_intera.is_pick"),0);
 
-1081 
+1098 
 Mesh_v›w”_Ý’gl_IÁ”´‘”_š™
 (
 Mesh_v›w”_Ý’gl_IÁ”´‘”
@@ -13887,25 +14005,25 @@ Mesh_v›w”_Ý’gl_IÁ”´‘”
 moi
 )
 
-1083 
+1100 
 moi
 ->
 ´og¿m
 =-1;
 
-1092 * 
+1109 * 
 p_v
 =(*)
 m®loc
 (()*100);
 
-1093 
+1110 
 mem£t
 (
 p_v
 ,0,()*100);
 
-1094 
+1111 
 ¡rÿt
 (¡rÿt(
 p_v
@@ -13913,19 +14031,19 @@ p_v
 MESH_VIEWER_PATH
 ),"/mesh.vert");
 
-1095 * 
+1112 * 
 p_f
 =(*)
 m®loc
 (()*100);
 
-1096 
+1113 
 mem£t
 (
 p_f
 ,0,()*100);
 
-1097 
+1114 
 ¡rÿt
 (¡rÿt(
 p_f
@@ -13933,7 +14051,7 @@ p_f
 MESH_VIEWER_PATH
 ),"/mesh.frag");
 
-1098 
+1115 
 moi
 ->
 shad”s
@@ -13943,7 +14061,7 @@ Shad”Info
 m®loc
 ((ShaderInfo)*3);
 
-1099 
+1116 
 moi
 ->
 shad”s
@@ -13953,7 +14071,7 @@ ty³
 GL_VERTEX_SHADER
 ;
 
-1100 
+1117 
 moi
 ->
 shad”s
@@ -13963,7 +14081,7 @@ fž’ame
 p_v
 ;
 
-1101 
+1118 
 moi
 ->
 shad”s
@@ -13973,7 +14091,7 @@ ty³
 GL_FRAGMENT_SHADER
 ;
 
-1102 
+1119 
 moi
 ->
 shad”s
@@ -13983,7 +14101,7 @@ fž’ame
 p_f
 ;
 
-1103 
+1120 
 moi
 ->
 shad”s
@@ -13993,7 +14111,7 @@ ty³
 GL_NONE
 ;
 
-1104 
+1121 
 moi
 ->
 shad”s
@@ -14001,49 +14119,49 @@ shad”s
 fž’ame
 =0;
 
-1106 
+1123 
 moi
 ->
 VAO
 =0;
 
-1107 
+1124 
 moi
 ->
 Bufãrs
 =0;
 
-1108 
+1125 
 moi
 ->
 çûs_Ën
 =0;
 
-1109 
+1126 
 moi
 ->
 çûs_v”tiûs_Ën
 =0;
 
-1110 
+1127 
 moi
 ->
 ‹x
 =0;
 
-1111 
+1128 
 moi
 ->
 wÜld
 =0;
 
-1112 
+1129 
 moi
 ->
 ´Ý
 =0;
 
-1113 
+1130 
 moi
 ->
 upd©e_d©a
@@ -14051,7 +14169,7 @@ upd©e_d©a
 ´•¬e_mesh_v›w”_wÜld_d©a
 ;
 
-1114 
+1131 
 moi
 ->
 routše_show
@@ -14059,7 +14177,7 @@ routše_show
 Mesh_v›w”_Ý’gl_IÁ”´‘”_routše_show
 ;
 
-1115 
+1132 
 moi
 ->
 »nd”
@@ -14067,7 +14185,7 @@ moi
 Mesh_v›w”_Ý’gl_IÁ”´‘”_»nd”
 ;
 
-1121 #ifdeà
+1138 #ifdeà
 __ýlu¥lus
 
 
@@ -50039,7 +50157,41 @@ mi
 	~<time.h
 >
 
-3 
+3 
+	$V›w”_£t_v_Úe_cÞÜ
+(*
+v
+,
+rows
+,*
+c
+)
+
+6 
+i
+=0;i<
+rows
+;i++)
+
+8 
+j
+=0;j<3;j++)
+
+10 
+v
+[
+i
+*3+
+j
+]=
+c
+[j];
+
+13 
+	}
+}
+
+14 
 	$Mesh_v›w”_som‘hšg_š™
 (
 Mesh_v›w”_som‘hšg
@@ -50047,25 +50199,25 @@ Mesh_v›w”_som‘hšg
 ms
 )
 
-7 
+18 
 time_t
  
 tim•
 ;
 
-8 
+19 
 tm
  *
 p
 ;
 
-9 
+20 
 	`time
 (&
 tim•
 );
 
-10 
+21 
 p
  = 
 	`loÿÉime
@@ -50073,7 +50225,7 @@ p
 tim•
 );
 
-13 
+24 
 ms
 ->
 ü—‹_d©e
@@ -50091,59 +50243,59 @@ tm_mday
 tm_mÚ
 )*100000000;
 
-15 
+26 
 ms
 ->
 Çme
 =0;
 
-16 
+27 
 ms
 ->
 Çme_id
 =-1;
 
-17 
+28 
 ms
 ->
 id
 =-1;
 
-19 
+30 
 ms
 ->
 di§µ—r
 =0;
 
-20 
+31 
 ms
 ->
 ´Ý
 =0;
 
-21 
+32 
 ms
 ->
 mesh
 =0;
 
-22 
+33 
 ms
 ->
 hi¡Üy_av©¬
 =0;
 
-23 
+34 
 ms
 ->
 evÞutiÚ
 =0;
 
-24 
+35 
 	}
 }
 
-26 
+37 
 	$Mesh_v›w”_‹xtu»_š™
 (
 Mesh_v›w”_‹xtu»
@@ -50151,87 +50303,95 @@ Mesh_v›w”_‹xtu»
 mt
 )
 
-29 
+40 
 mt
 ->
 image_fže
 =0;
 
-30 
+41 
 mt
 ->
 width
 =0;
 
-31 
+42 
 mt
 ->
 height
 =0;
 
-32 
+43 
 mt
 ->
 n
 =0;
 
-33 
+44 
 mt
 ->
 d©a
 =0;
 
-34 
+45 
 mt
 ->
 —ch_çû_‹xtu»_coÜd
 =0;
 
-35 
+46 
 mt
 ->
 ‹x
 =0;
 
-36 
+47 
 mt
 ->
 ´Ý
 =0;
 
-38 
+49 
 	}
 }
 
-39 
-	$Mesh_v›w”_çûs_¿ndom_cÞÜ
+50 
+	$V›w”_çûs_£t_cÞÜ
 (
 Mesh_v›w”_çûs
 *
 mf
+,*
+c
 )
 
-42 if(
-mf
-->
-cÞÜ_rows
-<=0)
-
-46 if(
+53 if(
 mf
 ->
 cÞÜ
 !=0)
 
-48 
+54 {
 	`ä“
 (
 mf
 ->
 cÞÜ
-);mf->color=0;
+);
 
-50 
+56 
+mf
+->
+cÞÜ
+=0;
+
+57 if(
+mf
+->
+cÞÜ_rows
+>0)
+
+59 
 mf
 ->
 cÞÜ
@@ -50241,7 +50401,61 @@ cÞÜ
 cÞÜ_rows
 );
 
-51 
+61 
+	`V›w”_£t_v_Úe_cÞÜ
+(
+mf
+->
+cÞÜ
+,mf->
+cÞÜ_rows
+,
+c
+);
+
+63 
+	}
+}
+
+64 
+	$Mesh_v›w”_çûs_¿ndom_cÞÜ
+(
+Mesh_v›w”_çûs
+*
+mf
+)
+
+67 if(
+mf
+->
+cÞÜ_rows
+<=0)
+
+71 if(
+mf
+->
+cÞÜ
+!=0)
+
+73 
+	`ä“
+(
+mf
+->
+cÞÜ
+);mf->color=0;
+
+75 
+mf
+->
+cÞÜ
+=(*)
+	`m®loc
+(()*3*mf->
+cÞÜ_rows
+);
+
+76 
 	`¤ªd
 (()
 	`time
@@ -50249,7 +50463,7 @@ cÞÜ_rows
 NULL
 ));
 
-55 
+77 
 i
 =0;i<
 mf
@@ -50257,7 +50471,7 @@ mf
 cÞÜ_rows
 *3;i++)
 
-57 
+79 
 mf
 ->
 cÞÜ
@@ -50267,11 +50481,11 @@ i
 	`¿nd
 ()%100)/100.0;
 
-61 
+83 
 	}
 }
 
-62 
+84 
 	$Mesh_v›w”_çûs_compu‹_nÜm®
 (
 Mesh_v›w”_çûs
@@ -50279,19 +50493,19 @@ Mesh_v›w”_çûs
 mf
 )
 
-64 if(
+86 if(
 mf
 ->
 nÜm®_rows
 <=0)
 
-68 if(
+90 if(
 mf
 ->
 nÜm®
 !=0)
 
-69 {
+91 {
 	`ä“
 (
 mf
@@ -50299,7 +50513,7 @@ mf
 nÜm®
 );mf->normal=0;}
 
-70 if(
+92 if(
 mf
 ->
 nÜm®_rows
@@ -50307,7 +50521,7 @@ nÜm®_rows
 D©a_šdex_rows
 )
 
-73 *
+95 *
 »
 =0;
 a
@@ -50315,7 +50529,7 @@ a
 b
 [3];
 
-74 
+96 
 mf
 ->
 nÜm®
@@ -50325,7 +50539,7 @@ nÜm®
 D©a_šdex_rows
 );
 
-75 
+97 
 	`mem£t
 (
 mf
@@ -50335,13 +50549,13 @@ nÜm®
 D©a_šdex_rows
 );
 
-76 
+98 
 ‹mp_i
 =0,
 v_size
 =0;
 
-77 
+99 
 i
 =0;i<
 mf
@@ -50349,7 +50563,7 @@ mf
 D©a_šdex_rows
 ;i++)
 
-79 
+101 
 i1
 =
 mf
@@ -50359,7 +50573,7 @@ D©a_šdex
 ‹mp_i
 +1];
 
-80 
+102 
 i2
 =
 mf
@@ -50369,7 +50583,7 @@ D©a_šdex
 ‹mp_i
 +2];
 
-81 
+103 
 i3
 =
 mf
@@ -50379,11 +50593,11 @@ D©a_šdex
 ‹mp_i
 +3];
 
-82 
+104 
 j
 =0;j<3;j++)
 
-84 
+106 
 a
 [
 j
@@ -50397,7 +50611,7 @@ i3
 i1
 *3+j];
 
-85 
+107 
 b
 [
 j
@@ -50411,7 +50625,7 @@ i2
 i1
 *3+j];
 
-87 
+109 
 »
 =
 	`out_´oduù
@@ -50421,11 +50635,11 @@ b
 a
 );
 
-88 
+110 
 j
 =0;j<3;j++)
 
-90 
+112 
 mf
 ->
 nÜm®
@@ -50437,7 +50651,7 @@ j
 »
 [j];
 
-93 
+115 
 ‹mp_i
 +=(
 mf
@@ -50445,21 +50659,21 @@ mf
 D©a_šdex
 [temp_i]+1);
 
-94 
+116 
 v_size
 ++;
 
-95 
+117 
 	`ä“
 (
 »
 );
 
-96 
+118 
 »
 =0;
 
-101 if(
+123 if(
 mf
 ->
 nÜm®_rows
@@ -50467,7 +50681,7 @@ nÜm®_rows
 D©a_rows
 )
 
-103 
+125 
 mf
 ->
 nÜm®
@@ -50477,7 +50691,7 @@ nÜm®
 nÜm®_rows
 );
 
-104 
+126 
 	`mem£t
 (
 mf
@@ -50487,7 +50701,7 @@ nÜm®
 nÜm®_rows
 );
 
-106 *
+128 *
 »
 =0;
 a
@@ -50495,11 +50709,11 @@ a
 b
 [3];
 
-107 
+129 
 ‹mp_i
 =0;
 
-108 
+130 
 i
 =0;i<
 mf
@@ -50507,7 +50721,7 @@ mf
 D©a_šdex_rows
 ;i++)
 
-110 
+132 
 i1
 =
 mf
@@ -50517,7 +50731,7 @@ D©a_šdex
 ‹mp_i
 +1];
 
-111 
+133 
 i2
 =
 mf
@@ -50527,7 +50741,7 @@ D©a_šdex
 ‹mp_i
 +2];
 
-112 
+134 
 i3
 =
 mf
@@ -50537,11 +50751,11 @@ D©a_šdex
 ‹mp_i
 +3];
 
-113 
+135 
 j
 =0;j<3;j++)
 
-115 
+137 
 a
 [
 j
@@ -50555,7 +50769,7 @@ i3
 i1
 *3+j];
 
-116 
+138 
 b
 [
 j
@@ -50569,7 +50783,7 @@ i2
 i1
 *3+j];
 
-118 
+140 
 »
 =
 	`out_´oduù
@@ -50579,11 +50793,11 @@ b
 a
 );
 
-119 
+141 
 j
 =0;j<3;j++)
 
-121 
+143 
 mf
 ->
 nÜm®
@@ -50595,7 +50809,7 @@ j
 »
 [j];
 
-122 
+144 
 mf
 ->
 nÜm®
@@ -50607,7 +50821,7 @@ j
 »
 [j];
 
-123 
+145 
 mf
 ->
 nÜm®
@@ -50619,7 +50833,7 @@ j
 »
 [j];
 
-125 
+147 
 ‹mp_i
 +=(
 mf
@@ -50627,21 +50841,21 @@ mf
 D©a_šdex
 [temp_i]+1);
 
-126 
+148 
 	`ä“
 (
 »
 );
 
-127 
+149 
 »
 =0;
 
-134 
+156 
 	}
 }
 
-135 
+157 
 	$Mesh_v›w”_çûs_š™
 (
 Mesh_v›w”_çûs
@@ -50649,7 +50863,7 @@ Mesh_v›w”_çûs
 mf
 )
 
-137 
+159 
 mf
 ->
 D©a
@@ -50657,19 +50871,19 @@ D©a
 cÞÜ
 =0;
 
-138 
+160 
 mf
 ->
 D©a_šdex
 =0;
 
-139 
+161 
 mf
 ->
 nÜm®
 =0;
 
-140 
+162 
 mf
 ->
 VAO
@@ -50677,49 +50891,49 @@ VAO
 Bufãrs
 =0;
 
-141 
+163 
 mf
 ->
 m¬ked_çûs_šdex
 =0;
 
-142 
+164 
 mf
 ->
 ´Ý
 =0;
 
-143 
+165 
 mf
 ->
 evÞutiÚ
 =0;
 
-144 
+166 
 mf
 ->
 D©a_šdex_rows
 =0;
 
-145 
+167 
 mf
 ->
 cÞÜ_rows
 =0;
 
-146 
+168 
 mf
 ->
 nÜm®_rows
 =0;
 
-147 
+169 
 mf
 ->
 D©a_rows
 =0;
 
-148 
+170 
 mf
 ->
 compu‹_nÜm®
@@ -50727,7 +50941,7 @@ compu‹_nÜm®
 Mesh_v›w”_çûs_compu‹_nÜm®
 ;
 
-149 
+171 
 mf
 ->
 ¿ndom_cÞÜ
@@ -50735,13 +50949,21 @@ mf
 Mesh_v›w”_çûs_¿ndom_cÞÜ
 ;
 
-150 
+172 
+mf
+->
+£t_cÞÜ
+=
+V›w”_çûs_£t_cÞÜ
+;
+
+173 
 mf
 ->
 ‹xtu»
 =0;
 
-151 
+174 
 mf
 ->
 m©
@@ -50751,7 +50973,7 @@ M©rix4x4
 	`m®loc
 ((Matrix4x4));
 
-152 
+175 
 	`M©rix4x4_š™_æßt
 (
 mf
@@ -50759,11 +50981,17 @@ mf
 m©
 );
 
-156 
+176 
+mf
+->
+is_»v”§l_nÜm®
+=0;
+
+180 
 	}
 }
 
-158 
+182 
 	$Mesh_v›w”_ÿm”a_š™
 (
 Mesh_v›w”_ÿm”a
@@ -50771,7 +50999,7 @@ Mesh_v›w”_ÿm”a
 mc
 )
 
-160 
+184 
 mc
 ->
 m©rix
@@ -50781,7 +51009,7 @@ M©rix4x4
 	`m®loc
 ((Matrix4x4));
 
-161 
+185 
 	`M©rix4x4_š™_æßt
 (
 mc
@@ -50789,7 +51017,7 @@ mc
 m©rix
 );
 
-162 
+186 
 mc
 ->
 m©rix_šv”£
@@ -50799,7 +51027,7 @@ M©rix4x4
 	`m®loc
 ((Matrix4x4));
 
-163 
+187 
 	`M©rix4x4_š™_æßt
 (
 mc
@@ -50807,7 +51035,7 @@ mc
 m©rix_šv”£
 );
 
-164 
+188 
 mc
 ->
 Proj
@@ -50817,7 +51045,7 @@ M©rix4x4
 	`m®loc
 ((Matrix4x4));
 
-165 
+189 
 	`M©rix4x4_š™_æßt
 (
 mc
@@ -50825,29 +51053,29 @@ mc
 Proj
 );
 
-166 
+190 
 mc
 ->
 ´Ý
 =0;
 
-167 
+191 
 mc
 ->
 is_usšg
 =0;
 
-168 
+192 
 mc
 ->
 foÿl_di¡ªû
 =1;
 
-170 
+194 
 	}
 }
 
-171 
+195 
 	$Mesh_v›w”_pošts_š™
 (
 Mesh_v›w”_pošts
@@ -50855,7 +51083,7 @@ Mesh_v›w”_pošts
 mp
 )
 
-173 
+197 
 mp
 ->
 D©a
@@ -50863,49 +51091,37 @@ D©a
 cÞÜ
 =0;
 
-174 
-mp
-->
-D©a_šdex
-=0;
-
-175 
+199 
 mp
 ->
 VAO
 =0;
 
-176 
+200 
 mp
 ->
 Bufãrs
 =0;
 
-177 
+201 
 mp
 ->
 ´Ý
 =0;
 
-178 
+202 
 mp
 ->
 evÞutiÚ
 =0;
 
-179 
-mp
-->
-D©a_šdex_rows
-=0;
-
-180 
+204 
 mp
 ->
 D©a_rows
 =0;
 
-181 
+205 
 mp
 ->
 m©
@@ -50915,7 +51131,7 @@ M©rix4x4
 	`m®loc
 ((Matrix4x4));
 
-182 
+206 
 	`M©rix4x4_š™_æßt
 (
 mp
@@ -50923,17 +51139,17 @@ mp
 m©
 );
 
-183 
+207 
 mp
 ->
 poštsize
 =3.0;
 
-185 
+209 
 	}
 }
 
-186 
+210 
 	$Mesh_v›w”_edges_š™
 (
 Mesh_v›w”_edges
@@ -50941,7 +51157,7 @@ Mesh_v›w”_edges
 me
 )
 
-188 
+212 
 me
 ->
 D©a
@@ -50949,55 +51165,55 @@ D©a
 cÞÜ
 =0;
 
-189 
+213 
 me
 ->
 D©a_šdex
 =0;
 
-190 
+214 
 me
 ->
 VAO
 =0;
 
-191 
+215 
 me
 ->
 Bufãrs
 =0;
 
-192 
+216 
 me
 ->
 ´Ý
 =0;
 
-193 
+217 
 me
 ->
 evÞutiÚ
 =0;
 
-194 
+218 
 me
 ->
 D©a_šdex_rows
 =0;
 
-195 
+219 
 me
 ->
 D©a_rows
 =0;
 
-196 
+220 
 me
 ->
 cÞÜ_rows
 =0;
 
-197 
+221 
 me
 ->
 m©
@@ -51007,7 +51223,15 @@ M©rix4x4
 	`m®loc
 ((Matrix4x4));
 
-198 
+222 
+me
+->
+£t_cÞÜ
+=
+V›w”_edges_£t_cÞÜ
+;
+
+223 
 	`M©rix4x4_š™_æßt
 (
 me
@@ -51015,13 +51239,75 @@ me
 m©
 );
 
-199 
+224 
 me
 ->
 edgesize
-=3.0;
+=2.0;
 
-200 
+225 
+	}
+}
+
+226 
+	$V›w”_edges_£t_cÞÜ
+(
+Mesh_v›w”_edges
+*
+me
+,*
+v
+)
+
+228 if(
+me
+->
+cÞÜ
+!=0)
+
+229 {
+	`ä“
+(
+me
+->
+cÞÜ
+);
+
+231 
+me
+->
+cÞÜ
+=0;
+
+232 if(
+me
+->
+cÞÜ_rows
+>0)
+
+234 
+me
+->
+cÞÜ
+=(*)
+	`m®loc
+(()*3*me->
+cÞÜ_rows
+);
+
+236 
+	`V›w”_£t_v_Úe_cÞÜ
+(
+me
+->
+cÞÜ
+,me->
+cÞÜ_rows
+,
+v
+);
+
+239 
 	}
 }
 
@@ -54157,7 +54443,7 @@ node
 NULL
 )
 
-7 
+9 
 Node
 *
 node1
@@ -54167,17 +54453,17 @@ node
 P»v
 );
 
-8 
+10 
 i
 =0;
 
-9 
+11 
 node
 !=
 NULL
 )
 
-11 
+13 
 node
 =(
 Node
@@ -54185,19 +54471,19 @@ Node
 Next
 ;
 
-12 
+14 
 i
 ++;
 
-14 
+16 
 j
 =0;
 
-15 
+17 
 node1
 !=0)
 
-17 
+19 
 node1
 =(
 Node
@@ -54205,21 +54491,21 @@ Node
 P»v
 );
 
-18 
+20 
 j
 ++;
 
-20  
+22  
 i
 +
 j
 ;
 
-21 
+23 
 	}
 }
 
-24 
+26 
 	$ä“_node
 (
 Node
@@ -54227,11 +54513,13 @@ Node
 node
 )
 
-26 if(
+28 if(
 node
-==0)
+==
+NULL
+)
 
-29 
+31 
 Node
 * 
 node1
@@ -54247,13 +54535,13 @@ P»v
 ™”
 ;
 
-30 
+32 
 node1
 !=
 NULL
 )
 
-32 
+34 
 ™”
 =
 node1
@@ -54261,23 +54549,25 @@ node1
 Next
 ;
 
-33 
+35 
 	`ä“
 (
 node1
 );
 
-34 
+36 
 node1
 =
 ™”
 ;
 
-36 
+38 
 node2
-!=0)
+!=
+NULL
+)
 
-38 
+40 
 ™”
 =
 node2
@@ -54285,29 +54575,29 @@ node2
 P»v
 ;
 
-39 
+41 
 	`ä“
 (
 node2
 );
 
-40 
+42 
 node2
 =
 ™”
 ;
 
-42 
+44 
 	`ä“
 (
 node
 );
 
-46 
+48 
 	}
 }
 
-47 
+49 
 	$ä“_node_v®ue
 (
 Node
@@ -54315,11 +54605,11 @@ Node
 node
 )
 
-49 if(
+51 if(
 node
 ==0)
 
-52 
+54 
 Node
 * 
 node1
@@ -54335,13 +54625,13 @@ P»v
 ™”
 ;
 
-53 
+55 
 node1
 !=
 NULL
 )
 
-55 
+57 
 ™”
 =
 node1
@@ -54349,7 +54639,7 @@ node1
 Next
 ;
 
-56 
+58 
 	`ä“
 (
 node1
@@ -54357,17 +54647,17 @@ node1
 v®ue
 );
 
-57 
+59 
 node1
 =
 ™”
 ;
 
-59 
+61 
 node2
 !=0)
 
-61 
+63 
 ™”
 =
 node2
@@ -54375,7 +54665,7 @@ node2
 P»v
 ;
 
-62 
+64 
 	`ä“
 (
 node2
@@ -54383,13 +54673,13 @@ node2
 v®ue
 );
 
-63 
+65 
 node2
 =
 ™”
 ;
 
-65 
+67 
 	`ä“
 (
 node
@@ -54397,11 +54687,11 @@ node
 v®ue
 );
 
-67 
+69 
 	}
 }
 
-68 
+70 
 Node
 * 
 	$node_fšd
@@ -54413,35 +54703,35 @@ node
 v®ue
 )
 
-70 
+72 
 node
 !=
 NULL
 )
 
-72 if(
+74 if(
 node
 ->
 v®ue
 ==value)
 
-74 
+76 
 node
 =(
 Node
-*êode->
+*)Òode->
 Next
-;
+);
 
-76  
+78  
 node
 ;
 
-77 
+79 
 	}
 }
 
-79 
+81 
 Node
 * 
 	$node_cÝy
@@ -54451,17 +54741,17 @@ Node
 node
 )
 
-81 if(
+83 if(
 node
 ==
 NULL
 )
 
-83  
+85  
 NULL
 ;
 
-85 
+87 
 Node
 * 
 node1
@@ -54469,7 +54759,7 @@ node1
 	`m®loc
 ((Node));
 
-86 
+88 
 Node
 * 
 node2
@@ -54477,19 +54767,19 @@ node2
 node1
 ;
 
-87 
+89 
 	`Node_š™
 (
 node1
 );
 
-88 
+90 
 node
 !=
 NULL
 )
 
-90 
+92 
 node2
 ->
 v®ue
@@ -54497,7 +54787,7 @@ v®ue
 node
 ->value;
 
-91 
+93 
 node
 =(
 Node
@@ -54505,13 +54795,13 @@ Node
 Next
 ;
 
-92 if(
+94 if(
 node
 ==
 NULL
 )
 
-96 
+98 
 Node
 * 
 node3
@@ -54519,13 +54809,13 @@ node3
 	`m®loc
 ((Node));
 
-97 
+99 
 	`Node_š™
 (
 node3
 );
 
-98 
+100 
 node2
 ->
 Next
@@ -54533,7 +54823,7 @@ Next
 node3
 ;
 
-99 
+101 
 node3
 ->
 P»v
@@ -54541,21 +54831,21 @@ P»v
 node2
 ;
 
-100 
+102 
 node2
 =
 node3
 ;
 
-103  
+105  
 node1
 ;
 
-104 
+106 
 	}
 }
 
-105 
+107 
 	$Node_š™
 (
 Node
@@ -54563,7 +54853,7 @@ Node
 node
 )
 
-108 
+110 
 node
 ->
 P»v
@@ -54571,7 +54861,7 @@ P»v
 NULL
 ;
 
-109 
+111 
 node
 ->
 Next
@@ -54579,7 +54869,7 @@ Next
 NULL
 ;
 
-110 
+112 
 node
 ->
 v®ue
@@ -54587,7 +54877,7 @@ v®ue
 NULL
 ;
 
-111 
+113 
 node
 ->
 Œa™s
@@ -54595,11 +54885,11 @@ node
 NULL
 ;
 
-112 
+114 
 	}
 }
 
-114 
+116 
 Node
 * 
 	$node_ov”lyšg
@@ -54611,7 +54901,7 @@ node
 v®ue
 )
 
-116 
+118 
 Node
 * 
 node1
@@ -54619,19 +54909,19 @@ node1
 	`m®loc
 ((Node));
 
-117 
+119 
 	`Node_š™
 (
 node1
 );
 
-118 
+120 
 node1
 ->
 v®ue
 =value;
 
-119 
+121 
 node1
 ->
 Next
@@ -54639,13 +54929,13 @@ Next
 node
 ;
 
-120 if(
+122 if(
 node
 !=
 NULL
 )
 
-122 
+124 
 node
 ->
 P»v
@@ -54653,15 +54943,15 @@ P»v
 node1
 ;
 
-125  
+127  
 node1
 ;
 
-127 
+129 
 	}
 }
 
-128 
+130 
 Node
 * 
 	$node_pushback
@@ -54673,7 +54963,7 @@ node
 v®ue
 )
 
-130 
+132 
 Node
 * 
 node1
@@ -54681,19 +54971,19 @@ node1
 	`m®loc
 ((Node));
 
-131 
+133 
 	`Node_š™
 (
 node1
 );
 
-132 
+134 
 node1
 ->
 v®ue
 =value;
 
-133 
+135 
 node1
 ->
 P»v
@@ -54701,11 +54991,11 @@ P»v
 node
 ;
 
-134 if(
+136 if(
 node
 !=0)
 
-136 
+138 
 node
 ->
 Next
@@ -54713,15 +55003,15 @@ Next
 node1
 ;
 
-138  
+140  
 node1
 ;
 
-140 
+142 
 	}
 }
 
-141 
+143 
 Node
 * 
 	$node_»v”£
@@ -54731,23 +55021,23 @@ Node
 node
 )
 
-143 if(
+145 if(
 node
 ==
 NULL
 )
 
-144 { 
+146 { 
 NULL
 ;}
 
-147 if(
+149 if(
 node
 ->
 Next
 !=0)
 
-149 
+151 
 node
 ->
 Next
@@ -54755,7 +55045,7 @@ Next
 NULL
 )
 
-151 
+153 
 node
 =(
 Node
@@ -54763,17 +55053,17 @@ Node
 Next
 ;
 
-154  
+156  
 node
 ;
 
-159 
+161 
 node
 ->
 P»v
 !=0)
 
-161 
+163 
 node
 =(
 Node
@@ -54781,15 +55071,15 @@ Node
 P»v
 ;
 
-164  
+166  
 node
 ;
 
-170 
+172 
 	}
 }
 
-171 
+173 
 	$node_–imš©e
 (
 Node
@@ -54797,13 +55087,13 @@ Node
 node
 )
 
-173 if(
+175 if(
 node
 ==
 NULL
 )
 
-177 
+179 
 Node
 * 
 node1
@@ -54817,13 +55107,13 @@ node2
 Next
 ;
 
-178 if(
+180 if(
 node1
 !=
 NULL
 )
 
-180 
+182 
 node1
 ->
 Next
@@ -54831,13 +55121,13 @@ Next
 node2
 ;
 
-182 if(
+184 if(
 node2
 !=
 NULL
 )
 
-184 
+186 
 node2
 ->
 P»v
@@ -54845,23 +55135,23 @@ P»v
 node1
 ;
 
-186 
+188 
 	`ä“
 (
 node
 );
 
-187 
+189 
 node
 =
 NULL
 ;
 
-189 
+191 
 	}
 }
 
-191 
+193 
 Node
 * 
 	$node_d–‘e_v®ue
@@ -54873,7 +55163,7 @@ node
 v®ue
 )
 
-193 
+196 
 Node
 * 
 node1
@@ -54885,7 +55175,7 @@ node
 v®ue
 );
 
-194 
+198 
 Node
 * 
 »
@@ -54893,7 +55183,17 @@ Node
 node
 ;
 
-195 if(
+199 if(
+node1
+==
+NULL
+)
+
+201  
+»
+;
+
+203 if(
 node1
 ->
 P»v
@@ -54901,7 +55201,7 @@ P»v
 NULL
 )
 
-197 
+205 
 »
 =(
 Node
@@ -54911,17 +55211,17 @@ node1
 Next
 ;
 
-200 
+208 
 	`node_–imš©e
 (
 node1
 );
 
-201  
+210  
 »
 ;
 
-202 
+211 
 	}
 }
 

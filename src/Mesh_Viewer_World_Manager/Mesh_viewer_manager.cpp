@@ -1,5 +1,5 @@
 #include<Mesh_Viewer_World_Manager/Mesh_viewer_manager.h>
-//以算子的思想做回退功能
+//以逆算子的思想做回退功能
 //glDeleteVertexArrays;
 //glDeleteBuffers
 /*void Mesh_viewer_world_registe1(Mesh_viewer_world*m,char**c,int size)

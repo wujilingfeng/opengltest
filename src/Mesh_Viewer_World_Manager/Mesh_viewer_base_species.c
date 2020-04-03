@@ -1,5 +1,16 @@
 #include<Mesh_Viewer_World_Manager/Mesh_viewer_base_species.h>
 #include<time.h>
+static void Viewer_set_v_one_color(float *v,unsigned int rows,float *c)
+{
+
+	for(unsigned int i=0;i<rows;i++)
+	{
+		for(int j=0;j<3;j++)
+		{
+			v[i*3+j]=c[j];
+		}
+	}
+}
 void Mesh_viewer_something_init(Mesh_viewer_something*ms)
 {
 	//gldeletevertexarray
@@ -36,6 +47,20 @@ void Mesh_viewer_texture_init(Mesh_viewer_texture*mt)
 	mt->prop=0;
 
 }
+void Viewer_faces_set_color(Mesh_viewer_faces*mf,float*c)
+{
+
+	if(mf->color!=0)
+	{free(mf->color);
+	}
+	mf->color=0;
+	if(mf->color_rows>0)
+	{
+		mf->color=(float*)malloc(sizeof(float)*3*mf->color_rows);
+	}
+	Viewer_set_v_one_color(mf->color,mf->color_rows,c);
+
+}
 void Mesh_viewer_faces_random_color(Mesh_viewer_faces*mf)
 {
   
@@ -49,9 +74,6 @@ void Mesh_viewer_faces_random_color(Mesh_viewer_faces*mf)
     }
     mf->color=(float*)malloc(sizeof(float)*3*mf->color_rows);
     srand((unsigned)time(NULL));
-
-    
-
     for(unsigned int i=0;i<mf->color_rows*3;i++)
     {
         mf->color[i]=(rand()%100)/100.0;
@@ -147,9 +169,11 @@ void Mesh_viewer_faces_init(Mesh_viewer_faces* mf)
     mf->Data_rows=0;
 	mf->compute_normal=Mesh_viewer_faces_compute_normal;
     mf->random_color=Mesh_viewer_faces_random_color;
+	mf->set_color=Viewer_faces_set_color;
 	mf->texture=0;
 	mf->mat=(Matrix4x4*)malloc(sizeof(Matrix4x4));
 	Matrix4x4_init_float(mf->mat);
+	mf->is_reversal_normal=0;
    // mf->texture=(Mesh_viewer_texture*)malloc(sizeof(Mesh_viewer_texture));
    // Mesh_viewer_texture_init(mf->texture);
 
@@ -171,12 +195,12 @@ void Mesh_viewer_camera_init(Mesh_viewer_camera*mc)
 void Mesh_viewer_points_init(struct Mesh_viewer_points* mp)
 {
     mp->Data=0;mp->color=0;
-    mp->Data_index=0;
+    
     mp->VAO=0;
     mp->Buffers=0;
     mp->prop=0;
     mp->evolution=0;
-    mp->Data_index_rows=0;
+    
     mp->Data_rows=0;
 	mp->mat=(Matrix4x4*)malloc(sizeof(Matrix4x4));
 Matrix4x4_init_float(mp->mat);
@@ -195,8 +219,22 @@ void Mesh_viewer_edges_init(struct Mesh_viewer_edges* me)
     me->Data_rows=0;
 	me->color_rows=0;
 	me->mat=(Matrix4x4*)malloc(sizeof(Matrix4x4));
+	me->set_color=Viewer_edges_set_color;
 Matrix4x4_init_float(me->mat);
-	me->edgesize=3.0;
+	me->edgesize=2.0;
 }
+void Viewer_edges_set_color(Mesh_viewer_edges*me,float*v)
+{
+	if(me->color!=0)
+	{free(me->color);
+	}
+	me->color=0;
+	if(me->color_rows>0)
+	{
+		me->color=(float*)malloc(sizeof(float)*3*me->color_rows);
+	}
+	Viewer_set_v_one_color(me->color,me->color_rows,v);
 
+
+}
 

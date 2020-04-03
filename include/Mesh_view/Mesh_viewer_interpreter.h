@@ -260,7 +260,7 @@ void display_setting()
    // glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 //glClear(GL_COLOR_BUFFER_BIT);
 //上面两个语句等同以下两个语句
-	static const float black[]={0.5f,0.6f,0.6f,1.0f};
+	static const float black[]={0.2f,0.5f,1.0f,1.0f};
     glClearBufferfv(GL_COLOR,0,black);
    
 	glClear(GL_DEPTH_BUFFER_BIT);
@@ -379,8 +379,8 @@ void prepare_mesh_viewer_world_data(Mesh_viewer_opengl_Interpreter*moi)
                     //printf("vertice:%lf \n",vertices[i*3+j]);
                 }
             }
-      //      glDeleteBuffers(1,mp->Buffers);
-        //    glDeleteVertexArrays(1,&(mp->VAO));
+            glDeleteBuffers(1,mp->Buffers);
+            glDeleteVertexArrays(1,&(mp->VAO));
             glGenVertexArrays(1,&(mp->VAO));
 
             glBindVertexArray(mp->VAO);
@@ -508,12 +508,17 @@ void prepare_mesh_viewer_world_data(Mesh_viewer_opengl_Interpreter*moi)
     elements_id=0;
      names_id=Mesh_viewer_world_find_species(mw,names);
     iter=mw->species2somethings.find(*((int*)(names_id->value)));
+
     if(iter!=mw->species2somethings.end())
     {
         for(auto iter1=(iter->second)->begin();iter1!=(iter->second)->end();iter1++)
         {
             Mesh_viewer_something *ms=iter1->second;
             Mesh_viewer_faces *mf=(Mesh_viewer_faces*)(ms->evolution);
+		
+            if(ms->disappear==1||mf->Data_index_rows==0||mf->Data==NULL||mf->Data_rows==0)
+            {continue;}
+
             if(mf->Buffers==0)
             {
                 mf->Buffers=(GLuint*)malloc(sizeof(GLuint));
@@ -523,9 +528,7 @@ void prepare_mesh_viewer_world_data(Mesh_viewer_opengl_Interpreter*moi)
                 mf->compute_normal(mf);
             }
 
-            if(ms->disappear==1||mf->Data_index_rows==0)
-            {continue;}
-            //vertex array
+                        //vertex array
             int v_size=0,temp_i=0;
             for(unsigned int i=0;i<mf->Data_index_rows;i++)
             {
@@ -680,8 +683,12 @@ void prepare_mesh_viewer_world_data(Mesh_viewer_opengl_Interpreter*moi)
                     
                             for(int k=0;k<3;k++)
                             {
-                    
-                                normal[v_size*3+k]=mf->normal[i*3+k];
+                    		if(mf->is_reversal_normal==1)
+				{normal[v_size*3+k]=-mf->normal[i*3+k];
+				}
+				else
+				{normal[v_size*3+k]=mf->normal[i*3+k];}
+                                
                             }
                             v_size++;
                         }
@@ -700,20 +707,27 @@ void prepare_mesh_viewer_world_data(Mesh_viewer_opengl_Interpreter*moi)
                             int temp_in=mf->Data_index[temp_i+1];
                             for(int k=0;k<3;k++)
                             {
-                                normal[v_size*3+k]=mf->normal[temp_in*3+k];
+				if(mf->is_reversal_normal==1)
+				{ normal[v_size*3+k]=-mf->normal[temp_in*3+k];}
+				else{ normal[v_size*3+k]=mf->normal[temp_in*3+k];}
+                               
                             }
                             v_size++;
                             temp_in=mf->Data_index[temp_i+1+l+1];
                             for(int k=0;k<3;k++)
                             {
-                                normal[v_size*3+k]=mf->normal[temp_in*3+k];
+				if(mf->is_reversal_normal==1){normal[v_size*3+k]=-mf->normal[temp_in*3+k];}
+				else{normal[v_size*3+k]=mf->normal[temp_in*3+k];}
+                                
                             }
 
                             v_size++;
                             temp_in=mf->Data_index[temp_i+1+l+2];
                             for(int k=0;k<3;k++)
                             {
-                                normal[v_size*3+k]=mf->normal[temp_in*3+k];
+				if(mf->is_reversal_normal==1){normal[v_size*3+k]=-mf->normal[temp_in*3+k];}
+				else{normal[v_size*3+k]=mf->normal[temp_in*3+k];}
+                                
                             }
 
                             v_size++;
@@ -779,10 +793,15 @@ void prepare_mesh_viewer_world_data(Mesh_viewer_opengl_Interpreter*moi)
         moi->tex=0;
     }
     moi->tex= test_add_array_to_shader(moi);
-    glActiveTexture(GL_TEXTURE0);
+    if(moi->tex!=0)
+    {
+    
+     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D,moi->tex[0]);
     glActiveTexture(GL_TEXTURE1);
     glBindTexture(GL_TEXTURE_2D,moi->tex[1]);
+
+    }
     names_id=mw->find_species(mw,texture);
     iter=mw->species2somethings.find(*((int*)(names_id->value)));
     if(iter!=mw->species2somethings.end())
@@ -798,10 +817,9 @@ void prepare_mesh_viewer_world_data(Mesh_viewer_opengl_Interpreter*moi)
         }
     
     }
+
     free_node_value(names_id);
     free_node(names_id);
-
-
 
 }
 ImageInfo* add_texture_to_shader(unsigned int*tex,char*image_file)
@@ -885,7 +903,6 @@ void draw_elements(Mesh_viewer_opengl_Interpreter* moi)
 
     char names[]="faces";
     names_id=Mesh_viewer_world_find_species(mw,names);
-
     iter=mw->species2somethings.find(*((int*)(names_id->value)));
 
     if(iter!=mw->species2somethings.end())
@@ -895,7 +912,7 @@ void draw_elements(Mesh_viewer_opengl_Interpreter* moi)
         
             Mesh_viewer_something *ms=iter1->second;
             Mesh_viewer_faces *mf=(Mesh_viewer_faces*)(ms->evolution);
-            if(ms->disappear==1||mf->Data_index_rows==0||mf->VAO==0||mf->Buffers==0)
+            if(ms->disappear==1||mf->Data_index_rows==0||mf->VAO==0||mf->Buffers==0||mf->Data==NULL)
             {continue;}
             int v_size=0,temp_i=0;
             for(unsigned int i=0;i<mf->Data_index_rows;i++)
