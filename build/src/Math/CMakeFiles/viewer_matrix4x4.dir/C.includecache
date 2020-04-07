@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/Math/LB_Math.h
+stdio.h
+-
+math.h
+-
+stdlib.h
+-
+string.h
+-
+
+../include/Math/Viewer_Matrix4x4.h
+Math/LB_Math.h
+-
+stdio.h
+-
+stdlib.h
+-
+
+/home/libo/Documents/c++/Viewer1.0/src/Math/LB_Math.c
+Math/LB_Math.h
+-
+
+/home/libo/Documents/c++/Viewer1.0/src/Math/Viewer_Matrix4x4.c
+Math/Viewer_Matrix4x4.h
+-
+

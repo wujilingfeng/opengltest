@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/iterator/cstruct_iterator.h
+../tools_node.h
+../include/tools_node.h
+
+../include/tools_node.h
+stdlib.h
+-
+
+/home/libo/Documents/c++/cstructures/src/iterator/cstruct_iterator.cpp
+iterator/cstruct_iterator.h
+-
+

@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../../../../temp_libs/libviewer_openglalg.a  CMakeFiles/viewer_openglalg.dir/Viewer_OpenglAlg.c.o CMakeFiles/viewer_openglalg.dir/__/__/__/thirdpart/glad/src/glad.c.o
+/usr/bin/ranlib ../../../../temp_libs/libviewer_openglalg.a

@@ -1,0 +1,1 @@
+#define MESH_VIEWER_PATH "/home/libo/Documents/c++/Viewer1.0"

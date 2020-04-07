@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../../../temp_libs/libviewer_matrix4x4.a  CMakeFiles/viewer_matrix4x4.dir/LB_Math.c.o CMakeFiles/viewer_matrix4x4.dir/Viewer_Matrix4x4.c.o
+/usr/bin/ranlib ../../../temp_libs/libviewer_matrix4x4.a

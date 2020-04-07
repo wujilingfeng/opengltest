@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../../../temp_libs/libcstruct_iterator.a  CMakeFiles/cstruct_iterator.dir/cstruct_iterator.cpp.o
+/usr/bin/ranlib ../../../temp_libs/libcstruct_iterator.a

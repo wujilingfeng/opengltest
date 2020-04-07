@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/tools_rbtree.h
+cstddef
+-
+stdlib.h
+-
+string.h
+-
+stddef.h
+-
+
+/home/libo/Documents/c++/cstructures/Demo/main.cpp
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+tools_rbtree.h
+-
+
