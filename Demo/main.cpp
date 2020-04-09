@@ -275,11 +275,12 @@ void test2()
     n=vw.create_something(&vw,points);
     ms=(Viewer_Something*)(n->value);
     Viewer_Points * mp=(Viewer_Points*)(ms->evolution);
-    //mp->pointsize=5.0;
-    mp->Data_rows=2;
-    mp->Data=(float*)malloc(sizeof(float)*3*2);
+    mp->pointsize=20.0;
+    mp->Data_rows=3;
+    mp->Data=(float*)malloc(sizeof(float)*3*mp->Data_rows);
     mp->Data[0]=0.5;mp->Data[1]=0.6;mp->Data[2]=0.2;
     mp->Data[3]=0.1;mp->Data[4]=1.1;mp->Data[5]=0.1;
+    mp->Data[6]=1.0;mp->Data[7]=1.0;mp->Data[8]=1.0;
     free_node(n);
     char intera[]="Intera";
     n=vw.create_something(&vw,intera);
@@ -343,7 +344,7 @@ void test2()
     mf->Data_index=f;
     mf->Data_rows=8;
     mf->Data_index_rows=12;
-
+    mf->is_transparent=0;
     vw.print_self(&vw);
     Viewer_Opengl_Interpreter voi;
     Viewer_Opengl_Interpreter_init(&voi);

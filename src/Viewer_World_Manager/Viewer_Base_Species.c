@@ -32,7 +32,7 @@ void Viewer_Something_init(Viewer_Something*ms)
 	//ms->create_date=-1;
 	ms->disappear=0;
 	memset(ms->viewport,0,sizeof(int)*4);
-	
+	ms->marked_element=-1;
 	ms->mesh=NULL;
 	//ms->history_avatar=NULL;
 	ms->evolution=0;

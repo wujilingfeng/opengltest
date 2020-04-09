@@ -97,7 +97,6 @@ static void Viewer_default_set_uniform(Viewer_oisp*voisp)
     glUniform1f(glGetUniformLocation(program,"iTime"),g_info->run_time);
     if(g_info->key==VIEWER_KEY_CONTROL&&g_info->key_action==1)
     {
-
         glUniform1f(glGetUniformLocation(program,"p_intera.is_pick"),1);
 
     }
@@ -474,7 +473,6 @@ static void Viewer_default_load_data(Viewer_oisp* voisp)
 		iter1=tree->begin(tree);
 		for(;iter1->it!=NULL;iter1->next(iter1))
 		{
-            printf("you\n");
 			Viewer_Something*ms=(Viewer_Something*)(iter1->second(iter1));
             Viewer_Points *mp=(Viewer_Points*)(ms->evolution);
 			if(ms->disappear==1||mp->Data==0)
@@ -513,10 +511,11 @@ static void Viewer_default_load_data(Viewer_oisp* voisp)
 
             glBindBuffer(GL_ARRAY_BUFFER,mp->Buffers[0]);
             glVertexAttribPointer( 0, 3, GL_FLOAT,GL_FALSE, 0, 0 );
+            glEnableVertexAttribArray( 0 );
+
             glBindBuffer(GL_ARRAY_BUFFER,mp->Buffers[1]);
             glVertexAttribPointer(4,1,GL_FLOAT,GL_FALSE,0,0);
-            glEnableVertexAttribArray( 0 );
-            
+            glEnableVertexAttribArray( 4 );
             glBindVertexArray(0);
             free(vertices);
             free(e_id);
@@ -915,7 +914,7 @@ static void Viewer_default_load_data(Viewer_oisp* voisp)
     free_node_value(names_id);
     free_node(names_id);
 
-
+    printf("elements_id:%d\n",elements_id);
 	Viewer_default_init_uniform(voisp);
 
 

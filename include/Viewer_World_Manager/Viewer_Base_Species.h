@@ -16,6 +16,7 @@ typedef struct Viewer_Something{
 	//对应glViewport函数
 	int viewport[4];
 //指向一个结构库
+	int marked_element;
 	void* mesh;
 	//（历史记录）分身
 	//Node* history_avatar;

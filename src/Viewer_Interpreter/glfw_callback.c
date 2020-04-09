@@ -65,43 +65,96 @@ static void viewer_decode_pickupinfo(Viewer_World* mw,Interactor_GlobalInfo* g_i
 {
     if(g_info->key==VIEWER_KEY_CONTROL&&g_info->key_action==1)
     {
-        printf("viewer_decode%d %d\n",g_info->key,g_info->key_action);
         g_info->pick_something=NULL;
         //判断是否是背景颜色
-        if(g_info->readpixelcolor[0]==51&&g_info->readpixelcolor[1]==76&&g_info->readpixelcolor[2]==76&&g_info->readpixelcolor[3]==255)
+        if(g_info->readpixelcolor[0]==51&&g_info->readpixelcolor[1]==128&&g_info->readpixelcolor[2]==255&&g_info->readpixelcolor[3]==255)
         {
-            printf("shi\n");
+            printf("shi background\n");
             return;
         }
-        char faces[]="faces";
+	 int sum=0,temp_sum=0;
         int id=g_info->readpixelcolor[0]*255*255+g_info->readpixelcolor[1]*255+g_info->readpixelcolor[2];
-        Node* names_id=mw->find_species(mw,faces);
-	    RB_int rbt,*rbt1;
-	    rbt.key=*((int*)(names_id->value));
-	    rbt1=mw->species2somethings->find(mw->species2somethings,&rbt);
+	char points[]="Points";
+	Node* names_id=mw->find_species(mw,points);
+	RB_int rbt,*rbt1=NULL;
+	rbt.key=*((int*)(names_id->value));
+  	free(names_id->value);
+        free_node(names_id);
+
+	rbt1=(RB_int*)mw->species2somethings->find(mw->species2somethings,&rbt);
+	RB_Tree* tree=NULL;
+	RB_Trav* iter1=NULL;
+	if(rbt1!=NULL)
+	{
+		tree=((RB_Tree*)(rbt1->value));
+	        iter1=tree->begin(tree);
+            	for(;iter1->it!=NULL;iter1->next(iter1))
+            	{
+		        Viewer_Something* vs=(Viewer_Something*)(iter1->second(iter1));
+			
+                	temp_sum=((Viewer_Faces*)(vs->evolution))->Data_index_rows;
+                	if(id-sum<temp_sum)
+                	{
+                    		g_info->pick_something=(void*)(vs);
+				vs->marked_element=id-sum;
+                    		return;
+                	}
+			sum+=temp_sum;
+            	}
+	        free(iter1);
+	}
+	char edges[]="Edges";
+	names_id=mw->find_species(mw,edges);
+	rbt.key=*((int*)(names_id->value));
+  	free(names_id->value);
+        free_node(names_id);
+	rbt1=(RB_int*)mw->species2somethings->find(mw->species2somethings,&rbt);
+	if(rbt1!=NULL)
+	{
+		tree=((RB_Tree*)(rbt1->value));
+	        iter1=tree->begin(tree);
+            	for(;iter1->it!=NULL;iter1->next(iter1))
+            	{
+		        Viewer_Something* vs=(Viewer_Something*)(iter1->second(iter1));
+			
+                	temp_sum=((Viewer_Faces*)(vs->evolution))->Data_index_rows;
+                	if(id-sum<temp_sum)
+                	{
+                    		g_info->pick_something=(void*)(vs);
+				vs->marked_element=id-sum;
+                    		return;
+                	}
+			sum+=temp_sum;
+            	}
+	        free(iter1);
+	}
+        char faces[]="Faces";
+
+        names_id=mw->find_species(mw,faces);
+	rbt.key=*((int*)(names_id->value));
+	free(names_id->value);
+        free_node(names_id);
+	rbt1=mw->species2somethings->find(mw->species2somethings,&rbt);
         
-        int sum=0;
-	    RB_Tree* tree=NULL;
-	    RB_Trav* iter1=NULL;
         if(rbt1!=NULL)
         {
             tree=((RB_Tree*)(rbt1->value));
-	        iter1=tree->begin(tree);
+	    iter1=tree->begin(tree);
             for(;iter1->it!=NULL;iter1->next(iter1))
             {
-		        Viewer_Something* vs=(Viewer_Something*)(iter1->second(iter1));
-                sum+=((Viewer_Faces*)(vs->evolution))->Data_index_rows;
-                if(id<sum)
+		Viewer_Something* vs=(Viewer_Something*)(iter1->second(iter1));
+                temp_sum=((Viewer_Faces*)(vs->evolution))->Data_index_rows;
+                if(id-sum<temp_sum)
                 {
                     g_info->pick_something=(void*)(vs);
-                    break;
+			vs->marked_element=id-sum;
+                    return ;
                 }
+		sum+=temp_sum;
             }
 
 	        free(iter1);
         }
-        free(names_id->value);
-        free_node(names_id);
 
     }
 }
@@ -124,7 +177,7 @@ void viewer_mouse_button_callback(GLFWwindow* window,int button,int action,int m
             printf("\n");
         }
 
-        //viewer_decode_pickupinfo(mw,g_info);  
+        viewer_decode_pickupinfo(mw,g_info);  
     }
     
     g_info->mouse_button=button;
