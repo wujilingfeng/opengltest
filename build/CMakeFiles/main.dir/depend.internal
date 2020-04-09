@@ -11,7 +11,6 @@ CMakeFiles/main.dir/Demo/main.cpp.o
  ../include/Viewer_World_Manager/Viewer_Base_Species.h
  ../include/Viewer_World_Manager/Viewer_World_Manager.h
  ../include/config.h
- ../include/stb_image.h
  ../thirdpart/cstructures/include/tools_node.h
  ../thirdpart/cstructures/include/tools_rbtree.h
  ../thirdpart/glad/include/KHR/khrplatform.h

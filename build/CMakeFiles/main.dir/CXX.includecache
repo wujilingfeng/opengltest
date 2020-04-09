@@ -70,38 +70,6 @@ tools_rbtree.h
 
 ../include/config.h
 
-../include/stb_image.h
-stb_image.h
-../include/stb_image.h
-stdio.h
--
-stdlib.h
--
-stdarg.h
--
-stddef.h
--
-stdlib.h
--
-string.h
--
-limits.h
--
-math.h
--
-stdio.h
--
-assert.h
--
-stdint.h
--
-emmintrin.h
--
-intrin.h
--
-arm_neon.h
--
-
 ../thirdpart/cstructures/include/tools_node.h
 stdlib.h
 -
@@ -144,7 +112,5 @@ Viewer_Interpreter/Viewer_OpenGL_Interpreter.h
 GLFW/glfw3.h
 -
 config.h
--
-stb_image.h
 -
 

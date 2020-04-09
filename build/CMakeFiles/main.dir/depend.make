@@ -10,7 +10,6 @@ CMakeFiles/main.dir/Demo/main.cpp.o: ../include/Viewer_World_Manager/Interactor_
 CMakeFiles/main.dir/Demo/main.cpp.o: ../include/Viewer_World_Manager/Viewer_Base_Species.h
 CMakeFiles/main.dir/Demo/main.cpp.o: ../include/Viewer_World_Manager/Viewer_World_Manager.h
 CMakeFiles/main.dir/Demo/main.cpp.o: ../include/config.h
-CMakeFiles/main.dir/Demo/main.cpp.o: ../include/stb_image.h
 CMakeFiles/main.dir/Demo/main.cpp.o: ../thirdpart/cstructures/include/tools_node.h
 CMakeFiles/main.dir/Demo/main.cpp.o: ../thirdpart/cstructures/include/tools_rbtree.h
 CMakeFiles/main.dir/Demo/main.cpp.o: ../thirdpart/glad/include/KHR/khrplatform.h

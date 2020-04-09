@@ -22,14 +22,15 @@ typedef struct ShaderInfo{
 }ShaderInfo;
 typedef struct ImageInfo{
 
-    void *data;
+    unsigned char *data;
     int width,height,n;
     void* prop;
 
 }ImageInfo;
 
 GLchar* _ReadFile_ (char* filename);
-
+ImageInfo *_ReadImageFile_(char*);
+void ImageInfo_free(ImageInfo*);
 void _Shader_(ShaderInfo* shaders);
 
 
@@ -46,4 +47,5 @@ void _Texture_Array_GL_R32UI(ImageInfo*,GLuint texture);
 #ifdef __cplusplus
 }
 #endif
+#undef _ReadFile_ 
 #endif

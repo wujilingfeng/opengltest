@@ -169,7 +169,7 @@ void Viewer_Faces_init(Viewer_Faces* mf)
     mf->normal=0;
     mf->VAO=0;mf->Buffers=0;
     mf->marked_faces_index=0;
-    mf->prop=0;
+   
     mf->evolution=0;
     mf->Data_index_rows=0;
   	mf->color_rows=0;
@@ -182,6 +182,8 @@ void Viewer_Faces_init(Viewer_Faces* mf)
 	mf->mat=(Matrix4x4*)malloc(sizeof(Matrix4x4));
 	Matrix4x4_init_float(mf->mat);
 	mf->is_reversal_normal=0;
+	mf->is_transparent=1;
+ 	mf->prop=NULL;
    // mf->texture=(Mesh_viewer_texture*)malloc(sizeof(Mesh_viewer_texture));
    // Mesh_viewer_texture_init(mf->texture);
 

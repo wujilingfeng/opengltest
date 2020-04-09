@@ -1,6 +1,6 @@
 #version 450 core
 out vec4 fColor;
-in vec3 outColor;
+in vec4 outColor;
 in vec2 texcoord;
 in float e_id;
 

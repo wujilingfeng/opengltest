@@ -1,5 +1,9 @@
 
 #include<Viewer_Interpreter/Viewer_OpenglAlg.h>
+#define STB_IMAGE_IMPLEMENTATION
+#include<Viewer_Interpreter/stb_image.h>
+
+#define _ReadFile_ OpenglAlg_ReadFile
 GLchar* _ReadFile_ (char* filename)
 {
 #ifdef WIN32
@@ -22,7 +26,18 @@ GLchar* _ReadFile_ (char* filename)
     source[len]=0;
     return (source);
 }
-
+ImageInfo *_ReadImageFile_(char*filename)
+{
+	ImageInfo*re=(ImageInfo*)malloc(sizeof(ImageInfo));
+    	stbi_set_flip_vertically_on_load(1);
+    	re->data = stbi_load(filename, &(re->width), &(re->height), &(re->n), 0);
+	return re;
+}
+void ImageInfo_free(ImageInfo*imi)
+{
+	stbi_image_free(imi->data);
+	free(imi);
+}
 
 void _Shader_(ShaderInfo* shaders)
 {
@@ -158,7 +173,7 @@ void _Texture_Array_GL_FLOAT(ImageInfo* image,GLuint texture)
 void _Texture_Array_GL_R32UI(ImageInfo* image,GLuint texture)
 {
 	
-glBindTexture(GL_TEXTURE_2D,texture);
+	glBindTexture(GL_TEXTURE_2D,texture);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
@@ -169,6 +184,6 @@ glBindTexture(GL_TEXTURE_2D,texture);
 
 }
 
-
-
+#undef _ReadFile_ 
+#undef STB_IMAGE_IMPLEMENTATION
 
