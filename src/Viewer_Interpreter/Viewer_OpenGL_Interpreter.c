@@ -147,7 +147,7 @@ GLuint* test_add_array_to_shader(Viewer_oisp* voisp)
 {
     Viewer_World* mw=voisp->voi->world;
 
-    char names[]="faces";
+    char names[]="Faces";
     GLfloat* vertices=0,*index=0;
     int len_rows=0,len_index_rows=0,len_index=0;
     Node* names_id=mw->find_species(mw,names);
@@ -273,7 +273,7 @@ static void Viewer_default_render(Viewer_oisp* voisp)
     Interactor_GlobalInfo*g_info=mw->g_info;
 
     glViewport(0.0,0.0,g_info->resolution[0],g_info->resolution[1]);
-    char points[]="points";
+    char points[]="Points";
     Node* names_id=mw->find_species(mw,points);
     RB_int rbt,*rbt1;
     rbt.key=*((int*)(names_id->value));
@@ -295,6 +295,14 @@ static void Viewer_default_render(Viewer_oisp* voisp)
             {
                 glViewport(ms->viewport[0],ms->viewport[1],ms->viewport[2],ms->viewport[3]); 
             }
+            else
+            {
+                 glViewport(0.0,0.0,g_info->resolution[0],g_info->resolution[1]); 
+
+            }
+	
+
+            //printf("lyou\n");
             glPointSize(mp->pointsize);
             int v_size=mp->Data_rows;
             float *data=(float*)(mp->mat->data);
@@ -313,7 +321,7 @@ static void Viewer_default_render(Viewer_oisp* voisp)
 
     //glUniform1f(glGetUniformLocation(moi->program,"is_draw_vertices"),0.0);
 
-    char edges[]="edges";
+    char edges[]="Edges";
     names_id=mw->find_species(mw,edges);
     rbt.key=*((int*)(names_id->value));
     rbt1=mw->species2somethings->find(mw->species2somethings,&rbt);
@@ -332,6 +340,11 @@ static void Viewer_default_render(Viewer_oisp* voisp)
             {
                 glViewport(ms->viewport[0],ms->viewport[1],ms->viewport[2],ms->viewport[3]); 
             }
+            else
+            {
+                 glViewport(0.0,0.0,g_info->resolution[0],g_info->resolution[1]); 
+
+            }
 
             glLineWidth(me->edgesize); 
             int v_size=me->Data_index_rows*2;
@@ -346,7 +359,7 @@ static void Viewer_default_render(Viewer_oisp* voisp)
     free_node_value(names_id);
     free_node(names_id);
 
-    char names[]="faces";
+    char names[]="Faces";
     names_id=mw->find_species(mw,names);
     rbt.key=*((int*)(names_id->value));
     rbt1=mw->species2somethings->find(mw->species2somethings,&rbt);
@@ -365,6 +378,11 @@ static void Viewer_default_render(Viewer_oisp* voisp)
             {
                 glViewport(ms->viewport[0],ms->viewport[1],ms->viewport[2],ms->viewport[3]); 
             }
+            else
+            {
+                 glViewport(0.0,0.0,g_info->resolution[0],g_info->resolution[1]); 
+            }
+
             if(mf->is_transparent==1)
             {
 	            glEnable(GL_BLEND);
@@ -446,7 +464,7 @@ static void Viewer_default_load_data(Viewer_oisp* voisp)
 	free_node(names_id);
 
     elements_id=0;
-	char points[]="points";
+	char points[]="Points";
 	names_id=mw->find_species(mw,points);
 	rbt.key=*((int*)(names_id->value));
 	rbt1=(RB_int*)mw->species2somethings->find(mw->species2somethings,&rbt);
@@ -456,13 +474,14 @@ static void Viewer_default_load_data(Viewer_oisp* voisp)
 		iter1=tree->begin(tree);
 		for(;iter1->it!=NULL;iter1->next(iter1))
 		{
+            printf("you\n");
 			Viewer_Something*ms=(Viewer_Something*)(iter1->second(iter1));
             Viewer_Points *mp=(Viewer_Points*)(ms->evolution);
 			if(ms->disappear==1||mp->Data==0)
 			{
 				continue;
 			}
-			if(mp->Buffers==0)
+			if(mp->Buffers==NULL)
             {
                 mp->Buffers=(GLuint*)malloc(sizeof(GLuint));
             }
@@ -506,7 +525,7 @@ static void Viewer_default_load_data(Viewer_oisp* voisp)
 	}
     free_node_value(names_id);
     free_node(names_id);
-    char edges[]="edges";
+    char edges[]="Edges";
     names_id=mw->find_species(mw,edges);
 	rbt.key=*((int*)(names_id->value));
 	rbt1=(RB_int*)mw->species2somethings->find(mw->species2somethings,&rbt);
@@ -612,7 +631,7 @@ static void Viewer_default_load_data(Viewer_oisp* voisp)
     }
     free_node_value(names_id);
     free_node(names_id);
-    char names[]="faces";
+    char names[]="Faces";
    // elements_id=0;
     names_id=mw->find_species(mw,names);
     rbt.key=*((int*)(names_id->value));
@@ -926,10 +945,10 @@ void Viewer_Opengl_Interpreter_init(Viewer_Opengl_Interpreter*moi)
 	moi->create_shader_program=Viewer_create_shader_program;
     char* p_v=(char*)malloc(sizeof(char)*60);
     memset(p_v,0,sizeof(char)*60);
-    strcat(strcat(p_v,MESH_VIEWER_PATH),"/tst1_v.vs");
+    strcat(strcat(p_v,MESH_VIEWER_PATH),"/mesh.vert");
     char* p_f=(char*)malloc(sizeof(char)*60);
     memset(p_f,0,sizeof(char)*60);
-    strcat(strcat(p_f,MESH_VIEWER_PATH),"/tst1_f.fs");
+    strcat(strcat(p_f,MESH_VIEWER_PATH),"/mesh.frag");
     moi->create_shader_program(moi,p_v,p_f,Viewer_default_load_data,Viewer_default_render);
     free(p_v);free(p_f);
     moi->prop=NULL;
@@ -997,7 +1016,7 @@ void Viewer_Opengl_Interpreter_interpreter(Viewer_Opengl_Interpreter*moi)
 	while(!glfwWindowShouldClose(window))
 	{	
 		glBindFramebuffer(GL_FRAMEBUFFER,0);
-		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+		glClearColor(0.2f,0.5f,1.0f,1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // also clear the depth buffer now!
         finish=clock();
         mw->g_info->run_time=(float)30.0*(finish-start)/CLOCKS_PER_SEC;

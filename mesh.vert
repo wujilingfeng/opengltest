@@ -4,7 +4,7 @@ layout(location=1) in vec4 aColor;
 layout(location=2) in vec2 aTexCoord;
 layout(location=3) in vec3 nor;
 layout(location=4) in float element_id;
-out vec3 outColor;
+out vec4 outColor;
 out vec2 texcoord;
 out float e_id;
 uniform mat4 Proj;

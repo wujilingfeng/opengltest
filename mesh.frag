@@ -29,7 +29,7 @@ void set_fColor(vec2 uv,vec2 coord_uv)
 {
 	float a=length(texcoord);
 	a=sign(a);
-	fColor=(texture(ourTexture,texcoord)*a+(1-a)*vec4(outColor,1.0));
+	fColor=(texture(ourTexture,texcoord)*a+(1-a)*outColor);
 	
 	float is_pick=step(abs(coord_uv.x-uv.x),6/(2*iResolution.x));
 	is_pick=step(2,is_pick+step(abs(coord_uv.y-uv.y),6/(2*iResolution.y)));

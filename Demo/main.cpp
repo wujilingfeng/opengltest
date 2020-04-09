@@ -6,6 +6,7 @@
 #include<Viewer_Interpreter/Viewer_OpenGL_Interpreter.h>
 #include<GLFW/glfw3.h>
 #include<config.h>
+#include "include/Arcroll.h"
 #define Matrix4x4 Viewer_Matrix4x4_
 //#define STB_IMAGE_IMPLEMENTATION
 //#include <stb_image.h>
@@ -265,13 +266,83 @@ void test2()
     Viewer_Something*ms=(Viewer_Something*)(n->value);
     Viewer_Camera*mc=(Viewer_Camera*)(ms->evolution);
     mc->is_using=1;
-    Matrix4x4 *p=Projection(M_PI/3.0f,(float)(vw.g_info->resolution[0])/(float)(vw.g_info->resolution[1]),0.5,200.0f);
+    Matrix4x4 *p=Projection(M_PI/3.0f,(float)(vw.g_info->resolution[0])/(float)(vw.g_info->resolution[1]),0.5f,200.0f);
     p->copy_data(mc->Proj,p);
     Matrix4x4_free(p);
 
     free_node(n);
-    
+    char points[]="Points";
+    n=vw.create_something(&vw,points);
+    ms=(Viewer_Something*)(n->value);
+    Viewer_Points * mp=(Viewer_Points*)(ms->evolution);
+    //mp->pointsize=5.0;
+    mp->Data_rows=2;
+    mp->Data=(float*)malloc(sizeof(float)*3*2);
+    mp->Data[0]=0.5;mp->Data[1]=0.6;mp->Data[2]=0.2;
+    mp->Data[3]=0.1;mp->Data[4]=1.1;mp->Data[5]=0.1;
+    free_node(n);
+    char intera[]="Intera";
+    n=vw.create_something(&vw,intera);
+    ms=(Viewer_Something*)(n->value);
+    Viewer_Intera* mi=(Viewer_Intera*)(ms->evolution);
+    Viewer_Arcroll*ma=(Viewer_Arcroll*)malloc(sizeof(Viewer_Arcroll));
+    Viewer_Arcroll_init(ma);
+    ma->mc=mc;
+    mi->representation=(void*)ma;
+    mi->cursor_position_callback=viewer_Arcroll_cursor_position_callback;
+    mi->scroll_callback=viewer_Arcroll_scroll_callback;
+    mi->mouse_button_callback=viewer_Arcroll_mouse_button_callback;
 
+    free_node(n);
+    char  faces[]="Faces";
+    n=vw.create_something(&vw,faces);    
+    ms=(Viewer_Something*)(n->value);
+    Viewer_Faces* mf=(Viewer_Faces*)(ms->evolution);
+    free_node(node_reverse(n));
+    mf->color_rows=12;mf->normal_rows=12;
+    float *v=(float*)malloc(sizeof(float)*8*3);
+    unsigned int *f=(unsigned int*)malloc(sizeof(unsigned int)*4*12);
+    float *texcoords=(float*)malloc(sizeof(float)*12*7);
+    memset(texcoords,0,sizeof(float)*12*7);
+    mf->random_color(mf);
+    //ms->disappear=1;
+    v[0*3+0]=-0.500000;v[0*3+1]=-0.500000;v[0*3+2]=0.500000; 
+    v[1*3+0]=0.500000; v[1*3+1]=-0.500000; v[1*3+2]=0.500000; 
+    v[2*3+0]=-0.500000;v[2*3+1]= 0.500000;v[2*3+2] =0.500000; 
+    v[3*3+0]=0.500000;v[3*3+1]=0.500000;v[3*3+2] =0.500000; 
+    v[4*3+0]=-0.500000;v[4*3+1]= 0.500000;v[4*3+2]= -0.500000; 
+    v[5*3+0]=0.500000;v[5*3+1]= 0.500000;v[5*3+2]= -0.500000; 
+    v[6*3+0]=-0.500000;v[6*3+1]= -0.500000;v[6*3+2]= -0.500000; 
+    v[7*3+0]=0.500000;v[7*3+1]= -0.500000;v[7*3+2]= -0.500000;
+    f[0*4+0]=3; f[0*4+1]=3;f[0*4+2]=2;f[0*4+3]=1;
+    f[1*4+0]=3; f[1*4+1]=1;f[1*4+2]=2;f[1*4+3]=0;
+    f[2*4+0]=3; f[2*4+1]=5;f[2*4+2]=4;f[2*4+3]=3;
+    f[3*4+0]=3; f[3*4+1]=3;f[3*4+2]=4;f[3*4+3]=2;
+    f[4*4+0]=3; f[4*4+1]=7;f[4*4+2]=6;f[4*4+3]=5;
+    f[5*4+0]=3; f[5*4+1]=5;f[5*4+2]=6;f[5*4+3]=4;
+    f[6*4+0]=3; f[6*4+1]=1;f[6*4+2]=0;f[6*4+3]=7;
+    f[7*4+0]=3; f[7*4+1]=7;f[7*4+2]=0;f[7*4+3]=6;
+    f[8*4+0]=3; f[8*4+1]=5;f[8*4+2]=3;f[8*4+3]=7;
+    f[9*4+0]=3; f[9*4+1]=7;f[9*4+2]=3;f[9*4+3]=1;
+    f[10*4+0]=3; f[10*4+1]=2;f[10*4+2]=4;f[10*4+3]=0;
+    f[11*4+0]=3;f[11*4+1]=0;f[11*4+2]=4;f[11*4+3]=6;
+    for(int i=0;i<12;i++)
+    {
+        texcoords[i*7]=3;
+    
+    }
+   /* texcoords[0]=3;
+    texcoords[1]=1.0;texcoords[2]=0.0;
+    texcoords[3]=0.0;texcoords[4]=0.0;
+    texcoords[5]=0.0;texcoords[6]=1.0;*/
+    texcoords[7]=3;
+    texcoords[8]=1.0;texcoords[9]=0.0;
+    texcoords[10]=0.0,texcoords[11]=1.0;
+    texcoords[12]=1.0;texcoords[13]=1.0;
+    mf->Data=v;
+    mf->Data_index=f;
+    mf->Data_rows=8;
+    mf->Data_index_rows=12;
 
     vw.print_self(&vw);
     Viewer_Opengl_Interpreter voi;

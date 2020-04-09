@@ -485,7 +485,9 @@
 ./build/CMakeFiles/feature_tests.c
 ./build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c
 ./build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp
+./Demo/Arcroll.c
 ./Demo/main.cpp
+./Demo/include/Arcroll.h
 ./include/tool/Viewer_Tools_Render.h
 ./include/Viewer.h
 ./include/config.h

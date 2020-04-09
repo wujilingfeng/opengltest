@@ -200,20 +200,20 @@ Node* Viewer_World_from_something_evolute(Node*lis,struct Viewer_World* mw)
 	{
 		Viewer_Something* ms=(Viewer_Something*)(iter->value);
 		void *value=0;
-		if(strcmp(ms->name,"points")==0)
+		if(strcmp(ms->name,"Points")==0)
 		{
 			Viewer_Points* temp_e=(Viewer_Points*)malloc(sizeof(Viewer_Points));
             Viewer_Points_init(temp_e);
 			value=(void*)temp_e;
 		}
-		else if(strcmp(ms->name,"edges")==0)
+		else if(strcmp(ms->name,"Edges")==0)
 		{
 			Viewer_Edges* temp_e=(Viewer_Edges*)malloc(sizeof(Viewer_Edges));
             Viewer_Edges_init(temp_e);
 			value=(void*)temp_e;
 
 		}
-		else if(strcmp(ms->name,"faces")==0)
+		else if(strcmp(ms->name,"Faces")==0)
 		{
 
 			Viewer_Faces* temp_e=(Viewer_Faces*)malloc(sizeof(Viewer_Faces));

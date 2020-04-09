@@ -221,6 +221,33 @@ viewer_world_manager/fast:
 	$(MAKE) -f src/Viewer_World_Manager/CMakeFiles/viewer_world_manager.dir/build.make src/Viewer_World_Manager/CMakeFiles/viewer_world_manager.dir/build
 .PHONY : viewer_world_manager/fast
 
+Demo/Arcroll.o: Demo/Arcroll.c.o
+
+.PHONY : Demo/Arcroll.o
+
+# target to build an object file
+Demo/Arcroll.c.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Demo/Arcroll.c.o
+.PHONY : Demo/Arcroll.c.o
+
+Demo/Arcroll.i: Demo/Arcroll.c.i
+
+.PHONY : Demo/Arcroll.i
+
+# target to preprocess a source file
+Demo/Arcroll.c.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Demo/Arcroll.c.i
+.PHONY : Demo/Arcroll.c.i
+
+Demo/Arcroll.s: Demo/Arcroll.c.s
+
+.PHONY : Demo/Arcroll.s
+
+# target to generate assembly for a file
+Demo/Arcroll.c.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Demo/Arcroll.c.s
+.PHONY : Demo/Arcroll.c.s
+
 Demo/main.o: Demo/main.cpp.o
 
 .PHONY : Demo/main.o
@@ -265,6 +292,9 @@ help:
 	@echo "... viewer_matrix4x4"
 	@echo "... viewer_openglalg"
 	@echo "... viewer_world_manager"
+	@echo "... Demo/Arcroll.o"
+	@echo "... Demo/Arcroll.i"
+	@echo "... Demo/Arcroll.s"
 	@echo "... Demo/main.o"
 	@echo "... Demo/main.i"
 	@echo "... Demo/main.s"
