@@ -1,4 +1,4 @@
-cscope 15 $HOME/Documents/c++/cstructures -q 0000000981 0000108674
+cscope 15 $HOME/Documents/c++/cstructures -q 0000000981 0000108706
 	@Demo/main.cpp
 
 1 
@@ -6225,6 +6225,8 @@ RB_
 key
 ;* 
 v®ue
+;* 
+´Ý
 ;}
 	tRB_
 ##ty³v®ue;\
@@ -6475,6 +6477,14 @@ t
 t
 ->
 v®ue
+=
+NULL
+;\
+
+134 
+t
+->
+´Ý
 =
 NULL
 ;\

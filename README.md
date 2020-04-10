@@ -2,7 +2,7 @@
 
 要改进的地方，
 
-* 字体的实现
+* 渲染字体的实现
 * 对点，线，面的拾取已经实现，但对面上的点，线拾取还没实现
 
 #### dependencies
@@ -13,5 +13,5 @@ cstructures freetype glad glfw
 
 cstructures freetype glad文件放在thirdpart中
 
-glfw的文件放到系统目录中
+glfw安装到系统目录，或者自行放到include和lib文件夹
 

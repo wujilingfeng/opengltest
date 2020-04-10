@@ -83,7 +83,7 @@ RB_Trav*RB_rbegin(RB_Tree* tree);
 void         *RB_last ( RB_Trav*trav,RB_Tree *tree );
 void         *RB_next ( RB_Trav *trav );
 void         *RB_prev ( RB_Trav*trav );*/
-#define RB_Tree_func_declare(typevalue) typedef struct RB_##typevalue{typevalue key;void* value;}RB_##typevalue;\
+#define RB_Tree_func_declare(typevalue) typedef struct RB_##typevalue{typevalue key;void* value;void* prop;}RB_##typevalue;\
 void RB_init_##typevalue(RB_##typevalue*);\
 int RB_cmp_##typevalue(const void*p1,const void*p2 );\
 void RB_Tree_init_##typevalue(RB_Tree*);
@@ -131,7 +131,7 @@ void RB_Tree_init_##typevalue(RB_Tree* tree)\
 void RB_init_##typevalue(RB_##typevalue* t)\
 {\
 t->value=NULL;\
-\
+t->prop=NULL;\
 }
 
 
