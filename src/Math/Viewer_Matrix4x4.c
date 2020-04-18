@@ -10,8 +10,8 @@ void Matrix4x4_free(Matrix4x4 *m)
 	}
 	free(m);
 }
-Mesh_viewer_Matrix4x4_func(double)
-Mesh_viewer_Matrix4x4_func(float)
+viewer_Matrix4x4_func(double)
+viewer_Matrix4x4_func(float)
 Matrix4x4 *Projection(float FOV,float aspect,float zNear,float zFar)
 {
     Matrix4x4 *p=(Matrix4x4*)malloc(sizeof(Matrix4x4));

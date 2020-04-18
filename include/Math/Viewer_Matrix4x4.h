@@ -22,7 +22,7 @@ typedef struct Matrix4x4{
 }Matrix4x4;
 void Matrix4x4_free(Matrix4x4 *);
 
-#define Mesh_viewer_Matrix4x4_func_declare(typevalue) Matrix4x4 *Matrix4x4_mult_##typevalue(Matrix4x4 *,Matrix4x4 *);\
+#define viewer_Matrix4x4_func_declare(typevalue) Matrix4x4 *Matrix4x4_mult_##typevalue(Matrix4x4 *,Matrix4x4 *);\
 Matrix4x4 *Matrix4x4_get_transpose_##typevalue(Matrix4x4* );\
 void Matrix4x4_transpose_##typevalue(Matrix4x4 *);\
 Matrix4x4 *Matrix4x4_inverse_##typevalue(Matrix4x4 *);\
@@ -33,7 +33,7 @@ void Matrix4x4_init_##typevalue(Matrix4x4 *);\
 void* Matrix4x4_det_##typevalue(Matrix4x4 *);\
 void  Matrix4x4_copy_data_##typevalue(Matrix4x4 *,Matrix4x4 *);\
 
-#define Mesh_viewer_Matrix4x4_func(typevalue) Matrix4x4 * Matrix4x4_mult_##typevalue (Matrix4x4 *a,Matrix4x4 *b)\
+#define viewer_Matrix4x4_func(typevalue) Matrix4x4 * Matrix4x4_mult_##typevalue (Matrix4x4 *a,Matrix4x4 *b)\
 { \
     Matrix4x4 *re=(Matrix4x4*)malloc(sizeof(Matrix4x4));\
     Matrix4x4_init_##typevalue(re);\
@@ -246,8 +246,8 @@ void Matrix4x4_init_##typevalue(Matrix4x4 *a)\
 	a->prop=0;\
 }\
 
-Mesh_viewer_Matrix4x4_func_declare(double)
-Mesh_viewer_Matrix4x4_func_declare(float)
+viewer_Matrix4x4_func_declare(double)
+viewer_Matrix4x4_func_declare(float)
 Matrix4x4* Projection(float,float,float,float);
 #ifdef __cplusplus
 }

@@ -489,7 +489,6 @@
 ./Demo/main.cpp
 ./Demo/include/Arcroll.h
 ./include/tool/Viewer_Tools_Render.h
-./include/Viewer.h
 ./include/config.h
 ./include/Viewer_World_Manager/Interactor_GlobalInfo.h
 ./include/Viewer_World_Manager/Viewer_World_Manager.h
