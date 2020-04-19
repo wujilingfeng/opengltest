@@ -15,3 +15,14 @@ cstructures freetype glad文件放在thirdpart中
 
 glfw安装到系统目录，或者自行放到include和lib文件夹
 
+#### install
+
+在build目录下
+
+```bash
+cmake ..
+make 
+sudo make install
+
+```
+
