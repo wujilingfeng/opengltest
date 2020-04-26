@@ -17,6 +17,20 @@ void viewer_scroll_callback(GLFWwindow* window,double x,double y);
 void viewer_set_callback(GLFWwindow* window);
 //以下函数待实现
 void viewer_animation(Viewer_World*);
+//实现拖拽读取文件的功能
+/*
+glfwSetDropCallback(window, drop_callback);
+
+The callback function receives an array of paths encoded as UTF-8.
+
+void drop_callback(GLFWwindow* window, int count, const char** paths)
+{
+int i;
+for (i = 0;  i < count;  i++)
+    handle_dropped_file(paths[i]);
+}
+
+*/
 
 //
 #ifdef __cplusplus
