@@ -2,11 +2,11 @@
 #include<stdlib.h>
 #include<string.h>
 #include<tools_rbtree.h>
-
-typedef struct  rb_t
+/*typedef struct rb_t
 {
     int key;
-    void *data;
+    void *value;
+
 }rb_t;
 static void*t_copy(void* p)
 {
@@ -27,76 +27,86 @@ static int t_cmp(const void* p1,const void* p2)
    }
    return 0;
 }
-
-
+*/
 void test_rb()
 {
-    RB_Tree* tree=(RB_Tree*)malloc(sizeof(RB_Tree));
+
+   /* RB_Tree* tree=(RB_Tree*)malloc(sizeof(RB_Tree));
     RB_Tree_init(tree);
     tree->cmp=t_cmp;
     tree->copy=t_copy;
     rb_t t1;
-    t1.key=1;
+    t1.key=3;
     tree->insert(tree,&t1);
-    t1.key=9;
+    t1.key=2;
     tree->insert(tree,&t1);
-    t1.key=5;
+    t1.key=-3;
     tree->insert(tree,&t1);
-
-    for(auto iter=tree->begin(tree);iter->it!=NULL;iter->next(iter))
+    t1.key=0;
+    tree->insert(tree,&t1);
+    t1.key=99;
+    tree->insert(tree,&t1);
+    t1.key=-82;
+    tree->insert(tree,&t1);
+    for(int i=0;i<34;i++)
     {
-        printf("key:%d \n",((rb_t*)(iter->it->data))->key); 
-    }
-    for(auto iter=tree->rbegin(tree);iter->it!=NULL;iter->prev(iter))
-    {
-        printf("key:%d \n",((rb_t*)(iter->it->data))->key); 
-    }
-
-
-    /*jsw_rbtree_t *tree=jsw_rbnew(t_cmp,t_dup,t_rel);
-    rb_t t1;
-    t1.key=1;
-    jsw_rbinsert(tree,&t1); 
-    t1.key=9;
-    jsw_rbinsert(tree,&t1);
-    void *re=NULL;
-        re=jsw_rbfind(tree,&t1);
-    if(re!=NULL)
-    {
-        printf("shi\n");
-        printf("re:%d\n",((rb_t*)(re))->key);
-    }
-    jsw_rbtrav_t* iter=jsw_rbtnew();
-
-    void* re1=NULL;
-    re1=jsw_rbtfirst(iter,tree);
-    printf("key:%d\n",((rb_t*)(re1))->key);
-*/
-   // tree=jsw_rbnew(t_cmp,t_dup,t_rel);
-    //jsw_rbinsert();
+        t1.key=i;
+        tree->insert(tree,&t1);
+    }  
+    print_self(tree);
+    t1.key=20;
+    tree->erase(tree,&t1);
+    t1.key=-100;
+    tree->erase(tree,&t1);
+    print_self(tree);*/
 }
+void print_self(RB_Tree* tree)
+{
+    RB_Trav* it=tree->begin(tree);
+    printf("size:%d\n",tree->size);
+    for(;it->it!=NULL;it->next(it))
+    {
 
+        printf("%d   ",((RB_int*)(it->it->data))->key);
+    
+    }
+    printf("\n");
+    free(it);
+}
 int main(int argc,char**argv)
 {
-    RB_Tree *tree=(RB_Tree*)malloc(sizeof(RB_Tree));
-    RB_Tree_init_int(tree);
-    //RB_Tree_int_double
-    RB_int r;
-    r.key=0;
-    tree->insert(tree,&r);
-    r.key=-2;
-    tree->insert(tree,&r);
-    r.key=100;
-   tree->insert(tree,&r);
-    auto iter=tree->rbegin(tree);
-    for(;iter->it!=NULL;iter->prev(iter))
-    {
-        iter->second(iter);
-        printf("%d  ",*((int*)(iter->first(iter))));
-    }
-    free(iter);
+    
 
-    RB_Tree_free(tree);
+
+    RB_Tree*tree=(RB_Tree*)malloc(sizeof(RB_Tree));
+    RB_Tree_init_int(tree);
+    RB_int rbt,*rbt1;
+    for(int i=0;i<99;i++)
+    {
+        rbt.key=i;
+        tree->insert(tree,&rbt);
+    }
+    print_self(tree);
+    rbt.key=240;
+    rbt1=(RB_int*)(tree->find(tree,&rbt));
+    tree->insert(tree,&rbt);
+    print_self(tree);
+    if(rbt1==NULL)
+    {
+        printf("dfsdfdn\n");
+    }
+   // rbt1=(RB_int*)(tree->find(tree,&rbt));
+   // printf("find:%d\n",rbt1->key);
+    /*printf("size:%d\n",tree->size);
+    t1.key=30;
+    tree->erase(tree,&t1);
+    printf("size:%d\n",tree->size);*/
+   //printf("size:%d\n",tree->size);
+   // printf("%ld\n",tree->size);
+
+  //  RB_Tree_free(tree);
+
+    //RB_Tree_free(tree);
 
     return 0;
 }

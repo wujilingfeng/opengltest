@@ -103,6 +103,7 @@ typedef struct Viewer_Edges
 	
 	float edgesize;
 	void (*set_color)(struct Viewer_Edges*,float*);
+	void (*random_color)(struct Viewer_Edges*);
 	Matrix4x4* mat;
 	
 	void* evolution;

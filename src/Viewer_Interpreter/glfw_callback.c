@@ -69,7 +69,7 @@ static void viewer_decode_pickupinfo(Viewer_World* mw,Interactor_GlobalInfo* g_i
         //判断是否是背景颜色
         if(g_info->readpixelcolor[0]==51&&g_info->readpixelcolor[1]==128&&g_info->readpixelcolor[2]==255&&g_info->readpixelcolor[3]==255)
         {
-            printf("shi background\n");
+           // printf("shi background\n");
             return;
         }
 	 int sum=0,temp_sum=0;
@@ -97,6 +97,7 @@ static void viewer_decode_pickupinfo(Viewer_World* mw,Interactor_GlobalInfo* g_i
                 	{
                     		g_info->pick_something=(void*)(vs);
 				vs->marked_element=id-sum;
+		//		printf("pick element id:%d\n",id-sum);
                     		return;
                 	}
 			sum+=temp_sum;
@@ -122,6 +123,7 @@ static void viewer_decode_pickupinfo(Viewer_World* mw,Interactor_GlobalInfo* g_i
                 	{
                     		g_info->pick_something=(void*)(vs);
 				vs->marked_element=id-sum;
+			//	printf("pick element id:%d\n",id-sum);
                     		return;
                 	}
 			sum+=temp_sum;
@@ -148,6 +150,7 @@ static void viewer_decode_pickupinfo(Viewer_World* mw,Interactor_GlobalInfo* g_i
                 {
                     g_info->pick_something=(void*)(vs);
 			vs->marked_element=id-sum;
+			//printf("pick element id:%d\n",id-sum);
                     return ;
                 }
 		sum+=temp_sum;
@@ -172,9 +175,9 @@ void viewer_mouse_button_callback(GLFWwindow* window,int button,int action,int m
         {
             for(int j=0;j<4;j++)
             {
-                printf("%d ",g_info->readpixelcolor[i*4+j]);
+           //     printf("%d ",g_info->readpixelcolor[i*4+j]);
             }
-            printf("\n");
+       //     printf("\n");
         }
 
         viewer_decode_pickupinfo(mw,g_info);  

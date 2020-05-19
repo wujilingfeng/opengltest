@@ -319,7 +319,7 @@ static void Viewer_default_render(Viewer_oisp* voisp)
     free_node(names_id);
 
     //glUniform1f(glGetUniformLocation(moi->program,"is_draw_vertices"),0.0);
-
+    glDisable(GL_BLEND);
     char edges[]="Edges";
     names_id=mw->find_species(mw,edges);
     rbt.key=*((int*)(names_id->value));
@@ -567,9 +567,13 @@ static void Viewer_default_load_data(Viewer_oisp* voisp)
                 elements_id++;
             }
             //color
-           
+            if(me->color==NULL&&me->color_rows>0)
+            {
+                me->random_color(me); 
+            } 
             if(me->color_rows==me->Data_index_rows)
             {
+                printf("here\n");
                 for(unsigned int i=0;i<me->Data_index_rows;i++)
                 {
                     for(int j=0;j<4;j++)
@@ -578,6 +582,7 @@ static void Viewer_default_load_data(Viewer_oisp* voisp)
                         colors[(i*2+1)*4+j]=me->color[i*4+j];
                     }   
                 }
+                printf("rere\n");
 
             }
             else if(me->color_rows==me->Data_rows)
@@ -914,7 +919,7 @@ static void Viewer_default_load_data(Viewer_oisp* voisp)
     free_node_value(names_id);
     free_node(names_id);
 
-    printf("elements_id:%d\n",elements_id);
+   // printf("elements_id:%d\n",elements_id);
 	Viewer_default_init_uniform(voisp);
 
 
@@ -975,7 +980,7 @@ void Viewer_Opengl_Interpreter_interpreter(Viewer_Opengl_Interpreter*moi)
    // glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR,4);
     //glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR,5);
     //glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-    GLFWwindow* window=glfwCreateWindow(800,600,"learnopengl",NULL,NULL);
+    GLFWwindow* window=glfwCreateWindow(800,600,"Viewer1.0",NULL,NULL);
 #ifdef __APPLE__
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT,GL_TRUE);
 #endif

@@ -23,6 +23,7 @@ Node* node_reverse(Node*);
 Node* node_pushback(Node*,void*);
 void node_elimnate(Node*);
 Node *node_delete_value(Node*,void*);
+Node* node_splicing(Node*n1,Node*n2);
 #ifdef __cplusplus
 }
 #endif

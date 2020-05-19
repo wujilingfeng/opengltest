@@ -85,6 +85,23 @@ void Viewer_Faces_random_color(Viewer_Faces*mf)
     }
 
 }
+static void Viewer_Edges_random_color(Viewer_Edges*me)
+{
+	if(me->color_rows<=0)
+	{
+		return ;
+	}	
+	if(me->color!=NULL)
+	{
+		free(me->color);me->color=NULL;
+	}
+	me->color=(float*)malloc(sizeof(float)*4*me->color_rows);
+	srand((unsigned)time(NULL));
+	for(unsigned int i=0;i<me->color_rows*4;i++)
+	{
+		me->color[i]=(rand()%100)/100.0;	
+	}	
+}
 void Viewer_Faces_compute_normal(Viewer_Faces*mf)
 {
 	if(mf->normal_rows<=0)
@@ -182,7 +199,7 @@ void Viewer_Faces_init(Viewer_Faces* mf)
 	mf->mat=(Matrix4x4*)malloc(sizeof(Matrix4x4));
 	Matrix4x4_init_float(mf->mat);
 	mf->is_reversal_normal=0;
-	mf->is_transparent=1;
+	mf->is_transparent=0;
  	mf->prop=NULL;
    // mf->texture=(Mesh_viewer_texture*)malloc(sizeof(Mesh_viewer_texture));
    // Mesh_viewer_texture_init(mf->texture);
@@ -230,6 +247,7 @@ void Viewer_Edges_init(struct Viewer_Edges* me)
 	me->color_rows=0;
 	me->mat=(Matrix4x4*)malloc(sizeof(Matrix4x4));
 	me->set_color=Viewer_Edges_set_color;
+	me->random_color=Viewer_Edges_random_color;
 Matrix4x4_init_float(me->mat);
 	me->edgesize=2.0;
 }

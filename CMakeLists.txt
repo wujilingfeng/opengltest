@@ -1,3 +1,4 @@
+PROJECT(VIEWER1.0)
 cmake_minimum_required(VERSION 2.8)
 FILE(WRITE ./include/config.h "#define MESH_VIEWER_PATH \"${PROJECT_SOURCE_DIR}\"")
 add_compile_options(-Wall -g -lstdc++)

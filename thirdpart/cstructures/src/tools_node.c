@@ -209,3 +209,24 @@ Node* node_delete_value(Node* node,void* value)
 
     return re;
 }
+
+Node* node_splicing(Node*n1,Node*n2)
+{
+
+	Node* l1=node_copy(n1);
+	Node* l2=node_copy(n2);
+	Node* l3=node_reverse(l1);
+	if(l1==NULL)
+	{return l2;}
+	else if(l2==NULL)
+	{
+		return l1;
+	}
+	else
+	{
+		l3->Next=(void*)l2;
+		l2->Prev=(void*)l3;
+		return l1;
+	}
+	return NULL;
+}

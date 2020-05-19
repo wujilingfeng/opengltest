@@ -1,88 +1,71 @@
-#ifndef RB_TREE_H
-#define RB_TREE_H
-
-/*
-  Red Black balanced tree library
-
-    > Created (Julienne Walker): August 23, 2003
-    > Modified (Julienne Walker): March 14, 2008
-	>Modified (libo):2020
-  This code is in the public domain. Anyone may
-  use it or change it in any way that they see
-  fit. The author assumes no responsibility for 
-  damages incurred through use of the original
-  code or any variations thereof.
-
-  It is requested, but not required, that due
-  credit is given to the original author and
-  anyone who has modified the code through
-  a header comment, such as this one.
-*/
-#ifdef __cplusplus
-#include <cstddef>
-
-using std::size_t;
-
-extern "C" {
-#else
-#include<stdlib.h>
+#ifndef _RED_BLACK_TREE_H_
+#define _RED_BLACK_TREE_H_
+#include <stdio.h>
+#include <stdlib.h>
 #include<string.h>
-#include <stddef.h>
-#endif
-#ifndef HEIGHT_LIMIT
-#define HEIGHT_LIMIT 64 /* Tallest allowable tree */
+#ifdef __cplusplus
+extern "C"{
 #endif
 
 
-typedef struct RB_Node {
-  int                red;     
-  void              *data;   
-  struct RB_Node *link[2];
-  void *prop;
+
+// 红黑树的节点
+typedef struct RB_Node{
+    unsigned char color;        // 颜色(RED 或 BLACK)                    // 关键字(键值)
+    struct RB_Node *left;    // 左孩子
+    struct RB_Node *right;    // 右孩子
+    struct RB_Node *parent;    // 父结点
+    void* data;
+    void *prop;
 }RB_Node;
-
-typedef struct RB_Tree {
-  RB_Node *root; 
-  int (*cmp)(const void* p1,const void* p2);  
+void RB_Node_init(RB_Node*);
+// 红黑树的根
+typedef struct RB_Tree{
+    RB_Node *root;
+    int (*cmp)(const void* p1,const void* p2);  
   void* (*copy)(void*); 
   void  (*del)(void*);  
-  size_t        size; 
+  unsigned int  size; 
 	void *(*find)(struct RB_Tree*,void*);
-	int (*insert)(struct RB_Tree*,void*);
+	void* (*insert)(struct RB_Tree*,void*);
 	int (*erase)(struct RB_Tree*,void*);
 	struct RB_Trav* (*begin)(struct RB_Tree*);
 	struct RB_Trav*(*rbegin)(struct RB_Tree*);
 	void (*iterator_init)(struct RB_Trav*);
 	
-  void *prop;
+    void* prop;
 }RB_Tree;
-typedef struct RB_Trav {
-  RB_Tree *tree;               
-  RB_Node *it;                 
-  RB_Node *path[HEIGHT_LIMIT];
-  size_t        top;
-	void * (*next)(struct RB_Trav*);
-	void* (*prev)(struct RB_Trav*);   
-	void* (*first)(struct RB_Trav*);//仿照map接口
-	void* (*second)(struct RB_Trav*);//仿照map接口
-  void* prop;
+
+void RB_Tree_init(RB_Tree*);
+typedef struct RB_Trav{
+	RB_Tree*tree;
+	RB_Node* it;
+	void*(*next)(struct RB_Trav*);
+	void*(*prev)(struct RB_Trav*);
+	void*(*first)(struct RB_Trav*);
+	void*(*second)(struct RB_Trav*);
+	void*prop;
+
 }RB_Trav;
-void RB_Node_init(RB_Node*);
-void RB_Tree_init(RB_Tree* );
 void RB_Trav_init(RB_Trav*);
+void RB_Tree_free(RB_Tree*tree);
+// 将结点插入到红黑树中。插入成功，返回0；失败返回-1。
+void* RB_insert(RB_Tree *, void *data);
+RB_Trav* RB_begin(RB_Tree*tree);
+RB_Trav* RB_rbegin(RB_Tree*tree);
+void* RB_next(RB_Trav*it);
+void* RB_prev(RB_Trav*it);
+// 返回最小结点的值(将值保存到val中)。找到的话，返回0；否则返回-1。
+RB_Node* rbtree_minimum(RB_Tree *);
+RB_Node* rbtree_maximum(RB_Tree *);
+RB_Node* rbtree_successor(RB_Node *x);
+RB_Node* rbtree_predecessor(RB_Node *x);
+// (非递归实现)查找"红黑树"中键值为key的节点。找到的话，返回0；否则，返回-1。
+RB_Node* RB_find1(RB_Tree* tree,void*data);
+void* RB_find(RB_Tree *tree, void*data);
+int RB_erase(RB_Tree*,void*);
 
 
-void          RB_Tree_free ( RB_Tree *tree );
-void         *RB_find (RB_Tree *tree, void *data );
-int           RB_insert (RB_Tree *tree, void *data );
-int           RB_erase ( RB_Tree *tree, void *data );
-
-RB_Trav* RB_begin(RB_Tree *tree);
-RB_Trav*RB_rbegin(RB_Tree* tree);
-/*void         *RB_first (RB_Trav *trav, RB_Tree *tree );
-void         *RB_last ( RB_Trav*trav,RB_Tree *tree );
-void         *RB_next ( RB_Trav *trav );
-void         *RB_prev ( RB_Trav*trav );*/
 #define RB_Tree_func_declare(typevalue) typedef struct RB_##typevalue{typevalue key;void* value;void* prop;}RB_##typevalue;\
 void RB_init_##typevalue(RB_##typevalue*);\
 int RB_cmp_##typevalue(const void*p1,const void*p2 );\
@@ -134,12 +117,8 @@ t->value=NULL;\
 t->prop=NULL;\
 }
 
-
-
-
 RB_Tree_func_declare(int)
-RB_Tree_func_declare(double)
-
+RB_Tree_func_declare(double);
 #ifdef __cplusplus
 }
 #endif

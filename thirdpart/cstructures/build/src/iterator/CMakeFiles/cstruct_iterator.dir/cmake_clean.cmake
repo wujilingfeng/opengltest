@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/cstruct_iterator.dir/cstruct_iterator.cpp.o"
-  "../../../temp_libs/libcstruct_iterator.pdb"
   "../../../temp_libs/libcstruct_iterator.a"
+  "../../../temp_libs/libcstruct_iterator.pdb"
+  "CMakeFiles/cstruct_iterator.dir/cstruct_iterator.cpp.o"
 )
 
 # Per-language clean rules from dependency scanning.

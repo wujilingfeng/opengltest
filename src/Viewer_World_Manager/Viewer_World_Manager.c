@@ -30,7 +30,7 @@ void Viewer_World_init(struct Viewer_World*m)
 	RB_Tree_init_int(m->something_id);
     m->g_info=(Interactor_GlobalInfo*)malloc(sizeof(Interactor_GlobalInfo));
     GlobalInfo_init(m->g_info);
-   char str[]="points,edges,faces,Intera,Camera";
+   char str[]="Points,Edges,Faces,Intera,Camera";
 	Node* node=Viewer_World_registe(m,str);
     node=node_reverse(node);
     free_node_value(node);

@@ -75,13 +75,11 @@ stdlib.h
 -
 
 ../thirdpart/cstructures/include/tools_rbtree.h
-cstddef
+stdio.h
 -
 stdlib.h
 -
 string.h
--
-stddef.h
 -
 
 ../thirdpart/glad/include/KHR/khrplatform.h

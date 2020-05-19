@@ -48,8 +48,8 @@ void viewer_Arcroll_cursor_position_callback(Viewer_Intera* mi)
         float tempy=g_info->mouse_coord[1]-ma->old_mouse_coord[1];
         tempx=-tempx*0.005;tempy=tempy*0.005;
         float*data=(float*)mc->matrix_inverse->data;
-        data[0*4+3]+=tempx;
-        data[1*4+3]+=tempy;
+        data[0*4+3]-=tempx;
+        data[1*4+3]-=tempy;
         Matrix4x4_free(mc->matrix);
         mc->matrix=mc->matrix_inverse->inverse(mc->matrix_inverse);
     }
@@ -104,9 +104,30 @@ void viewer_Arcroll_scroll_callback(Viewer_Intera*mi,double x,double y)
 void viewer_Arcroll_mouse_button_callback(Viewer_Intera* mi)
 {
     Interactor_GlobalInfo* g_info=mi->g_info;
+    if(g_info->pick_something!=NULL)
+    {
+        Viewer_Something*vs=(Viewer_Something*)(g_info->pick_something);
+
+        if(strcmp(vs->name,(char*)"Faces")==0)
+        {
+            Viewer_Faces*vf=(Viewer_Faces*)(vs->evolution);
+            int temp_sum=0,id=vs->marked_element;
+            for(int i=0;i<id;i++)
+            {
+                temp_sum+=(vf->Data_index[temp_sum]+1);
+            }
+            for(int i=0;i<vf->Data_index[temp_sum];i++)
+            {
+                printf("vid :%d ",vf->Data_index[temp_sum+i+1]);
+            }
+            printf("\n");
+
+             
+        }
+    }
     if(g_info->key==VIEWER_KEY_CONTROL&&g_info->key_action==1)
     {
-        int id=g_info->readpixelcolor[0]*255*255+g_info->readpixelcolor[1]*255+g_info->readpixelcolor[2];
+    //    int id=g_info->readpixelcolor[0]*255*255+g_info->readpixelcolor[1]*255+g_info->readpixelcolor[2];
         //char faces[]="faces";
         //Node* names_id=Mesh_viewer_world_find_species()
 
