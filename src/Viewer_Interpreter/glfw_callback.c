@@ -74,6 +74,7 @@ static void viewer_decode_pickupinfo(Viewer_World* mw,Interactor_GlobalInfo* g_i
         }
 	 int sum=0,temp_sum=0;
         int id=g_info->readpixelcolor[0]*255*255+g_info->readpixelcolor[1]*255+g_info->readpixelcolor[2];
+        printf("pick id:%d\n",id);
 	char points[]="Points";
 	Node* names_id=mw->find_species(mw,points);
 	RB_int rbt,*rbt1=NULL;
@@ -92,11 +93,12 @@ static void viewer_decode_pickupinfo(Viewer_World* mw,Interactor_GlobalInfo* g_i
             	{
 		        Viewer_Something* vs=(Viewer_Something*)(iter1->second(iter1));
 			
-                	temp_sum=((Viewer_Faces*)(vs->evolution))->Data_index_rows;
+                	temp_sum=((Viewer_Points*)(vs->evolution))->Data_rows;
                 	if(id-sum<temp_sum)
                 	{
                     		g_info->pick_something=(void*)(vs);
 				vs->marked_element=id-sum;
+                            printf("pick point\n"); 
 		//		printf("pick element id:%d\n",id-sum);
                     		return;
                 	}
@@ -118,11 +120,13 @@ static void viewer_decode_pickupinfo(Viewer_World* mw,Interactor_GlobalInfo* g_i
             	{
 		        Viewer_Something* vs=(Viewer_Something*)(iter1->second(iter1));
 			
-                	temp_sum=((Viewer_Faces*)(vs->evolution))->Data_index_rows;
+                	temp_sum=((Viewer_Edges*)(vs->evolution))->Data_index_rows;
+                    printf("tempsum:%d\n",temp_sum);
                 	if(id-sum<temp_sum)
                 	{
                     		g_info->pick_something=(void*)(vs);
 				vs->marked_element=id-sum;
+                            printf("pick edges\n"); 
 			//	printf("pick element id:%d\n",id-sum);
                     		return;
                 	}
@@ -150,6 +154,7 @@ static void viewer_decode_pickupinfo(Viewer_World* mw,Interactor_GlobalInfo* g_i
                 {
                     g_info->pick_something=(void*)(vs);
 			vs->marked_element=id-sum;
+                printf("pick faces\n");
 			//printf("pick element id:%d\n",id-sum);
                     return ;
                 }

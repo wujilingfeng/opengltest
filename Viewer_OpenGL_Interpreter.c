@@ -403,13 +403,16 @@ static void Viewer_default_render(Viewer_oisp* voisp)
                 temp_i+=(j+1);
             }
             float *data=(float*)(mf->mat->data);
+            
             glUniformMatrix4fv(glGetUniformLocation(voisp->program,"Object_Matrix"),1,GL_TRUE,data);
+            
             if(mf->texture!=NULL)
             {
-                
+                //printf("libodfs\n"); 
                 glActiveTexture(GL_TEXTURE3);
                 glBindTexture(GL_TEXTURE_2D,((Viewer_Texture*)(mf->texture->evolution))->tex); 
             }
+
             glBindVertexArray(mf->VAO);
             glDrawArrays(GL_TRIANGLES,0,v_size); 
         }
@@ -452,7 +455,13 @@ static void Viewer_default_load_data(Viewer_oisp* voisp)
             glDeleteTextures(1,&(mt->tex));
 			glGenTextures(1,&(mt->tex));
 			ImageInfo*imi=_ReadImageFile_(mt->image_file);
-			_Texture_(imi,mt->tex);
+			/*for(int i=0;i<1000;i++)
+            {
+                printf("%d ",imi->data[i]);
+            }*/
+            _Texture_(imi,mt->tex);
+            //glActiveTexture(GL_TEXTURE0);
+            //glBindTexture(GL_TEXTURE_2D,mt->tex);
 			ImageInfo_free(imi);
             		//add_texture_to_shader(&(mt->tex),mt->image_file);
         }
@@ -789,13 +798,15 @@ static void Viewer_default_load_data(Viewer_oisp* voisp)
                         {
                             texcoords[v_size*2+0]=mt->each_face_texture_coord[temp_i+1+0];
                             texcoords[v_size*2+1]=mt->each_face_texture_coord[temp_i+1+1];
-                        
+                            //printf("%lf %lf \n",texcoords[v_size*2+0],texcoords[v_size*2+1]); 
                             v_size++;
                             texcoords[v_size*2+0]=mt->each_face_texture_coord[temp_i+1+2*(l+1)+0];
                             texcoords[v_size*2+1]=mt->each_face_texture_coord[temp_i+1+2*(l+1)+1];
+                            //printf("%lf %lf \n",texcoords[v_size*2+0],texcoords[v_size*2+1]); 
                             v_size++;
                             texcoords[v_size*2+0]=mt->each_face_texture_coord[temp_i+1+2*(l+2)+0];
                             texcoords[v_size*2+1]=mt->each_face_texture_coord[temp_i+1+2*(l+2)+1];
+                            // printf("%lf %lf \n",texcoords[v_size*2+0],texcoords[v_size*2+1]); 
                             v_size++;
                         } 
                         temp_i+=(j*2+1);                   
@@ -919,8 +930,33 @@ static void Viewer_default_load_data(Viewer_oisp* voisp)
     free_node_value(names_id);
     free_node(names_id);
 
+    Viewer_default_init_uniform(voisp);
+   /* names_id=mw->find_species(mw,texture);
+  
+    rbt.key=*((int*)(names_id->value));
+    rbt1=(RB_int*)mw->species2somethings->find(mw->species2somethings,&rbt);
+    if(rbt1!=NULL)
+    {
+        tree=(RB_Tree*)(rbt1->value);       
+        iter1=tree->begin(tree);
+        for(;iter1->it!=NULL;iter1->next(iter1))
+        {
+            Viewer_Something*ms=(Viewer_Something*)(iter1->second(iter1));
+            Viewer_Texture* mt=(Viewer_Texture*)(ms->evolution);
+            if(ms->disappear==1||mt->image_file==0)
+            {continue;}
+           
+            glActiveTexture(GL_TEXTURE3);
+            glBindTexture(GL_TEXTURE_2D,mt->tex);
+          
+                    //add_texture_to_shader(&(mt->tex),mt->image_file);
+        }
+        free(iter1);
+    
+    }
+    free_node_value(names_id);
+    free_node(names_id);*/
    // printf("elements_id:%d\n",elements_id);
-	Viewer_default_init_uniform(voisp);
 
 
 }
@@ -980,10 +1016,11 @@ void Viewer_Opengl_Interpreter_interpreter(Viewer_Opengl_Interpreter*moi)
    // glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR,4);
     //glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR,5);
     //glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-    GLFWwindow* window=glfwCreateWindow(800,600,"Viewer1.0",NULL,NULL);
 #ifdef __APPLE__
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT,GL_TRUE);
 #endif
+
+    GLFWwindow* window=glfwCreateWindow(800,600,"Viewer1.0",NULL,NULL);
     if(window==NULL)
     {
 	    glfwTerminate();
@@ -1000,9 +1037,9 @@ void Viewer_Opengl_Interpreter_interpreter(Viewer_Opengl_Interpreter*moi)
         printf("Failed to load glad\n");
         return;
     }
-	glEnable(GL_DEPTH_TEST);
-	glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	//glEnable(GL_DEPTH_TEST);
+	//glEnable(GL_BLEND);
+    //glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     for(Node* it=moi->user_shader_program;it!=NULL;it=(Node*)(it->Next))
 	{
 		

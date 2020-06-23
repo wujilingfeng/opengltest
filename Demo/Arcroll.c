@@ -80,7 +80,7 @@ void viewer_Arcroll_scroll_callback(Viewer_Intera*mi,double x,double y)
         if(g_info->pick_something!=0)
         {
             Viewer_Something* ms=(Viewer_Something*)(g_info->pick_something);
-            if(strcmp("faces",ms->name)==0)
+            if(strcmp("Faces",ms->name)==0)
             {
                 Viewer_Faces* mf=(Viewer_Faces*)(ms->evolution);
                 float * data=(float*)(mf->mat->data);

@@ -87,10 +87,13 @@ static void load_data(Viewer_Opengl_Interpreter_Shader_Program *voisp)
     // load and create a texture 
     // -------------------------
     voisp->tex=(GLuint*)malloc(sizeof(GLuint));
+
+    ImageInfo* imi=_ReadImageFile_((char*)"lena.jpg");
     // texture 1
     // ---------
     glGenTextures(2, voisp->tex);
     glBindTexture(GL_TEXTURE_2D, voisp->tex[0]);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, imi->width, imi->height, 0, GL_RGB, GL_UNSIGNED_BYTE, imi->data);
     // set the texture wrapping parameters
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
@@ -102,16 +105,16 @@ static void load_data(Viewer_Opengl_Interpreter_Shader_Program *voisp)
     //stbi_set_flip_vertically_on_load(true); // tell stb_image.h to flip loaded texture's on the y-axis.
     //unsigned char *data = stbi_load("lena.jpg", &width, &height, &nrChannels, 0);
     //printf("nch:%d\n",nrChannels);
-    ImageInfo* imi=_ReadImageFile_((char*)"lena.jpg");
     if (imi->data)
     {
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, imi->width, imi->height, 0, GL_RGB, GL_UNSIGNED_BYTE, imi->data);
-        glGenerateMipmap(GL_TEXTURE_2D);
+        
     }
     else
     {
         printf("failed to load testure11\n");
     }
+
+    glGenerateMipmap(GL_TEXTURE_2D);
     ImageInfo_free(imi);
     imi=_ReadImageFile_((char*)"linyueru.jpg");
     _Texture_(imi,voisp->tex[1]);
@@ -345,6 +348,15 @@ void test2()
     mf->Data_rows=8;
     mf->Data_index_rows=12;
     mf->is_transparent=0;
+    char texture[]="Texture";
+    n=vw.create_something(&vw,texture);
+    ms=(Viewer_Something*)(n->value);
+    free_node(n);
+    Viewer_Texture*mt=(Viewer_Texture*)(ms->evolution);
+    mf->texture=ms;
+    mt->image_file=(char*)malloc(sizeof(char)*20);
+    strcpy(mt->image_file,"linyueru.jpg");
+    mt->each_face_texture_coord=texcoords;
     char edges[]="Edges";
     n=vw.create_something(&vw,edges);
     ms=(Viewer_Something*)(n->value);
