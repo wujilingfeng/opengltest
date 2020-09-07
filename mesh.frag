@@ -3,7 +3,8 @@ out vec4 fColor;
 in vec4 outColor;
 in vec2 texcoord;
 in float e_id;
-
+in vec3 norf;
+in vec3 dirf;
 uniform vec2 iResolution;
 
 uniform sampler2D ourTexture;
@@ -27,14 +28,17 @@ vec3 trans_code(float a)
 }
 void set_fColor(vec2 uv,vec2 coord_uv)
 {
+	//float st=step(length(norf),0);
+	//vec4 temp_color=st*outColor+(1-st)*max(-dot(norf,dirf),0)*outColor;
 	float a=length(texcoord);
 	a=sign(a);
-	fColor=(texture(ourTexture,texcoord)*a+(1-a)*outColor);
-	
+	vec4 temp_color1=max(-dot(norf,dirf),0)*texture(ourTexture,texcoord);
+	vec4 temp_fColor=temp_color1*a+(1-a)*outColor;
+	//fColor=temp_fColor;
 	float is_pick=step(abs(coord_uv.x-uv.x),6/(2*iResolution.x));
 	is_pick=step(2,is_pick+step(abs(coord_uv.y-uv.y),6/(2*iResolution.y)));
 	is_pick=step(2,is_pick+p_intera.is_pick);
-	fColor=(1-is_pick)*fColor+is_pick*vec4(trans_code(e_id)/255.0,1);
+	fColor=(1-is_pick)*temp_fColor+is_pick*vec4(trans_code(e_id)/255.0,1);
 	//fColor=vec4(e_id/255.0,0,0,1);
 }
 

@@ -489,7 +489,18 @@ static void Viewer_default_load_data(Viewer_oisp* voisp)
 
             GLfloat* e_id=(GLfloat*)malloc(sizeof(GLfloat)*v_size);
             memset(e_id,0,sizeof(GLfloat)*v_size);
-
+            GLfloat* colors=(GLfloat*)malloc(sizeof(GLfloat)*v_size*4);
+            memset(colors,0,sizeof(GLfloat)*v_size*4);
+            //color
+            if(mp->color==NULL&&mp->color_rows==mp->Data_rows)
+            {
+                mp->random_color(mp); 
+            }
+            for(int i=0;i<v_size*4;i++)
+            {
+                colors[i]=mp->color[i];
+            } 
+             
             for(int i=0;i<v_size;i++)
             {
                 for(int j=0;j<3;j++)
@@ -498,16 +509,20 @@ static void Viewer_default_load_data(Viewer_oisp* voisp)
                 }
                 e_id[i]=elements_id++; 
             }
+
             glDeleteBuffers(1,mp->Buffers);
             glDeleteVertexArrays(1,&(mp->VAO));
 
             glGenVertexArrays(1,&(mp->VAO));
             glBindVertexArray(mp->VAO);
-            glCreateBuffers(2,mp->Buffers);
+            glCreateBuffers(3,mp->Buffers);
             glBindBuffer(GL_ARRAY_BUFFER,mp->Buffers[0]);
             glBufferData(GL_ARRAY_BUFFER,sizeof(GLfloat)*v_size*3,vertices,GL_STATIC_DRAW);
             glBindBuffer(GL_ARRAY_BUFFER,mp->Buffers[1]);
             glBufferData(GL_ARRAY_BUFFER,sizeof(GLfloat)*v_size,e_id,GL_STATIC_DRAW);
+            glBindBuffer(GL_ARRAY_BUFFER,mp->Buffers[2]);
+            glBufferData(GL_ARRAY_BUFFER,sizeof(GLfloat)*v_size*4,colors,GL_STATIC_DRAW);
+
 
             glBindBuffer(GL_ARRAY_BUFFER,mp->Buffers[0]);
             glVertexAttribPointer( 0, 3, GL_FLOAT,GL_FALSE, 0, 0 );
@@ -516,6 +531,11 @@ static void Viewer_default_load_data(Viewer_oisp* voisp)
             glBindBuffer(GL_ARRAY_BUFFER,mp->Buffers[1]);
             glVertexAttribPointer(4,1,GL_FLOAT,GL_FALSE,0,0);
             glEnableVertexAttribArray( 4 );
+    
+            glBindBuffer(GL_ARRAY_BUFFER,mp->Buffers[2]);
+            glVertexAttribPointer(1,4,GL_FLOAT,GL_FALSE,0,0);
+            glEnableVertexAttribArray( 1 );
+
             glBindVertexArray(0);
             free(vertices);
             free(e_id);
@@ -573,7 +593,7 @@ static void Viewer_default_load_data(Viewer_oisp* voisp)
             } 
             if(me->color_rows==me->Data_index_rows)
             {
-                printf("here\n");
+                //printf("here\n");
                 for(unsigned int i=0;i<me->Data_index_rows;i++)
                 {
                     for(int j=0;j<4;j++)
@@ -582,7 +602,7 @@ static void Viewer_default_load_data(Viewer_oisp* voisp)
                         colors[(i*2+1)*4+j]=me->color[i*4+j];
                     }   
                 }
-                printf("rere\n");
+              ///  printf("rere\n");
 
             }
             else if(me->color_rows==me->Data_rows)

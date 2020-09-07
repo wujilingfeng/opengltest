@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../../temp_libs/libviewer_world_manager.a  CMakeFiles/viewer_world_manager.dir/Interactor_GlobalInfo.c.o CMakeFiles/viewer_world_manager.dir/Viewer_Base_Species.c.o CMakeFiles/viewer_world_manager.dir/Viewer_World_Manager.c.o
+/usr/bin/ranlib ../../temp_libs/libviewer_world_manager.a

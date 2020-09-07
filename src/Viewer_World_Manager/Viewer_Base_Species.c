@@ -219,21 +219,65 @@ void Viewer_Camera_init(Viewer_Camera*mc)
     mc->focal_distance=1;
 
 }
+static void Viewer_Points_random_color(struct Viewer_Points* mp)
+{
+    if(mp->color_rows<=0)
+    {
+        return ;
+    }   
+    if(mp->color!=NULL)
+    {
+        free(mp->color);mp->color=NULL;
+    }
+    mp->color=(float*)malloc(sizeof(float)*4*mp->color_rows);
+    srand((unsigned)time(NULL));
+    for(unsigned int i=0;i<mp->color_rows*4;i++)
+    {
+        mp->color[i]=(rand()%100)/100.0;    
+    }   
+}
+/*static void Viewer_Points_mset_color(struct Viewer_Points*mp,float*c)
+{
+    if(mp->color!=NULL)
+    {free(mp->color);mp->color=NULL;
+    }
+    if(mp->color_rows>0)
+    {
+        mp->color=(float*)malloc(sizeof(float)*4*mp->color_rows);
+    }
+    Viewer_set_v_one_color(mp->color,mp->color_rows,c);
+}*/
+static void Viewer_Points_set_color(Viewer_Points*vp,float*c)
+{
+
+    if(vp->color!=0)
+    {free(vp->color);
+    }
+    vp->color=NULL;
+    if(vp->color_rows>0)
+    {
+        vp->color=(float*)malloc(sizeof(float)*4*vp->color_rows);
+    }
+    Viewer_set_v_one_color(vp->color,vp->color_rows,c);
+
+}
 void Viewer_Points_init(struct Viewer_Points* mp)
 {
-    mp->Data=0;mp->color=0;
+    mp->Data=0;mp->color=NULL;
     
     mp->VAO=0;
     mp->Buffers=NULL;
     mp->prop=NULL;
     mp->evolution=NULL;
-    
-    mp->Data_rows=0;
+    mp->set_color=Viewer_Points_set_color;
+    mp->random_color=Viewer_Points_random_color;
+    mp->Data_rows=0; mp->color_rows=0;
 	mp->mat=(Matrix4x4*)malloc(sizeof(Matrix4x4));
-Matrix4x4_init_float(mp->mat);
+    Matrix4x4_init_float(mp->mat);
 	mp->pointsize=3.0;
 	
 }
+
 void Viewer_Edges_init(struct Viewer_Edges* me)
 {
     me->Data=NULL;me->color=0;

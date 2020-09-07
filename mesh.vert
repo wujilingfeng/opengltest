@@ -7,6 +7,8 @@ layout(location=4) in float element_id;
 out vec4 outColor;
 out vec2 texcoord;
 out float e_id;
+out vec3 norf;
+out vec3 dirf;
 uniform mat4 Proj;
 
 //camera_matrix_inverse
@@ -15,13 +17,17 @@ uniform mat4 Object_Matrix;
 //gl_Pointsize
 void set_color()
 {
+
+	//outColor=aColor;
+	
+	norf=(Camera_Matrix*vec4(normalize(nor),0.0)).xyz;
+	dirf=normalize(vec3(0,0,1));
 	float st=step(length(nor),0);
-
-	vec3 temp_nor=normalize(nor);
-	temp_nor=(Camera_Matrix*vec4(temp_nor,0.0)).xyz;
-	vec3 dir=normalize(vec3(0,0,1));
-	outColor=st*aColor+(1-st)*max(-dot(temp_nor,dir),0)*aColor;
-
+	
+	//vec3 temp_nor=normalize(norf);
+	//temp_nor=(Camera_Matrix*vec4(temp_nor,0.0)).xyz;
+	//vec3 dir=normalize(vec3(0,0,1));
+	outColor=st*aColor+(1-st)*max(-dot(norf,dirf),0)*aColor;
 }
 void main()
 { 

@@ -16,6 +16,8 @@ void GlobalInfo_init(Interactor_GlobalInfo *ginf)
 	}
 	ginf->key_action=0;
 	ginf->mouse_action=0;
+	ginf->drop_count=0;
+	ginf->paths=NULL;
 }
 void Viewer_Intera_init(Viewer_Intera* m_v_i)
 {
@@ -30,6 +32,7 @@ void Viewer_Intera_init(Viewer_Intera* m_v_i)
 	m_v_i->key_callback=NULL;
 	m_v_i->scroll_callback=NULL;
 	m_v_i->animation=NULL;
+	m_v_i->drop_callback=NULL;
 }
 int Viewer_Intera_default_compute_state(Viewer_Intera* mi)
 {

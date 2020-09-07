@@ -38,8 +38,8 @@ void viewer_cursor_position_callback(GLFWwindow* window,double x,double y)
     if(rbt1!=NULL)
     {
 	    tree=(RB_Tree*)(rbt1->value);
-        iter1=tree->begin(tree);
-        for(;iter1->it!=NULL;iter1->next(iter1))
+        iter1=tree->rbegin(tree);
+        for(;iter1->it!=NULL;iter1->prev(iter1))
         {
 	        Viewer_Something* vs=((Viewer_Something*)(iter1->second(iter1)));
             Viewer_Intera* mi=(Viewer_Intera*)(vs->evolution);
@@ -80,7 +80,7 @@ static void viewer_decode_pickupinfo(Viewer_World* mw,Interactor_GlobalInfo* g_i
 	RB_int rbt,*rbt1=NULL;
 	rbt.key=*((int*)(names_id->value));
   	free(names_id->value);
-        free_node(names_id);
+    free_node(names_id);
 
 	rbt1=(RB_int*)mw->species2somethings->find(mw->species2somethings,&rbt);
 	RB_Tree* tree=NULL;
@@ -173,7 +173,7 @@ void viewer_mouse_button_callback(GLFWwindow* window,int button,int action,int m
     Viewer_World* mw=(Viewer_World*)(glfwGetWindowUserPointer(window));
     Interactor_GlobalInfo* g_info=mw->g_info;
     glReadPixels(g_info->mouse_coord[0],g_info->resolution[1]-g_info->mouse_coord[1],3,3,GL_RGBA,GL_UNSIGNED_BYTE,g_info->readpixelcolor);
-
+ //   printf("%d\n",g_info->mouse_button);
     if(action==VIEWER_PRESS&&button==VIEWER_MOUSE_BUTTON_LEFT)
     {
         for(int i=0;i<9;i++)
@@ -240,7 +240,7 @@ void viewer_framebuffer_size_callback(GLFWwindow* window,int w,int h)
 	rbt1=mw->species2somethings->find(mw->species2somethings,&rbt);
 	RB_Tree* tree=(RB_Tree*)(rbt1->value);
   	RB_Trav* iter1=tree->rbegin(tree);
-    for(;iter1->it!=NULL;iter1->next(iter1))
+    for(;iter1->it!=NULL;iter1->prev(iter1))
     {
 		Viewer_Something* vs=(Viewer_Something*)(iter1->second(iter1));
         Viewer_Intera* mi=(Viewer_Intera*)(vs->evolution);
@@ -285,7 +285,7 @@ void viewer_key_callback(GLFWwindow* window,int key,int scancode,int action,int 
 	RB_Tree* tree=(RB_Tree*)(rbt1->value);
 	RB_Trav* iter1=tree->rbegin(tree);
 
-    for(;iter1->it!=NULL;iter1->next(iter1))
+    for(;iter1->it!=NULL;iter1->prev(iter1))
     {
 		Viewer_Something* vs=(Viewer_Something*)(iter1->second(iter1));
         Viewer_Intera* mi=(Viewer_Intera*)(vs->evolution);
@@ -312,7 +312,7 @@ void viewer_key_callback(GLFWwindow* window,int key,int scancode,int action,int 
 }
 void viewer_scroll_callback(GLFWwindow* window,double x,double y)
 {
-   Viewer_World* mw=(Viewer_World*)(glfwGetWindowUserPointer(window));
+    Viewer_World* mw=(Viewer_World*)(glfwGetWindowUserPointer(window));
     //Interactor_GlobalInfo* g_info=mw->g_info;
 
     char intera[]="Intera";
@@ -323,14 +323,13 @@ void viewer_scroll_callback(GLFWwindow* window,double x,double y)
 	rbt1=mw->species2somethings->find(mw->species2somethings,&rbt);
 	RB_Tree* tree=(RB_Tree*)(rbt1->value);
 	RB_Trav* iter1=tree->rbegin(tree);
-    for(;iter1->it!=NULL;iter1->next(iter1))
+    for(;iter1->it!=NULL;iter1->prev(iter1))
     {
 		Viewer_Something* vs=(Viewer_Something*)(iter1->second(iter1));
         Viewer_Intera* mi=(Viewer_Intera*)(vs->evolution);
         mi->compute_state(mi);
-        if(mi->scroll_callback!=0)
+        if(mi->scroll_callback!=NULL)
         {
-        
             mi->scroll_callback(mi,x,y);
         }
         if(mi->state>=0)
@@ -343,6 +342,59 @@ void viewer_scroll_callback(GLFWwindow* window,double x,double y)
     free_node(id);
     return;
 }
+void viewer_drop_callback(GLFWwindow* window,int count,const char** paths)
+{
+    /*for(int i=0;i<count;i++)
+    {
+        printf("path:%s\n",paths[i]);
+    }*/
+    Viewer_World* mw=(Viewer_World*)(glfwGetWindowUserPointer(window));
+    Interactor_GlobalInfo* g_info=mw->g_info;
+    //printf("count:%d\n",g_info->drop_count);
+    for(int i=0;i<g_info->drop_count;i++)
+    {
+        free(g_info->paths[i]);
+    } 
+    if(g_info->paths!=NULL)
+    {
+//        printf("dsfsd\n");
+        free(g_info->paths);
+        g_info->paths=NULL;
+    }
+    g_info->drop_count=count;
+    g_info->paths=(char**)malloc(sizeof(char*)*count);
+    for(int i=0;i<g_info->drop_count;i++)
+    {
+        g_info->paths[i]=(char*)malloc(sizeof(char)*200);
+        strcpy(g_info->paths[i],paths[i]);
+    }
+    char intera[]="Intera";
+    Node* id=mw->find_species(mw,intera);
+     RB_int rbt,*rbt1;
+    rbt.key=*((int*)(id->value));
+    
+    rbt1=mw->species2somethings->find(mw->species2somethings,&rbt);
+    RB_Tree* tree=(RB_Tree*)(rbt1->value);
+    RB_Trav* iter1=tree->rbegin(tree);
+    for(;iter1->it!=NULL;iter1->prev(iter1))
+    {
+        Viewer_Something* vs=(Viewer_Something*)(iter1->second(iter1));
+        Viewer_Intera* mi=(Viewer_Intera*)(vs->evolution);
+        mi->compute_state(mi);
+        if(mi->drop_callback!=NULL)
+        {       
+            mi->drop_callback(mi);
+        }
+        if(mi->state>=0)
+        {
+            break;
+        } 
+    }
+    free(iter1);
+    free_node_value(id);
+    free_node(id);
+    return;
+}
 void viewer_set_callback(GLFWwindow* window)
 {
     glfwSetMouseButtonCallback(window,viewer_mouse_button_callback);
@@ -350,4 +402,5 @@ void viewer_set_callback(GLFWwindow* window)
     glfwSetKeyCallback(window,viewer_key_callback); 
     glfwSetFramebufferSizeCallback(window,viewer_framebuffer_size_callback);
     glfwSetScrollCallback(window,viewer_scroll_callback);
+    glfwSetDropCallback(window,viewer_drop_callback);
 }

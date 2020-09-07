@@ -41,6 +41,8 @@ typedef struct Interactor_GlobalInfo{
 	int mouse_mods;
 	unsigned char *readpixelcolor;
 	void* pick_something;
+	int drop_count;
+	char** paths;
 	void *prop;
 	void* window;//为glfw的window提供
 }Interactor_GlobalInfo;
@@ -56,6 +58,7 @@ typedef struct Viewer_Intera
 	void(*framebuffer_size_callback)(struct Viewer_Intera*);
 	void(*key_callback)(struct Viewer_Intera*);
 	void(*scroll_callback)(struct Viewer_Intera*,double,double);
+	void (*drop_callback)(struct Viewer_Intera*);
 	void (*animation)(struct Viewer_Intera*);
 	void *representation;
 	void *prop;//一般上面的representation就足够提供扩展了

@@ -70,6 +70,7 @@ void Viewer_Faces_random_color(Viewer_Faces*);
 void Viewer_Faces_init(Viewer_Faces*);
 typedef struct Viewer_Camera
 {
+	//四维矩阵表示了相机的旋转（相机镜头方向），和位置
 	Matrix4x4* matrix;
 	Matrix4x4* matrix_inverse;
 	Matrix4x4* Proj;
@@ -83,8 +84,9 @@ void Viewer_Camera_init(Viewer_Camera*);
 typedef struct Viewer_Points
 {
 	float *Data,*color;
-	int Data_rows;
-	
+	unsigned int Data_rows,color_rows;
+	void (*set_color)(struct Viewer_Points*,float*);
+	void (*random_color)(struct Viewer_Points*);	
 	void* evolution;
 	Matrix4x4* mat;
 	float pointsize;

@@ -1,10 +1,10 @@
 #include<stdio.h>
-#include<Math/Viewer_Matrix4x4.h>
-#include "tools_node.h"
-#include<Viewer_Interpreter/Viewer_OpenglAlg.h>
-#include<Viewer_World_Manager/Viewer_World_Manager.h>
+//#include<Math/Viewer_Matrix4x4.h>
+//#include "tools_node.h"
+//#include<Viewer_Interpreter/Viewer_OpenglAlg.h>
+//#include<Viewer_World_Manager/Viewer_World_Manager.h>
 #include<Viewer_Interpreter/Viewer_OpenGL_Interpreter.h>
-#include<GLFW/glfw3.h>
+//#include<GLFW/glfw3.h>
 #include<config.h>
 #include "include/Arcroll.h"
 #define Matrix4x4 Viewer_Matrix4x4_
@@ -260,6 +260,7 @@ void test1()
     free(p_v);free(p_f);
     voi.interpreter(&voi);
 }
+
 void test2()
 {
     Viewer_World vw;
@@ -279,11 +280,13 @@ void test2()
     ms=(Viewer_Something*)(n->value);
     Viewer_Points * mp=(Viewer_Points*)(ms->evolution);
     mp->pointsize=20.0;
-    mp->Data_rows=3;
+    mp->Data_rows=3;mp->color_rows=mp->Data_rows;
     mp->Data=(float*)malloc(sizeof(float)*3*mp->Data_rows);
     mp->Data[0]=0.5;mp->Data[1]=0.6;mp->Data[2]=0.2;
     mp->Data[3]=0.1;mp->Data[4]=1.1;mp->Data[5]=0.1;
     mp->Data[6]=1.0;mp->Data[7]=1.0;mp->Data[8]=1.0;
+    float colorp[]={1,0,0,1};
+    mp->set_color(mp,colorp);
     free_node(n);
     char intera[]="Intera";
     n=vw.create_something(&vw,intera);
@@ -296,14 +299,21 @@ void test2()
     mi->cursor_position_callback=viewer_Arcroll_cursor_position_callback;
     mi->scroll_callback=viewer_Arcroll_scroll_callback;
     mi->mouse_button_callback=viewer_Arcroll_mouse_button_callback;
-
     free_node(n);
+
+    n=vw.create_something(&vw,intera);
+    ms=(Viewer_Something*)(n->value);
+    mi=(Viewer_Intera*)(ms->evolution);
+    mi->representation=(void*)(&vw);
+    free_node(n);
+
+
     char  faces[]="Faces";
     n=vw.create_something(&vw,faces);    
     ms=(Viewer_Something*)(n->value);
     Viewer_Faces* mf=(Viewer_Faces*)(ms->evolution);
     free_node(node_reverse(n));
-    mf->color_rows=12;mf->normal_rows=12;
+    mf->color_rows=8;mf->normal_rows=12;
     float *v=(float*)malloc(sizeof(float)*8*3);
     unsigned int *f=(unsigned int*)malloc(sizeof(unsigned int)*4*12);
     float *texcoords=(float*)malloc(sizeof(float)*12*7);
@@ -347,7 +357,8 @@ void test2()
     mf->Data_index=f;
     mf->Data_rows=8;
     mf->Data_index_rows=12;
-    mf->is_transparent=0;
+    //是否开启透明
+    mf->is_transparent=1;
     char texture[]="Texture";
     n=vw.create_something(&vw,texture);
     ms=(Viewer_Something*)(n->value);
@@ -369,7 +380,10 @@ void test2()
     me->Data[3]=0;me->Data[4]=1.0;me->Data[5]=0.0;
     me->Data_index[0]=0;me->Data_index[1]=1;
     me->color_rows=me->Data_rows;
-    me->random_color(me);
+    me->color=(float*)malloc(sizeof(float)*4*me->color_rows);
+    me->color[0]=1.0;me->color[1]=0;me->color[2]=0;me->color[3]=1.0;
+    me->color[4]=1.0;me->color[5]=0;me->color[6]=0;me->color[7]=1.0;
+    //me->random_color(me);
     vw.print_self(&vw);
     Viewer_Opengl_Interpreter voi;
     Viewer_Opengl_Interpreter_init(&voi);

@@ -101,17 +101,7 @@ Viewer_World_Manager/Viewer_World_Manager.h
 /home/libo/Documents/c++/Viewer1.0/Demo/main.cpp
 stdio.h
 -
-Math/Viewer_Matrix4x4.h
--
-tools_node.h
-/home/libo/Documents/c++/Viewer1.0/Demo/tools_node.h
-Viewer_Interpreter/Viewer_OpenglAlg.h
--
-Viewer_World_Manager/Viewer_World_Manager.h
--
 Viewer_Interpreter/Viewer_OpenGL_Interpreter.h
--
-GLFW/glfw3.h
 -
 config.h
 -

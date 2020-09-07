@@ -18,6 +18,7 @@ void viewer_set_callback(GLFWwindow* window);
 //以下函数待实现
 void viewer_animation(Viewer_World*);
 //实现拖拽读取文件的功能
+void viewer_drop_callback(GLFWwindow* window,int count,const char** paths);
 /*
 glfwSetDropCallback(window, drop_callback);
 

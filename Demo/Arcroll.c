@@ -56,8 +56,6 @@ void viewer_Arcroll_cursor_position_callback(Viewer_Intera* mi)
 
     ma->old_mouse_coord[0]=g_info->mouse_coord[0];
     ma->old_mouse_coord[1]=g_info->mouse_coord[1];
-
-
 }
 void viewer_Arcroll_scroll_callback(Viewer_Intera*mi,double x,double y)
 {
@@ -69,7 +67,9 @@ void viewer_Arcroll_scroll_callback(Viewer_Intera*mi,double x,double y)
     //printf("scroll key_mods:%d ,key_action:%d\n",g_info->key_mods,g_info->key_action);
     if((g_info->key==VIEWER_KEY_CONTROL&&g_info->key_action==1))
     {
-         mc->focal_distance+=(float)y*0.05;
+
+        //printf("here\n");
+        mc->focal_distance+=(float)y*0.05;
     }
     else if(g_info->key==VIEWER_KEY_ALT&&g_info->key_action==1)
     {
@@ -87,6 +87,7 @@ void viewer_Arcroll_scroll_callback(Viewer_Intera*mi,double x,double y)
                 data[0*4+0]*=(1-(float)y*0.05);
                 data[1*4+1]*=(1-(float)y*0.05);
                 data[2*4+2]*=(1-(float)y*0.05);
+                //printf("%lf\n",(1-(float)y*0.05));
             }
             else
             {
@@ -104,6 +105,8 @@ void viewer_Arcroll_scroll_callback(Viewer_Intera*mi,double x,double y)
 void viewer_Arcroll_mouse_button_callback(Viewer_Intera* mi)
 {
     Interactor_GlobalInfo* g_info=mi->g_info;
+    
+    //printf("%d\n",g_info->mouse_button);
     if(g_info->pick_something!=NULL)
     {
         Viewer_Something*vs=(Viewer_Something*)(g_info->pick_something);
@@ -120,10 +123,9 @@ void viewer_Arcroll_mouse_button_callback(Viewer_Intera* mi)
             {
                 printf("vid :%d ",vf->Data_index[temp_sum+i+1]);
             }
-            printf("\n");
-
-             
+            printf("\n");    
         }
+        printf("pick something id:%d",vs->id);
     }
     if(g_info->key==VIEWER_KEY_CONTROL&&g_info->key_action==1)
     {
