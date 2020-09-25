@@ -55,7 +55,7 @@ void Viewer_Texture_init(Viewer_Texture*mt)
 void Viewer_Faces_set_color(Viewer_Faces*mf,float*c)
 {
 
-	if(mf->color!=0)
+	if(mf->color!=NULL)
 	{free(mf->color);
 	}
 	mf->color=0;
@@ -69,7 +69,7 @@ void Viewer_Faces_set_color(Viewer_Faces*mf,float*c)
 void Viewer_Faces_random_color(Viewer_Faces*mf)
 {
   
-    if(mf->color_rows<=0)
+    if(mf->color_rows<=NULL)
     {
         return;
     }

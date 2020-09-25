@@ -111,6 +111,7 @@ Matrix4x4 *Matrix4x4_inverse_##typevalue(Matrix4x4 *a)\
         if(temp*(SIGN(temp))<=10e-10)\
         {\
 		printf("inverse terminate:%lf\n",temp);\
+            Matrix4x4_free(re);\
             return 0;\
         }\
         for(int j=0;j<4;j++)\

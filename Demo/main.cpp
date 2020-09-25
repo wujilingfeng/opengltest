@@ -12,6 +12,25 @@
 //#include <stb_image.h>
 //#include<ft2build.h>
 //#include FT_FREETYPE_H
+typedef struct UP_Data{
+    Viewer_Opengl_Interpreter* voi;
+    Viewer_Faces* vf; 
+
+
+} UP_Data;
+
+
+
+static void upd_key_callback(Viewer_Intera* vi)
+{
+    UP_Data* upd=(UP_Data*)(vi->representation);
+    Viewer_Opengl_Interpreter* voi=upd->voi;
+    float color[]={1.0,0.0,0.0,1.0};
+    upd->vf->set_color(upd->vf,color);
+    
+    voi->update_data(voi);
+    printf("update\n");
+}
 static void load_data(Viewer_Opengl_Interpreter_Shader_Program *voisp)
 {
     if(voisp->program==0)
@@ -306,12 +325,22 @@ void test2()
     mi=(Viewer_Intera*)(ms->evolution);
     mi->representation=(void*)(&vw);
     free_node(n);
-
-
+    //***************************
+    n=vw.create_something(&vw,intera);
+    ms=(Viewer_Something*)(n->value);
+    mi=(Viewer_Intera*)(ms->evolution);
+    UP_Data* upd=(UP_Data*)malloc(sizeof(UP_Data));
+    //upd-> 
+    mi->representation=(void*)upd;
+    mi->key_callback=upd_key_callback;
+    free_node(n); 
+      
+//********************
     char  faces[]="Faces";
     n=vw.create_something(&vw,faces);    
     ms=(Viewer_Something*)(n->value);
     Viewer_Faces* mf=(Viewer_Faces*)(ms->evolution);
+    upd->vf=mf;
     free_node(node_reverse(n));
     mf->color_rows=8;mf->normal_rows=12;
     float *v=(float*)malloc(sizeof(float)*8*3);
@@ -358,7 +387,7 @@ void test2()
     mf->Data_rows=8;
     mf->Data_index_rows=12;
     //是否开启透明
-    mf->is_transparent=1;
+    //mf->is_transparent=1;
     char texture[]="Texture";
     n=vw.create_something(&vw,texture);
     ms=(Viewer_Something*)(n->value);
@@ -387,6 +416,7 @@ void test2()
     vw.print_self(&vw);
     Viewer_Opengl_Interpreter voi;
     Viewer_Opengl_Interpreter_init(&voi);
+    upd->voi=&voi;
     voi.world=&vw;
     voi.interpreter(&voi);
 

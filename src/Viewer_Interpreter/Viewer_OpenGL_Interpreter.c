@@ -421,12 +421,17 @@ static void Viewer_default_render(Viewer_oisp* voisp)
 
 }
 
+
 static void Viewer_default_load_data(Viewer_oisp* voisp)
 {
     if(voisp->program==0)
     { 
         _Shader_(voisp->shaders);
         voisp->program=_Program_(voisp->shaders); 
+    }
+    if(voisp->voi->world==NULL)
+    {
+        return;
     }
 	int elements_id=0;
 	
@@ -945,7 +950,15 @@ static void Viewer_default_load_data(Viewer_oisp* voisp)
 
 }
 
-
+static void Viewer_Interpreter_update_data(Viewer_Opengl_Interpreter* voi)
+{
+    for(Node* it=voi->user_shader_program;it!=NULL;it=(Node*)(it->Next))
+    {
+        
+        Viewer_Opengl_Interpreter_Shader_Program* voisp=(Viewer_Opengl_Interpreter_Shader_Program*)(it->value);
+        voisp->load_data(voisp);
+    }
+}
 void Viewer_Opengl_Interpreter_init(Viewer_Opengl_Interpreter*moi)
 {
 
@@ -964,7 +977,7 @@ void Viewer_Opengl_Interpreter_init(Viewer_Opengl_Interpreter*moi)
     moi->shaders[2].type=GL_NONE;
     moi->shaders[2].filename=NULL;*/
     moi->interpreter=Viewer_Opengl_Interpreter_interpreter;
-      moi->update_data=NULL;
+      moi->update_data=Viewer_Interpreter_update_data;
     moi->user_shader_program=NULL;
 	moi->create_shader_program=Viewer_create_shader_program;
     char* p_v=(char*)malloc(sizeof(char)*60);

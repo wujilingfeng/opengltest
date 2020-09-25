@@ -24,6 +24,8 @@
 #define VIEWER_KEY_9 57
 #define VIEWER_KEY_A 65
 #define VIEWER_KEY_B 66
+#define VIEWER_KEY_C 67
+#define VIEWER_KEY_D 68
 #define VIEWER_KEY_Z 90
 
 #ifdef __cplusplus
