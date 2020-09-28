@@ -486,7 +486,7 @@ static void Viewer_default_load_data(Viewer_oisp* voisp)
 			}
 			if(mp->Buffers==NULL)
             {
-                mp->Buffers=(GLuint*)malloc(sizeof(GLuint));
+                mp->Buffers=(GLuint*)malloc(sizeof(GLuint)*3);
             }
 		    int v_size=mp->Data_rows;
             GLfloat*vertices=(GLfloat*)malloc(sizeof(GLfloat)*v_size*3);
@@ -565,7 +565,7 @@ static void Viewer_default_load_data(Viewer_oisp* voisp)
             {continue;}
             if(me->Buffers==0)
             {
-                me->Buffers=(GLuint*)malloc(sizeof(GLuint));
+                me->Buffers=(GLuint*)malloc(sizeof(GLuint)*3);
             }
             int v_size=me->Data_index_rows*2;
             GLfloat* vertices=(GLfloat*)malloc(sizeof(GLfloat)*v_size*3); 
@@ -678,9 +678,9 @@ static void Viewer_default_load_data(Viewer_oisp* voisp)
             if(ms->disappear==1||mf->Data_index_rows==0||mf->Data==NULL||mf->Data_rows==0)
             {continue;}
 
-            if(mf->Buffers==0)
+            if(mf->Buffers==NULL)
             {
-                mf->Buffers=(GLuint*)malloc(sizeof(GLuint));
+                mf->Buffers=(GLuint*)malloc(sizeof(GLuint)*6);
             }
             if(mf->normal_rows>0&&mf->normal==0)
             {
@@ -705,10 +705,12 @@ static void Viewer_default_load_data(Viewer_oisp* voisp)
             GLfloat* normal=(GLfloat*)malloc(sizeof(GLfloat)*v_size*3);
             GLfloat* texcoords=(GLfloat*)malloc(sizeof(GLfloat)*v_size*2);
             GLfloat* e_id=(GLfloat*)malloc(sizeof(GLfloat)*v_size);
+            GLfloat* face_index_marked=(GLfloat*)malloc(sizeof(GLfloat)*v_size);
             memset(texcoords,0,sizeof(GLfloat)*v_size*2);
             memset(colors,0,sizeof(GLfloat)*v_size*4);
             memset(normal,0,sizeof(GLfloat)*v_size*3);
             memset(e_id,0,sizeof(GLfloat)*v_size);
+            memset(face_index_marked,0,sizeof(GLfloat)*v_size);
             temp_i=0;v_size=0;
             for(unsigned int i=0;i<mf->Data_index_rows;i++)
             {
@@ -717,20 +719,18 @@ static void Viewer_default_load_data(Viewer_oisp* voisp)
                 {
                     int k;
                     k=mf->Data_index[temp_i+1];
-                    e_id[v_size]=elements_id;
+                    e_id[v_size]=elements_id;face_index_marked[v_size]=0;
                     vertices[v_size*3+0]=mf->Data[k*3+0];vertices[v_size*3+1]=mf->Data[k*3+1];vertices[v_size*3+2]=mf->Data[k*3+2];
                     v_size++;
+
                     k=mf->Data_index[temp_i+1+l+1];
-                    e_id[v_size]=elements_id;
-
+                    e_id[v_size]=elements_id;face_index_marked[v_size]=1;
                     vertices[v_size*3+0]=mf->Data[k*3+0];vertices[v_size*3+1]=mf->Data[k*3+1];vertices[v_size*3+2]=mf->Data[k*3+2];
-
                     v_size++;
+
                     k=mf->Data_index[temp_i+1+l+2];
-                    e_id[v_size]=elements_id;
-
+                    e_id[v_size]=elements_id;face_index_marked[v_size]=2;
                     vertices[v_size*3+0]=mf->Data[k*3+0];vertices[v_size*3+1]=mf->Data[k*3+1];vertices[v_size*3+2]=mf->Data[k*3+2];
-
                     v_size++; 
 
                 }
@@ -900,7 +900,7 @@ static void Viewer_default_load_data(Viewer_oisp* voisp)
             glDeleteVertexArrays(1,&(mf->VAO));
             glGenVertexArrays(1,&(mf->VAO));
             glBindVertexArray(mf->VAO);
-            glCreateBuffers(5,mf->Buffers);
+            glCreateBuffers(6,mf->Buffers);
             glBindBuffer(GL_ARRAY_BUFFER,mf->Buffers[0]);
             glBufferData(GL_ARRAY_BUFFER,sizeof(GLfloat)*v_size*3,vertices,GL_STATIC_DRAW);
             glBindBuffer(GL_ARRAY_BUFFER,mf->Buffers[1]);
@@ -911,6 +911,8 @@ static void Viewer_default_load_data(Viewer_oisp* voisp)
             glBufferData(GL_ARRAY_BUFFER,sizeof(GLfloat)*v_size*3,normal,GL_STATIC_DRAW);
             glBindBuffer(GL_ARRAY_BUFFER,mf->Buffers[4]);
             glBufferData(GL_ARRAY_BUFFER,sizeof(GLfloat)*v_size,e_id,GL_STATIC_DRAW);
+            glBindBuffer(GL_ARRAY_BUFFER,mf->Buffers[5]);
+            glBufferData(GL_ARRAY_BUFFER,sizeof(GLfloat)*v_size,face_index_marked,GL_STATIC_DRAW);
 
             glBindBuffer(GL_ARRAY_BUFFER,mf->Buffers[0]);
             glVertexAttribPointer( 0, 3, GL_FLOAT,GL_FALSE, 0, 0 );
@@ -930,6 +932,10 @@ static void Viewer_default_load_data(Viewer_oisp* voisp)
             glVertexAttribPointer(4,1,GL_FLOAT,GL_FALSE,0,0);
             glEnableVertexAttribArray(4);
 
+            glBindBuffer(GL_ARRAY_BUFFER,mf->Buffers[5]);
+            glVertexAttribPointer(5,1,GL_FLOAT,GL_FALSE,0,0);
+            glEnableVertexAttribArray(5);
+
             glBindVertexArray(0);
  
             free(vertices);
@@ -937,6 +943,7 @@ static void Viewer_default_load_data(Viewer_oisp* voisp)
             free(normal);
             free(texcoords);
             free(e_id);
+            free(face_index_marked);
         
         }
         free(iter1);   
@@ -1053,7 +1060,7 @@ void Viewer_Opengl_Interpreter_interpreter(Viewer_Opengl_Interpreter*moi)
 	while(!glfwWindowShouldClose(window))
 	{	
 		glBindFramebuffer(GL_FRAMEBUFFER,0);
-		glClearColor(0.2f,0.5f,1.0f,1.0f);
+		glClearColor(mw->background_color[0],mw->background_color[1],mw->background_color[2],mw->background_color[3]);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // also clear the depth buffer now!
         finish=clock();
         mw->g_info->run_time=(float)30.0*(finish-start)/CLOCKS_PER_SEC;

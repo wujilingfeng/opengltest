@@ -30,6 +30,7 @@ typedef struct Viewer_World{
 	void (*print_self)(struct Viewer_World*);
 	Node* (*find_species)(struct Viewer_World*,char*);
 	Node*(*registe)(struct Viewer_World*,char*);
+	float background_color[4];
 	void *prop;
 	void* *prop1;
 }Viewer_World;

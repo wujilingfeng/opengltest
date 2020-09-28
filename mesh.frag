@@ -1,10 +1,12 @@
-#version 450 core
+#version 450 core 
 out vec4 fColor;
 in vec4 outColor;
 in vec2 texcoord;
 in float e_id;
 in vec3 norf;
 in vec3 dirf;
+in float f_i_marked1;
+in float f_i_marked2;
 uniform vec2 iResolution;
 
 uniform sampler2D ourTexture;
@@ -26,6 +28,15 @@ vec3 trans_code(float a)
     re.x=mod(floor(a/(255*255)),255);
     return re;
 }
+vec3  chuli_f_i_marked()
+{
+    float lambda1=-(f_i_marked1-2)*3.0/2.0+(f_i_marked2-4)/2.0;
+    float lambda2=(f_i_marked1-2)*2-(f_i_marked2-4);
+    vec3 re;
+    re.x=lambda1;re.y=lambda2;re.z=1-lambda1-lambda2;
+    return re; 
+
+}
 void set_fColor(vec2 uv,vec2 coord_uv)
 {
 	//float st=step(length(norf),0);
@@ -38,7 +49,10 @@ void set_fColor(vec2 uv,vec2 coord_uv)
 	float is_pick=step(abs(coord_uv.x-uv.x),6/(2*iResolution.x));
 	is_pick=step(2,is_pick+step(abs(coord_uv.y-uv.y),6/(2*iResolution.y)));
 	is_pick=step(2,is_pick+p_intera.is_pick);
-	fColor=(1-is_pick)*temp_fColor+is_pick*vec4(trans_code(e_id)/255.0,1);
+    float is_pick1=step(abs(coord_uv.x-uv.x),4/(2*iResolution.x));
+    is_pick1=step(2,is_pick1+step(abs(coord_uv.y-uv.y),4/(2*iResolution.y)));
+
+	fColor=(1-is_pick)*temp_fColor+is_pick*((is_pick1)*vec4(trans_code(e_id)/255.0,1)+(1-is_pick1)*vec4(chuli_f_i_marked(),1));
 	//fColor=vec4(e_id/255.0,0,0,1);
 }
 
@@ -51,3 +65,9 @@ void main()
 	
 	//fColor=vec4(outColor,1.0);   
 }
+//0 1 2 -> 0
+// 0 2 1 -> 1
+// 1 0 2 -> 2
+// 1 2 0 -> 3
+//2 0 1-> 4
+//2 1 0 -> 5

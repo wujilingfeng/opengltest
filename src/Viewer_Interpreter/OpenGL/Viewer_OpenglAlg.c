@@ -20,7 +20,7 @@ GLchar* _ReadFile_ (char* filename)
     fseek(infile,0,SEEK_END);//定位到离文末0字节处
     int len=ftell(infile);//当前处离文首多少字节
     fseek(infile,0,SEEK_SET);//定位到文首
-    GLchar* source=(char*)malloc(len+1);
+    GLchar* source=(char*)malloc(len+3);
     fread(source,1,len,infile);
     fclose(infile);
     source[len]=0;

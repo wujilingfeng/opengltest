@@ -26,10 +26,10 @@ static void upd_key_callback(Viewer_Intera* vi)
     UP_Data* upd=(UP_Data*)(vi->representation);
     Viewer_Opengl_Interpreter* voi=upd->voi;
     float color[]={1.0,0.0,0.0,1.0};
-    upd->vf->set_color(upd->vf,color);
+   // upd->vf->set_color(upd->vf,color);
     
     voi->update_data(voi);
-    printf("update\n");
+  //  printf("update\n");
 }
 static void load_data(Viewer_Opengl_Interpreter_Shader_Program *voisp)
 {
@@ -294,6 +294,7 @@ void test2()
     Matrix4x4_free(p);
 
     free_node(n);
+    /*
     char points[]="Points";
     n=vw.create_something(&vw,points);
     ms=(Viewer_Something*)(n->value);
@@ -306,7 +307,7 @@ void test2()
     mp->Data[6]=1.0;mp->Data[7]=1.0;mp->Data[8]=1.0;
     float colorp[]={1,0,0,1};
     mp->set_color(mp,colorp);
-    free_node(n);
+    free_node(n);*/
     char intera[]="Intera";
     n=vw.create_something(&vw,intera);
     ms=(Viewer_Something*)(n->value);
@@ -314,6 +315,7 @@ void test2()
     Viewer_Arcroll*ma=(Viewer_Arcroll*)malloc(sizeof(Viewer_Arcroll));
     Viewer_Arcroll_init(ma);
     ma->mc=mc;
+    ma->vw=&vw;
     mi->representation=(void*)ma;
     mi->cursor_position_callback=viewer_Arcroll_cursor_position_callback;
     mi->scroll_callback=viewer_Arcroll_scroll_callback;
@@ -339,6 +341,7 @@ void test2()
     char  faces[]="Faces";
     n=vw.create_something(&vw,faces);    
     ms=(Viewer_Something*)(n->value);
+   // ms->disappear=1;
     Viewer_Faces* mf=(Viewer_Faces*)(ms->evolution);
     upd->vf=mf;
     free_node(node_reverse(n));
@@ -398,21 +401,40 @@ void test2()
     strcpy(mt->image_file,"linyueru.jpg");
     mt->each_face_texture_coord=texcoords;
     char edges[]="Edges";
+//**********************************
+
     n=vw.create_something(&vw,edges);
-    ms=(Viewer_Something*)(n->value);
-    auto me=(Viewer_Edges*)(ms->evolution);
-    free_node(node_reverse(n));
-    me->Data_rows=2;me->Data_index_rows=1;
-    me->Data=(float*)malloc(sizeof(float)*3*me->Data_rows);
-    me->Data_index=(unsigned int*)malloc(sizeof(unsigned int)*2*me->Data_index_rows);
-    me->Data[0]=3;me->Data[1]=0.0;me->Data[2]=0.0;
-    me->Data[3]=0;me->Data[4]=1.0;me->Data[5]=0.0;
-    me->Data_index[0]=0;me->Data_index[1]=1;
-    me->color_rows=me->Data_rows;
-    me->color=(float*)malloc(sizeof(float)*4*me->color_rows);
-    me->color[0]=1.0;me->color[1]=0;me->color[2]=0;me->color[3]=1.0;
-    me->color[4]=1.0;me->color[5]=0;me->color[6]=0;me->color[7]=1.0;
-    //me->random_color(me);
+    auto vs=(Viewer_Something*)(n->value);
+  //  vs->disappear=1;
+    auto ve=(Viewer_Edges*)(vs->evolution);
+    ve->Data_rows=4;
+    ve->Data_index_rows=3;
+    ve->Data=(float*)malloc(sizeof(float)*3*ve->Data_rows);
+    ve->Data_index=(unsigned int*)malloc(sizeof(unsigned int)*2*ve->Data_index_rows);     
+    ve->Data[0]=0;ve->Data[1]=0;ve->Data[2]=0;
+    ve->Data[3]=1;ve->Data[4]=0;ve->Data[5]=0;
+    ve->Data[6]=0;ve->Data[7]=1;ve->Data[8]=0; 
+    ve->Data[9]=0;ve->Data[10]=0;ve->Data[11]=1;
+   
+
+    ve->Data_index[0]=0;ve->Data_index[1]=1;
+    ve->Data_index[2]=0;ve->Data_index[3]=2; 
+    ve->Data_index[4]=0;ve->Data_index[5]=3;
+  //  ve->Data_index[6]=4;ve->Data_index[7]=5;
+//    ve->Data_index[8]=6;ve->Data_index[9]=7;
+
+
+    ve->color_rows=ve->Data_index_rows;
+    ve->color=(float*)malloc(sizeof(float)*4*ve->color_rows);
+    memset(ve->color,0,sizeof(float)*4*ve->color_rows);
+
+    ve->color[0]=1;ve->color[1]=0; ve->color[2]=0;ve->color[3]=1;
+    ve->color[4]=0;ve->color[5]=1; ve->color[6]=0;ve->color[7]=1;
+    ve->color[8]=0;ve->color[9]=0; ve->color[10]=1;ve->color[11]=1;
+    ma->vs=vs;
+
+    //**************************************
+   
     vw.print_self(&vw);
     Viewer_Opengl_Interpreter voi;
     Viewer_Opengl_Interpreter_init(&voi);
@@ -421,6 +443,12 @@ void test2()
     voi.interpreter(&voi);
 
 }
+/*
+void test3()
+{
+
+
+}*/
 int main(int argc,char**argv)
 {
 /*    Viewer_Opengl_Interpreter_Shader_Program *voisp=(Viewer_Opengl_Interpreter_Shader_Program*)malloc(sizeof(Viewer_Opengl_Interpreter_Shader_Program));

@@ -51,6 +51,7 @@ typedef struct Viewer_Faces
 //面的数量
     	unsigned int Data_index_rows;
 	unsigned int Data_rows;
+	float triangle_coordinate[3];	
 	
 	void(*compute_normal)(struct Viewer_Faces*);
 	void (*random_color)(struct Viewer_Faces*);
@@ -70,11 +71,13 @@ void Viewer_Faces_random_color(Viewer_Faces*);
 void Viewer_Faces_init(Viewer_Faces*);
 typedef struct Viewer_Camera
 {
-	//四维矩阵表示了相机的旋转（相机镜头方向），和位置
+	//四维矩阵表示了相机的旋转（相机镜头方向），和位置。主要是修改这个矩阵
 	Matrix4x4* matrix;
+	//这个是上面矩阵的逆，加速运算
 	Matrix4x4* matrix_inverse;
 	Matrix4x4* Proj;
 	int is_using;
+	//相机的聚焦点，主要用来旋转相机的轴点
 	float focal_distance;
 	void* prop;
 

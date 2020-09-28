@@ -41,6 +41,7 @@ void Viewer_World_init(struct Viewer_World*m)
     m->print_self=Viewer_World_printself;
    
     m->registe=Viewer_World_registe;
+    m->background_color[0]=0.2;m->background_color[1]=0.5;m->background_color[2]=1.0;m->background_color[3]=1.0;
  	m->prop=NULL;
     m->prop1=NULL;
 

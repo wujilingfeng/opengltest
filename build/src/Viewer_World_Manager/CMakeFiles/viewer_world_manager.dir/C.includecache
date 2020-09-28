@@ -58,8 +58,10 @@ stdlib.h
 string.h
 -
 
-/home/libo/Documents/c++/Viewer1.0/src/Viewer_World_Manager/Interactor_GlobalInfo.c
-Viewer_World_Manager/Interactor_GlobalInfo.h
+/home/libo/Documents/c++/Viewer1.0/src/Viewer_World_Manager/Viewer_Base_Species.c
+Viewer_World_Manager/Viewer_Base_Species.h
+-
+time.h
 -
 
 /home/libo/Documents/c++/Viewer1.0/src/Viewer_World_Manager/Viewer_World_Manager.c

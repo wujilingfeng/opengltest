@@ -69,7 +69,7 @@ void Viewer_Faces_set_color(Viewer_Faces*mf,float*c)
 void Viewer_Faces_random_color(Viewer_Faces*mf)
 {
   
-    if(mf->color_rows<=NULL)
+    if(mf->color_rows<=0)
     {
         return;
     }
@@ -184,7 +184,6 @@ void Viewer_Faces_init(Viewer_Faces* mf)
     mf->Data=0;mf->color=0;
     mf->Data_index=0;
     mf->normal=0;
-    mf->VAO=0;mf->Buffers=0;
     mf->marked_faces_index=0;
    
     mf->evolution=0;
@@ -200,7 +199,12 @@ void Viewer_Faces_init(Viewer_Faces* mf)
 	Matrix4x4_init_float(mf->mat);
 	mf->is_reversal_normal=0;
 	mf->is_transparent=0;
+
+    mf->triangle_coordinate[0]=1;mf->triangle_coordinate[1]=0;mf->triangle_coordinate[2]=0;   
  	mf->prop=NULL;
+
+    //
+    mf->VAO=0;mf->Buffers=NULL;
    // mf->texture=(Mesh_viewer_texture*)malloc(sizeof(Mesh_viewer_texture));
    // Mesh_viewer_texture_init(mf->texture);
 
@@ -210,13 +214,17 @@ void Viewer_Camera_init(Viewer_Camera*mc)
 {
     mc->matrix=(Matrix4x4*)malloc(sizeof(Matrix4x4));
     Matrix4x4_init_float(mc->matrix); 
-    mc->matrix_inverse=(Matrix4x4*)malloc(sizeof(Matrix4x4));
-    Matrix4x4_init_float(mc->matrix_inverse);
+    //mc->matrix_inverse=(Matrix4x4*)malloc(sizeof(Matrix4x4));
+    //Matrix4x4_init_float(mc->matrix_inverse);
 	mc->Proj=(Matrix4x4*)malloc(sizeof(Matrix4x4));
 	Matrix4x4_init_float(mc->Proj);
     mc->prop=0;
     mc->is_using=0;
     mc->focal_distance=1;
+    float* data=(float*)(mc->matrix->data);
+    data[2*4+3]=-5;
+    mc->matrix_inverse=mc->matrix->inverse(mc->matrix);
+
 
 }
 static void Viewer_Points_random_color(struct Viewer_Points* mp)
@@ -265,8 +273,7 @@ void Viewer_Points_init(struct Viewer_Points* mp)
 {
     mp->Data=0;mp->color=NULL;
     
-    mp->VAO=0;
-    mp->Buffers=NULL;
+   
     mp->prop=NULL;
     mp->evolution=NULL;
     mp->set_color=Viewer_Points_set_color;
@@ -275,6 +282,9 @@ void Viewer_Points_init(struct Viewer_Points* mp)
 	mp->mat=(Matrix4x4*)malloc(sizeof(Matrix4x4));
     Matrix4x4_init_float(mp->mat);
 	mp->pointsize=3.0;
+
+    ///
+    mp->VAO=0;mp->Buffers=NULL;
 	
 }
 
@@ -282,8 +292,7 @@ void Viewer_Edges_init(struct Viewer_Edges* me)
 {
     me->Data=NULL;me->color=0;
     me->Data_index=0;
-    me->VAO=0;
-    me->Buffers=0;
+   
     me->prop=0;
     me->evolution=0;
     me->Data_index_rows=0;
@@ -292,8 +301,10 @@ void Viewer_Edges_init(struct Viewer_Edges* me)
 	me->mat=(Matrix4x4*)malloc(sizeof(Matrix4x4));
 	me->set_color=Viewer_Edges_set_color;
 	me->random_color=Viewer_Edges_random_color;
-Matrix4x4_init_float(me->mat);
+    Matrix4x4_init_float(me->mat);
 	me->edgesize=2.0;
+//
+     me->VAO=0;  me->Buffers=NULL;
 }
 void Viewer_Edges_set_color(Viewer_Edges*me,float*v)
 {

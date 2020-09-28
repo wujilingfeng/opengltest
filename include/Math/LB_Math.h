@@ -3,6 +3,12 @@
 #define factorial LB_factorial
 #define out_product LB_three_out_product
 #define SIGN(x) ((x>0)?1:((x<0)?-1:0))
+#ifndef SAFE_SQRT
+#define SAFE_SQRT(x) x>=0?sqrt(x):sqrt(-x)
+#endif
+#ifndef SAFE_FREE
+#define SAFE_FREE(x) if(x!=NULL){free(x);}
+#endif
 #ifndef M_PI
 #define M_PI 3.141592653589
 #endif

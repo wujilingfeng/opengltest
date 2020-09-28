@@ -66,15 +66,17 @@ static void viewer_decode_pickupinfo(Viewer_World* mw,Interactor_GlobalInfo* g_i
     if(g_info->key==VIEWER_KEY_CONTROL&&g_info->key_action==1)
     {
         g_info->pick_something=NULL;
+        int background_color[4]={(int)round(mw->background_color[0]*255),(int)round(mw->background_color[1]*255),(int)round(mw->background_color[2]*255),(int)round(mw->background_color[3]*255)};
         //判断是否是背景颜色
-        if(g_info->readpixelcolor[0]==51&&g_info->readpixelcolor[1]==128&&g_info->readpixelcolor[2]==255&&g_info->readpixelcolor[3]==255)
+        if(g_info->readpixelcolor[0]==background_color[0]&&g_info->readpixelcolor[1]==background_color[1]&&g_info->readpixelcolor[2]==background_color[2]&&g_info->readpixelcolor[3]==background_color[3])
         {
-           // printf("shi background\n");
+            printf("shi background:pick nothing\n");
             return;
         }
+        //printf("%d %d\n",(int)round(mw->background_color[1]*255),g_info->readpixelcolor[1] );
 	 int sum=0,temp_sum=0;
         int id=g_info->readpixelcolor[0]*255*255+g_info->readpixelcolor[1]*255+g_info->readpixelcolor[2];
-        printf("pick id:%d\n",id);
+      //  printf("pick num:%d\n",id);
 	char points[]="Points";
 	Node* names_id=mw->find_species(mw,points);
 	RB_int rbt,*rbt1=NULL;
@@ -98,7 +100,7 @@ static void viewer_decode_pickupinfo(Viewer_World* mw,Interactor_GlobalInfo* g_i
                 	{
                     		g_info->pick_something=(void*)(vs);
 				vs->marked_element=id-sum;
-                            printf("pick point\n"); 
+                            printf("pick point pick_something id:%d element_id:%d\n",vs->id,id-sum); 
 		//		printf("pick element id:%d\n",id-sum);
                     		return;
                 	}
@@ -121,12 +123,12 @@ static void viewer_decode_pickupinfo(Viewer_World* mw,Interactor_GlobalInfo* g_i
 		        Viewer_Something* vs=(Viewer_Something*)(iter1->second(iter1));
 			
                 	temp_sum=((Viewer_Edges*)(vs->evolution))->Data_index_rows;
-                    printf("tempsum:%d\n",temp_sum);
+                   // printf("tempsum:%d\n",temp_sum);
                 	if(id-sum<temp_sum)
                 	{
                     		g_info->pick_something=(void*)(vs);
 				vs->marked_element=id-sum;
-                            printf("pick edges\n"); 
+                            printf("pick edges pick_something id:%d element_id:%d\n",vs->id,id-sum); 
 			//	printf("pick element id:%d\n",id-sum);
                     		return;
                 	}
@@ -152,10 +154,27 @@ static void viewer_decode_pickupinfo(Viewer_World* mw,Interactor_GlobalInfo* g_i
                 temp_sum=((Viewer_Faces*)(vs->evolution))->Data_index_rows;
                 if(id-sum<temp_sum)
                 {
+                    //拾取对多边形也有效，但未测试
                     g_info->pick_something=(void*)(vs);
-			vs->marked_element=id-sum;
-                printf("pick faces\n");
+	                vs->marked_element=id-sum;
+                    int readpixelcolor[3]={g_info->readpixelcolor[8*4+0],g_info->readpixelcolor[8*4+1],g_info->readpixelcolor[8*4+2]};
+                    Viewer_Faces* vf=(Viewer_Faces*)(vs->evolution);
+                    vf->triangle_coordinate[0]=readpixelcolor[0]/255.0;
+                    vf->triangle_coordinate[1]=readpixelcolor[1]/255.0;
+                    vf->triangle_coordinate[2]=readpixelcolor[2]/255.0;
+                    int tt_sum=0;
+                    for(int i=0;i<vs->marked_element;i++)
+                    {
+                        tt_sum+=(vf->Data_index[tt_sum]+1);
+                    }
+                   
+                printf("pick faces and pick_something id:%d element_id:%d face_index_marked:%lf %lf %lf   ",vs->id,id-sum,readpixelcolor[0]/255.0,readpixelcolor[1]/255.0,readpixelcolor[2]/255.0);
 			//printf("pick element id:%d\n",id-sum);
+                    for(int i=0;i<vf->Data_index[tt_sum];i++)
+                    {
+                        printf("vid :%d ",vf->Data_index[tt_sum+i+1]);
+                    }
+                    printf("\n");
                     return ;
                 }
 		sum+=temp_sum;
@@ -176,15 +195,15 @@ void viewer_mouse_button_callback(GLFWwindow* window,int button,int action,int m
  //   printf("%d\n",g_info->mouse_button);
     if(action==VIEWER_PRESS&&button==VIEWER_MOUSE_BUTTON_LEFT)
     {
-        for(int i=0;i<9;i++)
+        /*for(int i=0;i<9;i++)
         {
             for(int j=0;j<4;j++)
             {
-           //     printf("%d ",g_info->readpixelcolor[i*4+j]);
+                printf("%d ",g_info->readpixelcolor[i*4+j]);
             }
-       //     printf("\n");
-        }
-
+            printf("\n");
+        }*/
+        //printf("%d %d %d %lf %lf %lf\n",g_info->readpixelcolor[0*4+0],g_info->readpixelcolor[0*4+1],g_info->readpixelcolor[0*4+2],g_info->readpixelcolor[8*4+0]/255.0,g_info->readpixelcolor[8*4+1]/255.0,g_info->readpixelcolor[8*4+2]/255.0);
         viewer_decode_pickupinfo(mw,g_info);  
     }
     
@@ -367,6 +386,8 @@ void viewer_drop_callback(GLFWwindow* window,int count,const char** paths)
     {
         g_info->paths[i]=(char*)malloc(sizeof(char)*200);
         strcpy(g_info->paths[i],paths[i]);
+
+      //  printf("%s\n",g_info->paths[i] );
     }
     char intera[]="Intera";
     Node* id=mw->find_species(mw,intera);

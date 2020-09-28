@@ -3,13 +3,13 @@
 
 # compile C with /usr/bin/cc
 # compile CXX with /usr/bin/c++
-C_FLAGS = -std=c99   -Wall -g -lstdc++
+C_FLAGS = -std=c99   -Wall -g -O -lstdc++
 
 C_DEFINES = 
 
 C_INCLUDES = -I/home/libo/Documents/c++/Viewer1.0/include -I/home/libo/Documents/c++/Viewer1.0/thirdpart/glad/include -I/home/libo/Documents/c++/Viewer1.0/thirdpart/cstructures/include -I/home/libo/Documents/c++/Viewer1.0/thirdpart/freetype-2.10.0/include 
 
-CXX_FLAGS = -std=c++11   -Wall -g -lstdc++
+CXX_FLAGS = -std=c++11   -Wall -g -O -lstdc++
 
 CXX_DEFINES = 
 

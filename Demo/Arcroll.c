@@ -4,13 +4,14 @@
 void Viewer_Arcroll_init(Viewer_Arcroll*ma)
 {
     ma->old_mouse_coord=(float*)malloc(sizeof(float)*2);
+    ma->vs=NULL;
     ma->mc=0;
+    ma->vw=NULL;
 }
 void viewer_Arcroll_cursor_position_callback(Viewer_Intera* mi)
 {
     Interactor_GlobalInfo* g_info=mi->g_info;
     Viewer_Arcroll* ma=(Viewer_Arcroll*)(mi->representation);
-
     Viewer_Camera* mc=(Viewer_Camera*)(ma->mc);
     if(g_info->mouse_button==VIEWER_MOUSE_BUTTON_LEFT&&g_info->mouse_action==VIEWER_PRESS&&g_info->key_action==0)
     {
@@ -62,8 +63,9 @@ void viewer_Arcroll_scroll_callback(Viewer_Intera*mi,double x,double y)
     Interactor_GlobalInfo* g_info=mi->g_info;
     Viewer_Arcroll* ma=(Viewer_Arcroll*)(mi->representation);
 
+    Viewer_World* vw=ma->vw;
     Viewer_Camera* mc=(Viewer_Camera*)(ma->mc);
-
+    //Viewer_World* vw=(Viewer_World*)(mi->representation);
     //printf("scroll key_mods:%d ,key_action:%d\n",g_info->key_mods,g_info->key_action);
     if((g_info->key==VIEWER_KEY_CONTROL&&g_info->key_action==1))
     {
@@ -73,26 +75,115 @@ void viewer_Arcroll_scroll_callback(Viewer_Intera*mi,double x,double y)
     }
     else if(g_info->key==VIEWER_KEY_ALT&&g_info->key_action==1)
     {
-    
+        char points[]="Points";
+        Node* names_id=vw->find_species(vw,points);
+        RB_int rbt,*rbt1=NULL;
+        rbt.key=*((int*)(names_id->value));
+        SAFE_FREE(names_id->value);
+        free_node(names_id);
+        rbt1=(RB_int*)vw->species2somethings->find(vw->species2somethings,&rbt);
+        RB_Tree* tree=NULL;
+        RB_Trav* iter1=NULL;
+        if(rbt1!=NULL)
+        {
+            tree=((RB_Tree*)(rbt1->value));
+            iter1=tree->begin(tree);
+            for(;iter1->it!=NULL;iter1->next(iter1))
+            {
+                Viewer_Something* vs=(Viewer_Something*)(iter1->second(iter1));
+                Viewer_Points* vp=(Viewer_Points*)(vs->evolution);      
+                float * data=(float*)(vp->mat->data);
+                data[0*4+0]*=(1-(float)y*0.05);
+                data[1*4+1]*=(1-(float)y*0.05);
+                data[2*4+2]*=(1-(float)y*0.05);          
+            }
+            SAFE_FREE(iter1);
+        }
+        char faces[]="Faces";
+        names_id=vw->find_species(vw,faces);
+        rbt.key=*((int*)(names_id->value));
+        SAFE_FREE(names_id->value);
+        free_node(names_id);
+        rbt1=(RB_int*)vw->species2somethings->find(vw->species2somethings,&rbt);
+        if(rbt1!=NULL)
+        {
+
+            tree=(RB_Tree*)(rbt1->value);
+            iter1=tree->begin(tree);
+            for(;iter1->it!=NULL;iter1->next(iter1))
+            {
+                Viewer_Something* vs=(Viewer_Something*)(iter1->second(iter1));
+                Viewer_Faces* vf=(Viewer_Faces*)(vs->evolution);      
+                float * data=(float*)(vf->mat->data);
+                data[0*4+0]*=(1-(float)y*0.05);
+                data[1*4+1]*=(1-(float)y*0.05);
+                data[2*4+2]*=(1-(float)y*0.05);          
+            }
+            SAFE_FREE(iter1);
+
+        }
+        char edges[]="Edges";
+        names_id=vw->find_species(vw,edges);
+        rbt.key=*((int*)(names_id->value));
+        SAFE_FREE(names_id->value);
+        free_node(names_id);
+        rbt1=(RB_int*)vw->species2somethings->find(vw->species2somethings,&rbt);
+        if(rbt1!=NULL)
+        {
+
+            tree=(RB_Tree*)(rbt1->value);
+            iter1=tree->begin(tree);
+            for(;iter1->it!=NULL;iter1->next(iter1))
+            {
+                Viewer_Something* vs=(Viewer_Something*)(iter1->second(iter1));
+                if(vs==ma->vs)
+                {continue;}
+                Viewer_Edges* ve=(Viewer_Edges*)(vs->evolution);      
+                float * data=(float*)(ve->mat->data);
+                data[0*4+0]*=(1-(float)y*0.05);
+                data[1*4+1]*=(1-(float)y*0.05);
+                data[2*4+2]*=(1-(float)y*0.05);          
+            }
+            SAFE_FREE(iter1);
+        }
     }
     else if(g_info->key_action==0)
     { 
         if(g_info->pick_something!=0)
         {
             Viewer_Something* ms=(Viewer_Something*)(g_info->pick_something);
-            if(strcmp("Faces",ms->name)==0)
-            {
-                Viewer_Faces* mf=(Viewer_Faces*)(ms->evolution);
-                float * data=(float*)(mf->mat->data);
-                data[0*4+0]*=(1-(float)y*0.05);
-                data[1*4+1]*=(1-(float)y*0.05);
-                data[2*4+2]*=(1-(float)y*0.05);
-                //printf("%lf\n",(1-(float)y*0.05));
-            }
-            else
+            if(ms!=ma->vs)
             {
 
+                float * data=NULL;
+                if(strcmp("Faces",ms->name)==0)
+                {
+                    Viewer_Faces* mf=(Viewer_Faces*)(ms->evolution);
+
+                    data=(float*)(mf->mat->data);
+                
+                //printf("%lf\n",(1-(float)y*0.05));
+                }
+                else if(strcmp("Edges",ms->name)==0)
+                {
+                    Viewer_Edges* ve=(Viewer_Edges*)(ms->evolution);
+                    data=(float*)(ve->mat->data);
+
+                }
+                else if(strcmp("Points",ms->name)==0)
+                {
+                    Viewer_Points* vp=(Viewer_Points*)(ms->evolution);
+                    data=(float*)(vp->mat->data);
+                }
+                if(data!=NULL)
+                {
+                    data[0*4+0]*=(1-(float)y*0.05);
+                    data[1*4+1]*=(1-(float)y*0.05);
+                    data[2*4+2]*=(1-(float)y*0.05);
+                }
+                  
             }
+
         }
         else
         {
@@ -113,19 +204,9 @@ void viewer_Arcroll_mouse_button_callback(Viewer_Intera* mi)
 
         if(strcmp(vs->name,(char*)"Faces")==0)
         {
-            Viewer_Faces*vf=(Viewer_Faces*)(vs->evolution);
-            int temp_sum=0,id=vs->marked_element;
-            for(int i=0;i<id;i++)
-            {
-                temp_sum+=(vf->Data_index[temp_sum]+1);
-            }
-            for(int i=0;i<vf->Data_index[temp_sum];i++)
-            {
-                printf("vid :%d ",vf->Data_index[temp_sum+i+1]);
-            }
-            printf("\n");    
+            //printf("\n");    
         }
-        printf("pick something id:%d",vs->id);
+       // printf("pick something id:%d\n",vs->id);
     }
     if(g_info->key==VIEWER_KEY_CONTROL&&g_info->key_action==1)
     {
