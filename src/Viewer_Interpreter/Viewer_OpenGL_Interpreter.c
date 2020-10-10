@@ -497,7 +497,7 @@ static void Viewer_default_load_data(Viewer_oisp* voisp)
             GLfloat* colors=(GLfloat*)malloc(sizeof(GLfloat)*v_size*4);
             memset(colors,0,sizeof(GLfloat)*v_size*4);
             //color
-            if(mp->color==NULL&&mp->color_rows==mp->Data_rows)
+            if(mp->color==NULL)
             {
                 mp->random_color(mp); 
             }

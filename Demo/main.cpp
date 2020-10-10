@@ -294,20 +294,21 @@ void test2()
     Matrix4x4_free(p);
 
     free_node(n);
-    /*
+    
     char points[]="Points";
     n=vw.create_something(&vw,points);
     ms=(Viewer_Something*)(n->value);
     Viewer_Points * mp=(Viewer_Points*)(ms->evolution);
     mp->pointsize=20.0;
-    mp->Data_rows=3;mp->color_rows=mp->Data_rows;
+    mp->Data_rows=3;
+    //mp->color_rows=mp->Data_rows;
     mp->Data=(float*)malloc(sizeof(float)*3*mp->Data_rows);
     mp->Data[0]=0.5;mp->Data[1]=0.6;mp->Data[2]=0.2;
     mp->Data[3]=0.1;mp->Data[4]=1.1;mp->Data[5]=0.1;
     mp->Data[6]=1.0;mp->Data[7]=1.0;mp->Data[8]=1.0;
     float colorp[]={1,0,0,1};
     mp->set_color(mp,colorp);
-    free_node(n);*/
+    free_node(n);
     char intera[]="Intera";
     n=vw.create_something(&vw,intera);
     ms=(Viewer_Something*)(n->value);
@@ -443,12 +444,7 @@ void test2()
     voi.interpreter(&voi);
 
 }
-/*
-void test3()
-{
 
-
-}*/
 int main(int argc,char**argv)
 {
 /*    Viewer_Opengl_Interpreter_Shader_Program *voisp=(Viewer_Opengl_Interpreter_Shader_Program*)malloc(sizeof(Viewer_Opengl_Interpreter_Shader_Program));

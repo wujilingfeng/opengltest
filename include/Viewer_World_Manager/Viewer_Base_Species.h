@@ -87,7 +87,10 @@ void Viewer_Camera_init(Viewer_Camera*);
 typedef struct Viewer_Points
 {
 	float *Data,*color;
-	unsigned int Data_rows,color_rows;
+	unsigned int Data_rows;
+	//应该去除这个变量
+	//unsigned int color_rows;
+	//
 	void (*set_color)(struct Viewer_Points*,float*);
 	void (*random_color)(struct Viewer_Points*);	
 	void* evolution;

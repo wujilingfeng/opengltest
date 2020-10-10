@@ -229,7 +229,7 @@ void Viewer_Camera_init(Viewer_Camera*mc)
 }
 static void Viewer_Points_random_color(struct Viewer_Points* mp)
 {
-    if(mp->color_rows<=0)
+    if(mp->Data_rows<=0)
     {
         return ;
     }   
@@ -237,9 +237,9 @@ static void Viewer_Points_random_color(struct Viewer_Points* mp)
     {
         free(mp->color);mp->color=NULL;
     }
-    mp->color=(float*)malloc(sizeof(float)*4*mp->color_rows);
+    mp->color=(float*)malloc(sizeof(float)*4*mp->Data_rows);
     srand((unsigned)time(NULL));
-    for(unsigned int i=0;i<mp->color_rows*4;i++)
+    for(unsigned int i=0;i<mp->Data_rows*4;i++)
     {
         mp->color[i]=(rand()%100)/100.0;    
     }   
@@ -262,11 +262,11 @@ static void Viewer_Points_set_color(Viewer_Points*vp,float*c)
     {free(vp->color);
     }
     vp->color=NULL;
-    if(vp->color_rows>0)
+    if(vp->Data_rows>0)
     {
-        vp->color=(float*)malloc(sizeof(float)*4*vp->color_rows);
+        vp->color=(float*)malloc(sizeof(float)*4*vp->Data_rows);
     }
-    Viewer_set_v_one_color(vp->color,vp->color_rows,c);
+    Viewer_set_v_one_color(vp->color,vp->Data_rows,c);
 
 }
 void Viewer_Points_init(struct Viewer_Points* mp)
@@ -278,7 +278,10 @@ void Viewer_Points_init(struct Viewer_Points* mp)
     mp->evolution=NULL;
     mp->set_color=Viewer_Points_set_color;
     mp->random_color=Viewer_Points_random_color;
-    mp->Data_rows=0; mp->color_rows=0;
+    mp->Data_rows=0; 
+//应该去除这个变量
+ //   mp->color_rows=0;
+//
 	mp->mat=(Matrix4x4*)malloc(sizeof(Matrix4x4));
     Matrix4x4_init_float(mp->mat);
 	mp->pointsize=3.0;
