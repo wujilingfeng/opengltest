@@ -121,6 +121,13 @@ typedef struct Viewer_Edges
 }Viewer_Edges;
 void Viewer_Edges_init(struct Viewer_Edges*);
 void Viewer_Edges_set_color(Viewer_Edges*,float*v);
+typedef struct Viewer_Cursor_Shape{
+	char shape_name[40];
+	char image_path[70];
+	void * obj;
+	void* prop;	
+
+}Viewer_Cursor_Shape;
 
 #ifdef __cplusplus
 }

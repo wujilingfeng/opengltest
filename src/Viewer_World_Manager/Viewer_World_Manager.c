@@ -42,6 +42,8 @@ void Viewer_World_init(struct Viewer_World*m)
    
     m->registe=Viewer_World_registe;
     m->background_color[0]=0.2;m->background_color[1]=0.5;m->background_color[2]=1.0;m->background_color[3]=1.0;
+//    strcpy(m->cursor_shape,"VIEWER_ARROW_CURSOR");
+
  	m->prop=NULL;
     m->prop1=NULL;
 

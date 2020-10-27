@@ -1055,11 +1055,19 @@ void Viewer_Opengl_Interpreter_interpreter(Viewer_Opengl_Interpreter*moi)
 	
 	clock_t start,finish;
 	start=clock();
-    	
-	
+    //设置鼠标形状
+    //if(window)
+    GLFWcursor*cursor=glfwCreateStandardCursor(VIEWER_HAND_CURSOR);
+
+    glfwSetCursor(window,cursor);
+//剪切版
+    //glfwGetClipboardString(window);
+//gflwSetClipboardString(window,"some new string");
+    //glfwSetInputMode(window, GLFW_CURSOR, VIEWER_HAND_CURSOR) ;	
 	while(!glfwWindowShouldClose(window))
 	{	
-		glBindFramebuffer(GL_FRAMEBUFFER,0);
+		
+        glBindFramebuffer(GL_FRAMEBUFFER,0);
 		glClearColor(mw->background_color[0],mw->background_color[1],mw->background_color[2],mw->background_color[3]);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // also clear the depth buffer now!
         finish=clock();

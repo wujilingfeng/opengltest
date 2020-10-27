@@ -484,7 +484,7 @@ int main(int argc,char**argv)
     voisp->render=render1;
     l2=node_overlying(l2,(void*)voisp);
     test_opengl(li,l2);*/
-    //test1();
+  //  test1();
     test2();
     return 0;
 }
