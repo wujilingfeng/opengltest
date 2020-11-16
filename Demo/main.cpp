@@ -486,9 +486,9 @@ int main(int argc,char**argv)
     test_opengl(li,l2);*/
   //  test1();
 
-    _is_reverse_image_reading(1);
     ImageInfo* imi=_ReadImageFile_("lena.jpg");
 
+    _is_reverse_image_writing(1);
     //_is_reverse_image_reading(0);
     _Write_PNG_File_("mytestpng.png",imi);
     ImageInfo_free(imi);  

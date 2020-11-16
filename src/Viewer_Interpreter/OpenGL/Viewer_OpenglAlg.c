@@ -38,6 +38,11 @@ void _is_reverse_image_reading(int is_reverse)
 {
     stbi_set_flip_vertically_on_load(is_reverse);
 }
+void _is_reverse_image_writing(int is_reverse)
+{
+    stbi_flip_vertically_on_write(is_reverse); 
+    
+}
 void _Write_PNG_File_(char* filename,ImageInfo* imi)
 {
     stbi_write_png(filename,imi->width,imi->height,imi->n,imi->data,0);
