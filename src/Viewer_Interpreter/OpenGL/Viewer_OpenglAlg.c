@@ -2,7 +2,8 @@
 #include<Viewer_Interpreter/Viewer_OpenglAlg.h>
 #define STB_IMAGE_IMPLEMENTATION
 #include<Viewer_Interpreter/stb_image.h>
-
+#define STB_IMAGE_WRITE_IMPLEMENTATION
+#include<Viewer_Interpreter/stb_image_write.h>
 #define _ReadFile_ OpenglAlg_ReadFile
 GLchar* _ReadFile_ (char* filename)
 {
@@ -32,6 +33,15 @@ ImageInfo *_ReadImageFile_(char*filename)
     	stbi_set_flip_vertically_on_load(1);
     	re->data = stbi_load(filename, &(re->width), &(re->height), &(re->n), 0);
 	return re;
+}
+void _is_reverse_image_reading(int is_reverse)
+{
+    stbi_set_flip_vertically_on_load(is_reverse);
+}
+void _Write_PNG_File_(char* filename,ImageInfo* imi)
+{
+    stbi_write_png(filename,imi->width,imi->height,imi->n,imi->data,0);
+
 }
 void ImageInfo_free(ImageInfo*imi)
 {

@@ -1070,6 +1070,8 @@ void Viewer_Opengl_Interpreter_interpreter(Viewer_Opengl_Interpreter*moi)
         glBindFramebuffer(GL_FRAMEBUFFER,0);
 		glClearColor(mw->background_color[0],mw->background_color[1],mw->background_color[2],mw->background_color[3]);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // also clear the depth buffer now!
+        //glClear(GL_DEPTH_BUFFER_BIT);
+
         finish=clock();
         mw->g_info->run_time=(float)30.0*(finish-start)/CLOCKS_PER_SEC;
         	

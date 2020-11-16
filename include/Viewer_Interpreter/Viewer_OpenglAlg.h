@@ -30,6 +30,8 @@ typedef struct ImageInfo{
 
 GLchar* _ReadFile_ (char* filename);
 ImageInfo *_ReadImageFile_(char*);
+void _Write_PNG_File_(char* filename,ImageInfo* imi);
+void _is_reverse_image_reading(int is_reverse);
 void ImageInfo_free(ImageInfo*);
 void _Shader_(ShaderInfo* shaders);
 

@@ -485,6 +485,13 @@ int main(int argc,char**argv)
     l2=node_overlying(l2,(void*)voisp);
     test_opengl(li,l2);*/
   //  test1();
+
+    _is_reverse_image_reading(1);
+    ImageInfo* imi=_ReadImageFile_("lena.jpg");
+
+    //_is_reverse_image_reading(0);
+    _Write_PNG_File_("mytestpng.png",imi);
+    ImageInfo_free(imi);  
     test2();
     return 0;
 }
