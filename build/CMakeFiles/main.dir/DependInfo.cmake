@@ -14,7 +14,8 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
   "../include"
   "../thirdpart/glad/include"
   "../thirdpart/cstructures/include"
-  "../thirdpart/freetype-2.10.0/include"
+  "../thirdpart/freetype/include"
+  "../thirdpart/glfw/include"
   )
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/libo/Documents/c++/Viewer1.0/Demo/main.cpp" "/home/libo/Documents/c++/Viewer1.0/build/CMakeFiles/main.dir/Demo/main.cpp.o"
@@ -26,7 +27,8 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../include"
   "../thirdpart/glad/include"
   "../thirdpart/cstructures/include"
-  "../thirdpart/freetype-2.10.0/include"
+  "../thirdpart/freetype/include"
+  "../thirdpart/glfw/include"
   )
 
 # Targets to which this target links.

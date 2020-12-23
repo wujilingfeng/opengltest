@@ -23,7 +23,10 @@ CMakeFiles/main.dir/Demo/main.cpp.o
  ../include/config.h
  ../thirdpart/cstructures/include/tools_node.h
  ../thirdpart/cstructures/include/tools_rbtree.h
+ ../thirdpart/freetype/include/freetype/config/ftheader.h
+ ../thirdpart/freetype/include/ft2build.h
  ../thirdpart/glad/include/KHR/khrplatform.h
  ../thirdpart/glad/include/glad/glad.h
+ ../thirdpart/glfw/include/GLFW/glfw3.h
  /home/libo/Documents/c++/Viewer1.0/Demo/include/Arcroll.h
  /home/libo/Documents/c++/Viewer1.0/Demo/main.cpp

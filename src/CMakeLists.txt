@@ -19,5 +19,5 @@ FILE(WRITE Find${myfindlib}.cmake "set(CMAKE_PREFIX_PATH \${CMAKE_PREFIX_PATH} \
 
 install(FILES Find${myfindlib}.cmake DESTINATION ${CMAKE_ROOT}/Modules)
 
-include_directories(${PROJECT_SOURCE_DIR}/include ${PROJECT_SOURCE_DIR}/thirdpart/glad/include ${PROJECT_SOURCE_DIR}/thirdpart/cstructures/include)
+include_directories(${PROJECT_SOURCE_DIR}/include ${PROJECT_SOURCE_DIR}/thirdpart/glad/include ${PROJECT_SOURCE_DIR}/thirdpart/cstructures/include ${PROJECT_SOURCE_DIR}/thirdpart/freetype/include ${PROJECT_SOURCE_DIR}/thirdpart/glfw/include)
 add_library(${mylib} STATIC ${MYSRC})

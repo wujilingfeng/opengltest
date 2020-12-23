@@ -2,16 +2,17 @@
 #define Viewer_oisp Viewer_Opengl_Interpreter_Shader_Program
 #define Matrix4x4 Viewer_Matrix4x4_
 
+RB_Tree_func(char)
 static struct Viewer_oisp* Viewer_create_shader_program(Viewer_Opengl_Interpreter* voi,char*s1,char*s2,void(*load_data)(struct Viewer_oisp*),void(*render)(struct Viewer_oisp*))
 {
 	Viewer_oisp* voisp=(Viewer_oisp*)malloc(sizeof(Viewer_oisp));
 	
 	Viewer_Opengl_Interpreter_Shader_Program_init(voisp);
-	char* p_v=(char*)malloc(sizeof(char)*60);
-    	memset(p_v,0,sizeof(char)*60);
+	char* p_v=(char*)malloc(sizeof(char)*120);
+    	memset(p_v,0,sizeof(char)*120);
     	strcat(p_v,s1);
-   	char* p_f=(char*)malloc(sizeof(char)*60);
-    	memset(p_f,0,sizeof(char)*60);
+   	char* p_f=(char*)malloc(sizeof(char)*120);
+    	memset(p_f,0,sizeof(char)*120);
     	strcat(p_f,s2);
     	voisp->shaders[0].type=GL_VERTEX_SHADER;
     	voisp->shaders[0].filename=p_v;
@@ -76,7 +77,7 @@ static void Viewer_default_init_uniform(Viewer_oisp*voisp)
     a[0]=(GLfloat)(g_info->resolution[0]);
     a[1]=(GLfloat)(g_info->resolution[1]);
     glUniform2fv(glGetUniformLocation(program,"iResolution"),1,a);
-//把像素着色器的纹理绑定纹理单元GL_TEXURE0（也就是纹理位置）
+
     glUniform1i(glGetUniformLocation(program,"Faces_Vertices"),0);
     glUniform1i(glGetUniformLocation(program,"Faces_Index"),1);
     glUniform1i(glGetUniformLocation(program,"ourTexture"),3);
@@ -235,10 +236,7 @@ GLuint* test_add_array_to_shader(Viewer_oisp* voisp)
     }
     image.data=(void*)vertices;
     image1.data=(void*)index;
-    	
-	
-	//moi->faces_len=len_index;
-	//moi->faces_vertices_len=len_rows;
+
     GLuint program=voisp->program;
     glUseProgram(program);
     glUniform1f(glGetUniformLocation(program,"Faces_len"),(float)(len_index));
@@ -254,8 +252,78 @@ GLuint* test_add_array_to_shader(Viewer_oisp* voisp)
     free_node(names_id);
     return textures;
 }
+static void Viewer_Opengl_Interpreter_create_cursor_shape(Viewer_Cursor_Shape* vcs)
+{
+    if(vcs->obj!=NULL)
+    { 
+        return;
+    } 
+
+    if(strcmp(vcs->shape_name,"ibeam")==0)
+    {
+        vcs->obj=glfwCreateStandardCursor(VIEWER_IBEAM_CURSOR);
+
+    }
+    else if(strcmp(vcs->shape_name,"her")==0)
+    {
+        vcs->obj=glfwCreateStandardCursor(VIEWER_HRESIZE_CURSOR);
+
+    }
+    else if(strcmp(vcs->shape_name,"ver")==0)
+    {
+        vcs->obj=glfwCreateStandardCursor(VIEWER_VRESIZE_CURSOR); 
+    }
+    else if(strcmp(vcs->shape_name,"hand")==0)
+    {
+        vcs->obj=glfwCreateStandardCursor(VIEWER_HAND_CURSOR);
+    }
+    else{
+
+    }
+
+}
+static void Viewer_Opengl_Interpreter_set_cursor(Viewer_World* vw)
+{
+    //printf("mydsfdfsdfsd\n");
+    GLFWwindow* window=(GLFWwindow*)(vw->g_info->window);
+
+   // glfwSetCursor(window,NULL); 
+    char cursor_shape[]="Cursor_Shape";
+    Node* names_id=vw->find_species(vw,cursor_shape);
+    RB_int rbt,*rbt1=NULL;
+    rbt.key=*((int*)(names_id->value));
+    rbt1=(RB_int*)vw->species2somethings->find(vw->species2somethings,&rbt);
+    RB_Tree* tree=NULL;
+    RB_Trav*iter1=NULL;
+    if(rbt1!=NULL)
+    {
+        tree=(RB_Tree*)(rbt1->value);
+        iter1=tree->begin(tree);
+        for(;iter1->it!=NULL;iter1->next(iter1))
+        {
+            Viewer_Something *vs=(Viewer_Something*)(iter1->second(iter1));
+            Viewer_Cursor_Shape *vcs=(Viewer_Cursor_Shape*)(vs->evolution);
+            if(vcs->is_using==1)
+            {
+                Viewer_Opengl_Interpreter_create_cursor_shape(vcs);
+                glfwSetCursor(window,(GLFWcursor*)(vcs->obj));
+                break;
+            } 
+
+        }
+
+    }
+    free_node_value(names_id);
+    free_node(names_id);
+
+}
 static void Viewer_default_render(Viewer_oisp* voisp)
 {
+    Viewer_World* mw=voisp->voi->world;
+    Interactor_GlobalInfo*g_info=mw->g_info;
+
+
+    Viewer_Opengl_Interpreter_set_cursor(mw);
     Viewer_default_set_uniform(voisp);
     glEnable(GL_DEPTH_TEST);
 	glEnable(GL_BLEND);
@@ -268,9 +336,6 @@ static void Viewer_default_render(Viewer_oisp* voisp)
  //   glClearBufferfv(GL_COLOR,0,black);
    
 //	glClear(GL_DEPTH_BUFFER_BIT);
-    Viewer_World* mw=voisp->voi->world;
-    Interactor_GlobalInfo*g_info=mw->g_info;
-
     glViewport(0.0,0.0,g_info->resolution[0],g_info->resolution[1]);
     char points[]="Points";
     Node* names_id=mw->find_species(mw,points);
@@ -299,7 +364,6 @@ static void Viewer_default_render(Viewer_oisp* voisp)
                  glViewport(0.0,0.0,g_info->resolution[0],g_info->resolution[1]); 
 
             }
-	
 
             //printf("lyou\n");
             glPointSize(mp->pointsize);
@@ -420,7 +484,6 @@ static void Viewer_default_render(Viewer_oisp* voisp)
     free_node(names_id);
 
 }
-
 
 static void Viewer_default_load_data(Viewer_oisp* voisp)
 {
@@ -598,7 +661,6 @@ static void Viewer_default_load_data(Viewer_oisp* voisp)
             } 
             if(me->color_rows==me->Data_index_rows)
             {
-                //printf("here\n");
                 for(unsigned int i=0;i<me->Data_index_rows;i++)
                 {
                     for(int j=0;j<4;j++)
@@ -607,7 +669,6 @@ static void Viewer_default_load_data(Viewer_oisp* voisp)
                         colors[(i*2+1)*4+j]=me->color[i*4+j];
                     }   
                 }
-              ///  printf("rere\n");
 
             }
             else if(me->color_rows==me->Data_rows)
@@ -966,6 +1027,283 @@ static void Viewer_Interpreter_update_data(Viewer_Opengl_Interpreter* voi)
         voisp->load_data(voisp);
     }
 }
+typedef struct UI_Character {
+    unsigned int texid;  
+    float sizes[2];       
+    float bearing[2];    
+    unsigned int advance;   
+}UI_Character;
+
+static void load_data2(Viewer_Opengl_Interpreter_Shader_Program *voisp)
+{
+    if(voisp->program==0)
+    { 
+        _Shader_(voisp->shaders);
+        voisp->program=_Program_(voisp->shaders); 
+    }
+
+    if(voisp->voi->world==NULL)
+    {
+       return ; 
+    }
+    Viewer_World* vw=voisp->voi->world;
+
+    glPixelStorei(GL_UNPACK_ALIGNMENT, 1); 
+    char texts[]="Texts";
+
+    Node* names_id=vw->find_species(vw,texts);
+    RB_int rbt,*rbt1=NULL;
+    rbt.key=*((int*)(names_id->value));
+    rbt1=(RB_int*)vw->species2somethings->find(vw->species2somethings,&rbt);
+    RB_Tree* tree=NULL;
+    RB_Trav*iter1=NULL;
+    if(rbt1!=NULL)
+    {
+        tree=(RB_Tree*)(rbt1->value);       
+        iter1=tree->begin(tree);
+        Node* temp_n=NULL;
+        for(;iter1->it!=NULL;iter1->next(iter1))
+        {
+            temp_n=node_overlying(temp_n,iter1->second(iter1));
+        }
+        for(Node* nit=temp_n;nit!=NULL;nit=(Node*)(nit->Next))
+        {
+            Viewer_Something* vs=(Viewer_Something*)(nit->value);
+            Viewer_Texts* vtext=(Viewer_Texts*)(vs->evolution);
+
+            int flag=0;
+            for(Node* nnit=(Node*)(nit->Prev);nnit!=NULL;nnit=(Node*)(nnit->Prev))
+            {
+                Viewer_Something* vs1=(Viewer_Something*)(nnit->value);
+                Viewer_Texts* vtext1=(Viewer_Texts*)(vs1->evolution);
+                if(vtext1->font_path==vtext->font_path||strcmp(vtext1->font_path,vtext->font_path)==0)
+                {   
+                    flag=1;
+                    vtext->prop=vtext1->prop;
+                } 
+            }
+            if(flag==0)
+            {
+
+                RB_Tree*characters=NULL;
+                FT_Library ft;
+                if(FT_Init_FreeType(&ft))
+                {
+                    printf("cuowu ft library init\n");
+                }
+                FT_Face face;
+                if(vtext->font_path==NULL)
+                {
+                    char font_path[100]={0};
+                    strcpy(font_path,MESH_VIEWER_PATH);
+                    if(FT_New_Face(ft,strcat(font_path,"/FreeMonoBold.otf"),0,&face))
+                    {
+                        printf("cuwou ft_new_face failed\n");
+                    }
+                } 
+                else
+                {
+                    if(FT_New_Face(ft,vtext->font_path,0,&face))
+                    {
+                        printf("cuwou ft_new_face failed\n");
+                    }
+                }
+                FT_Set_Pixel_Sizes(face,0,48);
+            
+                characters=(RB_Tree*)malloc(sizeof(RB_Tree));
+                RB_Tree_init_char(characters); 
+                
+                for(unsigned char c=0;c<128;c++)
+                {
+                    if(FT_Load_Char(face,c,FT_LOAD_RENDER))
+                    {
+                        printf("erroe: failed to load glyph\n"); 
+                        continue;
+                    }
+                    GLuint texture;
+                    glGenTextures(1,&texture);
+                    glBindTexture(GL_TEXTURE_2D,texture);
+                    glTexImage2D(GL_TEXTURE_2D,0,GL_RED,face->glyph->bitmap.width,face->glyph->bitmap.rows,0,GL_RED,GL_UNSIGNED_BYTE,face->glyph->bitmap.buffer);
+                    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+                    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+                    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+                    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR); 
+                    UI_Character* character=(UI_Character*)malloc(sizeof(UI_Character));
+                    character->texid=texture;
+                    character->sizes[0]=(float)(face->glyph->bitmap.width);character->sizes[1]=(float)(face->glyph->bitmap.rows);
+                    character->bearing[0]=(float)(face->glyph->bitmap_left);character->bearing[1]=(float)face->glyph->bitmap_top;
+                    character->advance=(unsigned int)(face->glyph->advance.x);
+                    rbt.key=c;rbt.value=character;
+                    characters->insert(characters,&rbt);
+               // printf("%lf %lf\n",character->sizes[0],character->sizes[1] );
+            //    printf("%d\n",character->texid );
+                }
+
+                vtext->prop=characters;
+            //printf("characters size:%d\n",characters->size );
+
+                FT_Done_Face(face);
+                FT_Done_FreeType(ft);
+
+            }
+            
+
+            glGenVertexArrays(1,&(vtext->VAO));
+            glGenBuffers(3,vtext->VBO);
+            glBindVertexArray(vtext->VAO);
+            glBindBuffer(GL_ARRAY_BUFFER,vtext->VBO[0]);
+            glBufferData(GL_ARRAY_BUFFER,sizeof(float)*6*3,NULL,GL_DYNAMIC_DRAW);
+            glEnableVertexAttribArray(0);
+            glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,3*sizeof(float),0);
+
+            glBindBuffer(GL_ARRAY_BUFFER,vtext->VBO[1]);
+            glBufferData(GL_ARRAY_BUFFER,sizeof(float)*6*4,NULL,GL_DYNAMIC_DRAW);
+            //glBufferData(GL_ARRAY_BUFFER,sizeof(float))
+            glEnableVertexAttribArray(1);
+            glVertexAttribPointer(1,4,GL_FLOAT,GL_FALSE,4*sizeof(float),0);
+
+
+            glBindBuffer(GL_ARRAY_BUFFER,vtext->VBO[2]);
+            glBufferData(GL_ARRAY_BUFFER,sizeof(float)*6*2,NULL,GL_DYNAMIC_DRAW);
+            glEnableVertexAttribArray(2);
+            glVertexAttribPointer(2,2,GL_FLOAT,GL_FALSE,2*sizeof(float),0);
+            glBindBuffer(GL_ARRAY_BUFFER,0);
+            glBindVertexArray(0);
+        }
+        free_node(temp_n);
+
+    }
+
+
+    free_node_value(names_id);
+    free_node(names_id);
+     
+}
+
+
+static void render2(Viewer_Opengl_Interpreter_Shader_Program*voisp)
+{
+    glUseProgram(voisp->program);
+    glActiveTexture(GL_TEXTURE0);
+    if(voisp->voi->world==NULL)
+    {
+       return ; 
+    }
+    Viewer_World* vw=voisp->voi->world;
+
+
+    glActiveTexture(GL_TEXTURE0);
+    glUniform1f(glGetUniformLocation(voisp->program,"is_text"),1);
+    glUniform1i(glGetUniformLocation(voisp->program,"outTexture"),0);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); 
+    glPixelStorei(GL_UNPACK_ALIGNMENT, 1); 
+    char texts[]="Texts";
+
+    Node* names_id=vw->find_species(vw,texts);
+    RB_int rbt,*rbt1=NULL;
+    rbt.key=*((int*)(names_id->value));
+    rbt1=(RB_int*)vw->species2somethings->find(vw->species2somethings,&rbt);
+    RB_Tree* tree=NULL;
+    RB_Trav*iter1=NULL;
+    if(rbt1!=NULL)
+    {
+        tree=(RB_Tree*)(rbt1->value);       
+        iter1=tree->begin(tree);
+        Node* temp_n=NULL;
+        for(;iter1->it!=NULL;iter1->next(iter1))
+        {
+            temp_n=node_overlying(temp_n,iter1->second(iter1));
+        }
+        for(Node* nit=temp_n;nit!=NULL;nit=(Node*)(nit->Next))
+        {
+            Viewer_Something* vs=(Viewer_Something*)(nit->value);
+            if(vs->disappear==1)
+            {
+                continue;
+            }
+            Viewer_Texts* vtext=(Viewer_Texts*)(vs->evolution);
+            glUniformMatrix4fv(glGetUniformLocation(voisp->program,"Object_Matrix"),1,GL_TRUE,vtext->mat->data);
+            int len=strlen(vtext->str);
+            RB_Tree* characters=(RB_Tree*)(vtext->prop);
+            RB_char* rbt2=NULL;
+            UI_Character* ch;
+            float x=vtext->xy[0],y=vtext->xy[1],scale=vtext->scale;
+            //printf("%d\n",len );
+            for(int i=0;i<len;i++)
+            {
+                rbt.key=vtext->str[i];
+                rbt2=(RB_char*)characters->find(characters,&rbt);
+                ch=(UI_Character*)(rbt2->value);
+            
+                float xpos=x+ch->bearing[0]*scale;
+                float ypos=y-(ch->sizes[1]-ch->bearing[1])*scale;
+                float w=ch->sizes[0]*scale;
+                float h=ch->sizes[1]*scale;
+                float vertices[6][3]={
+                    {xpos,ypos+h,-1},
+                    {xpos,ypos,-1},
+                    {xpos+w,ypos,-1},
+
+
+                    {xpos,ypos+h,-1},
+                    {xpos+w,ypos,-1},
+                    {xpos+w,ypos+h,-1}
+
+                };
+                float texs[6][2]={
+                    {0.0f,0.0f},
+                    {0.0f,1.0f},
+                    {1.0f,1.0f},
+
+
+                    {0.0f,0.0f},
+                    {1.0f,1.0f},
+                    {1.0f,0.0f}
+                };
+                float colors[6][4]={
+                    {vtext->colors[0*4+0],vtext->colors[0*4+1],vtext->colors[0*4+2],vtext->colors[0*4+3]},
+                    {vtext->colors[1*4+0],vtext->colors[1*4+1],vtext->colors[1*4+2],vtext->colors[1*4+3]},
+                    {vtext->colors[2*4+0],vtext->colors[2*4+1],vtext->colors[2*4+2],vtext->colors[2*4+3]},
+
+                    {vtext->colors[0*4+0],vtext->colors[0*4+1],vtext->colors[0*4+2],vtext->colors[0*4+3]},
+                    {vtext->colors[2*4+0],vtext->colors[2*4+1],vtext->colors[2*4+2],vtext->colors[2*4+3]},
+                    {vtext->colors[3*4+0],vtext->colors[3*4+1],vtext->colors[3*4+2],vtext->colors[3*4+3]}
+                };
+                
+                //printf("%lf %lf \n",w,h );
+                glBindVertexArray(vtext->VAO);
+                glBindTexture(GL_TEXTURE_2D,ch->texid);
+                glBindBuffer(GL_ARRAY_BUFFER,vtext->VBO[0]);
+                glBufferSubData(GL_ARRAY_BUFFER,0,sizeof(vertices),vertices);
+                glBindBuffer(GL_ARRAY_BUFFER,vtext->VBO[1]);
+                glBufferSubData(GL_ARRAY_BUFFER,0,sizeof(colors),colors);
+
+                glBindBuffer(GL_ARRAY_BUFFER,vtext->VBO[2]);
+                glBufferSubData(GL_ARRAY_BUFFER,0,sizeof(texs),texs);
+                glBindBuffer(GL_ARRAY_BUFFER,0);
+                glDrawArrays(GL_TRIANGLES,0,6);
+                x+=(ch->advance>>6)*scale;
+                    
+            }
+            glBindVertexArray(0);
+
+
+        }
+
+        free_node(temp_n);
+
+    }
+
+
+    free_node_value(names_id);
+    free_node(names_id);
+    glBindTexture(GL_TEXTURE_2D,0);
+
+
+
+
+}
 void Viewer_Opengl_Interpreter_init(Viewer_Opengl_Interpreter*moi)
 {
 
@@ -987,13 +1325,19 @@ void Viewer_Opengl_Interpreter_init(Viewer_Opengl_Interpreter*moi)
       moi->update_data=Viewer_Interpreter_update_data;
     moi->user_shader_program=NULL;
 	moi->create_shader_program=Viewer_create_shader_program;
-    char* p_v=(char*)malloc(sizeof(char)*60);
-    memset(p_v,0,sizeof(char)*60);
+    char* p_v=(char*)malloc(sizeof(char)*120);
+    memset(p_v,0,sizeof(char)*120);
     strcat(strcat(p_v,MESH_VIEWER_PATH),"/mesh.vert");
-    char* p_f=(char*)malloc(sizeof(char)*60);
-    memset(p_f,0,sizeof(char)*60);
+    char* p_f=(char*)malloc(sizeof(char)*120);
+    memset(p_f,0,sizeof(char)*120);
     strcat(strcat(p_f,MESH_VIEWER_PATH),"/mesh.frag");
     moi->create_shader_program(moi,p_v,p_f,Viewer_default_load_data,Viewer_default_render);
+    memset(p_v,0,sizeof(char)*120);
+    strcat(strcat(p_v,MESH_VIEWER_PATH),"/ui.vert");
+    memset(p_f,0,sizeof(char)*120);
+    strcat(strcat(p_f,MESH_VIEWER_PATH),"/ui.frag");
+    moi->create_shader_program(moi,p_v,p_f,load_data2,render2);
+
     free(p_v);free(p_f);
     moi->prop=NULL;
 	
@@ -1016,11 +1360,13 @@ void Viewer_Opengl_Interpreter_interpreter(Viewer_Opengl_Interpreter*moi)
  	Viewer_World* mw=moi->world;
 	 glfwInit();
 	
-   //实践证明还是不指定版本号比较好
+ 
    // glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR,4);
     //glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR,5);
     //glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     GLFWwindow* window=glfwCreateWindow(800,600,"Viewer1.0",NULL,NULL);
+    GLFWwindow* window1=glfwCreateWindow(800,600,"Windows1",NULL,NULL);
+
 #ifdef __APPLE__
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT,GL_TRUE);
 #endif
@@ -1043,11 +1389,17 @@ void Viewer_Opengl_Interpreter_interpreter(Viewer_Opengl_Interpreter*moi)
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+    // glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+    //printf("node size user shader:%d\n",node_size(moi->user_shader_program));
     for(Node* it=moi->user_shader_program;it!=NULL;it=(Node*)(it->Next))
 	{
 		
 		Viewer_Opengl_Interpreter_Shader_Program* voisp=(Viewer_Opengl_Interpreter_Shader_Program*)(it->value);
-		voisp->load_data(voisp);
+		if(voisp->load_data!=NULL)
+        {
+            voisp->load_data(voisp);
+        }
 	}
     glfwSetWindowUserPointer(window,(void*)mw);
     mw->g_info->window=(void*)window; 
@@ -1055,18 +1407,24 @@ void Viewer_Opengl_Interpreter_interpreter(Viewer_Opengl_Interpreter*moi)
 	
 	clock_t start,finish;
 	start=clock();
-    //设置鼠标形状
+    //set cursor shape
     //if(window)
-    GLFWcursor*cursor=glfwCreateStandardCursor(VIEWER_HAND_CURSOR);
-
-    glfwSetCursor(window,cursor);
-//剪切版
+    //GLFWcursor*cursor=glfwCreateStandardCursor(VIEWER_HAND_CURSOR);
+    //GLFWcursor*cursor=glfwCreateStandardCursor(VIEWER_HRESIZE_CURSOR);
+   // GLFWcursor*cursor=glfwCreateStandardCursor(VIEWER_VRESIZE_CURSOR);
+    //GLFWcursor*cursor=glfwCreateStandardCursor(VIEWER_IBEAM_CURSOR);
+    //GLFWcursor*cursor=glfwCreateStandardCursor(VIEWER_CROSSHAIR_CURSOR);
+   // GLFWcursor*cursor=glfwCreateStandardCursor(VIEWER_ARROW_CURSOR);
+    //glfwSetCursor(window,cursor);
+//clipboard
     //glfwGetClipboardString(window);
 //gflwSetClipboardString(window,"some new string");
     //glfwSetInputMode(window, GLFW_CURSOR, VIEWER_HAND_CURSOR) ;	
+
+   // Viewer_Opengl_Interpreter_test_text();
 	while(!glfwWindowShouldClose(window))
 	{	
-		
+	   glfwMakeContextCurrent(window);	
         glBindFramebuffer(GL_FRAMEBUFFER,0);
 		glClearColor(mw->background_color[0],mw->background_color[1],mw->background_color[2],mw->background_color[3]);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // also clear the depth buffer now!
@@ -1074,17 +1432,36 @@ void Viewer_Opengl_Interpreter_interpreter(Viewer_Opengl_Interpreter*moi)
 
         finish=clock();
         mw->g_info->run_time=(float)30.0*(finish-start)/CLOCKS_PER_SEC;
-        	
+        
+
 		for(Node* it=moi->user_shader_program;it!=NULL;it=(Node*)(it->Next))
 		{
 		
 			Viewer_Opengl_Interpreter_Shader_Program* voisp=(Viewer_Opengl_Interpreter_Shader_Program*)(it->value);
-			voisp->render(voisp);
+			if(voisp->render!=NULL)
+            {
+                voisp->render(voisp);
+            }
 		}
         	//set_uniform(moi);
         	//display_setting();
         	//draw_elements(moi);  
         glfwSwapBuffers(window);
+        if(window1!=NULL)
+        {
+            if(!glfwWindowShouldClose(window1))
+            {
+                glfwMakeContextCurrent(window1);
+
+                glClear(GL_COLOR_BUFFER_BIT);
+                glfwSwapBuffers(window1);
+            } 
+            else
+            {
+                glfwDestroyWindow(window1);
+                window1=NULL;
+            }
+        }
         glfwPollEvents();
 		
 	}

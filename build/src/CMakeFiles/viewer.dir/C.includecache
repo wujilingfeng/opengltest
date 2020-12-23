@@ -25,6 +25,8 @@ stdlib.h
 -
 
 ../include/Viewer_Interpreter/Viewer_OpenGL_Interpreter.h
+ft2build.h
+-
 glfw_callback.h
 ../include/Viewer_Interpreter/glfw_callback.h
 config.h
@@ -82,6 +84,12 @@ stdlib.h
 string.h
 -
 
+../thirdpart/freetype/include/freetype/config/ftheader.h
+
+../thirdpart/freetype/include/ft2build.h
+freetype/config/ftheader.h
+-
+
 ../thirdpart/glad/include/KHR/khrplatform.h
 stdint.h
 -
@@ -94,13 +102,51 @@ stdint.h
 KHR/khrplatform.h
 -
 
-/home/libo/Documents/c++/Viewer1.0/src/Viewer_Interpreter/Viewer_OpenGL_Interpreter.c
-Viewer_Interpreter/Viewer_OpenGL_Interpreter.h
+../thirdpart/glfw/include/GLFW/glfw3.h
+stddef.h
+-
+stdint.h
+-
+vulkan/vulkan.h
+-
+GLES/gl.h
+-
+GLES/glext.h
+-
+GLES2/gl2.h
+-
+GLES2/gl2ext.h
+-
+GLES3/gl3.h
+-
+GLES2/gl2ext.h
+-
+GLES3/gl31.h
+-
+GLES2/gl2ext.h
+-
+GLES3/gl32.h
+-
+GLES2/gl2ext.h
+-
+OpenGL/gl3.h
+-
+OpenGL/gl3ext.h
+-
+GL/glcorearb.h
+-
+OpenGL/gl.h
+-
+OpenGL/glu.h
+-
+GL/gl.h
+-
+GL/glext.h
+-
+GL/glu.h
 -
 
-/home/libo/Documents/c++/Viewer1.0/src/Viewer_World_Manager/Viewer_Base_Species.c
-Viewer_World_Manager/Viewer_Base_Species.h
--
-time.h
+/home/libo/Documents/c++/Viewer1.0/src/Viewer_Interpreter/Viewer_OpenGL_Interpreter.c
+Viewer_Interpreter/Viewer_OpenGL_Interpreter.h
 -
 

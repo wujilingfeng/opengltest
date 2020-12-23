@@ -46,6 +46,22 @@ intrin.h
 arm_neon.h
 -
 
+../include/Viewer_Interpreter/stb_image_write.h
+stdlib.h
+-
+stdio.h
+-
+stdarg.h
+-
+stdlib.h
+-
+string.h
+-
+math.h
+-
+assert.h
+-
+
 ../thirdpart/glad/include/KHR/khrplatform.h
 stdint.h
 -
@@ -62,5 +78,7 @@ KHR/khrplatform.h
 Viewer_Interpreter/Viewer_OpenglAlg.h
 -
 Viewer_Interpreter/stb_image.h
+-
+Viewer_Interpreter/stb_image_write.h
 -
 

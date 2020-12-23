@@ -22,8 +22,11 @@ CMakeFiles/main.dir/Demo/main.cpp.o: ../include/Viewer_World_Manager/Viewer_Worl
 CMakeFiles/main.dir/Demo/main.cpp.o: ../include/config.h
 CMakeFiles/main.dir/Demo/main.cpp.o: ../thirdpart/cstructures/include/tools_node.h
 CMakeFiles/main.dir/Demo/main.cpp.o: ../thirdpart/cstructures/include/tools_rbtree.h
+CMakeFiles/main.dir/Demo/main.cpp.o: ../thirdpart/freetype/include/freetype/config/ftheader.h
+CMakeFiles/main.dir/Demo/main.cpp.o: ../thirdpart/freetype/include/ft2build.h
 CMakeFiles/main.dir/Demo/main.cpp.o: ../thirdpart/glad/include/KHR/khrplatform.h
 CMakeFiles/main.dir/Demo/main.cpp.o: ../thirdpart/glad/include/glad/glad.h
+CMakeFiles/main.dir/Demo/main.cpp.o: ../thirdpart/glfw/include/GLFW/glfw3.h
 CMakeFiles/main.dir/Demo/main.cpp.o: ../Demo/include/Arcroll.h
 CMakeFiles/main.dir/Demo/main.cpp.o: ../Demo/main.cpp
 

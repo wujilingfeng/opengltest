@@ -11,6 +11,7 @@ src/CMakeFiles/viewer.dir/Math/Viewer_Matrix4x4.c.o
 src/CMakeFiles/viewer.dir/Viewer_Interpreter/OpenGL/Viewer_OpenglAlg.c.o
  ../include/Viewer_Interpreter/Viewer_OpenglAlg.h
  ../include/Viewer_Interpreter/stb_image.h
+ ../include/Viewer_Interpreter/stb_image_write.h
  ../thirdpart/glad/include/KHR/khrplatform.h
  ../thirdpart/glad/include/glad/glad.h
  /home/libo/Documents/c++/Viewer1.0/src/Viewer_Interpreter/OpenGL/Viewer_OpenglAlg.c
@@ -26,8 +27,11 @@ src/CMakeFiles/viewer.dir/Viewer_Interpreter/Viewer_OpenGL_Interpreter.c.o
  ../include/config.h
  ../thirdpart/cstructures/include/tools_node.h
  ../thirdpart/cstructures/include/tools_rbtree.h
+ ../thirdpart/freetype/include/freetype/config/ftheader.h
+ ../thirdpart/freetype/include/ft2build.h
  ../thirdpart/glad/include/KHR/khrplatform.h
  ../thirdpart/glad/include/glad/glad.h
+ ../thirdpart/glfw/include/GLFW/glfw3.h
  /home/libo/Documents/c++/Viewer1.0/src/Viewer_Interpreter/Viewer_OpenGL_Interpreter.c
 src/CMakeFiles/viewer.dir/Viewer_Interpreter/glfw_callback.c.o
  ../include/Math/LB_Math.h
@@ -41,6 +45,7 @@ src/CMakeFiles/viewer.dir/Viewer_Interpreter/glfw_callback.c.o
  ../thirdpart/cstructures/include/tools_rbtree.h
  ../thirdpart/glad/include/KHR/khrplatform.h
  ../thirdpart/glad/include/glad/glad.h
+ ../thirdpart/glfw/include/GLFW/glfw3.h
  /home/libo/Documents/c++/Viewer1.0/src/Viewer_Interpreter/glfw_callback.c
 src/CMakeFiles/viewer.dir/Viewer_World_Manager/Interactor_GlobalInfo.c.o
  ../include/Viewer_World_Manager/Interactor_GlobalInfo.h

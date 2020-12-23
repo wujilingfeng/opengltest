@@ -1,11 +1,15 @@
 #ifndef VIEWER_OPENGL_INTERPRETER_H
 #define VIEWER_OPENGL_INTERPRETER_H
+#include<ft2build.h>
+#include FT_FREETYPE_H
 #include "glfw_callback.h"
 #include <config.h>
 #ifdef __cplusplus
 extern "C"
 {
 #endif
+
+RB_Tree_func_declare(char)
 #define Viewer_oisp Viewer_Opengl_Interpreter_Shader_Program
 
 typedef struct Viewer_Opengl_Interpreter
@@ -37,6 +41,8 @@ typedef struct Viewer_Opengl_Interpreter_Shader_Program
 }Viewer_Opengl_Interpreter_Shader_Program;
 void Viewer_Opengl_Interpreter_Shader_Program_init(Viewer_Opengl_Interpreter_Shader_Program*);
 GLuint* test_add_array_to_shader(Viewer_oisp* voisp);
+
+
 
 #undef Viewer_oisp
 #ifdef __cplusplus

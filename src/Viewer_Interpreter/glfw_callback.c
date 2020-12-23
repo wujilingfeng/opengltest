@@ -23,7 +23,7 @@ void update_intera_information(GLFWwindow*window,Interactor_GlobalInfo*g_info)
 }
 void viewer_cursor_position_callback(GLFWwindow* window,double x,double y)
 {
-    //获取的mousecoord是左上角为原点
+    //
     Viewer_World* mw=(Viewer_World*)(glfwGetWindowUserPointer(window));
     Interactor_GlobalInfo* g_info=mw->g_info;
     g_info->mouse_coord[0]=(float)x;
@@ -67,7 +67,7 @@ static void viewer_decode_pickupinfo(Viewer_World* mw,Interactor_GlobalInfo* g_i
     {
         g_info->pick_something=NULL;
         int background_color[4]={(int)round(mw->background_color[0]*255),(int)round(mw->background_color[1]*255),(int)round(mw->background_color[2]*255),(int)round(mw->background_color[3]*255)};
-        //判断是否是背景颜色
+        //is background color
         if(g_info->readpixelcolor[0]==background_color[0]&&g_info->readpixelcolor[1]==background_color[1]&&g_info->readpixelcolor[2]==background_color[2]&&g_info->readpixelcolor[3]==background_color[3])
         {
             printf("shi background:pick nothing\n");
@@ -154,7 +154,7 @@ static void viewer_decode_pickupinfo(Viewer_World* mw,Interactor_GlobalInfo* g_i
                 temp_sum=((Viewer_Faces*)(vs->evolution))->Data_index_rows;
                 if(id-sum<temp_sum)
                 {
-                    //拾取对多边形也有效，但未测试
+                  
                     g_info->pick_something=(void*)(vs);
 	                vs->marked_element=id-sum;
                     int readpixelcolor[3]={g_info->readpixelcolor[8*4+0],g_info->readpixelcolor[8*4+1],g_info->readpixelcolor[8*4+2]};

@@ -18,9 +18,9 @@ GLchar* _ReadFile_ (char* filename)
   	printf("can't open this file\r\n");
   	return NULL;
   }
-    fseek(infile,0,SEEK_END);//定位到离文末0字节处
-    int len=ftell(infile);//当前处离文首多少字节
-    fseek(infile,0,SEEK_SET);//定位到文首
+    fseek(infile,0,SEEK_END);
+    int len=ftell(infile);
+    fseek(infile,0,SEEK_SET);
     GLchar* source=(char*)malloc(len+3);
     fread(source,1,len,infile);
     fclose(infile);
@@ -42,6 +42,10 @@ void _is_reverse_image_writing(int is_reverse)
 {
     stbi_flip_vertically_on_write(is_reverse); 
     
+}
+void _Write_BMP_File_(char* filename,ImageInfo* imi)
+{
+    stbi_write_bmp(filename,imi->width,imi->height,imi->n,imi->data);  
 }
 void _Write_PNG_File_(char* filename,ImageInfo* imi)
 {
@@ -121,8 +125,8 @@ GLuint _Program_ (ShaderInfo* shaderinfos)
     {
 #ifdef _DEBUG
 
-        GLint infoLen;
-        glGetProgrmiv(program,GL_INFO_LOG_LENGTH,&infolen)
+        GLint infolen;
+        glGetProramiv(program,GL_INFO_LOG_LENGTH,&infolen);
         char* strinfo=(char*)malloc(infolen+1);
         glGetProgramInfoLog(program,infolen,NULL,strinfo);
         printf("can't linked ,&s\r\n",strinfo);

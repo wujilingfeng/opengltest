@@ -6,6 +6,7 @@
 #include<Viewer_Interpreter/Viewer_OpenGL_Interpreter.h>
 //#include<GLFW/glfw3.h>
 #include<config.h>
+
 #include "include/Arcroll.h"
 #define Matrix4x4 Viewer_Matrix4x4_
 //#define STB_IMAGE_IMPLEMENTATION
@@ -150,10 +151,10 @@ static void load_data(Viewer_Opengl_Interpreter_Shader_Program *voisp)
 static void render(Viewer_Opengl_Interpreter_Shader_Program*voisp)
 {
 
-		//着色前，清除深度缓冲 和颜色缓冲
+		/* 着色前，清除深度缓冲 和颜色缓冲 */
 	glUseProgram(voisp->program);
     
-            // create transformations  构造变换矩阵，先初始化为单位矩阵
+    // create transformations 
     Matrix4x4 model,temp_m;
     Matrix4x4_init_float(&model);Matrix4x4_init_float(&temp_m);
     float *data=(float*)(temp_m.data);
@@ -194,9 +195,9 @@ static void load_data1(Viewer_Opengl_Interpreter_Shader_Program*voisp)
 		-0.6f, 0.6f, 0.8f, 
 		0.6f, 0.6f, 0.8f,  
 	};
-	unsigned int indices[] = { // 注意索引从0开始! 
-    0, 1, 2, // 第一个三角形
-    1, 2, 3,  // 第二个三角形
+	unsigned int indices[] = {  
+    0, 1, 2, 
+    1, 2, 3,  
 	4,5,6,5,6,7,
 
 	0,1,4,1,4,5,
@@ -227,7 +228,7 @@ static void render1(Viewer_Opengl_Interpreter_Shader_Program* voisp)
 {
     //glViewport(0,0,500,500);
 	glUseProgram(voisp->program);
-    glUniform4f(glGetUniformLocation(voisp->program, "ourColor"), 0.2f, 0.5, 0.7f, 0.5f);
+    glUniform4f(glGetUniformLocation(voisp->program, "ourColor"), 0.5f, 0.5, 0.7f, 0.5f);
 
             // create transformations  构造变换矩阵，先初始化为单位矩阵
     Matrix4x4 model,temp_m;
@@ -268,14 +269,23 @@ void test1()
     strcat(strcat(p_v,MESH_VIEWER_PATH),"/tst1_v.vs");
     char* p_f=(char*)malloc(sizeof(char)*60);
     memset(p_f,0,sizeof(char)*60);
+
     strcat(strcat(p_f,MESH_VIEWER_PATH),"/tst1_f.fs");
     
     voi.create_shader_program(&voi,p_v,p_f,load_data1,render1); 
+    
     memset(p_v,0,sizeof(char)*60);
     strcat(strcat(p_v,MESH_VIEWER_PATH),"/tst2_v.vs");
     memset(p_f,0,sizeof(char)*60);
     strcat(strcat(p_f,MESH_VIEWER_PATH),"/tst2_f.fs"); 
     voi.create_shader_program(&voi,p_v,p_f,load_data,render);
+    
+    memset(p_v,0,sizeof(char)*60);
+    strcat(strcat(p_v,MESH_VIEWER_PATH),"ui.vert");
+    memset(p_f,0,sizeof(char)*60);
+    strcat(strcat(p_f,MESH_VIEWER_PATH),"ui.frag");
+    voi.create_shader_program(&voi,p_v,p_f,NULL,NULL);
+
     free(p_v);free(p_f);
     voi.interpreter(&voi);
 }
@@ -378,10 +388,6 @@ void test2()
         texcoords[i*7]=3;
     
     }
-   /* texcoords[0]=3;
-    texcoords[1]=1.0;texcoords[2]=0.0;
-    texcoords[3]=0.0;texcoords[4]=0.0;
-    texcoords[5]=0.0;texcoords[6]=1.0;*/
     texcoords[7]=3;
     texcoords[8]=1.0;texcoords[9]=0.0;
     texcoords[10]=0.0,texcoords[11]=1.0;
@@ -392,6 +398,10 @@ void test2()
     mf->Data_index_rows=12;
     //是否开启透明
     //mf->is_transparent=1;
+
+    //*******************
+
+    //************************
     char texture[]="Texture";
     n=vw.create_something(&vw,texture);
     ms=(Viewer_Something*)(n->value);
@@ -401,6 +411,13 @@ void test2()
     mt->image_file=(char*)malloc(sizeof(char)*20);
     strcpy(mt->image_file,"linyueru.jpg");
     mt->each_face_texture_coord=texcoords;
+
+
+
+
+
+
+
     char edges[]="Edges";
 //**********************************
 
@@ -421,8 +438,6 @@ void test2()
     ve->Data_index[0]=0;ve->Data_index[1]=1;
     ve->Data_index[2]=0;ve->Data_index[3]=2; 
     ve->Data_index[4]=0;ve->Data_index[5]=3;
-  //  ve->Data_index[6]=4;ve->Data_index[7]=5;
-//    ve->Data_index[8]=6;ve->Data_index[9]=7;
 
 
     ve->color_rows=ve->Data_index_rows;
@@ -435,63 +450,62 @@ void test2()
     ma->vs=vs;
 
     //**************************************
+    char cursor_shape[]="Cursor_Shape";
+    n=vw.create_something(&vw,cursor_shape);
+    vs=(Viewer_Something*)(n->value);
+    auto vcs=(Viewer_Cursor_Shape*)(vs->evolution);
+    vcs->shape_name=(char*)malloc(sizeof(char)*100);
+    memset(vcs->shape_name,0,sizeof(char)*100);
+    strcpy(vcs->shape_name,"ibeam");
+    vcs->is_using=1;
+
+    char texts[]="Texts";
+    n=vw.create_something(&vw,texts);
+    vs=(Viewer_Something*)(n->value);
+    auto vtexts=(Viewer_Texts*)(vs->evolution);
+    //float colors[4]={0.5,0.8,0.3,1.0};
+    //Viewer_Texts_initn(vtexts,"my name is: ",-1,-0.9,0.001,colors,NULL);
+    vtexts->str=(char*)malloc(sizeof(char)*40);
+    memset(vtexts->str,0,sizeof(char)*40);
+    strcpy(vtexts->str,"myname is : libo12138||");
+    vtexts->xy[0]=-1.0;vtexts->xy[1]=-0.9;vtexts->scale=0.001;
    
+    vtexts->colors[0*4+0]=1.0;vtexts->colors[0*4+1]=0.0;vtexts->colors[0*4+2]=0.0;vtexts->colors[0*4+3]=1.0;
+    vtexts->colors[1*4+0]=1.0;vtexts->colors[1*4+1]=0.0;vtexts->colors[1*4+2]=0.0;vtexts->colors[1*4+3]=1.0;
+    vtexts->colors[2*4+0]=1.0;vtexts->colors[2*4+1]=0.0;vtexts->colors[2*4+2]=0.0;vtexts->colors[2*4+3]=1.0;
+    vtexts->colors[3*4+0]=1.0;vtexts->colors[3*4+1]=0.0;vtexts->colors[3*4+2]=0.0;vtexts->colors[3*4+3]=1.0;
+    //((float*)(vtexts->mat->data))[0*4+3]=0.3;
+
+    //vs->disappear=1;
+
+
+
     vw.print_self(&vw);
+
+
+        
+
     Viewer_Opengl_Interpreter voi;
     Viewer_Opengl_Interpreter_init(&voi);
+  
     upd->voi=&voi;
     voi.world=&vw;
     voi.interpreter(&voi);
 
 }
 
+
+
+//unsigned char image[H]
 int main(int argc,char**argv)
 {
-/*    Viewer_Opengl_Interpreter_Shader_Program *voisp=(Viewer_Opengl_Interpreter_Shader_Program*)malloc(sizeof(Viewer_Opengl_Interpreter_Shader_Program));
-    Viewer_Opengl_Interpreter_Shader_Program_init(voisp);
-    char* p_v=(char*)malloc(sizeof(char)*60);
-    memset(p_v,0,sizeof(char)*60);
-    strcat(strcat(p_v,MESH_VIEWER_PATH),"/tst2_v.vs");
-    char* p_f=(char*)malloc(sizeof(char)*60);
-    memset(p_f,0,sizeof(char)*60);
-    strcat(strcat(p_f,MESH_VIEWER_PATH),"/tst2_f.fs");
-    voisp->shaders[0].type=GL_VERTEX_SHADER;
-    voisp->shaders[0].filename=p_v;
-    voisp->shaders[1].type=GL_FRAGMENT_SHADER;
-    voisp->shaders[1].filename=p_f;
-    voisp->shaders[2].type=GL_NONE;
-    voisp->shaders[2].filename=NULL;
-    voisp->load_data=load_data;
-    voisp->render=render;
-     Node* li=NULL,*l2=NULL;
-    li=node_overlying(li,(void*)voisp);
-   voisp=(Viewer_Opengl_Interpreter_Shader_Program*)malloc(sizeof(Viewer_Opengl_Interpreter_Shader_Program));
-    Viewer_Opengl_Interpreter_Shader_Program_init(voisp);
-
-    p_v=(char*)malloc(sizeof(char)*60);
-    memset(p_v,0,sizeof(char)*60);
-    strcat(strcat(p_v,MESH_VIEWER_PATH),"/tst1_v.vs");
-    p_f=(char*)malloc(sizeof(char)*60);
-    memset(p_f,0,sizeof(char)*60);
-    strcat(strcat(p_f,MESH_VIEWER_PATH),"/tst1_f.fs");
-    voisp->shaders[0].type=GL_VERTEX_SHADER;
-    voisp->shaders[0].filename=p_v;
-    voisp->shaders[1].type=GL_FRAGMENT_SHADER;
-    voisp->shaders[1].filename=p_f;
-    voisp->shaders[2].type=GL_NONE;
-    voisp->shaders[2].filename=NULL;
-    voisp->load_data=load_data1;
-    voisp->render=render1;
-    l2=node_overlying(l2,(void*)voisp);
-    test_opengl(li,l2);*/
-  //  test1();
-
     ImageInfo* imi=_ReadImageFile_("lena.jpg");
 
     _is_reverse_image_writing(1);
     //_is_reverse_image_reading(0);
     _Write_PNG_File_("mytestpng.png",imi);
-    ImageInfo_free(imi);  
+    ImageInfo_free(imi);
+    //test1();  
     test2();
     return 0;
 }

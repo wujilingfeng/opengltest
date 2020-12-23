@@ -10,7 +10,7 @@
 #ifdef  __cplusplus
 extern "C" {
 #endif
-//strcmp 比较字符串跟整数比较类似
+
 
 
 //void Mesh_viewer_world_registe1(Mesh_viewer_world*,char**,int);

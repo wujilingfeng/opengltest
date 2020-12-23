@@ -21,7 +21,7 @@ void Viewer_Something_init(Viewer_Something*ms)
 	time_t timep;
     struct tm *p;
     time(&timep);
-    p = localtime(&timep); //取得当地时间
+    p = localtime(&timep); 
   //  printf ("%d%d%d ", (1900+p->tm_year), (1+p->tm_mon), p->tm_mday);
  //   printf("%d:%d:%d\n", p->tm_hour, p->tm_min, p->tm_sec);
     ms->create_date=p->tm_sec+p->tm_min*100+p->tm_hour*10000+p->tm_mday*1000000+(1+p->tm_mon)*100000000;
@@ -279,7 +279,7 @@ void Viewer_Points_init(struct Viewer_Points* mp)
     mp->set_color=Viewer_Points_set_color;
     mp->random_color=Viewer_Points_random_color;
     mp->Data_rows=0; 
-//应该去除这个变量
+
  //   mp->color_rows=0;
 //
 	mp->mat=(Matrix4x4*)malloc(sizeof(Matrix4x4));
@@ -321,5 +321,95 @@ void Viewer_Edges_set_color(Viewer_Edges*me,float*v)
 	}
 	Viewer_set_v_one_color(me->color,me->color_rows,v);
 }
+void Viewer_Cursor_Shape_init(struct Viewer_Cursor_Shape* vcs)
+{
+    vcs->shape_name=NULL;
+    vcs->image_path=NULL;
+    vcs->is_using=0;
+    vcs->obj=NULL;
+    vcs->prop=NULL;  
+}
+void Viewer_Texts_init(struct Viewer_Texts*vtext )
+{
+    vtext->str=NULL;
+    vtext->xy[0]=0;vtext->xy[1]=0;
+    vtext->scale=1;
+   // vtext->color[0]=0;vtext->color[1]=0;vtext->color[2]=0,vtext->color[3]=1;
+    vtext->font_path=NULL;
+    vtext->mat=(Matrix4x4*)malloc(sizeof(Matrix4x4));
+    Matrix4x4_init_float(vtext->mat);
+    vtext->VAO=0;vtext->VBO[0]=0;vtext->VBO[1]=0;vtext->VBO[2]=0;
+    vtext->prop=NULL; 
+}
+void Viewer_Texts_initn(struct Viewer_Texts* vtext,char const *str,float x,float y,float s,float* c,char const *font_path)
+{
+    //Viewer_Texts_init(vtext);
+    int len=strlen(str);
+    if(vtext->str!=NULL)
+    {
+        free(vtext->str);
+        vtext->str=NULL;
+    }
+    vtext->str=(char*)malloc(sizeof(char)*(len+1));
+    memset(vtext->str,0,sizeof(char)*(len+1));
+    strcpy(vtext->str,str);
+    vtext->xy[0]=x;vtext->xy[1]=y;
+    vtext->scale=s;
+
+    for(int i=0;i<4;i++)
+    {
+        for(int j=0;j<4;j++)
+        {
+
+            vtext->colors[i*4+j]=c[j];
+        }
+    }
+    //vtext->color[0]=c[0];vtext->color[1]=c[1];vtext->color[2]=c[2];vtext->color[3]=c[3];
+    
+    if(font_path!=NULL)
+    {
+        len=strlen(font_path);
+        vtext->font_path=(char*)malloc(sizeof(char)*(len+1));
+        memset(vtext->font_path,0,sizeof(char)*(len+1));
+        strcpy(vtext->font_path,font_path);
+    }
+    else
+    {
+        vtext->font_path=NULL;
+    } 
+}
+void Viewer_UI_Mesh_init(Viewer_UI_Mesh* vum)
+{
+    vum->Data=0;vum->color=0;
+    vum->Data_index=0;
+
+    vum->marked_faces_index=0;
+   
+    vum->evolution=0;
+    vum->Data_index_rows=0;
+    vum->color_rows=0;
+    vum->Data_rows=0;
+
+    vum->set_color=Viewer_Faces_set_color;
+    vum->mat=(Matrix4x4*)malloc(sizeof(Matrix4x4));
+    Matrix4x4_init_float(vum->mat);
+
+    vum->prop=NULL;
+
+    vum->texture=NULL;
+    vum->VAO=0;vum->Buffers=NULL;
+    /*mf->compute_normal=Viewer_Faces_compute_normal;
+    mf->random_color=Viewer_Faces_random_color;
+    
+    mf->is_reversal_normal=0;
+    mf->is_transparent=0;
+
+    mf->triangle_coordinate[0]=1;mf->triangle_coordinate[1]=0;mf->triangle_coordinate[2]=0;   
+    //
+*/
+}
+
+
+
 #undef out_product
 #undef Matrix4x4

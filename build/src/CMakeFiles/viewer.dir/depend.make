@@ -10,6 +10,7 @@ src/CMakeFiles/viewer.dir/Math/Viewer_Matrix4x4.c.o: ../src/Math/Viewer_Matrix4x
 
 src/CMakeFiles/viewer.dir/Viewer_Interpreter/OpenGL/Viewer_OpenglAlg.c.o: ../include/Viewer_Interpreter/Viewer_OpenglAlg.h
 src/CMakeFiles/viewer.dir/Viewer_Interpreter/OpenGL/Viewer_OpenglAlg.c.o: ../include/Viewer_Interpreter/stb_image.h
+src/CMakeFiles/viewer.dir/Viewer_Interpreter/OpenGL/Viewer_OpenglAlg.c.o: ../include/Viewer_Interpreter/stb_image_write.h
 src/CMakeFiles/viewer.dir/Viewer_Interpreter/OpenGL/Viewer_OpenglAlg.c.o: ../thirdpart/glad/include/KHR/khrplatform.h
 src/CMakeFiles/viewer.dir/Viewer_Interpreter/OpenGL/Viewer_OpenglAlg.c.o: ../thirdpart/glad/include/glad/glad.h
 src/CMakeFiles/viewer.dir/Viewer_Interpreter/OpenGL/Viewer_OpenglAlg.c.o: ../src/Viewer_Interpreter/OpenGL/Viewer_OpenglAlg.c
@@ -25,8 +26,11 @@ src/CMakeFiles/viewer.dir/Viewer_Interpreter/Viewer_OpenGL_Interpreter.c.o: ../i
 src/CMakeFiles/viewer.dir/Viewer_Interpreter/Viewer_OpenGL_Interpreter.c.o: ../include/config.h
 src/CMakeFiles/viewer.dir/Viewer_Interpreter/Viewer_OpenGL_Interpreter.c.o: ../thirdpart/cstructures/include/tools_node.h
 src/CMakeFiles/viewer.dir/Viewer_Interpreter/Viewer_OpenGL_Interpreter.c.o: ../thirdpart/cstructures/include/tools_rbtree.h
+src/CMakeFiles/viewer.dir/Viewer_Interpreter/Viewer_OpenGL_Interpreter.c.o: ../thirdpart/freetype/include/freetype/config/ftheader.h
+src/CMakeFiles/viewer.dir/Viewer_Interpreter/Viewer_OpenGL_Interpreter.c.o: ../thirdpart/freetype/include/ft2build.h
 src/CMakeFiles/viewer.dir/Viewer_Interpreter/Viewer_OpenGL_Interpreter.c.o: ../thirdpart/glad/include/KHR/khrplatform.h
 src/CMakeFiles/viewer.dir/Viewer_Interpreter/Viewer_OpenGL_Interpreter.c.o: ../thirdpart/glad/include/glad/glad.h
+src/CMakeFiles/viewer.dir/Viewer_Interpreter/Viewer_OpenGL_Interpreter.c.o: ../thirdpart/glfw/include/GLFW/glfw3.h
 src/CMakeFiles/viewer.dir/Viewer_Interpreter/Viewer_OpenGL_Interpreter.c.o: ../src/Viewer_Interpreter/Viewer_OpenGL_Interpreter.c
 
 src/CMakeFiles/viewer.dir/Viewer_Interpreter/glfw_callback.c.o: ../include/Math/LB_Math.h
@@ -40,6 +44,7 @@ src/CMakeFiles/viewer.dir/Viewer_Interpreter/glfw_callback.c.o: ../thirdpart/cst
 src/CMakeFiles/viewer.dir/Viewer_Interpreter/glfw_callback.c.o: ../thirdpart/cstructures/include/tools_rbtree.h
 src/CMakeFiles/viewer.dir/Viewer_Interpreter/glfw_callback.c.o: ../thirdpart/glad/include/KHR/khrplatform.h
 src/CMakeFiles/viewer.dir/Viewer_Interpreter/glfw_callback.c.o: ../thirdpart/glad/include/glad/glad.h
+src/CMakeFiles/viewer.dir/Viewer_Interpreter/glfw_callback.c.o: ../thirdpart/glfw/include/GLFW/glfw3.h
 src/CMakeFiles/viewer.dir/Viewer_Interpreter/glfw_callback.c.o: ../src/Viewer_Interpreter/glfw_callback.c
 
 src/CMakeFiles/viewer.dir/Viewer_World_Manager/Interactor_GlobalInfo.c.o: ../include/Viewer_World_Manager/Interactor_GlobalInfo.h

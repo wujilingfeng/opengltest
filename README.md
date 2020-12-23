@@ -8,6 +8,14 @@
 
 #### dependencies
 
+* linux
+
+```bash
+sudo apt install cmake xorg-dev libglu1-mesa-dev build-essential libgl1-mesa-dev
+```
+
+
+
 cstructures freetype glad glfw
 
 上面的lib库放在lib文件夹或者安装到的系统目录

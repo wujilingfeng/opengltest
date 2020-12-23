@@ -54,6 +54,7 @@ void viewer_Arcroll_cursor_position_callback(Viewer_Intera* mi)
         Matrix4x4_free(mc->matrix);
         mc->matrix=mc->matrix_inverse->inverse(mc->matrix_inverse);
     }
+    //printf("%lf %lf\n",g_info->mouse_coord[0],g_info->mouse_coord[1]);
 
     ma->old_mouse_coord[0]=g_info->mouse_coord[0];
     ma->old_mouse_coord[1]=g_info->mouse_coord[1];

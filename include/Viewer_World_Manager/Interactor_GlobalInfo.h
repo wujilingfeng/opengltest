@@ -46,12 +46,12 @@ typedef struct Interactor_GlobalInfo{
 	int drop_count;
 	char** paths;
 	void *prop;
-	void* window;//为glfw的window提供
+	void* window;
 }Interactor_GlobalInfo;
 void GlobalInfo_init(Interactor_GlobalInfo* ginf);
 typedef struct Viewer_Intera
 {
-//state可以用来覆盖信号，当信号是负的时候这个交互器不会覆盖别的交互器
+/* state可以用来覆盖信号，当信号是负的时候这个交互器不会覆盖别的交互器 */
 	int state;
 	Interactor_GlobalInfo* g_info;
 	int (*compute_state)(struct Viewer_Intera* );
@@ -63,7 +63,7 @@ typedef struct Viewer_Intera
 	void (*drop_callback)(struct Viewer_Intera*);
 	void (*animation)(struct Viewer_Intera*);
 	void *representation;
-	void *prop;//一般上面的representation就足够提供扩展了
+	void *prop;
 	
 }Viewer_Intera;
 int Viewer_Intera_default_compute_state(Viewer_Intera*);

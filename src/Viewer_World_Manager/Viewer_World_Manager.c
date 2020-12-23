@@ -1,5 +1,5 @@
 #include<Viewer_World_Manager/Viewer_World_Manager.h>
-//以逆算子的思想做回退功能
+
 //glDeleteVertexArrays;
 //glDeleteBuffers
 /*void Mesh_viewer_world_registe1(Mesh_viewer_world*m,char**c,int size)
@@ -30,7 +30,7 @@ void Viewer_World_init(struct Viewer_World*m)
 	RB_Tree_init_int(m->something_id);
     m->g_info=(Interactor_GlobalInfo*)malloc(sizeof(Interactor_GlobalInfo));
     GlobalInfo_init(m->g_info);
-   char str[]="Points,Edges,Faces,Intera,Camera";
+   char str[]="Points,Edges,Faces,Intera,Camera,UI_Mesh";
 	Node* node=Viewer_World_registe(m,str);
     node=node_reverse(node);
     free_node_value(node);
@@ -48,7 +48,7 @@ void Viewer_World_init(struct Viewer_World*m)
     m->prop1=NULL;
 
 }
-//返回寻找的id=-1是没找到
+
 Node* Viewer_World_find_species(Viewer_World*mw,char* c)
 {
 	if(c==NULL||c[0]=='\0')
@@ -102,7 +102,7 @@ Node* Viewer_World_find_species(Viewer_World*mw,char* c)
 	return node_reverse(re);
 }
 
-//返回registe id
+
 
 Node* Viewer_World_registe(Viewer_World*m,char*c)
 {
@@ -247,6 +247,26 @@ Node* Viewer_World_from_something_evolute(Node*lis,struct Viewer_World* mw)
             Viewer_Texture_init(temp_e);
             value=(void*)temp_e;
         }
+        else if(strcmp(ms->name,"Cursor_Shape")==0)
+        {
+            Viewer_Cursor_Shape * temp_e=(Viewer_Cursor_Shape*)malloc(sizeof(Viewer_Cursor_Shape));
+            Viewer_Cursor_Shape_init(temp_e);
+            value=(void*)temp_e;
+        }
+        else if(strcmp(ms->name,"Texts")==0)
+        {
+            Viewer_Texts*temp_e=(Viewer_Texts*)malloc(sizeof(Viewer_Texts));
+            Viewer_Texts_init(temp_e);
+            value=(void*)temp_e;     
+        }
+        else if(strcmp(ms->name,"UI_Mesh")==0)
+        {
+            Viewer_UI_Mesh* temp_e=(Viewer_UI_Mesh*)malloc(sizeof(Viewer_UI_Mesh));
+            Viewer_UI_Mesh_init(temp_e);
+            value=(void*)temp_e;  
+        }
+
+
 		ms->evolution=value;
 		re=node_overlying(re,value);
 		iter=(Node*)(iter->Next);
@@ -325,10 +345,10 @@ void Viewer_World_remove_something(struct Viewer_World* mw,Viewer_Something* ms)
         RB_Tree* tree=(RB_Tree*)(rbt1->value);
         rbt.key=ms->id;
         tree->erase(tree,&rbt);
-        //rbt1=(RB_int*)(tree->find(tree,&rbt))
-        
+        //rbt1=(RB_int*)(tree->find(tree,&rbt)) 
     }
 }
+
 /*void Mesh_viewer_add_face_data(Mesh_viewer_faces*mf,float* v,int v_cols,int v_rows,int *index,int i_cols,int i_rows,float *color )
 {   if(v!=0&&index!=0)
     {

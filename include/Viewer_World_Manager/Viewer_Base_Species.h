@@ -3,7 +3,7 @@
 #include<Math/Viewer_Matrix4x4.h>
 #include <tools_node.h>
 #define Matrix4x4 Viewer_Matrix4x4_
-//颜色要变成4通道
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -13,19 +13,19 @@ typedef struct Viewer_Something{
 	int id;
 	unsigned int create_date;
 	int disappear;
-	//对应glViewport函数
+	
 	int viewport[4];
-//指向一个结构库
+
 	int marked_element;
 	void* mesh;
-	//（历史记录）分身
+
 	//Node* history_avatar;
-	//继承信息
+
 	void* evolution;
 	void* prop;
 }Viewer_Something;
 void Viewer_Something_init( Viewer_Something*);
-//应该修改为一个texture可以对应多个曲面
+
 typedef struct Viewer_Texture
 {
 	char* image_file;
@@ -41,14 +41,14 @@ void Viewer_Texture_init(Viewer_Texture*);
 typedef struct Viewer_Faces
 {
 
-//四通道颜色
+
 	float *Data,*color,*normal;
 	unsigned int* Data_index;
 	unsigned int normal_rows;
 	unsigned int color_rows;
 	unsigned int* marked_faces_index;
 	
-//面的数量
+
     	unsigned int Data_index_rows;
 	unsigned int Data_rows;
 	float triangle_coordinate[3];	
@@ -62,7 +62,7 @@ typedef struct Viewer_Faces
 	int is_transparent;
 	void* evolution;
 	void* prop;
-//以下变量为opengl解释器特别提供
+
 	unsigned int VAO,*Buffers;
 }Viewer_Faces;
 void Viewer_Faces_set_color(Viewer_Faces*,float*);
@@ -71,13 +71,13 @@ void Viewer_Faces_random_color(Viewer_Faces*);
 void Viewer_Faces_init(Viewer_Faces*);
 typedef struct Viewer_Camera
 {
-	//四维矩阵表示了相机的旋转（相机镜头方向），和位置。主要是修改这个矩阵
+	/* 四维矩阵表示了相机的旋转（相机镜头方向），和位置。主要是修改这个矩阵 */
 	Matrix4x4* matrix;
-	//这个是上面矩阵的逆，加速运算
+	/* 这个是上面矩阵的逆，加速运算 */
 	Matrix4x4* matrix_inverse;
 	Matrix4x4* Proj;
 	int is_using;
-	//相机的聚焦点，主要用来旋转相机的轴点
+	/* 相机的聚焦点，主要用来旋转相机的轴点 */
 	float focal_distance;
 	void* prop;
 
@@ -88,7 +88,7 @@ typedef struct Viewer_Points
 {
 	float *Data,*color;
 	unsigned int Data_rows;
-	//应该去除这个变量
+	
 	//unsigned int color_rows;
 	//
 	void (*set_color)(struct Viewer_Points*,float*);
@@ -97,7 +97,7 @@ typedef struct Viewer_Points
 	Matrix4x4* mat;
 	float pointsize;
 	void *prop;
-//以下变量为opengl解释器特别提供
+
 	unsigned int VAO,*Buffers;
 }Viewer_Points;
 void Viewer_Points_init(struct Viewer_Points*);
@@ -116,18 +116,61 @@ typedef struct Viewer_Edges
 	
 	void* evolution;
 	void *prop;
-//以下变量为opengl解释器特别提供
+
 	unsigned int VAO,*Buffers;
 }Viewer_Edges;
 void Viewer_Edges_init(struct Viewer_Edges*);
 void Viewer_Edges_set_color(Viewer_Edges*,float*v);
 typedef struct Viewer_Cursor_Shape{
-	char shape_name[40];
-	char image_path[70];
+	char *shape_name;
+	char *image_path;
+	int is_using;	
 	void * obj;
 	void* prop;	
 
 }Viewer_Cursor_Shape;
+
+void Viewer_Cursor_Shape_init(struct Viewer_Cursor_Shape* vcs);
+
+
+typedef struct Viewer_Texts{
+	char * str;
+	float xy[2],scale;	
+	float colors[16];
+	char* font_path;
+	unsigned int VAO;
+	unsigned int VBO[3];
+
+	Matrix4x4 *mat;
+	void* prop;
+}Viewer_Texts;
+void Viewer_Texts_init(struct Viewer_Texts*vtext );
+void Viewer_Texts_initn(struct Viewer_Texts* vtext,char const *str,float x,float y,float s,float* c,char const *font_path);
+
+typedef struct Viewer_UI_Mesh{
+
+	float *Data,*color;
+	unsigned int* Data_index;
+	unsigned int color_rows;
+	unsigned int* marked_faces_index;
+
+    unsigned int Data_index_rows;
+	unsigned int Data_rows;
+	float triangle_coordinate[3];	
+	
+//	void (*random_color)(struct Viewer_Faces*);
+	void (*set_color)(struct Viewer_Faces*,float*);
+	Matrix4x4 *mat;
+	Viewer_Something* texture;
+	int is_transparent;
+	void* evolution;
+	void* prop;
+
+	unsigned int VAO,*Buffers;
+}Viewer_UI_Mesh;
+
+void Viewer_UI_Mesh_init(Viewer_UI_Mesh* vum);
+
 
 #ifdef __cplusplus
 }

@@ -21,6 +21,8 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
   "../include"
   "../thirdpart/glad/include"
   "../thirdpart/cstructures/include"
+  "../thirdpart/freetype/include"
+  "../thirdpart/glfw/include"
   )
 
 # Targets to which this target links.

@@ -4,6 +4,7 @@
 src/Viewer_Interpreter/OpenGL/CMakeFiles/viewer_openglalg.dir/Viewer_OpenglAlg.c.o
  ../include/Viewer_Interpreter/Viewer_OpenglAlg.h
  ../include/Viewer_Interpreter/stb_image.h
+ ../include/Viewer_Interpreter/stb_image_write.h
  ../thirdpart/glad/include/KHR/khrplatform.h
  ../thirdpart/glad/include/glad/glad.h
  /home/libo/Documents/c++/Viewer1.0/src/Viewer_Interpreter/OpenGL/Viewer_OpenglAlg.c
