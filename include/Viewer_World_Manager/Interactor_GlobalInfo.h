@@ -26,6 +26,23 @@
 #define VIEWER_KEY_B 66
 #define VIEWER_KEY_C 67
 #define VIEWER_KEY_D 68
+#define VIEWER_KEY_E 69
+#define VIEWER_KEY_F 70
+#define VIEWER_KEY_G 71
+#define VIEWER_KEY_H 72
+#define VIEWER_KEY_I 73
+#define VIEWER_KEY_J 74
+#define VIEWER_KEY_K 75
+#define VIEWER_KEY_L 76
+#define VIEWER_KEY_M 77
+#define VIEWER_KEY_N 78
+#define VIEWER_KEY_O 79
+#define VIEWER_KEY_P 80
+#define VIEWER_KEY_Q 81
+#define VIEWER_KEY_R 82
+#define VIEWER_KEY_S 83
+#define VIEWER_KEY_T 84
+#define VIEWER_KEY_U 85
 #define VIEWER_KEY_Z 90
 
 #ifdef __cplusplus

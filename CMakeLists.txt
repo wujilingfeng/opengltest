@@ -2,7 +2,7 @@ PROJECT(VIEWER1.0)
 cmake_minimum_required(VERSION 2.8)
 FILE(WRITE ./include/config.h "#define MESH_VIEWER_PATH \"${PROJECT_SOURCE_DIR}\"")
 add_compile_options(-Wall -g -O)
-#set(CMAKE_EXE_LINKER_FLAGS ${CMAKE_EXE_LINKER_FLAGS} -no-pie)
+set(CMAKE_EXE_LINKER_FLAGS ${CMAKE_EXE_LINKER_FLAGS} -no-pie)
 #生成可执行程序
 #set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} -std=c++11)
 #set(CMAKE_C_FLAGS ${CMAKE_C_FLAGS} -std=c99)

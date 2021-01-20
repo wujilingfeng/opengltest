@@ -179,7 +179,7 @@ CMakeFiles/main.dir/all: src/CMakeFiles/viewer.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/main.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/libo/Documents/c++/Viewer1.0/build/CMakeFiles 13
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/libo/Documents/c++/Viewer1.0/build/CMakeFiles 14
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/main.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/libo/Documents/c++/Viewer1.0/build/CMakeFiles 0
 .PHONY : CMakeFiles/main.dir/rule
@@ -201,12 +201,12 @@ CMakeFiles/main.dir/clean:
 src/CMakeFiles/viewer.dir/all:
 	$(MAKE) -f src/CMakeFiles/viewer.dir/build.make src/CMakeFiles/viewer.dir/depend
 	$(MAKE) -f src/CMakeFiles/viewer.dir/build.make src/CMakeFiles/viewer.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/libo/Documents/c++/Viewer1.0/build/CMakeFiles --progress-num=4,5,6,7,8,9,10,11,12,13 "Built target viewer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/libo/Documents/c++/Viewer1.0/build/CMakeFiles --progress-num=4,5,6,7,8,9,10,11,12,13,14 "Built target viewer"
 .PHONY : src/CMakeFiles/viewer.dir/all
 
 # Build rule for subdir invocation for target.
 src/CMakeFiles/viewer.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/libo/Documents/c++/Viewer1.0/build/CMakeFiles 10
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/libo/Documents/c++/Viewer1.0/build/CMakeFiles 11
 	$(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/viewer.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/libo/Documents/c++/Viewer1.0/build/CMakeFiles 0
 .PHONY : src/CMakeFiles/viewer.dir/rule
@@ -228,7 +228,7 @@ src/CMakeFiles/viewer.dir/clean:
 src/Math/CMakeFiles/viewer_matrix4x4.dir/all:
 	$(MAKE) -f src/Math/CMakeFiles/viewer_matrix4x4.dir/build.make src/Math/CMakeFiles/viewer_matrix4x4.dir/depend
 	$(MAKE) -f src/Math/CMakeFiles/viewer_matrix4x4.dir/build.make src/Math/CMakeFiles/viewer_matrix4x4.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/libo/Documents/c++/Viewer1.0/build/CMakeFiles --progress-num=14,15,16 "Built target viewer_matrix4x4"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/libo/Documents/c++/Viewer1.0/build/CMakeFiles --progress-num=15,16,17 "Built target viewer_matrix4x4"
 .PHONY : src/Math/CMakeFiles/viewer_matrix4x4.dir/all
 
 # Build rule for subdir invocation for target.
@@ -255,7 +255,7 @@ src/Math/CMakeFiles/viewer_matrix4x4.dir/clean:
 src/Viewer_Interpreter/OpenGL/CMakeFiles/viewer_openglalg.dir/all:
 	$(MAKE) -f src/Viewer_Interpreter/OpenGL/CMakeFiles/viewer_openglalg.dir/build.make src/Viewer_Interpreter/OpenGL/CMakeFiles/viewer_openglalg.dir/depend
 	$(MAKE) -f src/Viewer_Interpreter/OpenGL/CMakeFiles/viewer_openglalg.dir/build.make src/Viewer_Interpreter/OpenGL/CMakeFiles/viewer_openglalg.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/libo/Documents/c++/Viewer1.0/build/CMakeFiles --progress-num=17,18,19 "Built target viewer_openglalg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/libo/Documents/c++/Viewer1.0/build/CMakeFiles --progress-num=18,19,20 "Built target viewer_openglalg"
 .PHONY : src/Viewer_Interpreter/OpenGL/CMakeFiles/viewer_openglalg.dir/all
 
 # Build rule for subdir invocation for target.
@@ -282,7 +282,7 @@ src/Viewer_Interpreter/OpenGL/CMakeFiles/viewer_openglalg.dir/clean:
 src/Viewer_World_Manager/CMakeFiles/viewer_world_manager.dir/all:
 	$(MAKE) -f src/Viewer_World_Manager/CMakeFiles/viewer_world_manager.dir/build.make src/Viewer_World_Manager/CMakeFiles/viewer_world_manager.dir/depend
 	$(MAKE) -f src/Viewer_World_Manager/CMakeFiles/viewer_world_manager.dir/build.make src/Viewer_World_Manager/CMakeFiles/viewer_world_manager.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/libo/Documents/c++/Viewer1.0/build/CMakeFiles --progress-num=20,21,22,23 "Built target viewer_world_manager"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/libo/Documents/c++/Viewer1.0/build/CMakeFiles --progress-num=21,22,23,24 "Built target viewer_world_manager"
 .PHONY : src/Viewer_World_Manager/CMakeFiles/viewer_world_manager.dir/all
 
 # Build rule for subdir invocation for target.

@@ -5,6 +5,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/viewer.dir/Math/Viewer_Matrix4x4.c.o"
   "CMakeFiles/viewer.dir/Viewer_Interpreter/OpenGL/Viewer_OpenglAlg.c.o"
   "CMakeFiles/viewer.dir/Viewer_Interpreter/Viewer_OpenGL_Interpreter.c.o"
+  "CMakeFiles/viewer.dir/Viewer_Interpreter/Viewer_OpenGL_Interpreter_Shader.c.o"
   "CMakeFiles/viewer.dir/Viewer_Interpreter/glfw_callback.c.o"
   "CMakeFiles/viewer.dir/Viewer_World_Manager/Interactor_GlobalInfo.c.o"
   "CMakeFiles/viewer.dir/Viewer_World_Manager/Viewer_Base_Species.c.o"

@@ -9,6 +9,8 @@
 
 #include "include/Arcroll.h"
 #define Matrix4x4 Viewer_Matrix4x4_
+
+#define Viewer_oisp Viewer_Opengl_Interpreter_Shader_Program
 //#define STB_IMAGE_IMPLEMENTATION
 //#include <stb_image.h>
 //#include<ft2build.h>
@@ -103,7 +105,8 @@ static void load_data(Viewer_Opengl_Interpreter_Shader_Program *voisp)
     // texture coord attribute
     glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
     glEnableVertexAttribArray(1);
-
+    glBindBuffer(GL_ARRAY_BUFFER,0);
+    glBindVertexArray(0);
     // load and create a texture 
     // -------------------------
     voisp->tex=(GLuint*)malloc(sizeof(GLuint));
@@ -147,11 +150,11 @@ static void load_data(Viewer_Opengl_Interpreter_Shader_Program *voisp)
     glBindTexture(GL_TEXTURE_2D, voisp->tex[0]);
     glBindTexture(GL_TEXTURE_2D, voisp->tex[1]);
 
+
 }
 static void render(Viewer_Opengl_Interpreter_Shader_Program*voisp)
 {
 
-		/* 着色前，清除深度缓冲 和颜色缓冲 */
 	glUseProgram(voisp->program);
     
     // create transformations 
@@ -208,7 +211,7 @@ static void load_data1(Viewer_Opengl_Interpreter_Shader_Program*voisp)
 	};
     voisp->VAO=(GLuint*)malloc(sizeof(GLuint));
     voisp->Buffers=(GLuint**)malloc(sizeof(GLuint*));
-    voisp->Buffers[0]=(GLuint*)malloc(sizeof(GLuint));
+    voisp->Buffers[0]=(GLuint*)malloc(sizeof(GLuint)*2);
     GLuint*VAO=voisp->VAO;
     GLuint*VBO=voisp->Buffers[0];
 
@@ -272,19 +275,19 @@ void test1()
 
     strcat(strcat(p_f,MESH_VIEWER_PATH),"/tst1_f.fs");
     
-    voi.create_shader_program(&voi,p_v,p_f,load_data1,render1); 
+    voi.create_shader_program(&voi,p_v,p_f,load_data1,render1,NULL); 
     
     memset(p_v,0,sizeof(char)*60);
     strcat(strcat(p_v,MESH_VIEWER_PATH),"/tst2_v.vs");
     memset(p_f,0,sizeof(char)*60);
     strcat(strcat(p_f,MESH_VIEWER_PATH),"/tst2_f.fs"); 
-    voi.create_shader_program(&voi,p_v,p_f,load_data,render);
+    voi.create_shader_program(&voi,p_v,p_f,load_data,render,NULL);
     
     memset(p_v,0,sizeof(char)*60);
     strcat(strcat(p_v,MESH_VIEWER_PATH),"ui.vert");
     memset(p_f,0,sizeof(char)*60);
     strcat(strcat(p_f,MESH_VIEWER_PATH),"ui.frag");
-    voi.create_shader_program(&voi,p_v,p_f,NULL,NULL);
+    voi.create_shader_program(&voi,p_v,p_f,NULL,NULL,NULL);
 
     free(p_v);free(p_f);
     voi.interpreter(&voi);
@@ -416,8 +419,6 @@ void test2()
 
 
 
-
-
     char edges[]="Edges";
 //**********************************
 
@@ -450,13 +451,14 @@ void test2()
     ma->vs=vs;
 
     //**************************************
+    
     char cursor_shape[]="Cursor_Shape";
     n=vw.create_something(&vw,cursor_shape);
     vs=(Viewer_Something*)(n->value);
     auto vcs=(Viewer_Cursor_Shape*)(vs->evolution);
     vcs->shape_name=(char*)malloc(sizeof(char)*100);
     memset(vcs->shape_name,0,sizeof(char)*100);
-    strcpy(vcs->shape_name,"ibeam");
+    strcpy(vcs->shape_name,"hand");
     vcs->is_using=1;
 
     char texts[]="Texts";
@@ -474,31 +476,352 @@ void test2()
     vtexts->colors[1*4+0]=1.0;vtexts->colors[1*4+1]=0.0;vtexts->colors[1*4+2]=0.0;vtexts->colors[1*4+3]=1.0;
     vtexts->colors[2*4+0]=1.0;vtexts->colors[2*4+1]=0.0;vtexts->colors[2*4+2]=0.0;vtexts->colors[2*4+3]=1.0;
     vtexts->colors[3*4+0]=1.0;vtexts->colors[3*4+1]=0.0;vtexts->colors[3*4+2]=0.0;vtexts->colors[3*4+3]=1.0;
+
+   // ((float*)(vtexts->mat->data))[0*4+3]=1.0;
     //((float*)(vtexts->mat->data))[0*4+3]=0.3;
 
     //vs->disappear=1;
 
-
-
     vw.print_self(&vw);
 
-
-        
-
     Viewer_Opengl_Interpreter voi;
-    Viewer_Opengl_Interpreter_init(&voi);
+    Viewer_Opengl_Interpreter_initd(&voi,&vw);
   
     upd->voi=&voi;
-    voi.world=&vw;
+    //voi.world=&vw;
+
     voi.interpreter(&voi);
+}
+void test_frambuffer()
+{
+    glfwInit();
+   // glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+   // glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
+   // glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+#ifdef __APPLE__
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT,GL_TRUE);
+#endif
+     GLFWwindow* window = glfwCreateWindow(800, 600, "LearnOpenGL", NULL, NULL);
+    if (window == NULL)
+    {
+     //   std::cout << "Failed to create GLFW window" << std::endl;
+        printf("failed to create window\n");
+        glfwTerminate();
+       // return -1;
+    }
+    glfwMakeContextCurrent(window);
+    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+    {
+   //     std::cout << "Failed to initialize GLAD" << std::endl;
+    //    return -1;
+        printf("failed to initialize glad\n");
+    }
+    glEnable(GL_DEPTH_TEST);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    Viewer_oisp* voisp=(Viewer_oisp*)malloc(sizeof(Viewer_oisp));
+    
+    Viewer_Opengl_Interpreter_Shader_Program_init(voisp);
+    char* p_v=(char*)malloc(sizeof(char)*120);
+    memset(p_v,0,sizeof(char)*120);
+    strcat(strcat(p_v,MESH_VIEWER_PATH),"/render1.vert");
+    char* p_f=(char*)malloc(sizeof(char)*120);
+    memset(p_f,0,sizeof(char)*120);
+    strcat(strcat(p_f,MESH_VIEWER_PATH),"/render1.frag");
+    
+
+    voisp->shaders[0].type=GL_VERTEX_SHADER;
+    voisp->shaders[0].filename=p_v;
+    voisp->shaders[1].type=GL_FRAGMENT_SHADER;
+    voisp->shaders[1].filename=p_f;
+    voisp->shaders[2].type=GL_NONE;
+    voisp->shaders[2].filename=NULL;
+     _Shader_(voisp->shaders);
+    voisp->program=_Program_(voisp->shaders); 
+    float cubeVertices[] = {
+        // positions          // texture Coords
+        -0.5f, -0.5f, -0.5f,  
+         0.5f, -0.5f, -0.5f,  
+         0.5f,  0.5f, -0.5f,  
+         0.5f,  0.5f, -0.5f,  
+        -0.5f,  0.5f, -0.5f, 
+        -0.5f, -0.5f, -0.5f, 
+
+        -0.5f, -0.5f,  0.5f,  
+         0.5f, -0.5f,  0.5f,  
+         0.5f,  0.5f,  0.5f,  
+         0.5f,  0.5f,  0.5f,  
+        -0.5f,  0.5f,  0.5f,  
+        -0.5f, -0.5f,  0.5f, 
+
+        -0.5f,  0.5f,  0.5f,  
+        -0.5f,  0.5f, -0.5f,  
+        -0.5f, -0.5f, -0.5f,  
+        -0.5f, -0.5f, -0.5f,  
+        -0.5f, -0.5f,  0.5f,  
+        -0.5f,  0.5f,  0.5f,  
+
+         0.5f,  0.5f,  0.5f,  
+         0.5f,  0.5f, -0.5f,  
+         0.5f, -0.5f, -0.5f,  
+         0.5f, -0.5f, -0.5f,  
+         0.5f, -0.5f,  0.5f,  
+         0.5f,  0.5f,  0.5f,  
+
+        -0.5f, -0.5f, -0.5f,  
+         0.5f, -0.5f, -0.5f,  
+         0.5f, -0.5f,  0.5f,  
+         0.5f, -0.5f,  0.5f,  
+        -0.5f, -0.5f,  0.5f,  
+        -0.5f, -0.5f, -0.5f,  
+
+        -0.5f,  0.5f, -0.5f,  
+         0.5f,  0.5f, -0.5f,  
+         0.5f,  0.5f,  0.5f,  
+         0.5f,  0.5f,  0.5f,  
+        -0.5f,  0.5f,  0.5f, 
+        -0.5f,  0.5f, -0.5f,  
+    };
+    float texcoords[]={
+        0.0f, 0.0f,
+        1.0f, 0.0f,
+        1.0f, 1.0f,
+        1.0f, 1.0f,
+        0.0f, 1.0f,
+        0.0f, 0.0f,
+
+        0.0f, 0.0f,
+        1.0f, 0.0f,
+        1.0f, 1.0f,
+        1.0f, 1.0f,
+        0.0f, 1.0f,
+        0.0f, 0.0f,
+
+        1.0f, 0.0f,
+        1.0f, 1.0f,
+        0.0f, 1.0f,
+        0.0f, 1.0f,
+        0.0f, 0.0f,
+        1.0f, 0.0f,
+
+        1.0f, 0.0f,
+        1.0f, 1.0f,
+        0.0f, 1.0f,
+        0.0f, 1.0f,
+        0.0f, 0.0f,
+        1.0f, 0.0f,
+
+        0.0f, 1.0f,
+        1.0f, 1.0f,
+        1.0f, 0.0f,
+        1.0f, 0.0f,
+        0.0f, 0.0f,
+        0.0f, 1.0f,
+
+        0.0f, 1.0f,
+        1.0f, 1.0f,
+        1.0f, 0.0f,
+        1.0f, 0.0f,
+        0.0f, 0.0f,
+        0.0f, 1.0f
+    };
+   
+
+
+    voisp->VAO=(GLuint*)malloc(sizeof(GLuint));
+    voisp->Buffers=(GLuint**)malloc(sizeof(GLuint*));
+    voisp->Buffers[0]=(GLuint*)malloc(sizeof(GLuint)*2);
+    glGenVertexArrays(1,voisp->VAO);
+    glBindVertexArray(*(voisp->VAO));
+    glGenBuffers(2,voisp->Buffers[0]);
+    glBindBuffer(GL_ARRAY_BUFFER,voisp->Buffers[0][0]);
+    glBufferData(GL_ARRAY_BUFFER,sizeof(cubeVertices),cubeVertices,GL_STATIC_DRAW);
+
+    glBindBuffer(GL_ARRAY_BUFFER,voisp->Buffers[0][1]);
+    glBufferData(GL_ARRAY_BUFFER,sizeof(texcoords),texcoords,GL_STATIC_DRAW);
+
+    glBindBuffer(GL_ARRAY_BUFFER,voisp->Buffers[0][0]);
+    glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,0,0);
+    
+    glEnableVertexAttribArray(0);
+    glBindBuffer(GL_ARRAY_BUFFER,voisp->Buffers[0][1]); 
+
+    glVertexAttribPointer(1,2,GL_FLOAT,GL_FALSE,0,0);
+    glEnableVertexAttribArray(1);
+    glBindBuffer(GL_ARRAY_BUFFER,0);
+    glBindVertexArray(0);
+
+    voisp->tex=(GLuint*)malloc(sizeof(GLuint));
+
+    glGenTextures(1,voisp->tex);
+    ImageInfo* imi=_ReadImageFile_((char*)"lena.jpg");
+    _Texture_(imi,*(voisp->tex));
+    ImageInfo_free(imi);
+    
+
+    Matrix4x4* obj_mat=(Matrix4x4*)malloc(sizeof(Matrix4x4));
+    Matrix4x4_init_float(obj_mat);
+    
+    ((float*)(obj_mat->data))[2*4+3]=10.0;
+
+    Matrix4x4* camera_mat=(Matrix4x4*)malloc(sizeof(Matrix4x4));
+    Matrix4x4_init_float(camera_mat);
+
+    //Matrix4x4* proj_mat=(Matrix4x4*)malloc(sizeof(Matrix4x4));
+    //Matrix4x4_init_float(proj_mat);
+    Matrix4x4 *proj_mat=Projection(M_PI/3.0f,(float)(800.0)/(float)(600.0),0.5f,200.0f);
+    
+/*设置framebuffer*/
+    unsigned int framebuffer;
+    glGenFramebuffers(1, &framebuffer);
+    glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
+    // create a color attachment texture
+    unsigned int textureColorbuffer;
+    glGenTextures(1, &textureColorbuffer);
+    glBindTexture(GL_TEXTURE_2D, textureColorbuffer);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, 800, 600, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, textureColorbuffer, 0);
+    // create a renderbuffer object for depth and stencil attachment (we won't be sampling these)
+    unsigned int rbo;
+    glGenRenderbuffers(1, &rbo);
+    glBindRenderbuffer(GL_RENDERBUFFER, rbo);
+    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8,800,600); // use a single renderbuffer object for both a depth AND stencil buffer.
+    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, rbo); // now actually attach it
+    // now that we actually created the framebuffer and added all attachments we want to check if it is actually complete now
+    if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
+    {
+        printf("framebuffer is not completed  \n"); 
+    }
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+/*设置framebuffer*/
+
+
+    Viewer_oisp* voisp1=(Viewer_oisp*)malloc(sizeof(Viewer_oisp));
+    
+    Viewer_Opengl_Interpreter_Shader_Program_init(voisp1);
+    memset(p_v,0,sizeof(char)*120);
+    strcat(strcat(p_v,MESH_VIEWER_PATH),"/quad.vert");
+    memset(p_f,0,sizeof(char)*120);
+    strcat(strcat(p_f,MESH_VIEWER_PATH),"/quad.frag");
+
+    voisp1->shaders[0].type=GL_VERTEX_SHADER;
+    voisp1->shaders[0].filename=p_v;
+    voisp1->shaders[1].type=GL_FRAGMENT_SHADER;
+    voisp1->shaders[1].filename=p_f;
+    voisp1->shaders[2].type=GL_NONE;
+    voisp1->shaders[2].filename=NULL;
+     _Shader_(voisp1->shaders);
+    voisp1->program=_Program_(voisp1->shaders); 
+
+    float quadVertices[] = {
+        -1.0f,  1.0f,  0.0f, 
+        -1.0f, -1.0f,  0.0f, 
+         1.0f, -1.0f,  0.0f, 
+
+        -1.0f,  1.0f,  0.0f, 
+         1.0f, -1.0f,  0.0f, 
+         1.0f,  1.0f,  0.0f
+    }; 
+    float quadtexcoords[]={
+        0.0f, 1.0f,
+        0.0f, 0.0f,
+        1.0f, 0.0f,
+
+        0.0f, 1.0f,
+        1.0f, 0.0f,
+        1.0f, 1.0f
+    };
+    voisp1->VAO=(GLuint*)malloc(sizeof(GLuint));
+    voisp1->Buffers=(GLuint**)malloc(sizeof(GLuint*));
+    voisp1->Buffers[0]=(GLuint*)malloc(sizeof(GLuint)*2);
+    
+    glGenVertexArrays(1,voisp1->VAO);
+    glBindVertexArray(*(voisp1->VAO));
+    glGenBuffers(2,voisp1->Buffers[0]);
+
+    glBindBuffer(GL_ARRAY_BUFFER,voisp1->Buffers[0][0]);
+    glBufferData(GL_ARRAY_BUFFER,sizeof(quadVertices),quadVertices,GL_STATIC_DRAW);
+
+
+    glBindBuffer(GL_ARRAY_BUFFER,voisp1->Buffers[0][1]);
+    glBufferData(GL_ARRAY_BUFFER,sizeof(quadtexcoords),quadtexcoords,GL_STATIC_DRAW);
+
+    glBindBuffer(GL_ARRAY_BUFFER,voisp1->Buffers[0][0]);
+    glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,0,0);
+    
+    glEnableVertexAttribArray(0);
+    glBindBuffer(GL_ARRAY_BUFFER,voisp1->Buffers[0][1]); 
+
+    glVertexAttribPointer(1,2,GL_FLOAT,GL_FALSE,0,0);
+    glEnableVertexAttribArray(1);
+
+    glBindBuffer(GL_ARRAY_BUFFER,0);
+    glBindVertexArray(0);
+
+
+
+    while(!glfwWindowShouldClose(window))
+    {
+        glfwMakeContextCurrent(window);    
+        glClearColor(0.2,0.2,0.2,1.0f);
+        glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
+        glEnable(GL_DEPTH_TEST);
+        glClearColor(0.2,0.2,0.2,1.0f);
+        glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
+        GLuint program=voisp->program;
+        glUseProgram(program);
+
+        glUniformMatrix4fv(glGetUniformLocation(program,"Camera_Matrix"),1,GL_TRUE,(float*)(camera_mat->data));
+        glUniformMatrix4fv(glGetUniformLocation(program,"Proj"),1,GL_TRUE,(float*)(proj_mat->data));
+
+        glUniformMatrix4fv(glGetUniformLocation(program,"Object_Matrix"),1,GL_TRUE,(float*)(obj_mat->data));
+
+        glUniform1i(glGetUniformLocation(program,"ourTexture"),0);
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D,*(voisp->tex));
+        glBindVertexArray(*(voisp->VAO));
+        glDrawArrays(GL_TRIANGLES,0,36);
+
+        
+        glBindFramebuffer(GL_FRAMEBUFFER,0);
+        glDisable(GL_DEPTH_TEST); 
+        glClearColor(0.0f, 0.0f, 1.0f, 1.0f); 
+        glClear(GL_COLOR_BUFFER_BIT);
+        program=voisp1->program; 
+        glUseProgram(program); 
+        glUniform1i(glGetUniformLocation(program,"ourTexture"),0);
+
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D,textureColorbuffer);
+        glBindVertexArray(*(voisp1->VAO));
+        glDrawArrays(GL_TRIANGLES,0,6);
+
+
+
+
+        glfwSwapBuffers(window);
+        glfwPollEvents();
+    } 
+    glfwTerminate();
+    free(p_v);free(p_f);
+    
+    //voisp->voi=voi;
+   // voisp->vw=vw;
+   // voi->user_shader_program=node_overlying(voi->user_shader_program,voisp);
 
 }
-
 
 
 //unsigned char image[H]
 int main(int argc,char**argv)
 {
+   // test_frambuffer();
+   /* 
     ImageInfo* imi=_ReadImageFile_("lena.jpg");
 
     _is_reverse_image_writing(1);
@@ -506,6 +829,9 @@ int main(int argc,char**argv)
     _Write_PNG_File_("mytestpng.png",imi);
     ImageInfo_free(imi);
     //test1();  
+
+    */
+    
     test2();
     return 0;
 }

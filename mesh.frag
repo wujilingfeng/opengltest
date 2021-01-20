@@ -45,14 +45,15 @@ void set_fColor(vec2 uv,vec2 coord_uv)
 	a=sign(a);
 	vec4 temp_color1=max(-dot(norf,dirf),0)*texture(ourTexture,texcoord);
 	vec4 temp_fColor=temp_color1*a+(1-a)*outColor;
-	//fColor=temp_fColor;
-	float is_pick=step(abs(coord_uv.x-uv.x),6/(2*iResolution.x));
-	is_pick=step(2,is_pick+step(abs(coord_uv.y-uv.y),6/(2*iResolution.y)));
-	is_pick=step(2,is_pick+p_intera.is_pick);
-    float is_pick1=step(abs(coord_uv.x-uv.x),4/(2*iResolution.x));
-    is_pick1=step(2,is_pick1+step(abs(coord_uv.y-uv.y),4/(2*iResolution.y)));
+	//float is_pick=step(abs(coord_uv.x-uv.x),6/(2*iResolution.x));
+	//is_pick=step(2,is_pick+step(abs(coord_uv.y-uv.y),6/(2*iResolution.y)));
+	//is_pick=step(2,is_pick+p_intera.is_pick);
+    //float is_pick1=step(abs(coord_uv.x-uv.x),4/(2*iResolution.x));
+    //is_pick1=step(2,is_pick1+step(abs(coord_uv.y-uv.y),4/(2*iResolution.y)));
 
-	fColor=(1-is_pick)*temp_fColor+is_pick*((is_pick1)*vec4(trans_code(e_id)/255.0,1)+(1-is_pick1)*vec4(chuli_f_i_marked(),1));
+	//fColor=(1-is_pick)*temp_fColor+is_pick*((is_pick1)*vec4(trans_code(e_id)/255.0,1)+(1-is_pick1)*vec4(chuli_f_i_marked(),1));
+	fColor=(1-p_intera.is_pick)*temp_fColor+p_intera.is_pick*vec4(trans_code(e_id)/255.0,1);
+	
 	//fColor=vec4(e_id/255.0,0,0,1);
 }
 

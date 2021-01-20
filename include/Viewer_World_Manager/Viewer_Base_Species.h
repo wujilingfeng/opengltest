@@ -46,6 +46,7 @@ typedef struct Viewer_Faces
 	unsigned int* Data_index;
 	unsigned int normal_rows;
 	unsigned int color_rows;
+	//
 	unsigned int* marked_faces_index;
 	
 
@@ -72,10 +73,14 @@ void Viewer_Faces_init(Viewer_Faces*);
 typedef struct Viewer_Camera
 {
 	/* 四维矩阵表示了相机的旋转（相机镜头方向），和位置。主要是修改这个矩阵 */
+	/*该矩阵的上矩阵块应该是3阶单位正交阵*/
 	Matrix4x4* matrix;
 	/* 这个是上面矩阵的逆，加速运算 */
+
+	
 	Matrix4x4* matrix_inverse;
 	Matrix4x4* Proj;
+	//void (*set_using)(struct Viewer_world*,struct Viewer_Camera* c);
 	int is_using;
 	/* 相机的聚焦点，主要用来旋转相机的轴点 */
 	float focal_distance;
@@ -124,6 +129,7 @@ void Viewer_Edges_set_color(Viewer_Edges*,float*v);
 typedef struct Viewer_Cursor_Shape{
 	char *shape_name;
 	char *image_path;
+	//void (*set_using)(struct Viewer_world*,struct Viewer_Cursor_Shape*);
 	int is_using;	
 	void * obj;
 	void* prop;	
@@ -142,6 +148,7 @@ typedef struct Viewer_Texts{
 	unsigned int VBO[3];
 
 	Matrix4x4 *mat;
+	Matrix4x4* Proj;
 	void* prop;
 }Viewer_Texts;
 void Viewer_Texts_init(struct Viewer_Texts*vtext );
@@ -161,6 +168,7 @@ typedef struct Viewer_UI_Mesh{
 //	void (*random_color)(struct Viewer_Faces*);
 	void (*set_color)(struct Viewer_Faces*,float*);
 	Matrix4x4 *mat;
+	Matrix4x4* Proj;
 	Viewer_Something* texture;
 	int is_transparent;
 	void* evolution;

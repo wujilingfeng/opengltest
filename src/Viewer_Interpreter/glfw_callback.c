@@ -191,7 +191,7 @@ void viewer_mouse_button_callback(GLFWwindow* window,int button,int action,int m
     
     Viewer_World* mw=(Viewer_World*)(glfwGetWindowUserPointer(window));
     Interactor_GlobalInfo* g_info=mw->g_info;
-    glReadPixels(g_info->mouse_coord[0],g_info->resolution[1]-g_info->mouse_coord[1],3,3,GL_RGBA,GL_UNSIGNED_BYTE,g_info->readpixelcolor);
+   // glReadPixels(g_info->mouse_coord[0],g_info->resolution[1]-g_info->mouse_coord[1],3,3,GL_RGBA,GL_UNSIGNED_BYTE,g_info->readpixelcolor);
  //   printf("%d\n",g_info->mouse_button);
     if(action==VIEWER_PRESS&&button==VIEWER_MOUSE_BUTTON_LEFT)
     {
@@ -204,7 +204,7 @@ void viewer_mouse_button_callback(GLFWwindow* window,int button,int action,int m
             printf("\n");
         }*/
         //printf("%d %d %d %lf %lf %lf\n",g_info->readpixelcolor[0*4+0],g_info->readpixelcolor[0*4+1],g_info->readpixelcolor[0*4+2],g_info->readpixelcolor[8*4+0]/255.0,g_info->readpixelcolor[8*4+1]/255.0,g_info->readpixelcolor[8*4+2]/255.0);
-        viewer_decode_pickupinfo(mw,g_info);  
+     //   viewer_decode_pickupinfo(mw,g_info);  
     }
     
     g_info->mouse_button=button;
@@ -251,7 +251,7 @@ void viewer_framebuffer_size_callback(GLFWwindow* window,int w,int h)
     
     g_info->resolution[0]=w;
     g_info->resolution[1]=h;
-    glViewport(0.0,0.0,w,h);
+    //glViewport(0.0,0.0,w,h);
     char intera[]="Intera";
     Node* id=mw->find_species(mw,intera);
     RB_int rbt,*rbt1;

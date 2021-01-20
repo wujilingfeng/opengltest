@@ -54,6 +54,10 @@ void _Write_PNG_File_(char* filename,ImageInfo* imi)
 }
 void ImageInfo_free(ImageInfo*imi)
 {
+    if(imi==NULL)
+    {
+        return ;
+    }
 	stbi_image_free(imi->data);
 	free(imi);
 }

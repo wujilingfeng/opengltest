@@ -27,6 +27,12 @@ stdlib.h
 ../include/Viewer_Interpreter/Viewer_OpenGL_Interpreter.h
 ft2build.h
 -
+Viewer_OpenGL_Interpreter_Shader.h
+../include/Viewer_Interpreter/Viewer_OpenGL_Interpreter_Shader.h
+
+../include/Viewer_Interpreter/Viewer_OpenGL_Interpreter_Shader.h
+ft2build.h
+-
 glfw_callback.h
 ../include/Viewer_Interpreter/glfw_callback.h
 config.h
@@ -148,5 +154,9 @@ GL/glu.h
 
 /home/libo/Documents/c++/Viewer1.0/src/Viewer_Interpreter/Viewer_OpenGL_Interpreter.c
 Viewer_Interpreter/Viewer_OpenGL_Interpreter.h
+-
+
+/home/libo/Documents/c++/Viewer1.0/src/Viewer_Interpreter/Viewer_OpenGL_Interpreter_Shader.c
+Viewer_Interpreter/Viewer_OpenGL_Interpreter_Shader.h
 -
 

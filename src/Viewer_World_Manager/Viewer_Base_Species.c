@@ -257,11 +257,15 @@ static void Viewer_Points_random_color(struct Viewer_Points* mp)
 }*/
 static void Viewer_Points_set_color(Viewer_Points*vp,float*c)
 {
-
-    if(vp->color!=0)
-    {free(vp->color);
+    if(vp->Data_rows<=0)
+    {
+        return ;
+    }   
+    if(vp->color!=NULL)
+    {
+        free(vp->color);
+        vp->color=NULL;
     }
-    vp->color=NULL;
     if(vp->Data_rows>0)
     {
         vp->color=(float*)malloc(sizeof(float)*4*vp->Data_rows);
@@ -338,9 +342,13 @@ void Viewer_Texts_init(struct Viewer_Texts*vtext )
     vtext->font_path=NULL;
     vtext->mat=(Matrix4x4*)malloc(sizeof(Matrix4x4));
     Matrix4x4_init_float(vtext->mat);
+    vtext->Proj=(Matrix4x4*)malloc(sizeof(Matrix4x4));
+    Matrix4x4_init_float(vtext->Proj);
+
     vtext->VAO=0;vtext->VBO[0]=0;vtext->VBO[1]=0;vtext->VBO[2]=0;
     vtext->prop=NULL; 
 }
+/*特殊的初始化函数*/
 void Viewer_Texts_initn(struct Viewer_Texts* vtext,char const *str,float x,float y,float s,float* c,char const *font_path)
 {
     //Viewer_Texts_init(vtext);
@@ -349,6 +357,21 @@ void Viewer_Texts_initn(struct Viewer_Texts* vtext,char const *str,float x,float
     {
         free(vtext->str);
         vtext->str=NULL;
+    }
+    if(vtext->font_path!=NULL)
+    {
+        free(vtext->font_path);
+        vtext->font_path=NULL;
+    }
+    if(vtext->mat==NULL)
+    {
+        vtext->mat=(Matrix4x4*)malloc(sizeof(Matrix4x4));
+        Matrix4x4_init_float(vtext->mat); 
+    }
+    if(vtext->Proj==NULL)
+    {
+        vtext->Proj=(Matrix4x4*)malloc(sizeof(Matrix4x4));
+        Matrix4x4_init_float(vtext->Proj); 
     }
     vtext->str=(char*)malloc(sizeof(char)*(len+1));
     memset(vtext->str,0,sizeof(char)*(len+1));
@@ -393,7 +416,8 @@ void Viewer_UI_Mesh_init(Viewer_UI_Mesh* vum)
     vum->set_color=Viewer_Faces_set_color;
     vum->mat=(Matrix4x4*)malloc(sizeof(Matrix4x4));
     Matrix4x4_init_float(vum->mat);
-
+    vum->Proj=(Matrix4x4*)malloc(sizeof(Matrix4x4));
+    Matrix4x4_init_float(vum->Proj);
     vum->prop=NULL;
 
     vum->texture=NULL;
